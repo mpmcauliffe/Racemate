@@ -1,0 +1,33 @@
+databases:
+          default:
+            connector: postgres
+            host: ec2-174-129-27-3.compute-1.amazonaws.com
+            database: d40h4qk3nqipvl
+            user: ltjnymhxojcdpy
+            password: 64bf059de21604d9baf340c892fa70e332e8511d38ef42d8339d2ecc643105c6
+            ssl: true
+            rawAccess: true
+            port: '5432'
+            migrations: true
+
+
+Host
+ec2-174-129-27-3.compute-1.amazonaws.com
+
+Database
+d40h4qk3nqipvl
+
+User
+ltjnymhxojcdpy
+
+Port
+5432
+
+Password
+64bf059de21604d9baf340c892fa70e332e8511d38ef42d8339d2ecc643105c6
+
+URI
+postgres://ltjnymhxojcdpy:64bf059de21604d9baf340c892fa70e332e8511d38ef42d8339d2ecc643105c6@ec2-174-129-27-3.compute-1.amazonaws.com:5432/d40h4qk3nqipvl
+
+Heroku CLI
+heroku pg:psql postgresql-colorful-96828 --app mcauliffe-prisma-devserver
