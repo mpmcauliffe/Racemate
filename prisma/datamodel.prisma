@@ -18,6 +18,7 @@ type Exercise {
 
 type Workout {
     id: ID! @id
-    exercises: [Exercise!]! 
+    exercises: [Exercise!]!
+    date: String 
     owner: User! @relation(name: "WorkoutToUser", onDelete: SET_NULL)
 }
