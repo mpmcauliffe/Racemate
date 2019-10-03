@@ -22,12 +22,12 @@ type Workout {
     id: ID! @id
     title: String!
     exercises: [Exercise!]! @relation(link: INLINE)
-    owner: User! @relation(link: INLINE)
+    owner: User!
 }
 
 type Plan {
     id: ID! @id
     exercise: Exercise! @relation(link: INLINE)
     date: String!
-    owner: User! @relation(link: INLINE)
+    owner: User!
 }
