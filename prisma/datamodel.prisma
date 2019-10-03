@@ -1,0 +1,33 @@
+type User {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    password: String!
+    exercises: [Exercise!]! @relation(link: INLINE)
+    workouts: [Workout!]! @relation(link: INLINE)
+    plans: [Plan!]! @relation(link: INLINE)
+}
+
+type Exercise {
+    id: ID! @id
+    title: String!
+    muscleGroup: String!
+    description: String
+    sets: [Int!] @scalarList(strategy: EMBEDDED)
+    notes: String
+    date: String 
+}
+
+type Workout {
+    id: ID! @id
+    title: String!
+    exercises: [Exercise!]! @relation(link: INLINE)
+    owner: User! @relation(link: INLINE)
+}
+
+type Plan {
+    id: ID! @id
+    exercise: Exercise! @relation(link: INLINE)
+    date: String!
+    owner: User! @relation(link: INLINE)
+}
