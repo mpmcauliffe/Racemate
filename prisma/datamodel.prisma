@@ -5,29 +5,30 @@ type User {
     password: String!
     exercises: [Exercise!]! @relation(link: INLINE)
     workouts: [Workout!]! @relation(link: INLINE)
-    plans: [Plan!]! @relation(link: INLINE)
+    updatedAt: DateTime @updatedAt
+    createdAt: DateTime @createdAt
 }
 
 type Exercise {
     id: ID! @id
     title: String!
-    muscleGroup: String!
-    description: String
-    sets: [Int!] @scalarList(strategy: EMBEDDED)
+    exerciseType: String!
+    desciption: String
+    sets: [Set!]
     notes: String
-    date: String 
 }
 
 type Workout {
     id: ID! @id
     title: String!
     exercises: [Exercise!]! @relation(link: INLINE)
-    owner: User!
+    owner: User! 
 }
 
-type Plan {
-    id: ID! @id
-    exercise: Exercise! @relation(link: INLINE)
-    date: String!
-    owner: User!
+type Set @embedded {
+    createdAt: DateTime! @createdAt
+    reps: [Int]
+    weight: [Int]
+    distance: Float
+    time: Float
 }
