@@ -38,5 +38,8 @@
     "jsonwebtoken": "^8.5.1",
     "prisma-binding": "^2.3.16",
     "subscriptions-transport-ws": "^0.9.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
   }
 }
