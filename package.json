@@ -1,0 +1,42 @@
+{
+  "name": "racemate",
+  "version": "1.0.0",
+  "description": "MERN-QL exercise app",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpmcauliffe/Racemate.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "React",
+    "Node",
+    "GraphQl",
+    "Prisma"
+  ],
+  "author": "Michael P McAuliffe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpmcauliffe/Racemate/issues"
+  },
+  "homepage": "https://github.com/mpmcauliffe/Racemate#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "env-cmd": "^10.0.1",
+    "graphql": "^14.5.8",
+    "graphql-cli": "^3.0.14",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "prisma-binding": "^2.3.16",
+    "subscriptions-transport-ws": "^0.9.16"
+  }
+}
