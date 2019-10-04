@@ -1,0 +1,34 @@
+type User {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    password: String!
+    exercises: [Exercise!]! @relation(link: INLINE)
+    workouts: [Workout!]! @relation(link: INLINE)
+    updatedAt: DateTime @updatedAt
+    createdAt: DateTime @createdAt
+}
+
+type Exercise {
+    id: ID! @id
+    title: String!
+    exerciseType: String!
+    desciption: String
+    sets: [Set!]
+    notes: String
+}
+
+type Workout {
+    id: ID! @id
+    title: String!
+    exercises: [Exercise!]! @relation(link: INLINE)
+    owner: User! 
+}
+
+type Set @embedded {
+    createdAt: DateTime! @createdAt
+    reps: [Int]
+    weight: [Int]
+    distance: Float
+    time: Float
+}
