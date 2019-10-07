@@ -62,6 +62,48 @@ const Mutation = {
             },
             data: args.data
         }, info)
+    },
+    createExercise(parent, args, { prisma, request, }, info) {
+        const userId = getUserId(request)
+        const { title, exerciseType, description, sets, notes, } = args.data
+
+
+        return prisma.mutation.createExercise({
+            data: {
+                title,
+                exerciseType,
+                description,
+                sets,
+                notes,
+                owner: {
+                    connect: {
+                        id: userId
+                    }
+                }
+            }
+        }, info)
+    },
+    async deleteExercise(parent, args, { prisma, request, }, info) {
+        const userId = getUserId(request)
+        const exerciseExists = await prisma.exists.Exercise({
+            id: args.id,
+            owner: {
+                id: userId
+            }
+        })
+
+        if (!exerciseExists) {
+            throw new Error('Unable to delete exercise!')
+        }
+        
+        return prisma.mutation.deleteExercise({
+            where: {
+                id: args.id
+            }
+        }, info)
+    },
+    updateExercise(parent, args, { prisma, request, }, info) {
+
     }
 }
 

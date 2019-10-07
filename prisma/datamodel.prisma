@@ -13,9 +13,10 @@ type Exercise {
     id: ID! @id
     title: String!
     exerciseType: String!
-    desciption: String
+    description: String
     sets: [Set!]
     notes: String
+    owner: User!
 }
 
 type Workout {

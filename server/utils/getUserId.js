@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 
+
 const getUserId = (request, requireAuth = true) => {
     const header = request.request ? request.request.headers.authorization : request.connection.context.Authorization
 
@@ -15,5 +16,6 @@ const getUserId = (request, requireAuth = true) => {
     
     return null
 }
+
 
 export { getUserId as default }

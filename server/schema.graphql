@@ -2,6 +2,8 @@
 
 type Query {
     users(query: String, first: Int, skip: Int, after: String, orderBy: UserOrderByInput): [User!]!
+    exercises(query: String, first: Int, skip: Int, after: String, orderBy: ExerciseOrderByInput): [Exercise!]!
+    workouts(query: String, first: Int, skip: Int, after: String, orderBy: WorkoutOrderByInput): [Workout!]!
     me: User!
 }
 
@@ -14,6 +16,13 @@ type Mutation {
 
     ### EXERCISE
     createExercise(data: CreateExerciseInput): Exercise!
+    updateExercise(data: UpdateExerciseInput): Exercise!
+    deleteExercise(id: ID!): Exercise!
+
+    ### WORKOUT
+    createWorkout(data: CreateWorkoutInput): Workout!
+    updateWorkout(data: UpdateWorkoutInput): Workout!
+    deleteWorkout(id: ID!): Workout!
 }
 
 
@@ -50,26 +59,61 @@ type User {
 
 
 #####################################################################
-### USER & AUTHENTICATION
+### EXERCISES
 #####################################################################
 
 type Exercise {
     id: ID!
     title: String!
     exerciseType: String!
-    desciption: String
+    description: String
     sets: [Set!]
     notes: String
+    owner: User!
 }
 input CreateExerciseInput {
     title: String!
     exerciseType: String!
-    desciption: String
-    sets: [Set!]
+    description: String
+    # sets: [Set!]
     notes: String
+}
+input UpdateExerciseInput {
+    title: String
+    exerciseType: String
+    description: String
+    # sets: [Set!]
+    notes: String
+}
+type Set {
+    createdAt: DateTime!
+    reps: [Int]
+    weight: [Int]
+    distance: Float
+    time: Float
 }
 
 
+#####################################################################
+### WORKOUTS
+#####################################################################
+
+type Workout {
+    id: ID! 
+    title: String!
+    exercises: [Exercise!]!
+    owner: User! 
+}
+input CreateWorkoutInput {
+    title: String!
+    # exercises: [Exercise!]!
+    # owner: User! 
+}
+input UpdateWorkoutInput {
+    title: String
+    # exercises: [Exercise!]
+    # owner: User 
+}
 
 enum MutationType {
     CREATED
