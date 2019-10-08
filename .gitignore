@@ -1,5 +1,2 @@
 node_modules
 .vscode
-config
-prisma/docker-compose.yml
-prisma/prisma.yml
