@@ -1,10 +1,10 @@
 const express               = require('express')
 const path                  = require('path')
 const graphqlHttp           = require('express-graphql')
-const requireGraphQLFile    = require('require-graphql-file')
 
 const connectDB             = require('./config/db')
-const typeDefs              = requireGraphQLFile('./graphql/schema/schema.graphql')
+const typeDefs              = require('./graphql/schema/index')
+const resolvers             = require('./graphql/resolvers/index')
 
 const app                   = express()
 const PORT                  = process.env.PORT || 8080
@@ -18,8 +18,8 @@ app.use(
     '/graphql',
     graphqlHttp({
         schema: typeDefs,
-        //rootValue: graphQlResolvers,
-        graphiql: true
+        rootValue: resolvers,
+        graphiql: true,
     })
 )
 
