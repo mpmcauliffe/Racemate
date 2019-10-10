@@ -2,7 +2,7 @@ const bcrypt                = require('bcryptjs')
 const User                  = require('../../models/User')
 // const getUserId             = require('../../utils/getUserId')
 // const generateToken         = require('../../utils/generateToken')
-// const hashPassword          = require('../../utils/hashPassword')
+const hashPassword          = require('../../helpers/hashPassword')
 //import { createSecureServer } require('http2')
 
 
@@ -11,16 +11,17 @@ const Mutation = {
         try {
             const data = args.data
 
-            const emailInUse = await User.findOne({ email: data.email })
-            // if (emailInUse) {
-            //     throw new Error('Email already in use')
-            // }
+            const hashedPassword = await hashPassword(data.password)
 
-            console.log(data)
+            const emailInUse = await User.findOne({ email: data.email })
+            if (emailInUse) {
+                throw new Error('Email already in use')
+            }
+
             const user = new User({
                 name: data.name,
                 email: data.email,
-                password: data.password,
+                password: hashedPassword,
             })
 
             const result = await user.save()
