@@ -34,42 +34,25 @@ const Mutation = {
             console.log(e)
         }
     },
-    // async createUser(parent, args, { prisma }, info) {
-    //     const password = await hashPassword(args.data.password)
-    //     const user = await prisma.mutation.createUser({
-    //         data: {
-    //             ...args.data,
-    //             password
-    //         }
-    //     })
+    async login(args) {
+        const { email, password, } = args.data
 
-    //     return {
-    //         user,
-    //         token: generateToken(user.id)
-    //     }
-    // },
-    // async login(parent, args, { prisma }, info) {
-    //     const user = await prisma.query.user({
-    //         where: {
-    //             email: args.data.email
-    //         }
-    //     })
+        const user = await User.findOne({ email: email })
+        if (!user) {
+            throw new Error('Unable to login')
+        }
 
-    //     if (!user) {
-    //         throw new Error('Unable to login')
-    //     }
+        const isMatch = await bcrypt.compare(password, user.password)
 
-    //     const isMatch = await bcrypt.compare(args.data.password, user.password)
+        if (!isMatch) {
+            throw new Error('Unable to login')
+        }
 
-    //     if (!isMatch) {
-    //         throw new Error('Unable to login')
-    //     }
-
-    //     return {
-    //         user,
-    //         token: generateToken(user.id)
-    //     }
-    // },
+        return {
+            user,
+            token: generateToken(user.id)
+        }
+    },
     // async deleteUser(parent, args, { prisma, request }, info) {
     //     const userId = getUserId(request)
 
