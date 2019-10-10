@@ -53,6 +53,22 @@ const Mutation = {
             token: generateToken(user.id)
         }
     },
+    async updateUser(args, { headers }) {
+        //console.log()
+        // const user = await User.findOne({ email: email })
+        const userId = getUserId(headers.authorization)
+
+        if (typeof args.data.password === 'string') {
+            args.data.password = await hashPassword(args.data.password)
+        }
+
+        // return prisma.mutation.updateUser({
+        //     where: {
+        //         id: userId
+        //     },
+        //     data: args.data
+        // }, info)
+    },
     // async deleteUser(parent, args, { prisma, request }, info) {
     //     const userId = getUserId(request)
 
@@ -62,20 +78,7 @@ const Mutation = {
     //         }
     //     }, info)
     // },
-    // async updateUser(parent, args, { prisma, request }, info) {
-    //     const userId = getUserId(request)
 
-    //     if (typeof args.data.password === 'string') {
-    //         args.data.password = await hashPassword(args.data.password)
-    //     }
-
-    //     return prisma.mutation.updateUser({
-    //         where: {
-    //             id: userId
-    //         },
-    //         data: args.data
-    //     }, info)
-    // },
     // createExercise(parent, args, { prisma, request, }, info) {
     //     const userId = getUserId(request)
     //     const { title, exerciseType, description, sets, notes, } = args.data

@@ -1,13 +1,15 @@
 const express               = require('express')
 const path                  = require('path')
 const graphqlHttp           = require('express-graphql')
+const expressPlayground     = require('graphql-playground-middleware-express').default
+
 
 const connectDB             = require('./config/db')
 const typeDefs              = require('./graphql/schema/index')
 const resolvers             = require('./graphql/resolvers/index')
 
 const app                   = express()
-const PORT                  = process.env.PORT || 8080
+const PORT                  = process.env.PORT || 8080 
 
 
 connectDB()
@@ -22,6 +24,7 @@ app.use(
         graphiql: true,
     })
 )
+app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
 
 // app.get('/', (req, res) => {
