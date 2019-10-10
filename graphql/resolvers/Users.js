@@ -1,9 +1,8 @@
 const bcrypt                = require('bcryptjs')
 const User                  = require('../../models/User')
-// const getUserId             = require('../../utils/getUserId')
-// const generateToken         = require('../../utils/generateToken')
+const getUserId             = require('../../helpers/getUserId')
+const generateToken         = require('../../helpers/generateToken')
 const hashPassword          = require('../../helpers/hashPassword')
-//import { createSecureServer } require('http2')
 
 
 const Mutation = {
@@ -25,9 +24,12 @@ const Mutation = {
             })
 
             const result = await user.save()
-            console.log(result)
+
         
-            return user //{ ...result._doc, password: null, _id: result.id }
+            return { //{ ...result._doc, password: null, _id: result.id }
+                user,
+                token: generateToken(user._id)
+            }
         } catch(e) {
             console.log(e)
         }
