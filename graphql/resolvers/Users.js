@@ -32,6 +32,7 @@ const Mutation = {
             }
         } catch(e) {
             console.log(e)
+            throw e
         }
     },
     async login(args) {
