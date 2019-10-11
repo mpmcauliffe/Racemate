@@ -32,27 +32,11 @@ const Mutation = {
             await owner.save()
 
             return exercise
-            
+
         } catch(e) {
             console.log(e)
             throw e
         }
-
-
-        // return prisma.mutation.createExercise({
-        //     data: {
-        //         title,
-        //         exerciseType,
-        //         description,
-        //         sets,
-        //         notes,
-        //         owner: {
-        //             connect: {
-        //                 id: userId
-        //             }
-        //         }
-        //     }
-        // }, info)
     },
 }
 

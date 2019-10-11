@@ -5,7 +5,14 @@ const generateToken         = require('../../helpers/generateToken')
 const hashPassword          = require('../../helpers/hashPassword')
 
 
-const Mutation = {
+// const transformUser = user => {
+//     return {
+//         ...user._doc,
+//         _id: user.id,
+//     }
+// }
+
+const userResolver = {
     async createUser(args) {
         try {
             const data = args.data
@@ -55,13 +62,13 @@ const Mutation = {
         }
     },
     async updateUser(args, { headers }) {
-        //console.log()
-        // const user = await User.findOne({ email: email })
         const userId = getUserId(headers.authorization)
 
         if (typeof args.data.password === 'string') {
             args.data.password = await hashPassword(args.data.password)
         }
+
+        const user = await User.findById(userId)
 
         // return prisma.mutation.updateUser({
         //     where: {
@@ -125,4 +132,4 @@ const Mutation = {
 }
 
 
-module.exports = Mutation
+module.exports = userResolver

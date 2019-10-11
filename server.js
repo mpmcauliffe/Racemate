@@ -16,6 +16,7 @@ connectDB()
 
 app.use(express.json({ extended: false }))
 
+
 app.use(
     '/graphql',
     graphqlHttp({
@@ -26,6 +27,8 @@ app.use(
 )
 app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 
+
+//////////////////////////////////////////////////////////////////////
 
 // app.get('/', (req, res) => {
 //     res.json({ msg: 'welcome to the contacts app'})
