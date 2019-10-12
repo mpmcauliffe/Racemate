@@ -2,6 +2,7 @@ const getUserId             = require('../../helpers/getUserId')
 const User                  = require('../../models/User')
 const Exercise              = require('../../models/Exercise')
 const transformUser         = require('./utils/userTransform')
+const transformExercise     = require('./utils/exerciseTransform')
 
 
 const Query = {
@@ -20,7 +21,7 @@ const Query = {
         try {
             exercises = await Exercise.find()
             
-            return exercises.map(exercise)
+            return exercises.map(exercise => transformExercise(exercise))
             
         } catch(e) {
             console.log(e)

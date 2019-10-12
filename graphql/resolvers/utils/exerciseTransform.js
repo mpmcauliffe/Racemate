@@ -15,13 +15,16 @@ const Exercise              = require('../../../models/Exercise')
 // }
 
 const transformExercise = async exercise => {
-    const userExercises = await User.find({ owner: user._id })
+    
+    const ownerInfo = await User.findById({ _id: exercise.owner })
 
     return {
         ...exercise._doc,
-        _id: exercise._doc._id.toString(),
-        password: null,
-        exercises: userExercises,
+        id: exercise._doc._id.toString(),
+        owner: {
+            _id: ownerInfo._id,
+            name: ownerInfo.name,
+        }, 
     }
 }
 
