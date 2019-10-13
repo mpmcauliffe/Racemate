@@ -5,13 +5,6 @@ const generateToken         = require('../../helpers/generateToken')
 const hashPassword          = require('../../helpers/hashPassword')
 
 
-// const transformUser = user => {
-//     return {
-//         ...user._doc,
-//         _id: user.id,
-//     }
-// }
-
 const userResolver = {
     async createUser(args) {
         try {

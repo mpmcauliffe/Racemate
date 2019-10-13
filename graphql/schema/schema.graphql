@@ -2,6 +2,7 @@
 type Query {
     users(query: String, first: Int, skip: Int, after: String): [User!]!
     exercises(query: String, first: Int, skip: Int, after: String): [Exercise!]!
+    myExercises(query: String, first: Int, skip: Int, after: String): [Exercise!]!
     workouts(query: String, first: Int, skip: Int, after: String): [Workout!]!
     me: User!
 }
@@ -105,7 +106,7 @@ type Workout {
 }
 input CreateWorkoutInput {
     title: String!
-    # exercises: [Exercise!]!
+    exercises: String!
     # owner: User! 
 }
 input UpdateWorkoutInput {

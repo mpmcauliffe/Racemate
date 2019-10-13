@@ -4,7 +4,7 @@ const Exercise              = require('../../models/Exercise')
 const getUserId             = require('../../helpers/getUserId')
 
 
-const Mutation = {
+const exerciseResolver = {
     async createExercise(args, { headers }) {
         
         const userId = getUserId(headers.authorization)
@@ -41,4 +41,4 @@ const Mutation = {
 }
 
 
-module.exports = Mutation
+module.exports = exerciseResolver

@@ -4,15 +4,6 @@ const Exercise              = require('../../../models/Exercise')
 
 
 /* THIS UTILITY IS USED IN EXERCISE QUERY */
-// type Exercise {
-//     id: ID!
-//     title: String!
-//     exerciseType: String!
-//     description: String
-//     sets: [Set!]
-//     notes: String
-//     owner: User!
-// }
 
 const transformExercise = async exercise => {
     
