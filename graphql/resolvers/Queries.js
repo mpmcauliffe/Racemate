@@ -1,8 +1,9 @@
-const getUserId             = require('../../helpers/getUserId')
 const User                  = require('../../models/User')
 const Exercise              = require('../../models/Exercise')
+const Workout               = require('../../models/Workout')
+const getUserId             = require('../../helpers/getUserId')
 const transformUser         = require('./utils/userTransform')
-const transformExercise     = require('./utils/exerciseTransform')
+const transformItem         = require('./utils/itemTransform')
 
 
 const Query = {
@@ -33,7 +34,7 @@ const Query = {
         try {
             exercises = await Exercise.find()
             
-            return exercises.map(exercise => transformExercise(exercise))
+            return exercises.map(exercise => transformItem(exercise))
             
         } catch(e) {
             console.log(e)
@@ -45,7 +46,17 @@ const Query = {
             const userId = getUserId(headers.authorization)
 
             const exercises = await Exercise.find({ owner: userId })
-            return exercises.map(exercise => transformExercise(exercise))
+            return exercises.map(exercise => transformItem(exercise))
+        } catch(e) {
+            console.log(e)
+            throw e
+        }
+    },
+    workouts: async () => {
+        try {
+            workouts = await Workout.find()
+            
+            return workouts.map(workout => transformItem(workout))
         } catch(e) {
             console.log(e)
             throw e
