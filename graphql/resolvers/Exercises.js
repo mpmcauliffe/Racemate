@@ -1,4 +1,3 @@
-const bcrypt                = require('bcryptjs')
 const User                  = require('../../models/User')
 const Exercise              = require('../../models/Exercise')
 const getUserId             = require('../../helpers/getUserId')
@@ -37,6 +36,11 @@ const exerciseResolver = {
             console.log(e)
             throw e
         }
+    },
+    async updateExercise(args, { headers }) {
+        const userId = getUserId(headers.authorization)
+        console.log(args)
+        //const isUserExercise = 
     },
 }
 

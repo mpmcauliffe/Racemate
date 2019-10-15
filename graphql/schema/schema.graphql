@@ -19,6 +19,9 @@ type Mutation {
     updateExercise(data: UpdateExerciseInput): Exercise!
     deleteExercise(id: ID!): Exercise!
 
+    ### SET
+    createSet(data: CreateSetInput): Set!
+
     ### WORKOUT
     createWorkout(data: CreateWorkoutInput): Workout!
     updateWorkout(data: UpdateWorkoutInput): Workout!
@@ -85,10 +88,24 @@ input UpdateExerciseInput {
     # sets: [Set!]
     notes: String
 }
+
+
+#####################################################################
+### SET
+#####################################################################
+
 type Set {
-    createdAt: String!
+    date: String!
     reps: [Int]
     weight: [Int]
+    distance: Float
+    time: Float
+}
+input CreateSetInput {
+    exercise: String!
+    date: String!
+    reps: String
+    weight: String
     distance: Float
     time: Float
 }

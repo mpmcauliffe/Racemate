@@ -6,9 +6,6 @@ const getUserId             = require('../../helpers/getUserId')
 
 const workoutResolver = {
     async createWorkout(args, { headers }) {
-    // title: String!
-    // exercises: [Exercise!]!
-    // owner: User! 
         const data = args.data
         const userId = getUserId(headers.authorization)
         const exercises = data.exercises.split(' ')

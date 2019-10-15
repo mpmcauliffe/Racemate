@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const SetSchema = require('./SetSchema')
 
 const Schema = mongoose.Schema
 
@@ -18,10 +19,7 @@ const excerciseSchema = new Schema({
     notes: {
         type: String,
     },
-    sets: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Set',
-    }],
+    sets: [SetSchema],
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
