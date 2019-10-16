@@ -1,5 +1,6 @@
 const User                  = require('../../models/User')
 const Exercise              = require('../../models/Exercise')
+const SetSchema             = require('../../models/SetSchema')                   
 const getUserId             = require('../../helpers/getUserId')
 
 
@@ -12,23 +13,32 @@ const setResolver = {
     // distance: Float
     // time: Float
         const userId = getUserId(headers.authorization)
-        const { exercise, date, reps, weight, distance, time, } = args.data
-        
-        const exerciseExists = await Exercise.findById({ _id: exercise, })
-        if (!exerciseExists) {
+        const { exerciseId, date, reps, weight, distance, time, } = args.data
+
+
+        let exercise = await Exercise.findById({ _id: exerciseId, })
+        if (!exercise || exercise.owner.toString() !== userId) {
             throw new Error('Sets cannot be added to exercise!')
         }
 
-        console.log(exerciseExists)
-
-        const exercise = new Exercise({
-            exercise,
+        const newSet = {
             date,
-            reps,
-            weight,
+            reps: reps.split(' '),
+            weight: weight.split(' '),
             distance,
             time,
-        })
+        }
+        let { sets } = exercise
+        sets.push(newSet)
+        //console.log(sets)
+
+        exercise = await Exercise.findByIdAndUpdate(
+            exerciseId,
+            { $set: sets },
+            { new: true }
+        )
+        console.log(exercise)
+        return newSet
     },
 }
 

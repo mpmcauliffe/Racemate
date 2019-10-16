@@ -102,7 +102,7 @@ type Set {
     time: Float
 }
 input CreateSetInput {
-    exercise: String!
+    exerciseId: String!
     date: String!
     reps: String
     weight: String
