@@ -21,7 +21,7 @@ const setResolver = {
             throw new Error('Sets cannot be added to exercise!')
         }
 
-        const newSet = {
+        const set = {
             date,
             reps: reps.split(' '),
             weight: weight.split(' '),
@@ -29,12 +29,12 @@ const setResolver = {
             time,
         }
         let { sets } = exercise
-        sets.push(newSet)
+        sets.push(set)
         //console.log(sets)
 
         exercise = await Exercise.findByIdAndUpdate(
             exerciseId,
-            { $set: sets },
+            { $set: { sets } },
             { new: true }
         )
         console.log(exercise)
