@@ -12,6 +12,7 @@
         right: 6rem;
         border-radius: 50%;
         z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1)
     }
 
     // circular background
@@ -24,21 +25,32 @@
         top: 6.5rem;
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        // https://cubic-bezier.com
+        transition: transform .8s cubic-bezier(.86, 0, .07, 1);    
 
-        transform: scale(80);
+        // not toggled
+        //transform: scale(80);
     }
 
     &__nav {
         height: 100vh;
-        width: 100%;
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         z-index: 1500;
+        transition: all .8s;
+
+        // not toggled
+        opacity: 0;
+        width: 0;
+
+        // cool overlap effect
+        //background-color: orangered;
     }
 
     &__list {
         position: absolute;
+        width: 100%;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -53,13 +65,14 @@
     &__link {
         &:link,
         &:visited {
+            display: inline-block;
             font-size: 3rem;
             font-weight: 300;
             padding: 1rem 2rem;
             color: $color-white;
             text-decoration: none;
             text-transform: uppercase;
-            background-image: linear-gradient(120deg, orangered 0%, orangered 50%, $color-white 50%);
+            background-image: linear-gradient(110deg, transparent 0%, transparent 50%, $color-white 50%);
             background-size: 220%;
             transition: all .5s;
         }
@@ -67,7 +80,19 @@
         &:hover,
         &:active {
             background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
         }
         
+    }
+
+    // toggling background
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
     }
 }
