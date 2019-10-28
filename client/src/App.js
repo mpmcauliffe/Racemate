@@ -17,19 +17,16 @@ const App = () => {
                 <nav className="navigation__nav">
                     <ul className="navigation__list">
                         <li className="navigation__item">
-                            <a href="#" className="navigation__link">About Natours</a>
+                            <a href="#" className="navigation__link">Routine</a>
                         </li>
                         <li className="navigation__item">
-                            <a href="#" className="navigation__link">Your benefits</a>
+                            <a href="#" className="navigation__link">Workouts</a>
                         </li>
                         <li className="navigation__item">
-                            <a href="#" className="navigation__link">Popular tours</a>
+                            <a href="#" className="navigation__link">Exercises</a>
                         </li>
                         <li className="navigation__item">
-                            <a href="#" className="navigation__link">Stories</a>
-                        </li>
-                        <li className="navigation__item">
-                            <a href="#" className="navigation__link">Book now</a>
+                            <a href="#" className="navigation__link">Logout</a>
                         </li>
                     </ul>
                 </nav>
