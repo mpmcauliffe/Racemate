@@ -7,13 +7,14 @@
 
     &__button {
         position: fixed;
-        //top: 6rem;
-        //right: 6rem;
-        left: 0;
+        top: 1rem;
+        right: 1rem;
+        //left: 0;
         z-index: 2000;
         height: 5rem;
-        width: 100%;
-        //border-radius: 50%;
+        width: 5rem;
+        //width: 100%;
+        border-radius: 50%;
         background-color: $color-white;
         text-align: center;
         box-shadow: 0 1rem 1rem rgba($color-black, .1);
@@ -23,13 +24,14 @@
     // circular background
     &__background {
         position: fixed;
-        //top: 6.5rem;
-        //right: 6.5rem;
+        top: 2rem;
+        right: 2rem;
         z-index: 1000;
         height: 3rem;
-        width: 100%;
-        //border-radius: 50%;
-        //background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        width: 3rem;
+        //width: 100%;
+        border-radius: 50%;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
         background: linear-gradient(to bottom, $color-primary-dark, $color-primary, $color-primary-light);
 
         // https://cubic-bezier.com
@@ -58,11 +60,12 @@
     &__list {
         position: absolute;
         width: 100%;
-        top: 50%;
-        left: 45%;
-        transform: translate(-50%, -50%);
+        top: 21%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
         list-style: none;
         text-align: center;
+        padding: 0;
     }
 
     &__item {
