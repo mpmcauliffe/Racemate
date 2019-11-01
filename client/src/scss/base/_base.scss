@@ -16,4 +16,13 @@ button:disabled {
 h1 {
     font-family: "proxima-nova-condensed";
     font-size: $large;
+    font-weight: 700;
+}
+h2 {
+    
+}
+
+.header {
+    margin-left: 1rem;
+    color: $color-primary;
 }

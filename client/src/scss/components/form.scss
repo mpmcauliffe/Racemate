@@ -1,0 +1,23 @@
+
+form {
+    margin-top: 10rem;
+    padding: 2rem;
+}
+
+label {
+    font-family:"proxima-nova-condensed";
+    font-size: $medium;
+    font-weight: 200;
+}
+
+input {
+    height: 4rem;
+    width: 90%;
+    margin: 1rem 5% 3rem 5%;
+    font-family:"proxima-nova-condensed";
+    font-size: $medium;
+}
+
+.form-label {
+    margin: 0 5%;
+}

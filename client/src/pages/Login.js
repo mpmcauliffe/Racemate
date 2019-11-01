@@ -13,9 +13,9 @@ const Login = () => {
 
     return (
         <div>
-            <h1>LOGIN</h1>
+            <h1 className='header'>LOGIN</h1>
             <form>
-                <label htmlFor='email'>Email</label>
+                <label htmlFor='email' className='form-label'>Email</label>
                 <input /* EMAIL */
                     onChange={onChange}
                     value={user.email}
@@ -25,7 +25,7 @@ const Login = () => {
 
                     className='form-control form-control-lg' />
 
-                <label htmlFor='password'>Password</label>
+                <label htmlFor='password' className='form-label'>Password</label>
                 <input /* PASSWORD */
                     onChange={onChange}
                     value={user.password}
@@ -36,12 +36,12 @@ const Login = () => {
 
                     className='form-control form-control-lg' />
 
-                {/* <Button 
-                    onClick={onSubmit}
-                    style={styles.button}
+                <button 
+                    //onClick={onSubmit}
+                    //style={styles.button}
 
                 >   Submit
-                </Button> */}
+                </button>
             </form>
         </div>
     )
