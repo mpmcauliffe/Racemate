@@ -8,6 +8,7 @@ const App = () => {
     return (
         <Fragment>
             <Menu />
+            <h1>AAAAAAAAAAAA</h1>
             <Switch>
                 <Route /* PUBLIC */ 
                     exact
