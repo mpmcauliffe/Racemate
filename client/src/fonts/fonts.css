@@ -56,4 +56,29 @@ src:url("https://use.typekit.net/af/5364bc/00000000000000003b9b3073/27/l?primer=
 font-display:auto;font-style:italic;font-weight:400;
 }
 
+@font-face {
+font-family:"proxima-nova";
+src:url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/705e94/00000000000000003b9b3062/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;
+}
+@font-face {
+font-family:"proxima-nova";
+src:url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/l?subset_id=2&fvd=n1&v=3") format("woff2"),url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/d?subset_id=2&fvd=n1&v=3") format("woff"),url("https://use.typekit.net/af/c47696/00000000000000003b9b305e/27/a?subset_id=2&fvd=n1&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:100;
+}
+
+@font-face {
+font-family:"meno-display";
+src:url("https://use.typekit.net/af/f3e509/00000000000000003b9af05a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/f3e509/00000000000000003b9af05a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/f3e509/00000000000000003b9af05a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;
+}
+
+@font-face {
+font-family:"meno-display";
+src:url("https://use.typekit.net/af/5cb568/00000000000000003b9af060/27/l?subset_id=2&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/5cb568/00000000000000003b9af060/27/d?subset_id=2&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/5cb568/00000000000000003b9af060/27/a?subset_id=2&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;
+}
+
+.tk-proxima-nova { font-family: "proxima-nova",sans-serif; }
 .tk-proxima-nova-condensed { font-family: "proxima-nova-condensed",sans-serif; }
+.tk-meno-display { font-family: "meno-display",serif; }

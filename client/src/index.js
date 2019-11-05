@@ -6,12 +6,12 @@ import App from './App'
 import 'normalize.css/normalize.css'
 import './fonts/fonts.css'
 import { GlobalStyle, Theme, } from './styled-components'
+import './styled-components/globalStyle.css'
 
 
 ReactDOM.render(
     <Router>
         <ThemeProvider theme={Theme}>
-            <GlobalStyle />
             <Route component={App} />
         </ThemeProvider>
     </Router>, 
