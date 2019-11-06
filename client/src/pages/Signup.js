@@ -1,11 +1,68 @@
-import React from 'react'
+import React, { useState, } from 'react'
+import { FormContainer, SubmitButton, } from '../styled-components'
 
 
 const Signup = () => {
+
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        password: '',
+        password2: '',
+    })
+
+    const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+
+    const { name, email, password, password2, } = user
+
+
     return (
-        <div>
-            AAAAAAAAAAAAAAAAAAAAAA COCKY!
-        </div>
+        <form>
+            <FormContainer>
+                <label htmlFor='name'>Name</label>
+                <input /* NAME */
+                    onChange={onChange}
+                    value={name}
+                    name='name'
+                    type='text'
+                    required />
+
+
+                <label htmlFor='email'>Email</label>
+                <input /* EMAIL */
+                    onChange={onChange}
+                    value={email}
+                    name='email'
+                    type='email'
+                    required  />
+
+
+                <label htmlFor='password'>Password</label>
+                <input 
+                    onChange={onChange}
+                    value={password}
+                    name='password'
+                    type='password'
+                    minLength='6'
+                    required />
+
+
+                <label htmlFor='password2'>Confirm Password</label>
+                <input 
+                    onChange={onChange}
+                    value={password2}
+                    name='password2'
+                    type='password'
+                    required />
+
+
+                <SubmitButton 
+                    //onClick={onSubmit}
+
+                >   Submit
+                </SubmitButton>
+            </FormContainer>
+        </form>
     )
 }
 

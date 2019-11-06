@@ -1,7 +1,8 @@
 import React, { useState, } from 'react'
+import { FormContainer, SubmitButton } from '../styled-components'
 
 
-const Login = () => {
+const Login = props => {
 
     const [user, setUser] = useState({
         email: '',
@@ -12,38 +13,37 @@ const Login = () => {
 
 
     return (
-        <div>
-            <h1 className='header'>LOGIN</h1>
-            <form>
-                <label htmlFor='email' className='form-label'>Email</label>
+        
+        <form>
+            <FormContainer>
+                <label htmlFor='email'>Email</label>
                 <input /* EMAIL */
                     onChange={onChange}
                     value={user.email}
                     name='email'
                     type='email'
-                    required 
+                    required />
+                
 
-                    className='form-control form-control-lg' />
-
-                <label htmlFor='password' className='form-label'>Password</label>
+                <label htmlFor='password'>Password</label>
                 <input /* PASSWORD */
                     onChange={onChange}
                     value={user.password}
                     name='password'
                     type='password'
                     minLength='6'
-                    required
+                    required />
 
-                    className='form-control form-control-lg' />
 
-                <button 
+                <SubmitButton
                     //onClick={onSubmit}
                     //style={styles.button}
 
                 >   Submit
-                </button>
-            </form>
-        </div>
+                </SubmitButton>
+            </FormContainer>
+        </form>
+        
     )
 }
 

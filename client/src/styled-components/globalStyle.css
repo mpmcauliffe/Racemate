@@ -53,17 +53,14 @@ input {
     border-radius: .5rem;
     border: 1px solid #b9a9a9;
     font-size: 2.7rem;
+    transition: 500ms;
 }
-input:active {
-    border: 1px solid #ff7730;
-    border-radius: .5rem;
+input:focus, 
+textarea:focus, 
+select:focus, 
+button:focus {
+    border: .2rem solid #ff7730;
     outline: none;
-}
-.form-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
 }
 
 button {
@@ -74,4 +71,3 @@ button {
     font-size: 2.7rem;
     font-weight: 400;
 }
-

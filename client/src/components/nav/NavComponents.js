@@ -8,6 +8,7 @@ export const NavContainer = styled.div`
 `
 
 export const Header = styled.h1`
+    margin-top: 1rem;
     padding: 0 1rem;
     color: ${props => props.theme.primaryGray};
 `
