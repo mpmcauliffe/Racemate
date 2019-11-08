@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/mpmcauliffe/Racemate#readme",
   "dependencies": {
+    "apollo-boost": "^0.4.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "config": "^3.2.3",

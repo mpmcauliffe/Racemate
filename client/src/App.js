@@ -3,12 +3,38 @@ import { Route, Switch } from 'react-router-dom'
 import { Login, Signup, } from './pages'
 import { Menu, Nav, } from './components'
 
+import gql from 'apollo-boost'
+import { graphql } from 'react-apollo'
 
-const App = () => {
+
+
+const EX_QUERY = gql`
+    {
+        exercises {
+            id
+            title
+            exerciseType
+            description
+            sets {
+                date
+                reps
+                weight
+            }
+            owner {
+                _id
+                name
+            }
+        }
+    }
+`
+//console.log(EX_QUERY)
+const App = props => {
+    console.log(props)
     return (
         <Fragment>
             <Nav />
 
+            
             <Switch>
                 <Route /* PUBLIC */ 
                     exact
@@ -24,7 +50,26 @@ const App = () => {
     )
 }
 
+//const App = graphql(EX_QUERY)(AppComp)
 
-export default App
+export default graphql(EX_QUERY)(App)
 
 
+/**
+ * <Query query={EX_QUERY}>
+                {
+                    ({ loading, error, data, }) => {
+                        if (loading) return <h3>LOADING . . .</h3>
+                        if (error) console.log(error)
+
+                        return (
+                            <Fragment>
+                                {data.exercises.map(exercise => (
+                                    <h2>exercise.title</h2>
+                                ))}
+                            </Fragment>
+                        )
+                    }
+                }
+            </Query>
+ */
