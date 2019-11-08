@@ -1,6 +1,7 @@
 const express               = require('express')
 const path                  = require('path')
 const graphqlHttp           = require('express-graphql')
+const cors                  = require('cors')
 const expressPlayground     = require('graphql-playground-middleware-express').default
 
 
@@ -11,6 +12,8 @@ const resolvers             = require('./graphql/resolvers/index')
 const app                   = express()
 const PORT                  = process.env.PORT || 8080 
 
+
+app.use(cors())
 
 connectDB()
 

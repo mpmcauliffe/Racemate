@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Login, Signup, } from './pages'
 import { Menu, Nav, } from './components'
 
-import gql from 'apollo-boost'
+import { gql } from 'apollo-boost'
 import { graphql } from 'react-apollo'
 
 
