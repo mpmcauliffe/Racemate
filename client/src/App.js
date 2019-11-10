@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Login, Signup, } from './pages'
-import { Menu, Nav, } from './components'
+import { Nav, } from './components'
 
 import { gql } from 'apollo-boost'
 import { graphql } from 'react-apollo'
@@ -27,27 +27,26 @@ const EX_QUERY = gql`
         }
     }
 `
-//console.log(EX_QUERY)
+
 const App = props => {
-    console.log(props)
-    return (
-        <Fragment>
-            <Nav />
 
-            
-            <Switch>
-                <Route /* PUBLIC */ 
-                    exact
-                    path='/login'
-                    component={Login} />
+        const data = props.data
 
-                <Route /* PUBLIC */ 
-                    exact
-                    path='/signup'
-                    component={Signup} />
-            </Switch>
-        </Fragment>
-    )
+        console.log(data)
+
+        
+        if (data.loading) {
+            return <div>Loading . . .</div>
+        } else {
+            return data.exercises.map(exercise => {
+                return (
+                    <Fragment key={exercise.id}>
+                        <h2>{exercise.title}</h2>
+                        <p>{exercise.description}</p>
+                    </Fragment>
+                )
+            })
+        }
 }
 
 //const App = graphql(EX_QUERY)(AppComp)
@@ -71,5 +70,24 @@ export default graphql(EX_QUERY)(App)
                         )
                     }
                 }
-            </Query>
- */
+            </Query>*/
+
+        //     <Fragment>
+        //     <Nav />
+
+        //     <div>
+        //         {() => displayExercises()}
+        //     </div>
+        //     <Switch>
+        //         <Route /* PUBLIC */ 
+        //             exact
+        //             path='/login'
+        //             component={Login} />
+
+        //         <Route /* PUBLIC */ 
+        //             exact
+        //             path='/signup'
+        //             component={Signup} />
+        //     </Switch>
+        // </Fragment>
+ 

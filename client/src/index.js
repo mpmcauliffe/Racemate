@@ -7,7 +7,7 @@ import { ApolloProvider } from 'react-apollo'
 import App from './App'
 import 'normalize.css/normalize.css'
 import './fonts/fonts.css'
-import { GlobalStyle, Theme, } from './styled-components'
+import { Theme, } from './styled-components'
 import './styled-components/globalStyle.css'
 
 
