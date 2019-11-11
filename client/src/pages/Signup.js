@@ -1,14 +1,33 @@
 import React, { useState, } from 'react'
-import { Route, Switch } from 'react-router-dom'
-import { gql } from 'apollo-boost'
-import { graphql } from 'react-apollo'
+import { Route, Switch, } from 'react-router-dom'
+import { gql, } from 'apollo-boost'
+import { graphql, } from 'react-apollo'
+import { flowRight as compose, } from 'lodash'
 import { Login, } from '../pages'
 import { Nav, } from '../components'
 import { FormContainer, SubmitButton, } from '../styled-components'
 
 
-const Signup = () => {
+const REGISTER_USER = gql`
+    mutation($name: String!, $email: String!, $password: String!) {
+        createUser (
+            data: {
+                name: $name
+                email: $email
+                password: $password
+            }
+        ) {
+            token
+            user {
+                name
+                email
+            }
+        }
+    }
+`
 
+const SignupComp = props => {
+console.log(props)
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -17,6 +36,18 @@ const Signup = () => {
     })
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+
+    const onSubmit = e => {
+        e.preventDefault()
+
+        props.REGISTER_USER({
+            variables: {
+                name: user.name,
+                email: user.email,
+                password: user.password,
+            }
+        })
+    } 
 
     const { name, email, password, password2, } = user
 
@@ -62,7 +93,7 @@ const Signup = () => {
 
 
                 <SubmitButton 
-                    //onClick={onSubmit}
+                    onClick={onSubmit}
 
                 >   Submit
                 </SubmitButton>
@@ -71,5 +102,15 @@ const Signup = () => {
     )
 }
 
+const Signup = compose(
+    graphql(REGISTER_USER, { name: 'REGISTER_USER' })
+)(SignupComp)
+
 
 export { Signup }
+
+
+// export default compose(
+//     graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+//     graphql(addBookMutation, { name: "addBookMutation" })
+// )(AddBook);

@@ -4,7 +4,6 @@ const graphqlHttp           = require('express-graphql')
 const cors                  = require('cors')
 const expressPlayground     = require('graphql-playground-middleware-express').default
 
-
 const connectDB             = require('./config/db')
 const typeDefs              = require('./graphql/schema/index')
 const resolvers             = require('./graphql/resolvers/index')
@@ -34,7 +33,6 @@ app.get('/playground', expressPlayground({ endpoint: '/graphql' }))
 //serve static assets in production
 app.use(express.static('client/build'))
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')))
-
 
 
 app.listen(PORT, () => console.log(`Server up on ${PORT}`))
