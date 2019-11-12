@@ -17,16 +17,18 @@ const userResolver = {
                 throw new Error('Email already in use')
             }
 
-            const user = new User({
+            let user = new User({
                 name: data.name,
                 email: data.email,
                 password: hashedPassword,
             })
 
-            const result = await user.save()
+            //const result = await user.save()
 
+            //console.log(result)
+            //user = { ...user, password: null, }
         
-            return { //{ ...result._doc, password: null, _id: result.id }
+            return { //{ ...result._doc, password: null, _id: result.id },
                 user,
                 token: generateToken(user._id)
             }

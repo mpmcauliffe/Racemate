@@ -1,7 +1,7 @@
 import React, { Fragment, } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { Login, Signup, } from './pages'
-import { Nav, } from './components'
+import { Home, Landing, Login, Signup, } from './pages'
+import { Nav, PrivateRoute, } from './components'
 
 
 const App = () => {
@@ -13,6 +13,11 @@ const App = () => {
             <Switch>
                 <Route /* PUBLIC */ 
                     exact
+                    path='/'
+                    component={Landing} />
+
+                <Route /* PUBLIC */ 
+                    exact
                     path='/login'
                     component={Login} />
 
@@ -20,6 +25,11 @@ const App = () => {
                     exact
                     path='/signup'
                     component={Signup} />
+
+                <PrivateRoute /* PRIVATE */
+                    exact
+                    path='/home'
+                    component={Home} />
             </Switch>
         </Fragment>
     )

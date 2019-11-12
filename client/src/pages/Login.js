@@ -1,4 +1,5 @@
 import React, { useState, } from 'react'
+import { Link } from 'react-router-dom'
 import { FormContainer, SubmitButton } from '../styled-components'
 
 
@@ -41,6 +42,9 @@ const Login = props => {
 
                 >   Submit
                 </SubmitButton>
+
+                <p>Don't have an account?
+                <Link to='/signup'>&nbsp;Sign up!</Link></p>
             </FormContainer>
         </form>
         

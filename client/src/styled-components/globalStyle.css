@@ -36,6 +36,11 @@ p {
     line-height: 150%;
 }
 
+a {
+    text-decoration: none;
+    color: #7A8A9E;
+}
+
 label, input {
     font-family: "proxima-nova";
     font-weight: 100;
