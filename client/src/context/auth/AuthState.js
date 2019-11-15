@@ -19,7 +19,7 @@ const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
         isAuthenticated: null,
-        loading: true,
+        loading: false,
         user: null,
         error: null,
     }
@@ -28,79 +28,79 @@ const AuthState = props => {
 
 
     // load user
-    const loadUser = async () => {
-        if(localStorage.token) {
-            setAuthToken(localStorage.token)
-        }
+    // const loadUser = async () => {
+    //     if(localStorage.token) {
+    //         setAuthToken(localStorage.token)
+    //     }
 
-        try {
-            const res = await axios.get('/api/auth')
+    //     try {
+    //         const res = await axios.get('/api/auth')
 
-            dispatch({
-                type: USER_LOADED,
-                payload: res.data
-            })
+    //         dispatch({
+    //             type: USER_LOADED,
+    //             payload: res.data
+    //         })
 
-        } catch (error) {
-            dispatch({ type: AUTH_ERROR })
-        }
-    }
+    //     } catch (error) {
+    //         dispatch({ type: AUTH_ERROR })
+    //     }
+    // }
 
-    // register user
-    const register = async formData => {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
+    // // register user
+    // const register = async formData => {
+    //     const config = {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }
 
-        try {
-            const res = await axios.post('/api/users', formData, config) 
+    //     try {
+    //         const res = await axios.post('/api/users', formData, config) 
             
-            dispatch({
-                type: REGISTER_SUCCESS,
-                payload: res.data
-            })
+    //         dispatch({
+    //             type: REGISTER_SUCCESS,
+    //             payload: res.data
+    //         })
 
-            loadUser()
-        } catch (error) {
-            dispatch({
-                type: REGISTER_FAIL,
-                payload: error.response.data.msg
-            })
-        }
-    }
+    //         loadUser()
+    //     } catch (error) {
+    //         dispatch({
+    //             type: REGISTER_FAIL,
+    //             payload: error.response.data.msg
+    //         })
+    //     }
+    // }
 
-    // login user
-    const login = async formData => {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
+    // // login user
+    // const login = async formData => {
+    //     const config = {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }
 
-        try {
-            const res = await axios.post('/api/auth', formData, config) 
+    //     try {
+    //         const res = await axios.post('/api/auth', formData, config) 
             
-            dispatch({
-                type: LOGIN_SUCCESS,
-                payload: res.data
-            })
+    //         dispatch({
+    //             type: LOGIN_SUCCESS,
+    //             payload: res.data
+    //         })
 
-            loadUser()
-        } catch (error) {
-            dispatch({
-                type: LOGIN_FAIL,
-                payload: error.response.data.msg
-            })
-        }
-    }
+    //         loadUser()
+    //     } catch (error) {
+    //         dispatch({
+    //             type: LOGIN_FAIL,
+    //             payload: error.response.data.msg
+    //         })
+    //     }
+    // }
 
-    // logout
-    const logout = () => dispatch({ type: LOGOUT })
+    // // logout
+    // const logout = () => dispatch({ type: LOGOUT })
 
-    // clear errors
-    const clearErrors = () => dispatch({ type: CLEAR_ERRORS })
+    // // clear errors
+    // const clearErrors = () => dispatch({ type: CLEAR_ERRORS })
 
 
     return (
@@ -111,11 +111,12 @@ const AuthState = props => {
                 loading: state.loading,
                 user: state.user,
                 error: state.error, 
-                register, 
-                login,
-                logout,
-                loadUser,
-                clearErrors, }}
+                // register, 
+                // login,
+                // logout,
+                // loadUser,
+                // clearErrors, 
+            }}
 
         >   {props.children}
         </AuthContext.Provider>

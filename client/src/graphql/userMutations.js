@@ -18,3 +18,20 @@ export const REGISTER_USER = gql`
         }
     }
 `
+
+export const LOGIN = gql`
+    mutation($email: String!, $password: String!) {
+        login (
+            data: {
+                email: $email,
+                password: $password
+            }
+        ) {
+            token
+            user {
+                name
+                email
+            }
+        }
+    }
+`

@@ -2,9 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ThemeProvider, } from 'styled-components'
+
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+
 import App from './App'
+
 import 'normalize.css/normalize.css'
 import './fonts/fonts.css'
 import { Theme, } from './styled-components'

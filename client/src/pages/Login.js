@@ -1,9 +1,14 @@
 import React, { useState, } from 'react'
 import { Link } from 'react-router-dom'
+
+import { graphql, } from 'react-apollo'
+import { flowRight as compose, } from 'lodash'
+
 import { FormContainer, SubmitButton } from '../styled-components'
+import { LOGIN, } from '../graphql'
 
 
-const Login = props => {
+const LoginComp = props => {
 
     const [user, setUser] = useState({
         email: '',
@@ -11,6 +16,17 @@ const Login = props => {
     })
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+
+    const onSubmit = e => {
+        e.preventDefault()
+
+        props.LOGIN({
+            variables: {
+                email: user.email,
+                password: user.password
+            }
+        }).then(resData => console.log(resData))
+    }
 
 
     return (
@@ -37,8 +53,7 @@ const Login = props => {
 
 
                 <SubmitButton
-                    //onClick={onSubmit}
-                    //style={styles.button}
+                    onClick={onSubmit}
 
                 >   Submit
                 </SubmitButton>
@@ -50,6 +65,10 @@ const Login = props => {
         
     )
 }
+
+const Login = compose(
+    graphql(LOGIN, { name: 'LOGIN' })
+)(LoginComp)
 
 
 export { Login }

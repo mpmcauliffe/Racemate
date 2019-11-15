@@ -1,13 +1,21 @@
 import React, { Fragment, } from 'react'
 import { Route, Switch } from 'react-router-dom'
+
+import AuthState from './context/auth/AuthState'
+import setAuthToken from './utils/setAuthToken'
+
 import { Home, Landing, Login, Signup, } from './pages'
 import { Nav, PrivateRoute, } from './components'
 
 
+if(localStorage.token) {
+    setAuthToken(localStorage.token)
+}
+
 const App = () => {
 
     return (
-        <Fragment>
+        <AuthState>
             <Nav />
 
             <Switch>
@@ -31,7 +39,7 @@ const App = () => {
                     path='/home'
                     component={Home} />
             </Switch>
-        </Fragment>
+        </AuthState>
     )
 }
 
