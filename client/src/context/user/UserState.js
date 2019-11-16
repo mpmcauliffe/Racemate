@@ -1,17 +1,24 @@
 import React, { useReducer, } from 'react'
-import AuthContext from './authContext'
-import authReducer from './authReducer'
+import AuthContext from './userContex'
+import authReducer from './userReducer'
 import axios from 'axios'
 import setAuthToken from '../../utils/setAuthToken'
 import {
     REGISTER_SUCCESS,
-    REGISTER_FAIL,
-    USER_LOADED,
-    AUTH_ERROR,
     LOGIN_SUCCESS,
-    LOGIN_FAIL,
+
+    ATTACH_USER,
+    
+    GET_USER,
+    UPDATE_USER,
+    
     LOGOUT,
+
+    REGISTER_FAIL,
+    LOGIN_FAIL,
+
     CLEAR_ERRORS,
+    AUTH_ERROR,
 } from '../types'
 
 
@@ -19,15 +26,15 @@ const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
         isAuthenticated: null,
-        loading: false,
+        loading: true,
         user: null,
         error: null,
     }
-    
-    const [state, dispatch] = useReducer(authReducer, initialState)
+
+    const [state, dispatch] = useReducer(userReducer, initialState)
 
 
-    // load user
+    // // load user
     // const loadUser = async () => {
     //     if(localStorage.token) {
     //         setAuthToken(localStorage.token)
@@ -41,6 +48,7 @@ const AuthState = props => {
     //             payload: res.data
     //         })
 
+    //         console.log('success')
     //     } catch (error) {
     //         dispatch({ type: AUTH_ERROR })
     //     }
@@ -101,6 +109,7 @@ const AuthState = props => {
 
     // // clear errors
     // const clearErrors = () => dispatch({ type: CLEAR_ERRORS })
+
 
 
     return (
