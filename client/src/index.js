@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ThemeProvider, } from 'styled-components'
 
-import ApolloClient from 'apollo-boost'
+//import ApolloClient from 'apollo-boost'
+import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloProvider as HookProvider } from '@apollo/react-hooks'
 import { createHttpLink } from 'apollo-link-http'
@@ -38,15 +39,19 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const client = new ApolloClient({
-        request: (operation) => {
-        const token = localStorage.getItem('token')
-        operation.setContext({
-            headers: {
-                authorization: token ? `Bearer ${token}` : ''
-            }
-        })
-    }
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
 })
+// const client = new ApolloClient({
+//         request: (operation) => {
+//         const token = localStorage.getItem('token')
+//         operation.setContext({
+//             headers: {
+//                 authorization: token ? `Bearer ${token}` : ''
+//             }
+//         })
+//     }
+// })
 
 ReactDOM.render(
     <ApolloProvider client={client}>
