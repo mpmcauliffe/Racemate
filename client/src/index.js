@@ -19,9 +19,6 @@ import { Theme, } from './styled-components'
 import './styled-components/globalStyle.css'
 
 
-// const client = new ApolloClient({
-//     uri: '/graphql',
-// })
 const httpLink = createHttpLink({
     uri: '/graphql',
 })
