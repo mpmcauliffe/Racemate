@@ -39,6 +39,7 @@ const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
 })
+// APOLLO BOOST VERSION
 // const client = new ApolloClient({
 //         request: (operation) => {
 //         const token = localStorage.getItem('token')

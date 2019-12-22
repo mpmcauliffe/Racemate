@@ -5,11 +5,11 @@ import { graphql, } from 'react-apollo'
 import { useMutation, } from '@apollo/react-hooks'
 import { flowRight as compose, } from 'lodash'
 
-import { FormContainer, SubmitButton } from '../styled-components'
-import { LOGIN, } from '../graphql'
+import { FormContainer, SubmitButton } from '../../styled-components'
+import { LOGIN, } from '../../graphql'
 
 
-const LoginComp = props => {
+const Login = props => {
 
     const [user, setUser] = useState({
         email: '',
@@ -76,9 +76,5 @@ const LoginComp = props => {
     )
 }
 
-// const Login = compose(
-//     graphql(LOGIN, { name: 'LOGIN' })
-// )(LoginComp)
 
-
-export { LoginComp }
+export { Login }

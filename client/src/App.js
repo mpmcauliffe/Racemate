@@ -2,7 +2,7 @@ import React, { Fragment, } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 //import AuthState from './context/user/AuthState'
-import setAuthToken from './utils/setAuthToken'
+//import setAuthToken from './utils/setAuthToken'
 
 import { Home, Landing, LoginComp, Signup, } from './pages'
 import { Nav, PrivateRoute, } from './components'

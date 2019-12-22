@@ -1,4 +1,4 @@
 export * from './Home'
 export * from './Landing'
-export * from './Login'
-export * from './Signup'
+export * from '../components/forms/Login'
+export * from '../components/forms/Signup'
