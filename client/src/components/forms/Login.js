@@ -1,15 +1,19 @@
-import React, { useState, } from 'react'
+import React, { useState, useRef, } from 'react'
 import { Link } from 'react-router-dom'
+import useForm from 'react-hook-form'
 
-import { graphql, } from 'react-apollo'
+//import { graphql, } from 'react-apollo'
 import { useMutation, } from '@apollo/react-hooks'
-import { flowRight as compose, } from 'lodash'
+//import { flowRight as compose, } from 'lodash'
 
-import { FormContainer, SubmitButton } from '../../styled-components'
+import { FormContainer, SubmitButton } from './FormComp'
 import { LOGIN, } from '../../graphql'
 
 
 const Login = props => {
+
+
+    const { email, password, handleSubmit, watch, errors } = useForm()
 
     const [user, setUser] = useState({
         email: '',
@@ -72,7 +76,6 @@ const Login = props => {
                 <Link to='/signup'>&nbsp;Sign up!</Link></p>
             </FormContainer>
         </form>
-        
     )
 }
 

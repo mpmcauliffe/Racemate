@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, NavContainer, } from './NavComponents'
+import { Header, NavContainer, } from './NavComp'
 
 
 const Nav = () => {
