@@ -20,6 +20,7 @@ const Theme = {
     primaryGray: '#7A8A9E',
     midGrayCool: '#a9a9b9',
     midGrayWarm: '#b9a9a9',
+    unGray: '#aaa',
     midGray: '#777',
     darkGray: '#333',
 

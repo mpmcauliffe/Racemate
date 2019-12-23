@@ -29,10 +29,14 @@ export const SubmitButton = styled.button`
     transition: 500ms;
 
     &:hover {
-        background: ${props => props.theme.midGrayWarm};
-        color: ${props => props.theme.colorPrimary};
+        background: ${props => props.theme.colorDark};
+        color: ${props => props.theme.colorWhite};
     }
     &:focus {
         border: .3rem solid ${props => props.theme.colorSuccess}
     }
 `
+
+// colorPrimary: '#1c395c',
+//     colorLight: '#4B7DBA',
+//     colorDark: '#0E1C2E'

@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 //import AuthState from './context/user/AuthState'
 //import setAuthToken from './utils/setAuthToken'
 
-import { Home, Landing, LoginComp, Signup, } from './pages'
+import { Home, Landing, } from './pages'
 import { Nav, PrivateRoute, } from './components'
 
 
@@ -24,16 +24,6 @@ const App = () => {
                     path='/'
                     component={Landing} />
 
-                <Route /* PUBLIC */ 
-                    exact
-                    path='/login'
-                    component={LoginComp} />
-
-                <Route /* PUBLIC */ 
-                    exact
-                    path='/signup'
-                    component={Signup} />
-
                 <Route /* PRIVATE */
                     exact
                     path='/home'
@@ -48,7 +38,15 @@ export default App
 
 
         
- 
+// <Route /* PUBLIC */ 
+// exact
+// path='/login'
+// component={LoginComp} />
+
+// <Route /* PUBLIC */ 
+// exact
+// path='/signup'
+// component={Signup} />
 //             const EX_QUERY = gql`
 //     {
 //         exercises {
