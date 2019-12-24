@@ -1,5 +1,5 @@
 import React, { useState, } from 'react'
-//import { Link } from 'react-router-dom'
+import { PageContainer, } from './PageComp'
 import { Login, Signup, OpSwitch, } from '../components'
 
 
@@ -15,13 +15,24 @@ const Landing = () => {
 
     return (
         <div>
-            <OpSwitch 
-                opOne='Sign Up'
-                opTwo='Login'
-                setting={opSwitchSetting}
-                opToggle={handleOpClickSetting} />
+            <PageContainer>
+                <OpSwitch 
+                    opOne='Sign Up'
+                    opTwo='Login'
+                    setting={opSwitchSetting}
+                    opToggle={handleOpClickSetting} />
+            </PageContainer>
+            
 
-            {opSwitchSetting ? <Signup /> : <Login />}          
+            {opSwitchSetting 
+                ? (
+                    <Signup 
+                        opToggle={handleOpClickSetting} />
+                ) : (
+                    <Login 
+                        opToggle={handleOpClickSetting}/>
+                )
+            }          
         </div>
     )
 }

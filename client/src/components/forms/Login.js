@@ -1,16 +1,13 @@
 import React, { useState, useRef, } from 'react'
 import { Link } from 'react-router-dom'
-//import useForm from 'react-hook-form'
 
-//import { graphql, } from 'react-apollo'
 import { useMutation, } from '@apollo/react-hooks'
-//import { flowRight as compose, } from 'lodash'
 
-import { FormContainer, SubmitButton, } from './FormComp'
+import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { LOGIN, } from '../../graphql'
 
 
-const Login = props => {
+const Login = ({ opToggle, }) => {
     const [user, setUser] = useState({
         email: '',
         password: '',
@@ -62,7 +59,7 @@ const Login = props => {
                 </SubmitButton>
 
                 <p>Don't have an account?
-                <Link to='/signup'>&nbsp;Sign up!</Link></p>
+                <SwitchLink onClick={opToggle}>&nbsp;Sign up!</SwitchLink></p>
             </FormContainer>
         </form>
     )

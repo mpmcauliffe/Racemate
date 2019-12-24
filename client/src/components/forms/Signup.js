@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom'
 
 import { graphql, } from 'react-apollo'
 import { flowRight as compose, } from 'lodash'
+import { useMutation, } from '@apollo/react-hooks'
 
-//import { Login, } from '../pages'
-//import { Nav, } from '../components'
-import { FormContainer, SubmitButton, } from './FormComp'
+import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { REGISTER_USER, } from '../../graphql'
 
 
-const SignupComp = props => {
+const Signup = ({ opToggle, }) => {
 
     const [user, setUser] = useState({
         name: '',
@@ -19,12 +18,14 @@ const SignupComp = props => {
         password2: '',
     })
 
+    const [signup, { data }] = useMutation(REGISTER_USER)
+
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
     const onSubmit = e => {
         e.preventDefault()
 
-        props.REGISTER_USER({
+        signup({
             variables: {
                 name: user.name,
                 email: user.email,
@@ -84,7 +85,7 @@ const SignupComp = props => {
                     </SubmitButton>
 
                     <p>Already have an account?
-                    <Link to='/login'>&nbsp;Login!</Link></p>
+                    <SwitchLink onClick={opToggle}>&nbsp;Login!</SwitchLink></p>
                     
                 </FormContainer>
             </form>
@@ -93,15 +94,5 @@ const SignupComp = props => {
     )
 }
 
-const Signup = compose(
-    graphql(REGISTER_USER, { name: 'REGISTER_USER' })
-)(SignupComp)
-
 
 export { Signup }
-
-
-// export default compose(
-//     graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
-//     graphql(addBookMutation, { name: "addBookMutation" })
-// )(AddBook);

@@ -7,7 +7,8 @@ export const ButtonSet = styled.button`
     font-size: 1.2rem;
     max-height: 3rem;
     max-width: 10rem;
-    /* padding: 3rem; */
+    margin-bottom: 5rem;
+    float: right;
     color: ${props => props.theme.lightGray};
     background: ${props => (props.active ? props.theme.colorPrimary : props.theme.unGray)};
     transition: 500ms;
