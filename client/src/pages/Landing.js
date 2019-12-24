@@ -16,11 +16,11 @@ const Landing = () => {
     return (
         <div>
             <PageContainer>
-                <OpSwitch 
-                    opOne='Sign Up'
-                    opTwo='Login'
-                    setting={opSwitchSetting}
-                    opToggle={handleOpClickSetting} />
+            <OpSwitch 
+                opOne='Sign Up'
+                opTwo='Login'
+                setting={opSwitchSetting}
+                opToggle={handleOpClickSetting} />
             </PageContainer>
             
 
@@ -30,7 +30,7 @@ const Landing = () => {
                         opToggle={handleOpClickSetting} />
                 ) : (
                     <Login 
-                        opToggle={handleOpClickSetting}/>
+                        opToggle={handleOpClickSetting} />
                 )
             }          
         </div>
