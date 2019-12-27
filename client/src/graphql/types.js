@@ -1,3 +1,7 @@
+/* These TYPES were created for useContext/useReducer or Redux.
+ * Due to the different patterns of Apollo Cache they MAY NOT be 
+ * in use anywhere in this application. */
+
 /* EXERCISES */
 export const GET_EXERCISES              = 'GET_EXERCISES'
 export const GET_SINGLE_EXERCISE        = 'GET_SINGLE_EXERCISE'

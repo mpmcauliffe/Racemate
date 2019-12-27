@@ -6,12 +6,13 @@ import { ThemeProvider, } from 'styled-components'
 //import ApolloClient from 'apollo-boost'
 import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
-import { ApolloProvider as HookProvider } from '@apollo/react-hooks'
+import { ApolloProvider as HookProvider  } from '@apollo/react-hooks'
 import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import App from './App'
+import { userTypes, rootResolver, } from './graphql'
 
 import 'normalize.css/normalize.css'
 import './fonts/fonts.css'
@@ -38,6 +39,8 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
+    userTypes,
+    rootResolver,
 })
 // APOLLO BOOST VERSION
 // const client = new ApolloClient({
@@ -53,13 +56,13 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <HookProvider client={client}>
+        <HookProvider>
             <Router>
                 <ThemeProvider theme={Theme}>
                     <Route component={App} />
                 </ThemeProvider>
             </Router>
-        </HookProvider>
+        </HookProvider>      
     </ApolloProvider>, 
     document.getElementById('root')
 )

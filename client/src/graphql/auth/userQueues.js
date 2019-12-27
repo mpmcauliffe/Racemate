@@ -28,10 +28,12 @@ export const LOGIN = gql`
             }
         ) {
             token
-            user {
-                name
-                email
-            }
         }
+    }
+`
+
+export const QUERY_LOGIN = gql`
+    query GetIsLoggedIn {
+        isLoggedIn @client
     }
 `

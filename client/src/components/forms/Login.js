@@ -1,13 +1,15 @@
 import React, { useState, useRef, } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useMutation, } from '@apollo/react-hooks'
+import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
 import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { LOGIN, } from '../../graphql'
 
 
 const Login = ({ opToggle, }) => {
+    const client = useApolloClient()
+
     const [user, setUser] = useState({
         email: '',
         password: '',
@@ -17,15 +19,44 @@ const Login = ({ opToggle, }) => {
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
 
-        login({
+        //console.log(login.onCompleted)
+        //  
+        const res = await login({
             variables: {
                 email: user.email,
-                password: user.password
-            }
-        }).then(resData => console.log(resData))
+                password: user.password,
+            },
+        })
+        //console.log(res.data.login.token)
+        if (!res) {
+            console.log('an error occurred at login')
+            return
+        }
+        console.log(res)
+        const token = res.data.login.token
+
+        localStorage.setItem('token', token)
+        client.writeData({ data: { isLoggedIn: true } })
+
+
+        //console.log(client.readData())
+    
+        //     const token = resData.data.login.token
+        //     console.log('inside login')
+
+        //     localStorage.setItem('token', token)
+        //     console.log(client)
+            //client.writeData({ data: { isLoggedIn: true } })
+            //
+        // })
+
+        // onCompleted({ login }) {
+        //     console.log(login)
+        //     //
+        // }
     }
 
 
