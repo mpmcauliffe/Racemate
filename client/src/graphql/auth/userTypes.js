@@ -4,7 +4,7 @@ export const userTypes = gql`
     extend type Query {
         isLoggedIn: Boolean!
     }
-    extend type Mutation {
-        login() 
-    }
+    # extend type Mutation {
+    #     login() 
+    # }
 `
