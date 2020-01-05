@@ -29,7 +29,7 @@ const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('token')
     // return the headers to the context so httpLink can read them
     return {
-      headers: {
+        headers: {
             ...headers,
             authorization: token ? `Bearer ${token}` : "",
         }
