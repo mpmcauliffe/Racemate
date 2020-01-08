@@ -1,9 +1,13 @@
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { gql, } from 'apollo-boost'
 
 
-export const users = {
-    // Mutation: {
-    //     Login: (obj, { email, password, }, { cache, }, info) {
+const cache = new InMemoryCache()
 
-    //     }
-    // }
-}
+export const Query = cache.readQuery({
+    query: gql`
+        query userTypes {
+            isLoggedIn @client
+        }
+    `
+})

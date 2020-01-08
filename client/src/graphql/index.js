@@ -1,9 +1,9 @@
-import { users, } from './auth/userResolver'
+import { Query, } from './auth/userResolver'
 
-export * from './auth/userQueues'
+export * from './auth/userRequests'
 export * from './auth/userTypes'
 
 
 export const rootResolver = {
-    ...users,
+    ...Query,
 }

@@ -23,6 +23,7 @@ import './styled-components/globalStyle.css'
 const httpLink = createHttpLink({
     uri: '/graphql',
 })
+const cache = new InMemoryCache()
   
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
@@ -38,10 +39,18 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache,
     userTypes,
     rootResolver,
 })
+
+// cache.writeData({
+//     data: {
+//         isLoggedIn: false,
+//         //cartItems: [],
+//     },
+// })
+
 // APOLLO BOOST VERSION
 // const client = new ApolloClient({
 //         request: (operation) => {

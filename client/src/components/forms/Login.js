@@ -39,7 +39,7 @@ const Login = ({ opToggle, }) => {
         const token = res.data.login.token
 
         localStorage.setItem('token', token)
-        client.writeData({ data: { isLoggedIn: true } })
+        client.writeData({ data: { isLoggedIn: true, userToken: token, } })
 
 
         //console.log(client.readData())
