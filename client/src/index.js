@@ -44,12 +44,6 @@ const client = new ApolloClient({
     rootResolver,
 })
 
-// cache.writeData({
-//     data: {
-//         isLoggedIn: false,
-//         //cartItems: [],
-//     },
-// })
 
 // APOLLO BOOST VERSION
 // const client = new ApolloClient({

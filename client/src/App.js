@@ -1,16 +1,15 @@
 import React, { Fragment, } from 'react'
+import { gql, } from 'apollo-boost'
 import { Route, Switch, Redirect, } from 'react-router-dom'
 
 //import AuthState from './context/user/AuthState'
 //import setAuthToken from './utils/setAuthToken'
 
 import { Home, Landing, } from './pages'
-import { Nav, PrivateRoute, } from './components'
+import { Nav, PrivateRoute, Lock, } from './components'
 
 
-// if(localStorage.token) {
-//     setAuthToken(localStorage.token)
-// }
+
 
 const App = () => {
 
@@ -18,17 +17,7 @@ const App = () => {
         <Fragment>
             <Nav />
 
-            <Switch>
-                <Route /* PUBLIC */ 
-                    exact
-                    path='/'
-                    component={Landing} />
-
-                <Route /* PRIVATE */
-                    exact
-                    path='/home'
-                    component={Home} />
-            </Switch>
+            <Lock />            
         </Fragment>
     )
 }
@@ -37,6 +26,18 @@ const App = () => {
 export default App
 
 
+
+// <Switch>
+//     <Route /* PUBLIC */ 
+//         exact
+//         path='/'
+//         component={Landing} />
+
+//     <Route /* PRIVATE */
+//         exact
+//         path='/home'
+//         component={Home} />
+// </Switch>
         
 // <Route /* PUBLIC */ 
 // exact

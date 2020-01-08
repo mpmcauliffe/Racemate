@@ -3,23 +3,23 @@ import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import { gql, } from 'apollo-boost'
 
 
-const FETCH_TOKEN = gql`
-  {
-    isLoggedIn @client,
-    userToken @client
-  }
-`
+// const FETCH_TOKEN = gql`
+//   {
+//     isLoggedIn @client,
+//     userToken @client
+//   }
+// `
 
 const Home = () => {
-    const { loading, error, data } = useQuery(FETCH_TOKEN)
+    //const { loading, error, data } = useQuery(FETCH_TOKEN)
 
 
-    if (loading) {
-        return <p>loading...</p>
-    }
+    // if (loading) {
+    //     return <p>loading...</p>
+    // }
     return (
         <div>
-            <h2>{data}</h2>
+            <h2>HOME</h2>
         </div>
     )
 }
