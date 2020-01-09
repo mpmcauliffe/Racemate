@@ -11,10 +11,6 @@ export const REGISTER_USER = gql`
             }
         ) {
             token
-            user {
-                name
-                email
-            }
         }
     }
 `

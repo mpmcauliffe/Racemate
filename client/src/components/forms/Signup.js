@@ -36,8 +36,8 @@ const Signup = ({ opToggle, }) => {
             console.log('an error occurred at login')
             return
         }
-
-        const token = res.data.login.token
+console.log(res)
+        const token = res.data.createUser.token
 
         localStorage.setItem('token', token)
         client.writeData({ data: { isLoggedIn: true, userToken: token, } })

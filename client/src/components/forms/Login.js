@@ -22,14 +22,13 @@ const Login = ({ opToggle, }) => {
     const onSubmit = async e => {
         e.preventDefault()
 
-        
         const res = await login({
             variables: {
                 email: user.email,
                 password: user.password,
             },
         })
-        //console.log(res.data.login.token)
+        
         if (!res) {
             console.log('an error occurred at login')
             return

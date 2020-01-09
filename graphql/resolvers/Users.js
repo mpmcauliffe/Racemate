@@ -6,10 +6,10 @@ const hashPassword          = require('../../helpers/hashPassword')
 
 
 const userResolver = {
-    async signup(args) {
+    async createUser(args) {
         try {
             const data = args.data
-
+            console.log(data)
             const hashedPassword = await hashPassword(data.password)
 
             const emailInUse = await User.findOne({ email: data.email })
@@ -23,9 +23,9 @@ const userResolver = {
                 password: hashedPassword,
             })
 
-            //const result = await user.save()
+            const result = await user.save()
 
-            //console.log(result)
+            console.log(result)
             //user = { ...user, password: null, }
         
             return { //{ ...result._doc, password: null, _id: result.id },
