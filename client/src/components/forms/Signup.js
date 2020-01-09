@@ -1,15 +1,14 @@
 import React, { Fragment, useState, } from 'react'
 import { Link } from 'react-router-dom'
 
-import { graphql, } from 'react-apollo'
-import { flowRight as compose, } from 'lodash'
-import { useMutation, } from '@apollo/react-hooks'
+import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
 import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { REGISTER_USER, } from '../../graphql'
 
 
 const Signup = ({ opToggle, }) => {
+    const client = useApolloClient()
 
     const [user, setUser] = useState({
         name: '',
@@ -22,16 +21,26 @@ const Signup = ({ opToggle, }) => {
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
 
-        signup({
+        const res = await signup({
             variables: {
                 name: user.name,
                 email: user.email,
                 password: user.password,
             }
-        }).then(resData => console.log(resData))
+        })
+        
+        if (!res) {
+            console.log('an error occurred at login')
+            return
+        }
+
+        const token = res.data.login.token
+
+        localStorage.setItem('token', token)
+        client.writeData({ data: { isLoggedIn: true, userToken: token, } })
     } 
 
     const { name, email, password, password2, } = user

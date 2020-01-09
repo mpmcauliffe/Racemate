@@ -22,8 +22,7 @@ const Login = ({ opToggle, }) => {
     const onSubmit = async e => {
         e.preventDefault()
 
-        //console.log(login.onCompleted)
-        //  
+        
         const res = await login({
             variables: {
                 email: user.email,

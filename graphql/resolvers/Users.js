@@ -6,7 +6,7 @@ const hashPassword          = require('../../helpers/hashPassword')
 
 
 const userResolver = {
-    async createUser(args) {
+    async signup(args) {
         try {
             const data = args.data
 
@@ -29,7 +29,7 @@ const userResolver = {
             //user = { ...user, password: null, }
         
             return { //{ ...result._doc, password: null, _id: result.id },
-                user,
+                //user,
                 token: generateToken(user._id)
             }
         } catch(e) {
@@ -52,7 +52,7 @@ const userResolver = {
         }
 
         return {
-            user,
+            //user,
             token: generateToken(user.id)
         }
     },
