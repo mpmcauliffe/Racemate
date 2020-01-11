@@ -28,6 +28,7 @@ const Theme = {
     colorWarning: '#b80000',
     colorWarningLight: '#FFC9C9',
     colorSuccess: '#00b834',
+    colorSuccessLight: '#C5FFD6',
 
 
     /* SPACING */

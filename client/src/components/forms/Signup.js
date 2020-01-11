@@ -17,6 +17,11 @@ export const Signup = ({ opToggle, }) => {
         password: '',
         password2: '',
     })
+    const [alertState, setAlertState] = useState({
+        alertText: '',
+        alertColor: '',
+        isShown: false,
+    })
 
     const [signup, { data }] = useMutation(REGISTER_USER)
 
