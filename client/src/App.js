@@ -1,4 +1,5 @@
 import React, { Fragment, } from 'react'
+import AlertState from './context/alert/AlertState'
 import { Nav, Lock, } from './components'
 
 
@@ -7,11 +8,11 @@ import { Nav, Lock, } from './components'
 const App = () => {
 
     return (
-        <Fragment>
+        <AlertState>
             <Nav />
 
             <Lock />            
-        </Fragment>
+        </AlertState>
     )
 }
 
