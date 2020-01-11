@@ -1,3 +1,4 @@
+export * from './alert/Alert'
 export * from './forms/Login'
 export * from './forms/Signup'
 export * from './lock/Unsecure'

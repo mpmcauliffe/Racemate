@@ -1,5 +1,5 @@
-import React, { useState, useRef, } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, } from 'react'
+import PropTypes from 'prop-types'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
@@ -7,7 +7,7 @@ import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { LOGIN, } from '../../graphql'
 
 
-const Login = ({ opToggle, }) => {
+export const Login = ({ opToggle, }) => {
     const client = useApolloClient()
 
     const [user, setUser] = useState({
@@ -33,28 +33,11 @@ const Login = ({ opToggle, }) => {
             console.log('an error occurred at login')
             return
         }
-        console.log(res)
+
         const token = res.data.login.token
 
         localStorage.setItem('token', token)
         client.writeData({ data: { isLoggedIn: true, userToken: token, } })
-
-
-        //console.log(client.readData())
-    
-        //     const token = resData.data.login.token
-        //     console.log('inside login')
-
-        //     localStorage.setItem('token', token)
-        //     console.log(client)
-            //client.writeData({ data: { isLoggedIn: true } })
-            //
-        // })
-
-        // onCompleted({ login }) {
-        //     console.log(login)
-        //     //
-        // }
     }
 
 
@@ -94,5 +77,6 @@ const Login = ({ opToggle, }) => {
     )
 }
 
-
-export { Login }
+Login.propTypes = {
+    opToggle: PropTypes.func,
+}

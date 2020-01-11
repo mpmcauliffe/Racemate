@@ -1,28 +1,11 @@
-import React, { useEffect } from 'react'
-import { useApolloClient, useQuery, } from '@apollo/react-hooks'
-import { gql, } from 'apollo-boost'
+import React from 'react'
 
 
-// const FETCH_TOKEN = gql`
-//   {
-//     isLoggedIn @client,
-//     userToken @client
-//   }
-// `
-
-const Home = () => {
-    //const { loading, error, data } = useQuery(FETCH_TOKEN)
-
-
-    // if (loading) {
-    //     return <p>loading...</p>
-    // }
+export const Home = () => {
+ 
     return (
         <div>
             <h2>HOME</h2>
         </div>
     )
 }
-
-
-export { Home }

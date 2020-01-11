@@ -1,12 +1,5 @@
 import React, { Fragment, } from 'react'
-import { gql, } from 'apollo-boost'
-import { Route, Switch, Redirect, } from 'react-router-dom'
-
-//import AuthState from './context/user/AuthState'
-//import setAuthToken from './utils/setAuthToken'
-
-import { Home, Landing, } from './pages'
-import { Nav, PrivateRoute, Lock, } from './components'
+import { Nav, Lock, } from './components'
 
 
 

@@ -1,13 +1,14 @@
 import React, { Fragment, useState, } from 'react'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
+import { Alert } from '../../components'
 import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { REGISTER_USER, } from '../../graphql'
 
 
-const Signup = ({ opToggle, }) => {
+export const Signup = ({ opToggle, }) => {
     const client = useApolloClient()
 
     const [user, setUser] = useState({
@@ -36,7 +37,7 @@ const Signup = ({ opToggle, }) => {
             console.log('an error occurred at login')
             return
         }
-console.log(res)
+
         const token = res.data.createUser.token
 
         localStorage.setItem('token', token)
@@ -48,6 +49,7 @@ console.log(res)
 
     return (
         <Fragment>
+            <Alert />
             <form>
                 <FormContainer>
                     <label htmlFor='name'>Name</label>
@@ -103,5 +105,6 @@ console.log(res)
     )
 }
 
-
-export { Signup }
+Signup.propTypes = {
+    opToggle: PropTypes.func,
+}

@@ -26,6 +26,7 @@ const Theme = {
 
     /* indicators */
     colorWarning: '#b80000',
+    colorWarningLight: '#FFC9C9',
     colorSuccess: '#00b834',
 
 

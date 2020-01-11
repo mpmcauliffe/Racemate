@@ -28,7 +28,7 @@ export const LOGIN = gql`
     }
 `
 
-export const QUERY_LOGIN = gql`
+export const IS_LOGGED_IN = gql`
     query GetIsLoggedIn {
         isLoggedIn @client
     }
