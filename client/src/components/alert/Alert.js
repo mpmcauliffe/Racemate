@@ -20,12 +20,3 @@ export const Alert = (/*{ text, color }*/) => {
         </AlertBox>
     )
 }
-
-// Alert.propTypes = {
-//     text: PropTypes.string,
-//     color: PropTypes.string,
-// }
-// Alert.defaultProps = {
-//     text: 'Alert: Something happened.',
-//     color: 'warning',
-// }

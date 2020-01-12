@@ -27,7 +27,7 @@ export const Signup = ({ opToggle, }) => {
     //     isShown: false,
     // })
 
-    const [signup, { data }] = useMutation(REGISTER_USER)
+    const [signup, { data, loading, error, }] = useMutation(REGISTER_USER)
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
@@ -40,23 +40,25 @@ export const Signup = ({ opToggle, }) => {
             return
         }
 
-        const res = await signup({
-            variables: {
-                name: user.name,
-                email: user.email,
-                password: user.password,
-            }
-        })
-        
-        if (!res) {
-            console.log('an error occurred at login')
-            return
+        try {
+            const res = await signup({
+                variables: {
+                    name: user.name,
+                    email: user.email,
+                    password: user.password,
+                }
+            })
+
+
+            const token = res.data.createUser.token
+            
+            localStorage.setItem('token', token)
+            client.writeData({ data: { isLoggedIn: true, userToken: token, } })
+        } catch (error) {
+            setAlert('Email in use!', 'warning')
+            console.log(signup(error))
         }
-
-        const token = res.data.createUser.token
-
-        localStorage.setItem('token', token)
-        client.writeData({ data: { isLoggedIn: true, userToken: token, } })
+        
     } 
 
     const { name, email, password, password2, } = user

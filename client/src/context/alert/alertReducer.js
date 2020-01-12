@@ -4,13 +4,11 @@ import { SET_ALERT, REMOVE_ALERT, } from '../types'
 export default (state, action) => {
     switch (action.type) {
         case SET_ALERT:
-            console.log(state.isVisible)
             return { 
                 ...state,
                 isVisible: true,
                 msg: action.payload.msg,
-                type: action.payload.type, 
-                
+                type: action.payload.type,                
             }
 
         case REMOVE_ALERT:

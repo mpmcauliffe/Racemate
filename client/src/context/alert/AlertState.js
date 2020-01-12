@@ -14,9 +14,6 @@ const AlertState = props => {
     // set alert
     const setAlert = (msg, type, isVisible = false, timeout = 5000) => {
         const id = uuid.v4()
-        const newState = { msg, type, id, }
-
-        console.log('state', msg)
 
         dispatch({
             type: SET_ALERT,
