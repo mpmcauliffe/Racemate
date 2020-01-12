@@ -11,6 +11,7 @@ export const REGISTER_USER = gql`
             }
         ) {
             token
+            error
         }
     }
 `
@@ -24,6 +25,7 @@ export const LOGIN = gql`
             }
         ) {
             token
+            error
         }
     }
 `

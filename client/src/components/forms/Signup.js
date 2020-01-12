@@ -13,7 +13,6 @@ export const Signup = ({ opToggle, }) => {
     const { setAlert, } = useContext(AlertContext)
     const client = useApolloClient()
 
-    //const { setAlert, } = alertContext
 
     const [user, setUser] = useState({
         name: '',
@@ -21,13 +20,8 @@ export const Signup = ({ opToggle, }) => {
         password: '',
         password2: '',
     })
-    // const [alertState, setAlertState] = useState({
-    //     alertText: '',
-    //     alertColor: '',
-    //     isShown: false,
-    // })
 
-    const [signup, { data, loading, error, }] = useMutation(REGISTER_USER)
+    const [signup] = useMutation(REGISTER_USER)
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
@@ -39,25 +33,31 @@ export const Signup = ({ opToggle, }) => {
             setAlert('Passwords must match!', 'warning')
             return
         }
-
+        
         try {
             const res = await signup({
                 variables: {
                     name: user.name,
                     email: user.email,
                     password: user.password,
-                }
+                }, 
             })
 
+            if (res.data.createUser.error) {
+                setAlert(res.data.createUser.error, 'warning')
+                return
+            }
 
             const token = res.data.createUser.token
             
             localStorage.setItem('token', token)
             client.writeData({ data: { isLoggedIn: true, userToken: token, } })
+        
         } catch (error) {
-            setAlert('Email in use!', 'warning')
-            console.log(signup(error))
+            console.log(error)
         }
+            
+        
         
     } 
 

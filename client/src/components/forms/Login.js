@@ -1,13 +1,16 @@
-import React, { useState, } from 'react'
+import React, { useState, useContext, } from 'react'
 import PropTypes from 'prop-types'
+import AlertContext from '../../context/alert/alertContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
+import { Alert } from '../../components'
 import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { LOGIN, } from '../../graphql'
 
 
 export const Login = ({ opToggle, }) => {
+    const { setAlert, } = useContext(AlertContext)
     const client = useApolloClient()
 
     const [user, setUser] = useState({
@@ -15,7 +18,7 @@ export const Login = ({ opToggle, }) => {
         password: '',
     })
 
-    const [login, { data }] = useMutation(LOGIN)
+    const [login] = useMutation(LOGIN)
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
@@ -29,8 +32,8 @@ export const Login = ({ opToggle, }) => {
             },
         })
         
-        if (!res) {
-            console.log('an error occurred at login')
+        if (res.data.login.error) {
+            setAlert(res.data.login.error, 'warning')
             return
         }
 
@@ -44,6 +47,7 @@ export const Login = ({ opToggle, }) => {
     return (
         
         <form onSubmit={onSubmit}>
+            <Alert />
             <FormContainer>
                 <label htmlFor='email'>Email</label>
                 <input /* EMAIL */
@@ -60,7 +64,6 @@ export const Login = ({ opToggle, }) => {
                     value={user.password}
                     name='password'
                     type='password'
-                    minLength='6'
                     required />
 
 
