@@ -1,5 +1,6 @@
-import React, { Fragment, useState, } from 'react'
+import React, { Fragment, useState, useContext, } from 'react'
 import PropTypes from 'prop-types'
+import AlertContext from '../../context/alert/alertContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
@@ -9,7 +10,10 @@ import { REGISTER_USER, } from '../../graphql'
 
 
 export const Signup = ({ opToggle, }) => {
+    const { setAlert, } = useContext(AlertContext)
     const client = useApolloClient()
+
+    //const { setAlert, } = alertContext
 
     const [user, setUser] = useState({
         name: '',
@@ -17,11 +21,11 @@ export const Signup = ({ opToggle, }) => {
         password: '',
         password2: '',
     })
-    const [alertState, setAlertState] = useState({
-        alertText: '',
-        alertColor: '',
-        isShown: false,
-    })
+    // const [alertState, setAlertState] = useState({
+    //     alertText: '',
+    //     alertColor: '',
+    //     isShown: false,
+    // })
 
     const [signup, { data }] = useMutation(REGISTER_USER)
 
@@ -29,6 +33,8 @@ export const Signup = ({ opToggle, }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
+
+
 
         const res = await signup({
             variables: {
@@ -55,7 +61,7 @@ export const Signup = ({ opToggle, }) => {
     return (
         <Fragment>
             <Alert />
-            <form>
+            <form onSubmit={onSubmit}>
                 <FormContainer>
                     <label htmlFor='name'>Name</label>
                     <input /* NAME */
@@ -72,7 +78,7 @@ export const Signup = ({ opToggle, }) => {
                         value={email}
                         name='email'
                         type='email'
-                        required  />
+                        required />
 
 
                     <label htmlFor='password'>Password</label>
@@ -95,7 +101,8 @@ export const Signup = ({ opToggle, }) => {
 
 
                     <SubmitButton 
-                        onClick={onSubmit}
+                        // onClick={onSubmit}
+                        type='submit'
 
                     >   Submit
                     </SubmitButton>

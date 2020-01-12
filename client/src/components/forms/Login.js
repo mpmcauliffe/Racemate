@@ -43,7 +43,7 @@ export const Login = ({ opToggle, }) => {
 
     return (
         
-        <form>
+        <form onSubmit={onSubmit}>
             <FormContainer>
                 <label htmlFor='email'>Email</label>
                 <input /* EMAIL */
@@ -65,7 +65,8 @@ export const Login = ({ opToggle, }) => {
 
 
                 <SubmitButton
-                    onClick={onSubmit}
+                    // onClick={onSubmit}
+                    type='submit'
 
                 >   Submit
                 </SubmitButton>

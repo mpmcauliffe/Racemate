@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+//import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ThemeProvider, } from 'styled-components'
 
 //import ApolloClient from 'apollo-boost'
@@ -60,11 +60,9 @@ const client = new ApolloClient({
 ReactDOM.render(
     <ApolloProvider client={client}>
         <HookProvider>
-            <Router>
-                <ThemeProvider theme={Theme}>
-                    <Route component={App} />
-                </ThemeProvider>
-            </Router>
+            <ThemeProvider theme={Theme}>
+                <App />
+            </ThemeProvider>
         </HookProvider>      
     </ApolloProvider>, 
     document.getElementById('root')
