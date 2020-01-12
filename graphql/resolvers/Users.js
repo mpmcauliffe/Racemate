@@ -13,9 +13,9 @@ const userResolver = {
             const hashedPassword = await hashPassword(data.password)
 
             const emailInUse = await User.findOne({ email: data.email })
+
             if (emailInUse) {
-                throw new Error('Email already in use')
-                return
+                return { error: 'Email already in use!' }
             }
 
             let user = new User({
@@ -25,14 +25,11 @@ const userResolver = {
             })
 
             const result = await user.save()
-
-            //console.log(result)
-            //user = { ...user, password: null, }
         
             return { //{ ...result._doc, password: null, _id: result.id },
-                //user,
                 token: generateToken(user._id)
             }
+            
         } catch(e) {
             console.log(e)
             throw e
@@ -43,17 +40,15 @@ const userResolver = {
 
         const user = await User.findOne({ email: email })
         if (!user) {
-            throw new Error('Unable to login')
+            return { error: 'Unable to login' }
         }
 
         const isMatch = await bcrypt.compare(password, user.password)
-
         if (!isMatch) {
-            throw new Error('Unable to login')
+            return { error: 'Unable to login' }
         }
 
         return {
-            //user,
             token: generateToken(user.id)
         }
     },

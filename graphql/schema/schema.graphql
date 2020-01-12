@@ -34,7 +34,8 @@ type Mutation {
 #####################################################################
 
 type AuthPayload {
-    token: String!
+    token: String
+    error: String
     #user: User!
 }
 input CreateUserInput {
