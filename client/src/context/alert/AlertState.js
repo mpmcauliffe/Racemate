@@ -6,20 +6,21 @@ import { SET_ALERT, REMOVE_ALERT } from '../types'
 
 
 const AlertState = props => {
-    const initialState = [ ]
+    const initialState = { }
 
     const [state, dispatch] = useReducer(alertReducer, initialState)
 
 
     // set alert
-    const setAlert = (msg, type, timeout = 5000) => {
+    const setAlert = (msg, type, isVisible = false, timeout = 5000) => {
         const id = uuid.v4()
+        const newState = { msg, type, id, }
 
-        console.log('inside set alert')
+        console.log('state', msg)
 
         dispatch({
             type: SET_ALERT,
-            payload: { msg, type, id, }
+            payload: { msg, type, id, isVisible, }
         })
 
         setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 5000)

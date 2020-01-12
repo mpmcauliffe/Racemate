@@ -34,7 +34,11 @@ export const Signup = ({ opToggle, }) => {
     const onSubmit = async e => {
         e.preventDefault()
 
-
+        if (user.password !== user.password2) {
+            console.log('Unmatched passwords!')
+            setAlert('Passwords must match!', 'warning')
+            return
+        }
 
         const res = await signup({
             variables: {
@@ -101,7 +105,6 @@ export const Signup = ({ opToggle, }) => {
 
 
                     <SubmitButton 
-                        // onClick={onSubmit}
                         type='submit'
 
                     >   Submit

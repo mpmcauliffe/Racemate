@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 
-
+// ${props => (props.active ? props.theme.colorPrimary : props.theme.unGray)};
 export const AlertBox = styled.div`
     height: 2.7rem;
     width: 90%;
     margin: 2rem auto 0 auto;
-    background: ${props => props.theme.colorWarningLight};
-    /* opacity: .2; */
     border-radius: .5rem;
+    background: ${props => (props.type === 'warning' 
+        ? props.theme.colorWarningLight 
+        : props.theme.colorSuccessLight
+    )};
+    visibility: ${props => (props.isVisible ? 'visible' : 'hidden')};
     /* border: .3rem solid ${props => props.theme.colorWarning}; */
 
     @media (min-width: 768px) {
@@ -26,5 +29,8 @@ export const AlertBox = styled.div`
 
 export const AlertText = styled.p`
     text-align: center;
-    color: ${props => props.theme.colorWarning};
+    color: ${props => (props.type === 'warning' 
+        ? props.theme.colorWarning 
+        : props.theme.colorSuccess
+    )};
 `
