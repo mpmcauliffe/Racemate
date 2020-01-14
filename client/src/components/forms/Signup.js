@@ -45,7 +45,7 @@ export const Signup = ({ opToggle, }) => {
 
             if (res.data.createUser.error) {
                 setAlert(res.data.createUser.error, 'warning')
-                return
+                return 
             }
 
             const token = res.data.createUser.token
@@ -105,7 +105,6 @@ export const Signup = ({ opToggle, }) => {
                         type='password'
                         required />
 
-
                     <SubmitButton 
                         type='submit'
 
@@ -117,6 +116,7 @@ export const Signup = ({ opToggle, }) => {
                     
                 </FormContainer>
             </form>
+            <Alert />
         </Fragment>
         
     )

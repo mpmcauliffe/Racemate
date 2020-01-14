@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const ButtonSet = styled.button`
     font-style:normal;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: ${props => props.theme.inter};
     max-height: 3rem;
     max-width: 10rem;
     /* margin-bottom: 5rem; */

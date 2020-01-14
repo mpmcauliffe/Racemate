@@ -45,18 +45,6 @@ const client = new ApolloClient({
 })
 
 
-// APOLLO BOOST VERSION
-// const client = new ApolloClient({
-//         request: (operation) => {
-//         const token = localStorage.getItem('token')
-//         operation.setContext({
-//             headers: {
-//                 authorization: token ? `Bearer ${token}` : ''
-//             }
-//         })
-//     }
-// })
-
 ReactDOM.render(
     <ApolloProvider client={client}>
         <HookProvider>

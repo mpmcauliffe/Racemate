@@ -10,6 +10,7 @@ export const Alert = (/*{ text, color }*/) => {
 
     return (
         <AlertBox 
+            id='alert'
             type={alertContext.alerts.type}
             isVisible={alertContext.alerts.isVisible} >
 

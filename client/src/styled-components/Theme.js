@@ -35,6 +35,7 @@ const Theme = {
     /* font sizes */
     xSml: '.9rem',
     small: '1.2rem',
+    inter: '1.6rem',
     regular: '1.9rem',
     medium: '2.7rem',
     large: '3.7rem',

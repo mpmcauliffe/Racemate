@@ -2,6 +2,8 @@ import React from 'react'
 import AlertState from './context/alert/AlertState'
 import { Nav, Lock, } from './components'
 
+import { Home } from './pages'
+
 
 
 
@@ -11,7 +13,9 @@ const App = () => {
         <AlertState>
             <Nav />
 
-            <Lock />            
+            <Home />
+
+            {/**<Lock />**/}            
         </AlertState>
     )
 }
