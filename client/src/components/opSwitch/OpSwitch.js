@@ -1,40 +1,61 @@
-import React, { Fragment, } from 'react'
+import React, { Fragment, useState, useEffect, } from 'react'
 import PropTypes from 'prop-types'
 import { ButtonSet, } from './OpSwitchComp'
 
 
-export const OpSwitch = ({ opOne, opTwo, setting, opToggle, }) => {
+export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
+
+    const [buttonState, setButtonState] = useState([])
+
+    useEffect(() => {
+        setButtonState(optButtons.map((opt, index) => {
+            return {
+                name: opt,
+                active: index === 0 ? true : false,
+            }
+        }))
+
+    // eslint-disable-next-line
+    }, [])
+
+    const handleClick = e => {
+        e.preventDefault()
+
+        //console.log(e.target.name)
+        handleToggle(e.target.name)
+        setButtonState(buttonState.map(button => {
+            return {
+                ...button,
+                active: button.name === e.target.name ? true : false,
+            }
+        }))
+    }
+
 
     return (
         <Fragment>
-            <ButtonSet
-                name={opOne}
-                active={setting}
-                onClick={opToggle}
+            {buttonState.map(button => (
+                    <ButtonSet
+                        key={button.name} 
+                        name={button.name}
+                        active={button.active}
+                        onClick={handleClick}
 
-            >   {opOne}
-            </ButtonSet>
-
-            <ButtonSet
-                name={opTwo}
-                active={!setting}
-                onClick={opToggle}
+                    >   {button.name}
+                    </ButtonSet>
+            ))}
             
-            >   {opTwo}
-            </ButtonSet>
         </Fragment>
     )
 }
 
 OpSwitch.propTypes = {
-    opOne: PropTypes.string,
-    opTwo: PropTypes.string,
+    optButtons: PropTypes.array, 
     setting: PropTypes.bool,
-    opToggle: PropTypes.func,
+    handleToggle: PropTypes.func,
 }
 
 OpSwitch.defaultProps = {
-    opOne: 'Option One',
-    opTwo: 'Option Two',
+    optButtons: ['Option One', 'Option Two'],
     setting: true,
 }

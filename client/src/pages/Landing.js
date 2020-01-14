@@ -1,36 +1,43 @@
-import React, { useState, } from 'react'
+import React, { useState, useEffect } from 'react'
 import { PageContainer, } from './PageComp'
 import { Login, Signup, OpSwitch, } from '../components'
 
 
 const Landing = () => {
-    const [opSwitchSetting, setOpSwitchSetting] = useState(true)
+    const [formDisplay, setFormDisplay] = useState('Sign Up')
+    const optButtons = ['Sign Up', 'Login']
+
+    useEffect(() => {
+        console.log(formDisplay)
+    }, [formDisplay])
 
     /* handle Login/Signup opSwitch */
-    const handleOpClickSetting = e => {
-        e.preventDefault()
+    // const handleOpClickSetting = e => {
+    //     e.preventDefault()
         
-        setOpSwitchSetting(!opSwitchSetting)
+    //     setOpSwitchSetting(!opSwitchSetting)
+    // }
+
+    const handleToggle = buttonName => {
+        setFormDisplay(buttonName)
     }
 
     return (
         <div>
             <PageContainer>
             <OpSwitch 
-                opOne='Sign Up'
-                opTwo='Login'
-                setting={opSwitchSetting}
-                opToggle={handleOpClickSetting} />
+                optButtons={optButtons}
+                handleToggle={handleToggle} />
             </PageContainer>
             
 
-            {opSwitchSetting 
+            {formDisplay === 'Sign Up'
                 ? (
                     <Signup 
-                        opToggle={handleOpClickSetting} />
+                        opToggle={handleToggle} />
                 ) : (
                     <Login 
-                        opToggle={handleOpClickSetting} />
+                        opToggle={handleToggle} />
                 )
             }          
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import AlertState from './context/alert/AlertState'
 import { Nav, Lock, } from './components'
 
-import { Home } from './pages'
+import { Home, Landing } from './pages'
 
 
 
@@ -12,6 +12,8 @@ const App = () => {
     return (
         <AlertState>
             <Nav />
+
+            <Landing />
 
             <Home />
 
