@@ -5,8 +5,6 @@ import { Nav, Lock, } from './components'
 import { Home, Landing } from './pages'
 
 
-
-
 const App = () => {
 
     return (
