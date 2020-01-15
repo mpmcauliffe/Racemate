@@ -8,15 +8,8 @@ const Landing = () => {
     const optButtons = ['Sign Up', 'Login']
 
     useEffect(() => {
-        console.log(formDisplay)
+        // updates form upon user action
     }, [formDisplay])
-
-    /* handle Login/Signup opSwitch */
-    // const handleOpClickSetting = e => {
-    //     e.preventDefault()
-        
-    //     setOpSwitchSetting(!opSwitchSetting)
-    // }
 
     const handleToggle = buttonName => {
         setFormDisplay(buttonName)
@@ -30,7 +23,6 @@ const Landing = () => {
                 handleToggle={handleToggle} />
             </PageContainer>
             
-
             {formDisplay === 'Sign Up'
                 ? (
                     <Signup 

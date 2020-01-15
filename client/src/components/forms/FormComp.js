@@ -41,6 +41,10 @@ export const SubmitButton = styled.button`
 
 export const SwitchLink = styled.span`
     color: #4B7DBA;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 // colorPrimary: '#1c395c',

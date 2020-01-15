@@ -13,7 +13,6 @@ export const Signup = ({ opToggle, }) => {
     const { setAlert, } = useContext(AlertContext)
     const client = useApolloClient()
 
-
     const [user, setUser] = useState({
         name: '',
         email: '',

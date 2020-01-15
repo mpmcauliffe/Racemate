@@ -13,7 +13,7 @@ const App = () => {
 
             <Landing />
 
-            <Home />
+            {/**<Home />**/}
 
             {/**<Lock />**/}            
         </AlertState>
