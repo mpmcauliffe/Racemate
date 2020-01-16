@@ -17,11 +17,17 @@ export const Home = () => {
         setUserSelection(buttonName)
     }
 
+    const onLogoutClick = () => {
+        
+    }
+
     return (
         <div>
             <OpSwitch 
                 optButtons={optButtons}
                 handleToggle={handleToggle} />
+
+            <button onClick={onLogoutClick}>Logout</button>
         </div>
     )
 }

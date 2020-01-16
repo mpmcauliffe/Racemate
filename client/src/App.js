@@ -11,11 +11,11 @@ const App = () => {
         <AlertState>
             <Nav />
 
-            <Landing />
+            {/**<Landing />**/}
 
             {/**<Home />**/}
 
-            {/**<Lock />**/}            
+            <Lock />            
         </AlertState>
     )
 }

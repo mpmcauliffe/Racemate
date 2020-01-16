@@ -16,6 +16,12 @@ export const REGISTER_USER = gql`
     }
 `
 
+export const IS_LOGGED_IN = gql`
+    query GetIsLoggedIn {
+        isLoggedIn @client
+    }
+`
+
 export const LOGIN = gql`
     mutation($email: String!, $password: String!) {
         login (
@@ -30,8 +36,8 @@ export const LOGIN = gql`
     }
 `
 
-export const IS_LOGGED_IN = gql`
-    query GetIsLoggedIn {
-        isLoggedIn @client
-    }
-`
+// export const LOGOUT = gql`
+//     mutation
+// `
+
+
