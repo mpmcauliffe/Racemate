@@ -43,7 +43,7 @@ const client = new ApolloClient({
     userTypes,
     rootResolver,
 })
-
+cache.writeData({ data: { isLoggedIn: false, } })
 
 ReactDOM.render(
     <ApolloProvider client={client}>

@@ -40,7 +40,7 @@ export const Login = ({ opToggle, }) => {
         const token = res.data.login.token
 
         localStorage.setItem('token', token)
-        client.writeData({ data: { isLoggedIn: true, userToken: token, } })
+        client.writeData({ data: { isLoggedIn: true, /**userToken: token,**/ } })
     }
 
 

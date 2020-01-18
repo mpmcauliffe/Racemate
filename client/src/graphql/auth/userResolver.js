@@ -4,10 +4,8 @@ import { gql, } from 'apollo-boost'
 
 const cache = new InMemoryCache()
 
-// export const Query = cache.readQuery({
-//     // query: gql`
-//     //     query userTypes {
-//     //         isLoggedIn @client
-//     //     }
-//     // `
-// })
+export const userResolver = {
+    Query: {
+        isUserLoggedIn: () 
+    }
+}
