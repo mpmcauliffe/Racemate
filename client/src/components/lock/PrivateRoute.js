@@ -1,17 +1,18 @@
-import React, { useContext, } from 'react'
+import React from 'react'
 import { Route, Redirect, } from 'react-router-dom'
-import AuthContext from '../../context/auth/authContext'
+import { useQuery, } from '@apollo/react-hooks'
+import { Home, Landing, } from '../../pages'
+import { IS_LOGGED_IN } from '../../graphql'
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    const authContext = useContext(AuthContext)
-    const { isAuthenticated, loading, } = authContext
+    const { loading, data } = useQuery(IS_LOGGED_IN)
+   
 
-    console.log(isAuthenticated)
     return (
         <Route 
             { ...rest } 
-            render={props => !isAuthenticated && !loading
+            render={props => !data.isLoggedIn && !loading
                 ?   (
                         <Redirect to='/' />
                 ) : (
