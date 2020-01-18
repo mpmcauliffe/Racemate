@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-//import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { ThemeProvider, } from 'styled-components'
 
 //import ApolloClient from 'apollo-boost'
@@ -49,9 +49,11 @@ cache.writeData({ data: { isLoggedIn: !!localStorage.getItem('token'), } })
 ReactDOM.render(
     <ApolloProvider client={client}>
         <HookProvider>
-            <ThemeProvider theme={Theme}>
-                <App />
-            </ThemeProvider>
+            <Router>
+                <ThemeProvider theme={Theme}>
+                    <Route component={App} />
+                </ThemeProvider>
+            </Router>
         </HookProvider>      
     </ApolloProvider>, 
     document.getElementById('root')

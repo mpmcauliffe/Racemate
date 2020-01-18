@@ -1,5 +1,5 @@
 import React, { useEffect, } from 'react'
-import { Redirect, Link, } from 'react-router-dom'
+import { Link, Redirect, Route, Switch, } from 'react-router-dom'
 import { useQuery, } from '@apollo/react-hooks'
 import { Home, Landing, } from '../../pages'
 import { IS_LOGGED_IN } from '../../graphql'
@@ -18,10 +18,19 @@ export const Lock = () => {
 
 
     if (!data.isLoggedIn) { 
-        return <Landing />
+        //return <Landing />
+        return (
+            <Route /* PUBLIC */
+                exact
+                path='/'
+                component={Landing} />
+        )
     }
 
     return (
-        <Home />
+        <Route /* PRIVATE */
+            exact
+            path='/home'
+            component={Home} />
     )
 }
