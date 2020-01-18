@@ -12,6 +12,8 @@ export const Home = () => {
     const client = useApolloClient()
     const { data } = useQuery(IS_LOGGED_IN)
 
+    console.log('AAA')
+
     useEffect(() => {
         //console.log(userSelection)
     }, [userSelection])
