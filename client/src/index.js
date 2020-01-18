@@ -43,7 +43,8 @@ const client = new ApolloClient({
     userTypes,
     rootResolver,
 })
-cache.writeData({ data: { isLoggedIn: false, } })
+cache.writeData({ data: { isLoggedIn: !!localStorage.getItem('token'), } })
+
 
 ReactDOM.render(
     <ApolloProvider client={client}>

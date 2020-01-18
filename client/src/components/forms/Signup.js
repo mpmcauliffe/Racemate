@@ -50,7 +50,7 @@ export const Signup = ({ opToggle, }) => {
             const token = res.data.createUser.token
             
             localStorage.setItem('token', token)
-            client.writeData({ data: { isLoggedIn: true, userToken: token, } })
+            client.writeData({ data: { isLoggedIn: true, } })
         
         } catch (error) {
             console.log(error)

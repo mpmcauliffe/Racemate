@@ -23,6 +23,7 @@ export const Home = () => {
     const onLogoutClick = () => {
          if (data) {
             client.writeData({ data: { isLoggedIn: false, }})
+            localStorage.clear()
          }
     }
 
