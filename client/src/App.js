@@ -1,5 +1,6 @@
 import React from 'react'
 import AlertState from './context/alert/AlertState'
+//import { Home, Landing, } from './pages'
 import { Nav, Lock, } from './components'
 
 
