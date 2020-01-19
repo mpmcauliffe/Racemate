@@ -5,14 +5,14 @@ import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import { GET_EXERCISES, IS_LOGGED_IN, } from '../graphql'
 
 
-export const Home = () => {
+export const Home = props => {
 
     const [userSelection, setUserSelection] = useState('Exercises')
     const optButtons = ['Exercises', 'Workouts', 'Routine']
     const client = useApolloClient()
     const { data } = useQuery(IS_LOGGED_IN)
 
-    console.log('AAA')
+    console.log(props.history)
 
     useEffect(() => {
         //console.log(userSelection)

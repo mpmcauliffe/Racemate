@@ -6,12 +6,16 @@ import { Home, Landing, } from '../../pages'
 import { IS_LOGGED_IN } from '../../graphql'
 
 
-export const Lock = () => {
+export const Lock = props => {
 
 
     const { data } = useQuery(IS_LOGGED_IN)
 
     useEffect(() => {
+        if (data.isLoggedIn) {
+            //props.history.push('/home')
+        }
+
         console.log(data)
     }, [data])
 

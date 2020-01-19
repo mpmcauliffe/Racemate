@@ -1,6 +1,6 @@
 import React, { useState, useContext, } from 'react'
 import PropTypes from 'prop-types'
-import { Redirect, } from 'react-router-dom'
+import { Redirect, useHistory, } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
@@ -10,9 +10,10 @@ import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
 import { LOGIN, } from '../../graphql'
 
 
-export const Login = ({ opToggle, history, }) => {
-    const { setAlert, } = useContext(AlertContext)
+export const Login = ({ opToggle }) => {
     const client = useApolloClient()
+    let history = useHistory()
+    const { setAlert, } = useContext(AlertContext)
 
     const [user, setUser] = useState({
         email: '',
@@ -43,7 +44,7 @@ export const Login = ({ opToggle, history, }) => {
         localStorage.setItem('token', token)
         client.writeData({ data: { isLoggedIn: true, /**userToken: token,**/ } })
 
-        //return <Redirect to='/home' />
+    
         history.push('/home')
     }
 
