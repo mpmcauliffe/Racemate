@@ -1,11 +1,10 @@
 import React from 'react'
 import { Route, Redirect, } from 'react-router-dom'
 import { useQuery, } from '@apollo/react-hooks'
-import { Home, Landing, } from '../../pages'
 import { IS_LOGGED_IN } from '../../graphql'
 
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+export const PrivateRoute = ({ component: Component, ...rest }) => {
     const { loading, data } = useQuery(IS_LOGGED_IN)
    
 
@@ -21,6 +20,3 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         } />
     )
 }
-
-
-export { PrivateRoute }

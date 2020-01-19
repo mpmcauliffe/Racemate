@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, } from 'react'
-import { Link, Redirect, Route, Switch, } from 'react-router-dom'
+import React, { useEffect, } from 'react'
+import { Route, Switch, } from 'react-router-dom'
 import { useQuery, } from '@apollo/react-hooks'
 import { PrivateRoute } from './PrivateRoute'
 import { Home, Landing, } from '../../pages'
@@ -12,23 +12,9 @@ export const Lock = props => {
     const { data } = useQuery(IS_LOGGED_IN)
 
     useEffect(() => {
-        if (data.isLoggedIn) {
-            //props.history.push('/home')
-        }
 
         console.log(data)
     }, [data])
-
-
-    // if (!data.isLoggedIn) { 
-    //     //return <Landing />
-    //     return (
-    //         <Route /* PUBLIC */
-    //             exact
-    //             path='/'
-    //             component={Landing} />
-    //     )
-    // }
 
     return (
         <Switch>

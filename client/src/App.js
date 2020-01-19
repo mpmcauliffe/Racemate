@@ -1,10 +1,6 @@
 import React from 'react'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import AlertState from './context/alert/AlertState'
 import { Nav, Lock, } from './components'
-import { Home, Landing } from './pages'
-import { IS_LOGGED_IN } from './graphql'
 
 
 const App = () => {
