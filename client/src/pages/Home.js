@@ -6,13 +6,10 @@ import { GET_EXERCISES, IS_LOGGED_IN, } from '../graphql'
 
 
 export const Home = props => {
-
     const [userSelection, setUserSelection] = useState('Exercises')
     const optButtons = ['Exercises', 'Workouts', 'Routine']
     const client = useApolloClient()
     const { data } = useQuery(IS_LOGGED_IN)
-
-    console.log(props.history)
 
     useEffect(() => {
         //console.log(userSelection)

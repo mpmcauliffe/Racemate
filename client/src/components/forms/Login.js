@@ -1,6 +1,6 @@
 import React, { useState, useContext, } from 'react'
 import PropTypes from 'prop-types'
-import { Redirect, useHistory, } from 'react-router-dom'
+import { useHistory, } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
@@ -43,7 +43,6 @@ export const Login = ({ opToggle }) => {
 
         localStorage.setItem('token', token)
         client.writeData({ data: { isLoggedIn: true, /**userToken: token,**/ } })
-
     
         history.push('/home')
     }

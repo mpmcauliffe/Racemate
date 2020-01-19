@@ -7,8 +7,6 @@ const Landing = props => {
     const [formDisplay, setFormDisplay] = useState('Sign Up')
     const optButtons = ['Sign Up', 'Login']
 
-    console.log(props.history)
-
     useEffect(() => {
         // updates form upon user action
     }, [formDisplay])

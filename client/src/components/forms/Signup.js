@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useContext, } from 'react'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 import AlertContext from '../../context/alert/alertContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
@@ -10,8 +11,10 @@ import { REGISTER_USER, } from '../../graphql'
 
 
 export const Signup = ({ opToggle, }) => {
-    const { setAlert, } = useContext(AlertContext)
+    let history = useHistory()
     const client = useApolloClient()
+    const { setAlert, } = useContext(AlertContext)
+
 
     const [user, setUser] = useState({
         name: '',
@@ -52,12 +55,11 @@ export const Signup = ({ opToggle, }) => {
             localStorage.setItem('token', token)
             client.writeData({ data: { isLoggedIn: true, } })
         
+            history.push('/home')
+
         } catch (error) {
             console.log(error)
         }
-            
-        
-        
     } 
 
     const { name, email, password, password2, } = user
