@@ -34,4 +34,52 @@ export const NavWheel = styled.div`
         );
         transition: transform .8s cubic-bezier(.86, 0, .07, 1); /* https://cubic-bezier.com */
     }
+
+    & > nav {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+        transition: all .8s;
+
+        /* not toggled */
+        opacity: 0;
+        width: 0;
+
+        /* cool overlap effect */
+        /* background-color: orangered; */
+
+        & > ul {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            list-style: none;
+            text-align: center;
+
+            & > li {
+                margin: 1rem;
+
+                & > a {
+                    &:link,
+                    &:visited {
+                        display: inline-block;
+                        font-size: 3rem;
+                        font-weight: 300;
+                        padding: 1rem 2rem;
+                        color: ${props => props.theme.colorWhite};
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        background-image: linear-gradient(
+                            110deg, transparent 0%, transparent 50%, ${props => props.theme.colorWhite} 50%
+                        );
+                        background-size: 220%;
+                        transition: all .5s;
+                    }
+                }
+            }
+        }
+    }
 `
