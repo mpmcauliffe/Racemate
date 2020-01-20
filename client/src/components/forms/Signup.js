@@ -11,20 +11,20 @@ import { REGISTER_USER, } from '../../graphql'
 
 
 export const Signup = ({ opToggle, }) => {
-    let history = useHistory()
-    const client = useApolloClient()
-    const { setAlert, } = useContext(AlertContext)
+    let history             = useHistory()
+    const client            = useApolloClient()
 
-
-    const [user, setUser] = useState({
+    const { setAlert, }     = useContext(AlertContext)
+    const [user, setUser]   = useState({
         name: '',
         email: '',
         password: '',
         password2: '',
     })
 
-    const [signup] = useMutation(REGISTER_USER)
+    const [signup]          = useMutation(REGISTER_USER)
 
+    
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {

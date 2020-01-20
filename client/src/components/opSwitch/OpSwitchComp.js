@@ -18,7 +18,12 @@ export const ButtonSet = styled.button`
         border: .1rem solid ${props => props.theme.midGray}
     }
 
-    @media (max-width: 769px) {
-        /* width: 100%; */
+    /* Media queries are experimental for this component */
+    @media (max-width: 640px) {
+        /* display: ${props => (props.fluid ? 'flex' : 'block')}; */
+        /* width: 33.333vw; */
+    }
+    @media (min-width: 641px) {
+        /* max-width: 20vw; */
     }
 `

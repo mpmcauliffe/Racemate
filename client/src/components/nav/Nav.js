@@ -1,16 +1,14 @@
 import React from 'react'
 import { Header, NavContainer, } from './NavComp'
+import { NavWheel, } from './NavWheelComp'
 
 
-const Nav = () => {
+export const Nav = () => {
     return (
         <NavContainer>
             <Header>RACEMATE</Header>
-            <Header>XX</Header>
+            {/**<Header>XX</Header>**/}
+            <NavWheel />
         </NavContainer>
-        
     )
 }
-
-
-export { Nav }

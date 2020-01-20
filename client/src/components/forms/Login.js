@@ -11,17 +11,18 @@ import { LOGIN, } from '../../graphql'
 
 
 export const Login = ({ opToggle }) => {
-    const client = useApolloClient()
-    let history = useHistory()
-    const { setAlert, } = useContext(AlertContext)
+    const client            = useApolloClient()
+    let history             = useHistory()
 
-    const [user, setUser] = useState({
+    const { setAlert, }     = useContext(AlertContext)
+    const [user, setUser]   = useState({
         email: '',
         password: '',
     })
 
-    const [login] = useMutation(LOGIN)
+    const [login]           = useMutation(LOGIN)
 
+    
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {

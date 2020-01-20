@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 
 export const NavWheel = styled.div`
+    /* border: .1rem solid blue; */
     & > input {
         display: none;
     }
@@ -77,6 +78,12 @@ export const NavWheel = styled.div`
                         );
                         background-size: 220%;
                         transition: all .5s;
+                    }
+                    &:hover,
+                    &:active {
+                        background-position: 100%;
+                        color: ${props => props.theme.colorPrimary};
+                        transform: translateX(1rem);
                     }
                 }
             }
