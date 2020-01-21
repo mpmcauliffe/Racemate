@@ -50,43 +50,43 @@ export const NavWheel = styled.div`
 
         /* cool overlap effect */
         /* background-color: orangered; */
+    }
 
-        & > ul {
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            list-style: none;
-            text-align: center;
+    & > ul {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
 
-            & > li {
-                margin: 1rem;
+    & > li {
+        margin: 1rem;
+    }
 
-                & > a {
-                    &:link,
-                    &:visited {
-                        display: inline-block;
-                        font-size: 3rem;
-                        font-weight: 300;
-                        padding: 1rem 2rem;
-                        color: ${props => props.theme.colorWhite};
-                        text-decoration: none;
-                        text-transform: uppercase;
-                        background-image: linear-gradient(
-                            110deg, transparent 0%, transparent 50%, ${props => props.theme.colorWhite} 50%
-                        );
-                        background-size: 220%;
-                        transition: all .5s;
-                    }
-                    &:hover,
-                    &:active {
-                        background-position: 100%;
-                        color: ${props => props.theme.colorPrimary};
-                        transform: translateX(1rem);
-                    }
-                }
-            }
+    & > a {
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: ${props => props.theme.colorWhite};
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                110deg, transparent 0%, transparent 50%, ${props => props.theme.colorWhite} 50%
+            );
+            background-size: 220%;
+            transition: all .5s;
+        }
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: ${props => props.theme.colorPrimary};
+            transform: translateX(1rem);
         }
     }
 `

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header, NavContainer, } from './NavComp'
 import { NavWheel, } from './NavWheelComp'
+import { NavWheelTest, } from './NavWheelTest'
 
 
 export const Nav = () => {
@@ -8,7 +9,7 @@ export const Nav = () => {
         <NavContainer>
             <Header>RACEMATE</Header>
             {/**<Header>XX</Header>**/}
-            <NavWheel />
+            <NavWheelTest />
         </NavContainer>
     )
 }

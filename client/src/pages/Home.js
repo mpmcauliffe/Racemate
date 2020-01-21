@@ -9,11 +9,13 @@ export const Home = props => {
     const client                                = useApolloClient()
 
     const [userSelection, setUserSelection]     = useState('Exercises')
-    const { userData }                          = useQuery(IS_LOGGED_IN)
+    const { data }                              = useQuery(IS_LOGGED_IN)
+    //const { data }                              = useQuery(GET_EXERCISES)
     const optButtons                            = ['Exercises', 'Workouts', 'Routine']
     
     
     useEffect(() => {
+        console.log(data)
         //console.log(userSelection)
     }, [userSelection])
 
@@ -22,8 +24,7 @@ export const Home = props => {
     }
 
     const onLogoutClick = () => {
-        if (userData) {
-            console.log('AAAAAA')
+        if (data) {
             client.writeData({ data: { isLoggedIn: false, }})
             localStorage.clear()
         }
@@ -31,14 +32,11 @@ export const Home = props => {
 
     return (
         <div>
-            
             <OpSwitch 
                 optButtons={optButtons}
                 handleToggle={handleToggle} />
 
             <button onClick={onLogoutClick}>Logout</button>
-
-
         </div>
     )
 }
