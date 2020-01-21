@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react'
-import { OpSwitch, } from '../components'
+import { OpSwitch, GridStack, } from '../components'
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 
 import { GET_EXERCISES, IS_LOGGED_IN, } from '../graphql'
@@ -35,6 +35,8 @@ export const Home = props => {
             <OpSwitch 
                 optButtons={optButtons}
                 handleToggle={handleToggle} />
+
+            <GridStack />
 
             <button onClick={onLogoutClick}>Logout</button>
         </div>

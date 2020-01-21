@@ -1,6 +1,7 @@
 export * from './alert/Alert'
 export * from './forms/Login'
 export * from './forms/Signup'
+export * from './GridStack/GridStack'
 export * from './loader/Loader'
 export * from './lock/Lock'
 export * from './menu/Menu'
