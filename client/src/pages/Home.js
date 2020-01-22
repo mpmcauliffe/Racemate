@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, } from 'react'
 import { OpSwitch, GridStack, } from '../components'
+import { PageContainer, } from './PageComp'
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
-
 import { GET_EXERCISES, IS_LOGGED_IN, } from '../graphql'
 
 

@@ -20,3 +20,7 @@ export const PageContainer = styled.div`
         margin: 0 auto;
     }
 `
+
+export const WidePageContainer = styled.div`
+    
+`

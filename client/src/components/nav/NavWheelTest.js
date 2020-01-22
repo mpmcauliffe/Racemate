@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from './NavComp'
 import './navWheel.css'
 
 
@@ -16,19 +17,23 @@ export const NavWheelTest = () => {
             <nav className='navigation__nav'>
                 <ul className='navigation__list'>
                     <li className='navigation__item'>
-                        <a href='#' className='navigation__link'>About Natours</a>
+                        <NavLink href='#' className='navigation__link'>Add Exercise</NavLink>
                     </li>
                     <li className='navigation__item'>
-                        <a href='#' className='navigation__link'>Your benefits</a>
+                        <NavLink href='#' className='navigation__link'>Create Workout</NavLink>
                     </li>
                     <li className='navigation__item'>
-                        <a href='#' className='navigation__link'>Popular tours</a>
+                        <NavLink href='#' className='navigation__link'>Generate Routine</NavLink>
+                    </li>
+
+                    <br /><br /><br /><br />
+                    <br /><br /><br /><br />
+
+                    <li className='navigation__item'>
+                        <NavLink href='#' className='navigation__link'>Profile</NavLink>
                     </li>
                     <li className='navigation__item'>
-                        <a href='#' className='navigation__link'>Stories</a>
-                    </li>
-                    <li className='navigation__item'>
-                        <a href='#' className='navigation__link'>Book now</a>
+                        <NavLink href='#' className='navigation__link'>Logout</NavLink>
                     </li>
                 </ul>
             </nav>

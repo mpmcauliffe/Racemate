@@ -25,3 +25,7 @@ export const Header = styled.h1`
     padding: 0 1rem;
     color: ${props => props.theme.primaryGray};
 `
+
+export const NavLink = styled.h4`
+    color: ${props => props.theme.lightGray}
+`

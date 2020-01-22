@@ -29,9 +29,9 @@ const Landing = props => {
     return (
         <div>
             <PageContainer>
-            <OpSwitch 
-                optButtons={optButtons}
-                handleToggle={handleToggle} />
+                <OpSwitch 
+                    optButtons={optButtons}
+                    handleToggle={handleToggle} />
             </PageContainer>
             
             {formDisplay === 'Sign Up'
