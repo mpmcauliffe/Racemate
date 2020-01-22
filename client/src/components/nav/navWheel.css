@@ -63,9 +63,10 @@
     transition: all 0.5s;
 }
 .navigation__link:hover, .navigation__link:active {
+    cursor: pointer;
     background-position: 100%;
-    color: #1c395c;
-    transform: translateX(1rem);
+    /* color: #1c395c; */
+    transform: scale(1.05);
 }
 .navigation__checkbox:checked ~ .navigation__background {
     transform: scale(80);
