@@ -1,22 +1,25 @@
 import React from 'react'
 import { useQuery, } from '@apollo/react-hooks'
 import { Card, } from './Card'
+import { Loader } from '../../components'
 import { GET_EXERCISES } from '../../graphql'
 
 
 export const GridStack = () => {
     const { loading, data, } = useQuery(GET_EXERCISES)
 
-
     if (loading) {
-        return <div>LOADING</div>
+        return <Loader />
     }
-console.log(data)
+
+    const { myExercises } = data
+    
     return (
         <div>
-            {data && data.map(item => (
+            {myExercises && myExercises.map(item => (
                 <Card 
-                    info={data} />
+                    key={item.id}
+                    info={item} />
             ))}    
         </div>
     )

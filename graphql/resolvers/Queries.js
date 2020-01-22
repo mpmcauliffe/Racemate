@@ -46,7 +46,10 @@ const Query = {
             const userId = getUserId(headers.authorization)
 
             const exercises = await Exercise.find({ owner: userId })
+            
             return exercises.map(exercise => transformItem(exercise))
+
+            
         } catch(e) {
             console.log(e)
             throw e

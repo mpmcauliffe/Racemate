@@ -1,10 +1,12 @@
 import React from 'react'
 
-export const Card = (props) => {
+export const Card = props => {
+    const { info } = props
+
     return (
         <div>
-            <h3>{props.title}</h3>
-            <p>{props.exerciseType}</p>
+            <h3>{info.title}</h3>
+            <p>{info.exerciseType}</p>
         </div>
     )
 }

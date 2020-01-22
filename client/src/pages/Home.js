@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react'
+import React, { Fragment, useState, useEffect, } from 'react'
 import { OpSwitch, GridStack, } from '../components'
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 
@@ -31,14 +31,18 @@ export const Home = props => {
     }
 
     return (
-        <div>
-            <OpSwitch 
-                optButtons={optButtons}
-                handleToggle={handleToggle} />
+        <Fragment>
+            <div>
+                <OpSwitch 
+                    optButtons={optButtons}
+                    handleToggle={handleToggle} />
+            </div>
+            <div>
+                <GridStack />
 
-            <GridStack />
-
-            <button onClick={onLogoutClick}>Logout</button>
-        </div>
+                <button onClick={onLogoutClick}>Logout</button>
+            </div>
+        </Fragment>
+        
     )
 }
