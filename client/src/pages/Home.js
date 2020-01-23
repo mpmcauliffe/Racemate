@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, } from 'react'
 import { OpSwitch, GridStack, } from '../components'
-import { PageContainer, } from './PageComp'
+import { WidePageContainer, } from './PageComp'
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import { GET_EXERCISES, IS_LOGGED_IN, } from '../graphql'
 
@@ -22,6 +22,7 @@ export const Home = props => {
     const handleToggle = buttonName => {
         setUserSelection(buttonName)
     }
+    console.log(window.innerWidth)
 
     const onLogoutClick = () => {
         if (data) {
@@ -31,7 +32,7 @@ export const Home = props => {
     }
 
     return (
-        <Fragment>
+        <WidePageContainer>
             <div>
                 <OpSwitch 
                     optButtons={optButtons}
@@ -41,7 +42,7 @@ export const Home = props => {
                 {/**<GridStack />**/}
 
             </div>
-        </Fragment>
+        </WidePageContainer>
         
     )
 }

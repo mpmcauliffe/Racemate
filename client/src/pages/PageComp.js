@@ -22,5 +22,19 @@ export const PageContainer = styled.div`
 `
 
 export const WidePageContainer = styled.div`
-    
+    width: 100vw;
+    border: 1px solid red;
+
+    @media (media-width: 768px) {
+        width: 90%;
+        margin: 0 auto;
+    }
+    @media (min-width: 1024px) {
+        width: 50%;
+        margin: 0 auto;
+    }
+    @media (min-width: 1600px) {
+        width: 40%;
+        margin: 0 auto;
+    }
 `

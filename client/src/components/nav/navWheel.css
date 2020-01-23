@@ -69,7 +69,7 @@
     transform: scale(1.05);
 }
 .navigation__checkbox:checked ~ .navigation__background {
-    transform: scale(80);
+    transform: scale(200);
 }
 .navigation__checkbox:checked ~ .navigation__nav {
     opacity: 1;

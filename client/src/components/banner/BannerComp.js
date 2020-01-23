@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const StripContainer = styled.div`
     display: flex;
     justify-content: center;
+    margin-bottom: 9rem;
 `
 
 export const StripImg = styled.img`
