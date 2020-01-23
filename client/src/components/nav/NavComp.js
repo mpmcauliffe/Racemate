@@ -6,7 +6,7 @@ export const NavContainer = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    /* @media (min-width: 768px) {
+    @media (min-width: 768px) {
         width: 80%;
         margin: 0 auto;
     }
@@ -17,7 +17,7 @@ export const NavContainer = styled.div`
     @media (min-width: 1600px) {
         width: 60%;
         margin: 0 auto;
-    } */
+    }
 `
 
 export const Header = styled.h1`

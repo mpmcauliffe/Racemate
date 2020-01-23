@@ -15,9 +15,9 @@ import App from './App'
 import { userTypes, rootResolver, } from './graphql'
 
 import 'normalize.css/normalize.css'
-import './styled-components/fonts/fonts.css'
-import { Theme, } from './styled-components/styled-components/'
-import './styled-components/styles/globalStyle.css'
+import './global-styles/fonts/fonts.css'
+import { Theme, } from './global-styles/styled-components/'
+import './global-styles/styles/globalStyle.css'
 
 
 const httpLink = createHttpLink({
