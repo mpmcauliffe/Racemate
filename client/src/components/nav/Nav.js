@@ -15,7 +15,11 @@ export const Nav = () => {
         <NavContainer>
             <Header>RACEMATE</Header>
             {/**<Header>XX</Header>**/}
-            {data.isLoggedIn && <NavWheelTest />}
+            
+            {data.isLoggedIn && 
+                <NavWheelTest 
+                    style={{  }} />
+            }
         </NavContainer>
     )
 }

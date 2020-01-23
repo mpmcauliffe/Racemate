@@ -24,16 +24,17 @@ export const PageContainer = styled.div`
 export const WidePageContainer = styled.div`
     width: 100vw;
     border: 1px solid red;
+    height: 1000vh;
 
-    @media (media-width: 768px) {
-        width: 90%;
+    @media (min-width: 769px) {
+        width: 80%;
         margin: 0 auto;
     }
-    @media (min-width: 1024px) {
+    @media (min-width: 1025px) {
         width: 50%;
         margin: 0 auto;
     }
-    @media (min-width: 1600px) {
+    @media (min-width: 1601px) {
         width: 40%;
         margin: 0 auto;
     }
