@@ -1,9 +1,23 @@
 import React from 'react'
+import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import { NavLink } from './NavComp'
+import { IS_LOGGED_IN, } from '../../graphql'
+
 import './navWheel.css'
 
 
 export const NavWheelTest = () => {
+    const client                                = useApolloClient()
+    const { data }                              = useQuery(IS_LOGGED_IN)
+
+    const onLogoutClick = () => {
+        if (data) {
+            client.writeData({ data: { isLoggedIn: false, }})
+            localStorage.clear()
+        }
+    }
+
+
     return (
         <div className='navigation'>
             <input type='checkbox' className='navigation__checkbox' id='navi-toggle' />
@@ -17,23 +31,27 @@ export const NavWheelTest = () => {
             <nav className='navigation__nav'>
                 <ul className='navigation__list'>
                     <li className='navigation__item'>
-                        <NavLink href='#' className='navigation__link'>Add Exercise</NavLink>
+                        <NavLink className='navigation__link'>Add Exercise</NavLink>
                     </li>
                     <li className='navigation__item'>
-                        <NavLink href='#' className='navigation__link'>Create Workout</NavLink>
+                        <NavLink className='navigation__link'>Create Workout</NavLink>
                     </li>
                     <li className='navigation__item'>
-                        <NavLink href='#' className='navigation__link'>Generate Routine</NavLink>
+                        <NavLink className='navigation__link'>Generate Routine</NavLink>
                     </li>
 
                     <br /><br /><br /><br />
                     <br /><br /><br /><br />
 
                     <li className='navigation__item'>
-                        <NavLink href='#' className='navigation__link'>Profile</NavLink>
+                        <NavLink className='navigation__link'>Profile</NavLink>
                     </li>
                     <li className='navigation__item'>
-                        <NavLink href='#' className='navigation__link'>Logout</NavLink>
+                        <NavLink
+                            onClick={onLogoutClick} 
+                            className='navigation__link'>
+                            Logout
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

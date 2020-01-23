@@ -38,9 +38,8 @@ export const Home = props => {
                     handleToggle={handleToggle} />
             </div>
             <div>
-                <GridStack />
+                {/**<GridStack />**/}
 
-                <button onClick={onLogoutClick}>Logout</button>
             </div>
         </Fragment>
         

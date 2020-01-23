@@ -1,4 +1,5 @@
 export * from './alert/Alert'
+export * from './banner/Banner'
 export * from './forms/Login'
 export * from './forms/Signup'
 export * from './GridStack/GridStack'

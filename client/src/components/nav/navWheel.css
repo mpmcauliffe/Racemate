@@ -1,4 +1,4 @@
-.navigation {
+ .navigation {
     width: 100%;
 }
 .navigation__checkbox {
@@ -14,7 +14,7 @@
     border-radius: 50%;
     background-color: #7A8A9E;
     text-align: center;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1); */
     cursor: pointer;
 }
 .navigation__background {
