@@ -14,12 +14,8 @@ export const Nav = () => {
     return (
         <NavContainer>
             <Header>RACEMATE</Header>
-            {/**<Header>XX</Header>**/}
             
-            {data.isLoggedIn && 
-                <NavWheelTest 
-                    style={{  }} />
-            }
+            {data.isLoggedIn && <NavWheelTest />}
         </NavContainer>
     )
 }

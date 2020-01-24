@@ -22,7 +22,6 @@ export const Home = props => {
     const handleToggle = buttonName => {
         setUserSelection(buttonName)
     }
-    console.log(window.innerWidth)
 
     const onLogoutClick = () => {
         if (data) {

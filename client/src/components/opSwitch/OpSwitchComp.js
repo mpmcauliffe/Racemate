@@ -6,7 +6,8 @@ export const ButtonSet = styled.button`
     font-weight: 400;
     font-size: ${props => props.theme.inter};
     max-height: 3rem;
-    max-width: 10rem;
+    /* max-width: 10rem; */
+    /* max-width: ${props => `${props.buttonSize}vw`}; */
     /* margin-bottom: 5rem; */
     float: right;
     color: ${props => props.theme.lightGray};

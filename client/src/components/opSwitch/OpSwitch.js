@@ -5,7 +5,8 @@ import { ButtonSet, } from './OpSwitchComp'
 
 export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
 
-    const [buttonState, setButtonState] = useState([])
+    const [buttonState, setButtonState]     = useState([])
+    const [buttonSize, setButtonSize]       = useState(0)
 
     useEffect(() => {
         setButtonState(optButtons.map((opt, index) => {
@@ -14,6 +15,8 @@ export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
                 active: index === 0 ? true : false,
             }
         }))
+
+        setButtonSize(100 / optButtons.length)
 
     // eslint-disable-next-line
     }, [])
@@ -33,19 +36,19 @@ export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
 
 
     return (
-        <Fragment>
+        <div style={{ display: 'flex', width: '100%', }}>
             {buttonState.map(button => (
                     <ButtonSet
                         key={button.name} 
                         name={button.name}
                         active={button.active}
                         onClick={handleClick}
+                        size={buttonSize}
 
                     >   {button.name}
                     </ButtonSet>
             ))}
-            
-        </Fragment>
+        </div>
     )
 }
 
