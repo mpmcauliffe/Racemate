@@ -38,8 +38,7 @@ export const Home = props => {
                     handleToggle={handleToggle} />
             </div>
             <div>
-                {/**<GridStack />**/}
-
+                <GridStack />
             </div>
         </WidePageContainer>
         
