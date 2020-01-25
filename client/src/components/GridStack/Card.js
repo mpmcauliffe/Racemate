@@ -1,12 +1,13 @@
 import React from 'react'
+import { CardContainer, CardName, } from './CardComp'
+
 
 export const Card = props => {
     const { info } = props
 
     return (
-        <div>
-            <h3>{info.title}</h3>
-            <p>{info.exerciseType}</p>
-        </div>
+        <CardContainer>
+            {/**<CardName>{info.title}</CardName>**/}
+        </CardContainer>
     )
 }
