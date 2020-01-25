@@ -18,14 +18,13 @@ export const GridStack = () => {
     return (
         <MainGrid>
             {myExercises && myExercises.map((item, index) => (            
-                <img src={require(`../banner/img/${index+1}.png`)} alt="aaa"/>
-                
+                <Card 
+                    key={item.id}
+                    info={item} />
                                             
             ))}    
         </MainGrid>
     )
-}
-// {/**<Card 
-//                     key={item.id}
-//                     info={item} />**/}    
+} 
 
+// <div key={item.id}></div>

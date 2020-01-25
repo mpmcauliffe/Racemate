@@ -9,6 +9,9 @@ export const CardContainer = styled.div.attrs(props => ({
     /* height: ${props => console.log(props.size)}; */
     /* width: 33%; */
     /* padding-bottom: 52%; */
+    padding-left: 1rem;
+    padding-bottom: 65%;
+
     background: ${props =>  props.theme.colorPrimary};
     /* border: 1px solid ${props => props.theme.colorDark}; */
 `

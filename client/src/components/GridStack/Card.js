@@ -7,7 +7,8 @@ export const Card = props => {
 
     return (
         <CardContainer>
-            {/**<CardName>{info.title}</CardName>**/}
+            <CardName>{info.title}</CardName>
+            {/****/}
         </CardContainer>
     )
 }
