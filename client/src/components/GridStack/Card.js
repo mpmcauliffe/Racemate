@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardContainer, CardName, } from './CardComp'
+import { truncate, } from '../../helpers'
 
 
 export const Card = props => {
@@ -7,7 +8,7 @@ export const Card = props => {
 
     return (
         <CardContainer>
-            <CardName>{info.title}</CardName>
+            <CardName>{truncate(info.title, 15)}</CardName>
             {/****/}
         </CardContainer>
     )

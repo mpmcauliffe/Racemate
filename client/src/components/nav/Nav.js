@@ -6,9 +6,8 @@ import { NavWheelTest, } from './NavWheelTest'
 import { IS_LOGGED_IN, } from '../../graphql'
 
 
-
 export const Nav = () => {
-    const { data }                              = useQuery(IS_LOGGED_IN)
+    const { data } = useQuery(IS_LOGGED_IN)
 
 
     return (
