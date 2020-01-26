@@ -17,6 +17,7 @@ const Theme = {
 
     /* grays */
     lightGray: '#f7f7f7',
+    midLtGray: '#d7d7d7',
     primaryGray: '#7A8A9E',
     midGrayCool: '#a9a9b9',
     midGrayWarm: '#b9a9a9',
