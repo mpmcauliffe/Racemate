@@ -5,11 +5,8 @@ import './styles.css'
 // see https://loading.io/css/
 export const Loader = () => {
     return (
-        <div 
-            style={{ width: '20vw', 
-                minHeight: '50vh', 
-                margin: '40vh auto',
-                paddingBottom: '15vh' }}>
+        <div /* CUSTOM CLASS AND NOT IN ORIGINAL PACKAGE */
+            className='spinner-container' >
 
             <div className='lds-facebook'>
                 <div></div>
@@ -20,6 +17,11 @@ export const Loader = () => {
         
     )
 }
+
+// style={{ width: '5vw', 
+//                 minHeight: '50vh', 
+//                 margin: '40vh auto',
+//                 paddingBottom: '15vh' }}
 
 
 // position: 'absolute',

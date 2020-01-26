@@ -29,7 +29,7 @@ const Landing = props => {
     return (
         <div>
             <Banner />
-
+            
             <PageContainer>
                 <OpSwitch 
                     optButtons={optButtons}
