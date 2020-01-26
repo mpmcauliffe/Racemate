@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react'
-import { OpSwitch, GridStack, } from '../components'
+import { OpSwitch, GridStack, Footer, } from '../components'
 import { WidePageContainer, } from './PageComp'
 
 
@@ -27,6 +27,8 @@ export const Home = props => {
             <div>
                 <GridStack />
             </div>
+
+            <Footer />
         </WidePageContainer>
         
     )

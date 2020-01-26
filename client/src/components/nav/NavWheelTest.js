@@ -14,6 +14,7 @@ export const NavWheelTest = () => {
         if (data) {
             client.writeData({ data: { isLoggedIn: false, }})
             window.scrollTo(0,0)
+            client.resetStore()
             localStorage.clear()
         }
     }
