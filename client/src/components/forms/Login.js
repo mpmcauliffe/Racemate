@@ -78,8 +78,13 @@ export const Login = ({ opToggle }) => {
                 >   Submit
                 </SubmitButton>
 
-                <p>Don't have an account?
-                <SwitchLink onClick={opToggle}>&nbsp;Sign up!</SwitchLink></p>
+                <p>
+                    Don't have an account?
+                    <SwitchLink 
+                        onClick={() => opToggle('Sign Up')}>
+                        &nbsp;Sign up!
+                    </SwitchLink>
+                </p>
             </FormContainer>
         </form>
     )

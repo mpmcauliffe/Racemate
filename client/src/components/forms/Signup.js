@@ -112,8 +112,13 @@ export const Signup = ({ opToggle, }) => {
                     >   Submit
                     </SubmitButton>
 
-                    <p>Already have an account?
-                    <SwitchLink onClick={opToggle}>&nbsp;Login!</SwitchLink></p>
+                    <p>
+                        Already have an account?
+                        <SwitchLink 
+                            onClick={() => opToggle('Login')}>
+                            &nbsp;Login!
+                        </SwitchLink>
+                    </p>
                     
                 </FormContainer>
             </form>
