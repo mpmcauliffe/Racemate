@@ -13,11 +13,11 @@ export const GridStack = () => {
         return <Loader />
     }
 
-    const { myExercises } = data
-    console.log(myExercises)
+    //const { myExercises } = data
+
     return (
         <MainGrid>
-            {myExercises && myExercises.map((item, index) => (            
+            {data && data.myExercises.map((item, index) => (            
                 <Card 
                     key={item.id}
                     info={item} />
