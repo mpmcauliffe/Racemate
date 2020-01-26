@@ -12,7 +12,7 @@ export const Nav = () => {
 
     return (
         <NavContainer>
-            <Header>RACEMATE</Header>
+            <Header id='navHeader'>RACEMATE</Header>
             
             {data.isLoggedIn && <NavWheelTest />}
         </NavContainer>

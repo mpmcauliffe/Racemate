@@ -38,7 +38,7 @@ export const IconContainer = styled.div`
     justify-content: space-between;
 
     margin-top: 13%;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: ${props => props.theme.midGrayCool};
 
     @media (min-width: 640px) {
@@ -47,7 +47,7 @@ export const IconContainer = styled.div`
         margin-top: 15%;
     }
     @media (min-width: 769px) {
-        font-size: 3rem;
+        font-size: 2.5rem;
         width: 24%;
         margin-top: 12%; 
     }

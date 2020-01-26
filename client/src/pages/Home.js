@@ -26,6 +26,7 @@ export const Home = props => {
     const onLogoutClick = () => {
         if (data) {
             client.writeData({ data: { isLoggedIn: false, }})
+            window.scrollTo(0,0)
             localStorage.clear()
         }
     }

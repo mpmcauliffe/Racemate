@@ -47,6 +47,7 @@ export const Signup = ({ opToggle, }) => {
 
             if (res.data.createUser.error) {
                 setAlert(res.data.createUser.error, 'warning')
+                window.scrollTo(0,0)
                 return 
             }
 
@@ -55,6 +56,7 @@ export const Signup = ({ opToggle, }) => {
             localStorage.setItem('token', token)
             client.writeData({ data: { isLoggedIn: true, } })
         
+            window.scrollTo(0,0)
             history.push('/home')
 
         } catch (error) {

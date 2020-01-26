@@ -45,6 +45,7 @@ export const Login = ({ opToggle }) => {
         localStorage.setItem('token', token)
         client.writeData({ data: { isLoggedIn: true, /**userToken: token,**/ } })
     
+        window.scrollTo(0,0)
         history.push('/home')
     }
 
@@ -71,13 +72,12 @@ export const Login = ({ opToggle }) => {
                     type='password'
                     required />
 
-
                 <SubmitButton
                     type='submit'
 
-                >   Submit
+                > Submit
                 </SubmitButton>
-
+                
                 <p>
                     Don't have an account?
                     <SwitchLink 
