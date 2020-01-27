@@ -23,8 +23,9 @@ export const PageContainer = styled.div`
 
 export const WidePageContainer = styled.div`
     width: 100vw;
+    min-height: 100vh;
     /* border: 1px solid red;*/
-    /* height: 1000vh;  */
+    /* height: 150vh;  */
 
     /* @media (min-width: 640px) {
         width: 99vw;

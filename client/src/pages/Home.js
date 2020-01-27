@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react'
+import React, { Fragment, useState, useEffect, } from 'react'
 import { OpSwitch, GridStack, Footer, } from '../components'
 import { WidePageContainer, } from './PageComp'
 
@@ -18,18 +18,18 @@ export const Home = props => {
 
 
     return (
-        <WidePageContainer>
-            <div>
+        <Fragment>
+            <WidePageContainer>
                 <OpSwitch 
                     optButtons={optButtons}
                     handleToggle={handleToggle} />
-            </div>
-            <div>
+            
                 <GridStack />
-            </div>
-
+            
+            </WidePageContainer>
             <Footer />
-        </WidePageContainer>
+        </Fragment>
+        
         
     )
 }
