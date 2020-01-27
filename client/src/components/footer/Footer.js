@@ -1,9 +1,12 @@
 import React from 'react'
-import { FooterContainer, } from './FooterComp'
+import { FooterContainer, FooterIcon, } from './FooterComp'
 
 
 export const Footer = () => {
     return (
-        <FooterContainer />
+        <FooterContainer>
+            <FooterIcon className='fas fa-chevron-up' />
+            <FooterIcon className='fas fa-plus' />   
+        </FooterContainer>
     )
 }
