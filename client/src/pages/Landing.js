@@ -15,12 +15,12 @@ const Landing = props => {
 
     
     useEffect(() => {
-        if (data.isLoggedIn) {
+        if (data && data.isLoggedIn) {
             history.push('/home')
         }
 
     // updates form upon user action
-    }, [history, data.isLoggedIn, formDisplay])
+    }, [history, data, formDisplay])
 
     const handleToggle = buttonName => {
         setFormDisplay(buttonName)

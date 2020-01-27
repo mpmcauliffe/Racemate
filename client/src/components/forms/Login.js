@@ -44,7 +44,7 @@ export const Login = ({ opToggle }) => {
 
         localStorage.setItem('token', token)
         client.writeData({ data: { isLoggedIn: true, /**userToken: token,**/ } })
-    
+
         window.scrollTo(0,0)
         history.push('/home')
     }

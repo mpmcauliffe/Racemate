@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory, } from 'react-router-dom' 
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import { NavLink } from './NavComp'
 import { IS_LOGGED_IN, } from '../../graphql'
@@ -7,17 +8,19 @@ import './navWheel.css'
 
 
 export const NavWheelTest = () => {
-    const client                                = useApolloClient()
-    const { data }                              = useQuery(IS_LOGGED_IN)
-
+    const client                  = useApolloClient()
+    const { data }                = useQuery(IS_LOGGED_IN)
+    let history                   = useHistory()
 
     const onLogoutClick = () => {
         if (data) {
-            client.writeData({ data: { isLoggedIn: false, }})
             window.scrollTo(0,0)
-            //client.resetStore()
-            client.clearStore()
-            localStorage.clear()
+            
+            localStorage.clear() 
+            client.cache.reset()
+            client.writeData({ data: { isLoggedIn: false, }})
+
+            history.push('/')
         }
     }
 
