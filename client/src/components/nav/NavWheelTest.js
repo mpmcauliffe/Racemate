@@ -10,11 +10,13 @@ export const NavWheelTest = () => {
     const client                                = useApolloClient()
     const { data }                              = useQuery(IS_LOGGED_IN)
 
+
     const onLogoutClick = () => {
         if (data) {
             client.writeData({ data: { isLoggedIn: false, }})
             window.scrollTo(0,0)
-            client.resetStore()
+            //client.resetStore()
+            client.clearStore()
             localStorage.clear()
         }
     }
