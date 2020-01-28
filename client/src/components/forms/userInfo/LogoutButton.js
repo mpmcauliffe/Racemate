@@ -1,7 +1,6 @@
 import React from 'react'
-import { GET_USER_INFO } from '../../graphql'
 
-export const UserInfo = () => {
+export const LogoutButton = () => {
     return (
         <div>
             

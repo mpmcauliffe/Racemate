@@ -1,8 +1,9 @@
 import React from 'react'
 import { useHistory, } from 'react-router-dom' 
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
-import { NavLink } from './NavComp'
+//import { NavLink } from './NavComp'
 import { NavMenuKit, } from './NavMenuComp'
+import { UserInfo } from '../../components'
 import { IS_LOGGED_IN, } from '../../graphql'
 
 
@@ -36,31 +37,8 @@ export const NavMenu = () => {
 
             <nav className='navigation__nav'>
 
-                {/**<ul className='navigation__list'>
-                    <li className='navigation__item'>
-                        <NavLink className='navigation__link'>Add Exercise</NavLink>
-                    </li>
-                    <li className='navigation__item'>
-                        <NavLink className='navigation__link'>Create Workout</NavLink>
-                    </li>
-                    <li className='navigation__item'>
-                        <NavLink className='navigation__link'>Generate Routine</NavLink>
-                    </li>
-
-                    <br /><br /><br /><br />
-                    <br /><br /><br /><br />
-
-                    <li className='navigation__item'>
-                        <NavLink className='navigation__link'>Profile</NavLink>
-                    </li>
-                    <li className='navigation__item'>
-                        <NavLink
-                            onClick={onLogoutClick} 
-                            className='navigation__link'>
-                            Logout
-                        </NavLink>
-                    </li>
-                </ul>**/}
+                <UserInfo />
+                
             </nav>
         </NavMenuKit>
     )
