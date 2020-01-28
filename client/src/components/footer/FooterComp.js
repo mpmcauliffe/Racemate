@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const FooterContainer = styled.div`
-    position: sticky; 
+    position: fixed; 
     display: flex;
     bottom: 0; 
     z-index: 1000;
     height: 7rem; 
     width: 90%; 
-    margin: 0 auto -7rem auto;
+    margin: 0 auto;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem; 
