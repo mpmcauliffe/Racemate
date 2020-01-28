@@ -1,7 +1,9 @@
 import React, { useState, useEffect, } from 'react'
 import { Header, NavContainer, } from './NavComp'
 import { useQuery, } from '@apollo/react-hooks'
-import { NavWheelTest, } from './NavWheelTest'
+//import { NavWheelTest, } from './NavWheelTest'
+import { NavMenu } from './NavMenu'
+
 import { IS_LOGGED_IN, } from '../../graphql'
 
 
@@ -20,7 +22,7 @@ export const Nav = () => {
         <NavContainer>
             <Header id='navHeader'>RACEMATE</Header>
             
-            {data.isLoggedIn && <NavWheelTest />}
+            {data.isLoggedIn && <NavMenu />}
         </NavContainer>
     )
 }

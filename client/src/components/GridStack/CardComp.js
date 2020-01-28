@@ -13,7 +13,7 @@ export const CardName = styled.h3`
     /* position: relative; */
     position: absolute;
     margin: .7rem 0;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: ${props => props.theme.lightGray};
 
     @media (min-width: 480px) {
@@ -29,7 +29,7 @@ export const CardName = styled.h3`
 export const CardType = styled.p`
     position: absolute;
     margin-top: 6%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: ${props => props.theme.midGrayCool};
 
     @media (min-width: 480px) {
@@ -55,7 +55,7 @@ export const IconContainer = styled.div`
     width: 27%;
     justify-content: space-between;
     margin-top: 27%;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: ${props => props.theme.midGrayCool};
 
     @media (min-width: 480px) {

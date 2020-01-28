@@ -8,6 +8,7 @@ const Theme = {
     colorDark: '#0E1C2E',
     
     /* secondaries */
+    secondaryWhite: '#ffdd00',
     secondaryLight: '#ffb900',
     secondaryDark: '#ff7730',
 
