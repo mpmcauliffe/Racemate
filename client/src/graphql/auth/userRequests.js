@@ -16,23 +16,6 @@ export const REGISTER_USER = gql`
     }
 `
 
-// export const LOGIN = gql`
-//     mutation(data: {
-//         $email: String!, $password: String!
-//     }) {
-//         login (
-//             data: {
-//                 email: $email,
-//                 password: $password
-//             }
-//         ) {
-//             Login
-//             token
-//             error
-//         }
-//     }
-// `
-
 export const LOGIN = gql`
     mutation($email: String!, $password: String!) {
         login (
@@ -47,14 +30,25 @@ export const LOGIN = gql`
     }
 `
 
-// export const LOGOUT = gql`
-//     mutation
-// `
-
 export const IS_LOGGED_IN = gql`
     query GetIsLoggedIn {
         isLoggedIn @client
         #userToken @client
+    }
+`
+
+export const GET_USER_INFO = gql`
+    query {
+        me {
+            #_id
+            name
+            email
+            # exercises {
+            #     id
+            #     title
+            #     exerciseType
+            # }
+        }
     }
 `
 

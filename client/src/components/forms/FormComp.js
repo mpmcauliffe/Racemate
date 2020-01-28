@@ -38,7 +38,6 @@ export const SubmitButton = styled.button`
     }
 `
 
-
 export const SwitchLink = styled.span`
     color: #4B7DBA;
 
@@ -46,6 +45,8 @@ export const SwitchLink = styled.span`
         cursor: pointer;
     }
 `
+
+
 
 // colorPrimary: '#1c395c',
 //     colorLight: '#4B7DBA',

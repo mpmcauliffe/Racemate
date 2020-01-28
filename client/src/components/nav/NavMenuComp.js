@@ -32,6 +32,17 @@ export const NavMenuKit = styled.div`
             ${props => props.theme.colorDark}
         );
         transition: transform .8s cubic-bezier(.86, 0, .07, 1); /* https://cubic-bezier.com */
+
+        @media (min-width: 769px) {
+            right: 11.5%;
+        }
+        @media (min-width: 1025px) {            
+            right: 26.5%;
+            
+        }
+        @media (min-width: 1601px) {            
+            right: 16%;            
+        }
     }
 
     .navigation__nav {
@@ -51,7 +62,7 @@ export const NavMenuKit = styled.div`
         /* background-color: orangered; */
     }
 
-    
+
     .navigation__checkbox:checked ~ .navigation__background {
         position: fixed;
         transform: scale(150);
@@ -100,6 +111,26 @@ export const NavMenuKit = styled.div`
     .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
         top: 0;
         transform: rotate(-135deg);
+    }
+
+
+    @media (min-width: 769px) {
+    .navigation__button,
+    .navigation__nav {
+            right: 10%;
+        }
+    }
+    @media (min-width: 1025px) {
+        .navigation__button,
+        .navigation__nav {
+            right: 25%;
+        }
+    }
+    @media (min-width: 1601px) {
+        .navigation__button,
+        .navigation__nav {
+            right: 15%;
+        }
     }
 
     /* & > ul {
