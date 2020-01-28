@@ -8,6 +8,7 @@ export const MainGrid = styled.div.attrs(props => ({
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     grid-gap: .1em;
+    margin-bottom: 9rem;
     
 
     &::before {

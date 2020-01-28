@@ -7,7 +7,9 @@ export const FooterContainer = styled.div`
     z-index: 1000;
     height: 7rem; 
     width: 90%; 
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    left: 50%;
+    transform: translate(-50%, 0);
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem; 

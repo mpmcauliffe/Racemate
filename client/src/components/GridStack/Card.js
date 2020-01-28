@@ -10,9 +10,9 @@ import { truncate, } from '../../helpers'
 export const Card = props => {
     const { info } = props
 
-    const cardClick = e => {
+    const cardActivate = e => {
         e.preventDefault()
-        console.log('Card click')
+        console.log('card activate')
     }
     const editClick = e => {
         e.preventDefault()
@@ -20,12 +20,12 @@ export const Card = props => {
     }
 
     return (
-        <CardContainer onClick={cardClick}>
+        <CardContainer>
             <CardName>{truncate(info.title, 15)}</CardName>
             <CardType>{truncate(info.exerciseType, 19)}</CardType>
             <IconContainer>
                 <CardIcon className='far fa-edit' onClick={editClick}></CardIcon>
-                <CardIcon className='fas fa-dumbbell'></CardIcon>
+                <CardIcon className='fas fa-dumbbell' onClick={cardActivate}></CardIcon>
             </IconContainer>
             {/****/}
         </CardContainer>
