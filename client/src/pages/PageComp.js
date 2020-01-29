@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 export const PageContainer = styled.div`
-    display: inline-block;
+    /* display: inline-block; */
     minWidth: 70vw;
     margin: 0 auto;
     padding: 3rem;

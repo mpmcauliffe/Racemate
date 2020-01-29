@@ -55,11 +55,15 @@ const userResolver = {
     async updateUser(args, { headers }) {
         const userId = getUserId(headers.authorization)
 
-        if (typeof args.data.password === 'string') {
-            args.data.password = await hashPassword(args.data.password)
-        }
+        console.log(args.data, userId)
+        // if (typeof args.data.password === 'string') {
+        //     args.data.password = await hashPassword(args.data.password)
+        // }
 
-        const user = await User.findById(userId)
+        // const user = await User.findByIdAndUpdate(
+        //     userId,
+        //     { $set: params.id }
+        // )
 
         // return prisma.mutation.updateUser({
         //     where: {

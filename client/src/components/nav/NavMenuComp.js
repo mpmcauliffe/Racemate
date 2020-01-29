@@ -10,7 +10,7 @@ export const NavMenuKit = styled.div`
         position: absolute;
         top: 1rem;
         right: 1rem;
-        z-index: 2500;
+        z-index: 3000;
         height: 5rem;
         width: 5rem;
         border-radius: 50%;
@@ -51,7 +51,7 @@ export const NavMenuKit = styled.div`
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 1500;
+        z-index: 2500;
         transition: all .8s;
 
         /* not toggled */

@@ -36,9 +36,8 @@ export const NavMenu = () => {
             <div className='navigation__background'>&nbsp;</div>
 
             <nav className='navigation__nav'>
-
+                {/****/}
                 <UserInfo />
-                
             </nav>
         </NavMenuKit>
     )
