@@ -7,6 +7,7 @@ import { InfoButton,
     InfoSection, } from './UserInfoComp'
 import { FormContainer, } from '../FormComp'
 import { Alert, } from '../../../components'
+import { UPDATE_USER_PASSWORD } from '../../../graphql'
 
 
 export const UserInfoPassword = () => {
@@ -21,9 +22,11 @@ export const UserInfoPassword = () => {
     })
     const { currentPassword, newPassword, newPassword2, } = userPassword
 
+    const [updateUserPassword]                            = useMutation(UPDATE_USER_PASSWORD)
+
     const onChange = e => setUserPassword({ ...userPassword, [e.target.name]: e.target.value })
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
 
         if (currentPassword === '' || newPassword === '' || newPassword2 === '') {
@@ -38,6 +41,22 @@ export const UserInfoPassword = () => {
             setAlert('"New Password" and "Confirm Password" must match', 'warning')
             return
         }
+
+        const res = await updateUserPassword({
+            variables: {
+                currentPassword,
+                newPassword
+            }
+        })
+        console.log(res.data)
+        const { message } = res.data.updateUserPassword
+console.log(message)
+        if (message === 'Invalid credentials') {
+            setAlert(message, 'warning')
+            return
+        }
+
+        setAlert(message)
     }
 
     return (

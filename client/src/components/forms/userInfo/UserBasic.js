@@ -10,7 +10,7 @@ import { UPDATE_USER } from '../../../graphql'
 
 export const UserBasic = ({ user }) => {
     const { setAlert, }         = useContext(AlertContext)
-    const [makeUpdate]               = useMutation(UPDATE_USER)
+    const [makeUpdate]          = useMutation(UPDATE_USER)
 
     const [updateUser, setUpdateUser] = useState({
         name: user.name,

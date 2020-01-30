@@ -80,7 +80,7 @@ const userResolver = {
                 { $set: updatedFields },
                 { new: true }
             )
-            console.log(user)
+            
             const { name, email, } = user
 
             return { message: 'Updated successfully' }
@@ -89,6 +89,33 @@ const userResolver = {
             console.log(e)
         }
     },
+    async updateUserPassword(args, { headers }) {
+        const userId = getUserId(headers.authorization)
+        const { currentPassword, newPassword, } = args.data
+        const user = await User.findById(userId)
+
+        const isMatch = await bcrypt.compare(currentPassword, user.password)
+        if (!isMatch) {
+            return { message: 'Invalid credentials' }
+        }
+
+        const hashedPassword = await hashPassword(newPassword)
+        const updatedField   = { password: hashedPassword, }
+
+        try {
+             const user = await User.findByIdAndUpdate(
+                userId,
+                { $set: updatedField },
+                { new: true }
+            )
+
+            return { message: 'Password updated successfully' }
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
     // async deleteUser(parent, args, { prisma, request }, info) {
     //     const userId = getUserId(request)
 

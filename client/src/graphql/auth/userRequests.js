@@ -45,6 +45,18 @@ export const UPDATE_USER = gql`
         }
     }
 `
+export const UPDATE_USER_PASSWORD = gql`
+    mutation($currentPassword: String!, $newPassword: String!) {
+        updateUserPassword (
+            data: {
+                currentPassword: $currentPassword,
+                newPassword: $newPassword
+            }
+        ) {
+            message
+        }
+    }
+`
 export const IS_LOGGED_IN = gql`
     query GetIsLoggedIn {
         isLoggedIn @client

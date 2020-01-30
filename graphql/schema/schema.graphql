@@ -13,6 +13,7 @@ type Mutation {
     login(data: LoginUserInput!): AuthPayload!
     deleteUser: User!
     updateUser(data: UpdateUserInput!): UpdatePayload!
+    updateUserPassword(data: UpdateUserPasswordInput!): UpdatePasswordPayload!
 
     ### EXERCISE
     createExercise(data: CreateExerciseInput): Exercise!
@@ -42,6 +43,10 @@ type UpdatePayload {
     user: User,
     message: String
 }
+type UpdatePasswordPayload {
+    message: String
+}
+
 input CreateUserInput {
     name: String!
     email: String!
@@ -55,6 +60,11 @@ input UpdateUserInput {
     name: String
     email: String
 }
+input UpdateUserPasswordInput {
+    currentPassword: String!
+    newPassword: String!
+}
+
 type User {
     _id: ID!
     name: String!
