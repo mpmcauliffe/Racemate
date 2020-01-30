@@ -19,7 +19,7 @@ export const UserInfo = () => {
     const [showBasicUpdate, setShowBasicUpdate] = useState(false)
 
     
-    if (loading && !data) {
+    if (loading || !data) {
         return  <InfoText
                     style={{ marginTop: '10rem',
                         textAlign: 'center', }} >
@@ -46,10 +46,10 @@ export const UserInfo = () => {
                         onClick={() => setShowBasicUpdate(!showBasicUpdate)} />
                 </InfoSection>
                     {showBasicUpdate && <UserBasic user={me} />}
-                    
-                <InfoSection>
+
+                
                     <UserInfoPassword />
-                </InfoSection>
+                
             </UserInfoContainer>
         </Fragment>
         

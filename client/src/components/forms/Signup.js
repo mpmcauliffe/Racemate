@@ -90,7 +90,7 @@ export const Signup = ({ opToggle, }) => {
                         required />
 
 
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password'>Password ... 6 character minimum</label>
                     <input 
                         onChange={onChange}
                         value={password}

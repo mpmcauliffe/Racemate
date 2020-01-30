@@ -13,6 +13,10 @@ export const AlertBox = styled.div`
     visibility: ${props => (props.isVisible ? 'visible' : 'hidden')};
     /* border: .3rem solid ${props => props.theme.colorWarning}; */
 
+    @media (max-width: 641px) {
+        height: 6rem;
+    }
+
     @media (min-width: 768px) {
         width: 80%;
         margin: 0 auto;
