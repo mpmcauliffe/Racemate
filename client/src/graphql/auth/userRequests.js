@@ -41,7 +41,7 @@ export const UPDATE_USER = gql`
                 name
                 email
             }
-            error
+            message
         }
     }
 `

@@ -40,7 +40,7 @@ type AuthPayload {
 }
 type UpdatePayload {
     user: User,
-    error: String
+    message: String
 }
 input CreateUserInput {
     name: String!

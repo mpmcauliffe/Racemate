@@ -54,21 +54,40 @@ const userResolver = {
     },
     async updateUser(args, { headers }) {
         const userId = getUserId(headers.authorization)
-console.log('AAAAAAAAAA')
-        console.log(args.data, userId)
-        
 
-        // const user = await User.findByIdAndUpdate(
-        //     userId,
-        //     { $set: params.id }
-        // )
+        const emailStandard = /\S+@\S+\.\S+/
+        const isEmail       = emailStandard.test(args.data.email)
+        if (!isEmail) {
+            return { message: 'Invalid email' }
+        }
 
-        // return prisma.mutation.updateUser({
-        //     where: {
-        //         id: userId
-        //     },
-        //     data: args.data
-        // }, info)
+        const { name, email, }  = args.data
+        const updatedFields     = {}
+
+        if (name) updatedFields.name    = name
+        if (email) updatedFields.email  = email
+
+
+        try {
+            let user = await User.findById(userId)
+            
+            if (!user) {
+                return { message: 'User not found' }
+            }
+
+            user = await User.findByIdAndUpdate(
+                userId,
+                { $set: updatedFields },
+                { new: true }
+            )
+            console.log(user)
+            const { name, email, } = user
+
+            return { message: 'Updated successfully' }
+
+        } catch (e) {
+            console.log(e)
+        }
     },
     // async deleteUser(parent, args, { prisma, request }, info) {
     //     const userId = getUserId(request)

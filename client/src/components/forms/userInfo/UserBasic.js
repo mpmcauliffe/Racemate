@@ -34,12 +34,13 @@ export const UserBasic = ({ user }) => {
             }
         })
 
-        if (res.data.makeUpdate.error) {
-            setAlert(res.data.login.error, 'warning')
+        const { message } = res.data.updateUser
+        if (message === 'Invalid email' || message === 'User not found') {
+            setAlert(message, 'warning')
             return
         }
 
-        setAlert('Information successfully updated')
+        setAlert(message)
     }
 
     const { name, email, } = updateUser
