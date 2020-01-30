@@ -66,3 +66,6 @@ export const InfoButton = styled.div`
     border-radius: .5rem;
     cursor: pointer;
 `
+export const UserLabel = styled.label`
+    color: ${props => props.theme.midLtGray};
+`

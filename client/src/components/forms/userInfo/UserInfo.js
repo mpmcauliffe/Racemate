@@ -16,6 +16,8 @@ export const UserInfo = () => {
     const client                = useApolloClient()
     const { loading, data, }    = useQuery(GET_USER_INFO)
 
+    const [showBasicUpdate, setShowBasicUpdate] = useState(false)
+
     
     if (loading && !data) {
         return  <InfoText
@@ -29,7 +31,7 @@ export const UserInfo = () => {
     
     return (
         <Fragment>
-            <InfoSection>
+            <InfoSection style={{ marginLeft: '2rem', }}>
                 <LogoutButton />
             </InfoSection>
                 
@@ -39,9 +41,12 @@ export const UserInfo = () => {
                         <InfoText>Name: {me.name}</InfoText>
                         <InfoText>Email: {me.email}</InfoText>
                     </div>
-                    <InfoIcon className='far fa-edit'></InfoIcon>
+                    <InfoIcon 
+                        className='far fa-edit'
+                        onClick={() => setShowBasicUpdate(!showBasicUpdate)} />
                 </InfoSection>
-
+                    {showBasicUpdate && <UserBasic user={me} />}
+                    
                 <InfoSection>
                     <UserInfoPassword />
                 </InfoSection>

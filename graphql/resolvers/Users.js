@@ -54,11 +54,9 @@ const userResolver = {
     },
     async updateUser(args, { headers }) {
         const userId = getUserId(headers.authorization)
-
+console.log('AAAAAAAAAA')
         console.log(args.data, userId)
-        // if (typeof args.data.password === 'string') {
-        //     args.data.password = await hashPassword(args.data.password)
-        // }
+        
 
         // const user = await User.findByIdAndUpdate(
         //     userId,

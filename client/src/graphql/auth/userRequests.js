@@ -29,7 +29,22 @@ export const LOGIN = gql`
         }
     }
 `
-
+export const UPDATE_USER = gql`
+    mutation($name: String, $email: String) {
+        updateUser (
+            data: {
+                name: $name,
+                email: $email
+            }
+        ) {
+            user {
+                name
+                email
+            }
+            error
+        }
+    }
+`
 export const IS_LOGGED_IN = gql`
     query GetIsLoggedIn {
         isLoggedIn @client

@@ -48,9 +48,10 @@ export const NavMenuKit = styled.div`
     .navigation__nav {
         position: absolute;
         height: 100vh;
-        position: fixed;
+        /* position: fixed; */
         top: 0;
-        left: 0;
+        /* left: 0; */
+        left: -100%;
         z-index: 2500;
         transition: all .8s;
 
@@ -69,6 +70,7 @@ export const NavMenuKit = styled.div`
     }
     .navigation__checkbox:checked ~ .navigation__nav {
         opacity: 1;
+        left: 0;
         width: 100%;
     }
 
