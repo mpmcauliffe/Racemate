@@ -2,11 +2,12 @@ import React, { Fragment, useState, useContext, } from 'react'
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 import AlertContext from '../../../context/alert/alertContext'
 
-import { InfoButton, 
+import { FormContainer, 
+    InfoButton, 
     UserLabel, 
-    InfoSection, } from './UserInfoComp'
-import { FormContainer, } from '../FormComp'
+    InfoSection,} from '../FormComp'
 import { Alert, } from '../../../components'
+
 import { UPDATE_USER_PASSWORD } from '../../../graphql'
 
 

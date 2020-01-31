@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useContext, } from 'react'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
-import AlertContext from '../../context/alert/alertContext'
+import AlertContext from '../../../context/alert/alertContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
-import { Alert } from '../../components'
-import { FormContainer, SubmitButton, SwitchLink, } from './FormComp'
-import { REGISTER_USER, } from '../../graphql'
+import { Alert } from '../..'
+import { FormContainer, SubmitButton, SwitchLink, } from '../FormComp'
+import { REGISTER_USER, } from '../../../graphql'
 
 
 export const Signup = ({ opToggle, }) => {

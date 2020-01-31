@@ -1,7 +1,9 @@
 import React from 'react'
 import { useHistory, } from 'react-router-dom' 
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
-import { InfoButton, } from './UserInfoComp'
+
+import { InfoButton, } from '../FormComp'
+
 import { IS_LOGGED_IN, } from '../../../graphql'
 
 

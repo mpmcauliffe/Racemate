@@ -4,7 +4,7 @@ import { useApolloClient, useQuery, } from '@apollo/react-hooks'
 import { UserInfoContainer, 
     InfoSection, 
     InfoText, 
-    InfoIcon, } from './UserInfoComp'
+    InfoIcon, } from '../FormComp'
 import { LogoutButton,
     UserBasic,
     UserInfoPassword, } from '../userInfo'
