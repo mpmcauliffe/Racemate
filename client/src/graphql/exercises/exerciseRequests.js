@@ -34,3 +34,14 @@ export const GET_EXERCISES = gql`
         }
     }
 `
+export const GET_TOGGLE_STATUS = gql`
+    query GetToggleStatus {
+        userSelection @client
+    }
+`
+
+// export const IS_LOGGED_IN = gql`
+//     query GetIsLoggedIn {
+//         isLoggedIn @client
+//         #userToken @client
+//     }

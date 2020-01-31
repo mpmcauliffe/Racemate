@@ -1,6 +1,9 @@
 import React, { useReducer, } from 'react'
 import OpSwitchContext from './opSwitchContext'
-import { HANDLE_CLICK, GET_ACTIVE, } from './types'
+import { SET_ACTIVE_STATE, 
+    HANDLE_CLICK, 
+    GET_ACTIVE_STATE,
+    SET_ERROR } from './types'
 
 
 export const OpSwitchState = () => {
@@ -8,11 +11,15 @@ export const OpSwitchState = () => {
         items: [ ],
         active: 0,
         buttonSize: 0,
+        error: [ ],
     }
 
     const [state, dispatch] = useReducer(authReducer, initialState)
 
     
+    const setInitialState = buttonArray => {
+        if (buttonArray.length )
+    }
 
 
     return (
