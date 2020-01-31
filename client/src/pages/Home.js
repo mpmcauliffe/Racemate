@@ -12,11 +12,12 @@ export const Home = props => {
     client.writeData({ data: { userSelection: userSelection } })
     
     useEffect(() => {
-        //console.log(userSelection)
+        
     }, [userSelection])
 
     const handleToggle = buttonName => {
         setUserSelection(buttonName)
+        client.writeData({ data: { userSelection: userSelection } })
     }
 
 
@@ -30,7 +31,7 @@ export const Home = props => {
                 <GridStack />
             
             </WidePageContainer>
-            <Footer addButtonAction={userSelection} />
+            <Footer />
         </Fragment>
         
         

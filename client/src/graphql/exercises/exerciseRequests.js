@@ -39,6 +39,11 @@ export const GET_TOGGLE_STATUS = gql`
         userSelection @client
     }
 `
+export const SUBSCRIBE_TOGGLE_STATUS = gql`
+    subscription {
+        userSelection @client
+    }
+`
 
 // export const IS_LOGGED_IN = gql`
 //     query GetIsLoggedIn {

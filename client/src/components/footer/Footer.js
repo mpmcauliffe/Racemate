@@ -1,30 +1,39 @@
-import React from 'react'
+import React, { Fragment, useState, } from 'react'
 import PropTypes from 'prop-types'
-import { useQuery, } from '@apollo/react-hooks'
+import { useQuery, useSubscription, } from '@apollo/react-hooks'
 import { Link as ScrollLink } from 'react-scroll'
 import { FooterContainer, FooterIcon, } from './FooterComp'
+import { Modal, } from '../../components'
 import { GET_TOGGLE_STATUS } from '../../graphql'
 
 
 
-export const Footer = ({ addButtonAction }) => {
-    
+export const Footer = () => {
+    const [modalToggle, setModalToggle] = useState(false)
     const { loading, data } = useQuery(GET_TOGGLE_STATUS)
 
-    return (
-        <FooterContainer>
-            <ScrollLink
-                to='navHeader' 
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration= {500} >
+    const handleModalToggle = () => setModalToggle(!modalToggle)
 
-                <FooterIcon className='fas fa-chevron-up' />
-            </ScrollLink>
-            {data && <div>{data.userSelection}</div>}
-            <FooterIcon className='fas fa-plus' />   
-        </FooterContainer>
+    return (
+        <Fragment>
+            <Modal modalToggle={modalToggle} />
+            <FooterContainer>
+                <ScrollLink
+                    to='navHeader' 
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration= {500} >
+
+                    <FooterIcon className='fas fa-chevron-up' />
+                </ScrollLink>
+                {data && <div>{data.userSelection}</div>}
+                <FooterIcon 
+                    onClick={handleModalToggle}
+                    className='fas fa-plus' />   
+            </FooterContainer>
+        </Fragment>
+        
     )
 }
 
