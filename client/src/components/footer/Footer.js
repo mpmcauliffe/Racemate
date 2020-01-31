@@ -1,10 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link as ScrollLink } from 'react-scroll'
 import { FooterContainer, FooterIcon, } from './FooterComp'
 
 
 
-export const Footer = () => {
+export const Footer = ({ addButtonAction }) => {
+    console.log(addButtonAction)
+    
     return (
         <FooterContainer>
             <ScrollLink
@@ -20,4 +23,8 @@ export const Footer = () => {
             <FooterIcon className='fas fa-plus' />   
         </FooterContainer>
     )
+}
+
+Footer.propTypes = {
+    addButtonAction: PropTypes.string,
 }

@@ -27,7 +27,7 @@ export const Home = props => {
                 <GridStack />
             
             </WidePageContainer>
-            <Footer />
+            <Footer addButtonAction={userSelection} />
         </Fragment>
         
         

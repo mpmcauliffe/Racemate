@@ -7,6 +7,7 @@ export const OpSwitchState = () => {
     const initialState = {
         items: [ ],
         active: 0,
+        buttonSize: 0,
     }
 
     const [state, dispatch] = useReducer(authReducer, initialState)
