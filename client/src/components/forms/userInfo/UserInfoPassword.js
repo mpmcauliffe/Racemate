@@ -51,7 +51,7 @@ export const UserInfoPassword = () => {
         })
         console.log(res.data)
         const { message } = res.data.updateUserPassword
-console.log(message)
+
         if (message === 'Invalid credentials') {
             setAlert(message, 'warning')
             return
@@ -65,9 +65,8 @@ console.log(message)
             <InfoSection>
                 <InfoButton 
                     onClick={() => setShowPasswordForm(!showPasswordForm)}
-
-                    style={{ width: '70%', 
-                        margin: '5rem auto 1rem auto' }} 
+                    wide
+                    style={{ margin: '5rem auto 1rem auto' }} 
                 > Change Password
                 </InfoButton>
             </InfoSection>
@@ -102,6 +101,7 @@ console.log(message)
 
                         <InfoButton 
                             onClick={onSubmit}
+                            wide
                         > Update Password
                         </InfoButton>
                     </FormContainer>

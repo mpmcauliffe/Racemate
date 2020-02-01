@@ -1,7 +1,6 @@
 import React from 'react'
 import { useHistory, } from 'react-router-dom' 
 import { useApolloClient, useQuery, } from '@apollo/react-hooks'
-//import { NavLink } from './NavComp'
 import { NavMenuKit, } from './NavMenuComp'
 import { UserInfo } from '../../components'
 import { IS_LOGGED_IN, } from '../../graphql'

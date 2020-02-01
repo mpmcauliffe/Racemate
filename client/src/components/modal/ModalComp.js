@@ -18,6 +18,3 @@ export const ModalComp = styled(ReactModal)`
         color: ${props => props.theme.primaryGray}
     }
 `
-export const ModalTitle = styled.h3`
-    color: ${props => props.theme.primaryGray}
-`

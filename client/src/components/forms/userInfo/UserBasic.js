@@ -66,6 +66,7 @@ export const UserBasic = ({ user }) => {
                     
                 <InfoButton 
                     onClick={onSubmit}
+                    wide
                 > Update Information
                 </InfoButton>
             </FormContainer>

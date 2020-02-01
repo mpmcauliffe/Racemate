@@ -1,6 +1,7 @@
 export * from './alert/Alert'
 export * from './banner/Banner'
 export * from './footer/Footer'
+export * from './forms/FormComp'
 export * from './forms/auth/Login'
 export * from './forms/auth/Signup'
 export * from './forms/userInfo/UserInfo'

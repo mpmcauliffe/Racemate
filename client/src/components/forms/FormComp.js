@@ -95,19 +95,21 @@ export const InfoIcon = styled.i`
     cursor: pointer;
 `
 
-export const InfoButton = styled.div`
+export const InfoButton = styled.button`
     display: inline-block;
+    min-height: 5rem;
+    width: ${props => props.wide ? '70%' : '11rem'};
     margin: 1.5rem 0;
-    width: 10rem;
-
+    
     padding: 1rem 2rem;
 
     text-align: center;
     font-family: "proxima-nova-condensed";
     font-size: 1.9rem;
-    color: ${props => props.theme.primaryGray};
+    color: ${props => props.theme.midLtGray};
     
-    border: .2rem solid ${props => props.theme.primaryGray};
+    background: transparent; /*${props => props.theme.colorPrimary};*/
+    border: .2rem solid ${props => props.theme.midLtGray};
     border-radius: .5rem;
     cursor: pointer;
 `

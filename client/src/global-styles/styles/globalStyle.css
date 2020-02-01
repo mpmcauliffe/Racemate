@@ -54,7 +54,8 @@ label {
     margin-left: 5%;
     font-size: 1.9rem;
 }
-input {
+input,
+textarea {
     height: 3.5rem;
     width: 80%;
     margin: 1rem 0 4rem 0;
@@ -64,6 +65,9 @@ input {
     font-size: 2.7rem;
     transition: 500ms;
 }
+textarea {
+    height: 10.5rem;
+} 
 input:focus, 
 textarea:focus, 
 select:focus, 
