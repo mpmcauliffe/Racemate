@@ -1,26 +1,49 @@
-import React, { useEffect, } from 'react'
+import React, { useState, useEffect, } from 'react'
 import ReactModal from 'react-modal'
+import { useApolloClient, useQuery, useMutation, } from '@apollo/react-hooks'
 
-import { ModalComp, } from './ModalComp' 
+import { FooterIcon, ModalComp, ModalCloseButton, } from './ModalComp' 
 import { 
     Alert,
     FormContainer, 
     InfoIcon, 
     InfoButton, 
+    Loader,
     UserLabel, } from '../../components'
 
+import { GET_MODAL_STATUS, GET_TOGGLE_STATUS, } from '../../graphql'
 
-export const Modal = ({ modalToggle }) => {
+
+export const Modal = () => {
+    const [modalToggle, setModalToggle] = useState(false)
+
     useEffect(() => ModalComp.setAppElement('body'), [])
-    // title: "dumbell side bend",
-    // exerciseType: "abs",
-    // description: "AAAAAAAAAAAAAAAAAA no"
+    
+    const handleModalToggle = () => setModalToggle(!modalToggle)
+    
+    if (!modalToggle) {
+        return <FooterIcon 
+                    onClick={handleModalToggle}
+                    className='fas fa-plus' /> 
+    }
 
     return (
-        <ModalComp isOpen={modalToggle}>
+        <ModalComp 
+            isOpen={modalToggle}
+            style={{ overlay: { zIndex: '5000' } }}>
+
             {/****/}
             <h3>Add Exercise</h3>
+            <ModalCloseButton>
+                <InfoIcon 
+                    onClick={handleModalToggle}
+                    className='fas fa-times'
+                    style={{ fontSize: '5rem' }} />
+            </ModalCloseButton>
+            
+
             <form>
+                <Alert />
                 <FormContainer>
                     <UserLabel htmlFor='title'>Exercise Name</UserLabel>
                     <input /* TITLE */

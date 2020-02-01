@@ -3,25 +3,28 @@ import styled from 'styled-components'
 export const FooterContainer = styled.div`
     position: fixed; 
     display: flex;
+
     bottom: 0; 
     z-index: 1000;
     height: 7rem; 
     width: 90%; 
-    /* margin: 0 auto; */
     left: 50%;
     transform: translate(-50%, 0);
+
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem; 
+
     background: ${props => props.theme.midLtGray}
     opacity: .7;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     /* border: .1rem solid green; */
 
-    /* @media (min-width: 480px) {
-        width: 91%;
-    } */
+    h3 {
+        color: ${props => props.theme.colorPrimary};
+    }
+    
     @media (min-width: 769px) {
         width: 80%;
         /* margin: 0 auto; */
