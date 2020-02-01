@@ -44,6 +44,24 @@ export const GET_MODAL_STATUS = gql`
         modalStatus @client
     }
 `
+// title: "dumbell side bend",
+//       exerciseType: "abs",
+//       description: "AAAAAAAAAAAAAAAAAA no"
+export const ADD_EXERCISE = gql`
+    mutation($title: String!, $exerciseType: String!, $description: String) {
+        createExercise(
+            data: {
+                title: $title,
+                exerciseType: $exerciseType,
+                description: $description
+            }
+        ) {
+            id
+            title
+            exerciseType
+        }
+    }
+`
 
 // export const SUBSCRIBE_TOGGLE_STATUS = gql`
 //     subscription {

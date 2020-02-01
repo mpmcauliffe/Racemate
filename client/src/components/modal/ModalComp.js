@@ -3,19 +3,17 @@ import ReactModal from 'react-modal'
 
 
 export const ModalComp = styled(ReactModal)`
-    /* position: absolute; */
-    /* position: fixed; */
     position: relative;
     height: 90vh;
     width: 87vw;
-    margin: 3rem auto 0 auto;
-    z-index: 10000;
+    margin: 1rem auto 0 auto;
 
     padding: 1rem 2rem;
     background: ${props => props.theme.colorDark};
 
     h3 {
         text-align: center;
+        margin: .5rem 0 1rem 0;
         color: ${props => props.theme.primaryGray}
     }
 `

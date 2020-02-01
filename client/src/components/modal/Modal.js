@@ -11,7 +11,7 @@ import {
     Loader,
     UserLabel, } from '../../components'
 
-import { GET_MODAL_STATUS, GET_TOGGLE_STATUS, } from '../../graphql'
+import { ADD_EXERCISE, } from '../../graphql'
 
 
 export const Modal = () => {
@@ -43,7 +43,7 @@ export const Modal = () => {
             
 
             <form>
-                <Alert />
+                <Alert style={{ marginTop: '1rem' }} />
                 <FormContainer>
                     <UserLabel htmlFor='title'>Exercise Name</UserLabel>
                     <input /* TITLE */
