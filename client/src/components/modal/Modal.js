@@ -18,31 +18,38 @@ export const Modal = ({ modalToggle }) => {
 
     return (
         <ModalComp isOpen={modalToggle}>
-            {/**<ModalTitle></ModalTitle>**/}
+            {/****/}
             <h3>Add Exercise</h3>
+            <form>
+                <FormContainer>
+                    <UserLabel htmlFor='title'>Exercise Name</UserLabel>
+                    <input /* TITLE */
+                        //onChange={onChange}
+                        //value={email}
+                        name='title'
+                        type='text' />
 
-            <FormContainer>
-                <UserLabel htmlFor='title'>Exercise Name</UserLabel>
-                <input /* TITLE */
-                    //onChange={onChange}
-                    //value={email}
-                    name='title'
-                    type='text' />
+                    <UserLabel htmlFor='exerciseType'>Exercise Type / Muscle Group</UserLabel>
+                    <input /* EXERCISE_TYPE */
+                        //onChange={onChange}
+                        //value={email}
+                        name='exerciseType'
+                        type='text' />
 
-                <UserLabel htmlFor='exerciseType'>Exercise Type / Muscle Group</UserLabel>
-                <input /* EXERCISE_TYPE */
-                    //onChange={onChange}
-                    //value={email}
-                    name='exerciseType'
-                    type='text' />
+                    <UserLabel htmlFor='description'>Description</UserLabel>
+                    <textarea /* DESCRIPTION */
+                        //onChange={onChange}
+                        //value={email}
+                        name='description'
+                        type='text' />
 
-                <UserLabel htmlFor='description'>Description</UserLabel>
-                <textarea /* DESCRIPTION */
-                    //onChange={onChange}
-                    //value={email}
-                    name='description'
-                    type='text' />
-            </FormContainer>
+                    <InfoButton
+                        type='submit'
+                        wide
+                    > Add Exercise</InfoButton>
+                </FormContainer>
+            </form>
+            
         </ModalComp>
     )
 }
