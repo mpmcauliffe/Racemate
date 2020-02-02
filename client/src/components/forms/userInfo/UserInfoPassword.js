@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext, } from 'react'
-import { useApolloClient, useMutation, } from '@apollo/react-hooks'
+import { useMutation, } from '@apollo/react-hooks'
 import AlertContext from '../../../context/alert/alertContext'
 
 import { FormContainer, 
@@ -12,7 +12,6 @@ import { UPDATE_USER_PASSWORD } from '../../../graphql'
 
 
 export const UserInfoPassword = () => {
-    const client            = useApolloClient()
     const { setAlert, }     = useContext(AlertContext)
 
     const [showPasswordForm, setShowPasswordForm] = useState(false)

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, } from 'react'
 import ReactModal from 'react-modal'
-import Simplebar from 'simplebar-react'
 
 import { ModalTitle, 
     FooterIcon,
@@ -11,10 +10,9 @@ import {
     FormContainer, 
     InfoIcon, 
     InfoButton, 
-    Loader,
     UserLabel, } from '../../components'
 
-import { useApolloClient, useQuery, useMutation, } from '@apollo/react-hooks'
+import { useMutation, } from '@apollo/react-hooks'
 import { ADD_EXERCISE, } from '../../graphql'
 
 import 'simplebar/dist/simplebar.min.css'

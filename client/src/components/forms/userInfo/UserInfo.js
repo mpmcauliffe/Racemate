@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useContext, } from 'react'
-import { useApolloClient, useQuery, } from '@apollo/react-hooks'
+import React, { Fragment, useState, } from 'react'
+import { useQuery, } from '@apollo/react-hooks'
 
 import { UserInfoContainer, 
     InfoSection, 
@@ -13,7 +13,6 @@ import { GET_USER_INFO } from '../../../graphql'
 
 
 export const UserInfo = () => {
-    const client                = useApolloClient()
     const { loading, data, }    = useQuery(GET_USER_INFO)
 
     const [showBasicUpdate, setShowBasicUpdate] = useState(false)
