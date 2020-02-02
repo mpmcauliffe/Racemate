@@ -45,7 +45,9 @@ a {
     color: #7A8A9E;
 }
 
-label, input {
+label, 
+input, 
+textarea {
     font-family: "proxima-nova";
     font-weight: 100;
 }

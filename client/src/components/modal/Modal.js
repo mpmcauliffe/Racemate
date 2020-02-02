@@ -1,4 +1,5 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect, useContext, } from 'react'
+import AlertContext from '../../context/alert/alertContext'
 import ReactModal from 'react-modal'
 
 import { ModalTitle, 
@@ -15,12 +16,12 @@ import {
 import { useMutation, } from '@apollo/react-hooks'
 import { ADD_EXERCISE, } from '../../graphql'
 
-import 'simplebar/dist/simplebar.min.css'
-
 
 export const Modal = () => {
     const [modalToggle, setModalToggle] = useState(false)
     const [addExercise]                 = useMutation(ADD_EXERCISE) 
+    const { setAlert, }                 = useContext(AlertContext)
+
 
     const [formData, setFormData]       = useState({
         title: '',
@@ -34,8 +35,25 @@ export const Modal = () => {
     
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
+
+        try {
+            const res = await addExercise({
+                variables: {
+                    title: formData.title,
+                    exerciseType: formData.exerciseType,
+                    description: formData.description,
+                },
+            })
+
+            console.log(res)
+
+
+        } catch (e) {
+            console.log(e)
+            setAlert(e, 'warning')
+        }
     }
 
     if (!modalToggle) {

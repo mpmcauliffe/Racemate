@@ -5,7 +5,7 @@ const getUserId             = require('../../helpers/getUserId')
 
 const exerciseResolver = {
     async createExercise(args, { headers }) {
-        
+        console.log(args.data)
         const userId = getUserId(headers.authorization)
         const { title, exerciseType, description, sets, notes, } = args.data
         
