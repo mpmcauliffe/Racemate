@@ -24,6 +24,7 @@
     "react-scripts": "3.2.0",
     "react-scroll": "^1.7.15",
     "require-graphql-file": "^1.0.1",
+    "simplebar-react": "^2.1.0",
     "styled-components": "^4.4.1",
     "uuid": "^3.3.3"
   },

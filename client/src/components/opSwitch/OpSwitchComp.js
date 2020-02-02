@@ -11,7 +11,7 @@ export const ButtonSet = styled.button`
     /* margin-bottom: 5rem; */
     float: right;
     color: ${props => props.theme.lightGray};
-    background: ${props => (props.active ? props.theme.colorPrimary : props.theme.unGray)};
+    background: ${props => (props.active ? props.theme.colorDark : props.theme.unGray)};
     transition: 500ms;
 
     &:focus {
