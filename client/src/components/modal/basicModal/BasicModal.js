@@ -5,7 +5,6 @@ import ReactModal from 'react-modal'
 import Simplebar from 'simplebar-react'
 
 import { ModalTitle, 
-    FooterIcon,
     ModalCloseButton, 
     modalContent, } from '../ModalComp' 
 import { 
@@ -15,18 +14,13 @@ import {
     InfoButton, 
     UserLabel, } from '../..'
 
-import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { ADD_EXERCISE, GET_EXERCISES, } from '../../../graphql'
-
 import 'simplebar/dist/simplebar.min.css'
 
 
 export const BasicModal = props => {
     const [modalToggle, setModalToggle] = useState(false)
-    const [addExercise]                 = useMutation(ADD_EXERCISE) 
     const { submitExercise, }           = useContext(ModalFormContext)
     const { setAlert, }                 = useContext(AlertContext)
-    const client                        = useApolloClient()
 
     const [formData, setFormData]       = useState({
         title: '',
@@ -44,7 +38,7 @@ export const BasicModal = props => {
         e.preventDefault()
 
         // e = [...z, ...[c]] | where z is an array & c is not an array
-        res = submitExercise(formdata)
+        const res = submitExercise(formData)
         if (!res) {
             setAlert('Something went wrong', 'warning')
             window.scrollTo(0,0)

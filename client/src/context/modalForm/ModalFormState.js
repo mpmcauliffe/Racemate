@@ -2,7 +2,7 @@ import React from 'react'
 import ModalFormContext from './modalFormContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { ADD_EXERCISE, SET_EXERCISE, GET_EXERCISES, } from '../../graphql'
+import { ADD_EXERCISE, GET_EXERCISES, } from '../../graphql'
 
 
 const ModalFormState = props => {
