@@ -80,10 +80,16 @@ const userResolver = {
                 { $set: updatedFields },
                 { new: true }
             )
-            
+            console.log(user)
             const { name, email, } = user
 
-            return { message: 'Updated successfully' }
+            return {
+                user: {
+                    name,
+                    email,
+                }, 
+                message: 'Updated successfully' 
+            }
 
         } catch (e) {
             console.log(e)
