@@ -1,14 +1,15 @@
 import React, { useState, useContext, } from 'react'
 import AlertContext from '../../../context/alert/alertContext'
-import { useMutation, } from '@apollo/react-hooks'
+import { useApolloClient, useQuery, useMutation, } from '@apollo/react-hooks'
 
 import { FormContainer, UserLabel, InfoButton, } from '../FormComp'
 import { Alert, } from '../../../components'
 
-import { UPDATE_USER } from '../../../graphql'
+import { UPDATE_USER, GET_USER_INFO } from '../../../graphql'
 
 
 export const UserBasic = ({ user }) => {
+    const client                = useApolloClient()
     const { setAlert, }         = useContext(AlertContext)
     const [makeUpdate]          = useMutation(UPDATE_USER)
 
@@ -31,6 +32,16 @@ export const UserBasic = ({ user }) => {
             variables: {
                 name: updateUser.name,
                 email: updateUser.email,
+            },
+            update: (cache, mutationResult) => {
+                const update = mutationResult.data.updateUser.user
+                let newMe = cache.readQuery({ query: GET_USER_INFO })
+                newMe = {
+                    name: update.name,
+                    email: update.email,
+                    __typename: 'User',
+                }
+                client.writeData({ data: { me: newMe } })
             }
         })
 

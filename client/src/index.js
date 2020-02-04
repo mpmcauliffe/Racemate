@@ -12,7 +12,7 @@ import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import App from './App'
-import { userTypes, rootResolver, } from './graphql'
+import { userTypes, appTypes, appResolver, } from './graphql'
 
 import 'normalize.css/normalize.css'
 import './global-styles/fonts/fonts.css'
@@ -41,7 +41,8 @@ const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache,
     userTypes,
-    rootResolver,
+    appTypes,
+    appResolver,
 })
 cache.writeData({ data: { isLoggedIn: !!localStorage.getItem('token'), } })
 

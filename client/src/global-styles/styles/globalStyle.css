@@ -86,3 +86,21 @@ button {
     font-size: 2.7rem;
     font-weight: 400;
 }
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+    background-image: linear-gradient( #7A8A9E , #0E1C2E);
+}

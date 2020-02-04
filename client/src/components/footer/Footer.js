@@ -2,7 +2,7 @@ import React, { Fragment, } from 'react'
 import { useQuery, } from '@apollo/react-hooks'
 import { Link as ScrollLink } from 'react-scroll'
 import { FooterContainer, FooterIcon, } from './FooterComp'
-import { Modal, } from '../../components'
+import { BasicModal, } from '../../components'
 import { GET_TOGGLE_STATUS } from '../../graphql'
 
 
@@ -25,7 +25,9 @@ export const Footer = () => {
                 </ScrollLink>
                 {data && <h3>{data.userSelection}</h3>}
                 
-                <Modal />
+                <BasicModal>
+                    <FooterIcon className='fas fa-plus' />
+                </BasicModal>
             </FooterContainer>
         </Fragment>
         

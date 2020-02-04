@@ -4,6 +4,8 @@ import { CardContainer,
         CardName, 
         CardType,
         IconContainer, } from './CardComp'
+import { BasicModal, } from '../../components'
+
 import { truncate, } from '../../helpers'
 
 
@@ -16,7 +18,7 @@ export const Card = props => {
     }
     const editClick = e => {
         e.preventDefault()
-        console.log('edit click')
+        console.log(info.id)
     }
 
     return (
@@ -24,7 +26,13 @@ export const Card = props => {
             <CardName>{truncate(info.title, 15)}</CardName>
             <CardType>{truncate(info.exerciseType, 19)}</CardType>
             <IconContainer>
-                <CardIcon className='far fa-edit' onClick={editClick}></CardIcon>
+                <BasicModal>
+                    <CardIcon 
+                        className='far fa-edit' 
+                        onClick={editClick}
+                        editId={info.id} />
+                </BasicModal>
+                
                 <CardIcon className='fas fa-dumbbell' onClick={cardActivate}></CardIcon>
             </IconContainer>
             {/****/}

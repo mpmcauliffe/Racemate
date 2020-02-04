@@ -59,9 +59,26 @@ export const ADD_EXERCISE = gql`
             id
             title
             exerciseType
+            owner {
+                _id
+            }
         }
     }
 `
+export const SET_EXERCISE = gql`
+    mutation($data: Exercise!) {
+        setExercise(data: $Exercise) {
+            Exercise @client
+        } 
+    } 
+`
+// const ITEM_DELETE = gql`
+//   mutation ItemDelete($id: ID!) {
+//     itemDelete(id: $id) {
+//       id
+//     }
+//   }
+// `
 
 // export const SUBSCRIBE_TOGGLE_STATUS = gql`
 //     subscription {

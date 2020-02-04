@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const modalContent = {
     modalFrame: {
+        height: '100vh',
         width: '80vw',
         top: '1rem',
         right: '0',
@@ -11,6 +12,7 @@ export const modalContent = {
         marginRight: 'auto',
         marginLeft: 'auto',
 
+        overflowY: 'hidden',
         background: '#0E1C2E', // theme primaryDark
     },
 }
