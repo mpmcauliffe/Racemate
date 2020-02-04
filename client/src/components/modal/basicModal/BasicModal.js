@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, } from 'react'
+import ModalFormContext from '../../../context/modalForm/modalFormContext'
 import AlertContext from '../../../context/alert/alertContext'
 import ReactModal from 'react-modal'
 import Simplebar from 'simplebar-react'
@@ -15,7 +16,7 @@ import {
     UserLabel, } from '../..'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { ADD_EXERCISE, SET_EXERCISE, GET_EXERCISES, } from '../../../graphql'
+import { ADD_EXERCISE, GET_EXERCISES, } from '../../../graphql'
 
 import 'simplebar/dist/simplebar.min.css'
 
@@ -23,10 +24,9 @@ import 'simplebar/dist/simplebar.min.css'
 export const BasicModal = props => {
     const [modalToggle, setModalToggle] = useState(false)
     const [addExercise]                 = useMutation(ADD_EXERCISE) 
-    const [setExercise]                 = useMutation(SET_EXERCISE) 
+    const { submitExercise, }           = useContext(ModalFormContext)
     const { setAlert, }                 = useContext(AlertContext)
     const client                        = useApolloClient()
-
 
     const [formData, setFormData]       = useState({
         title: '',
@@ -43,40 +43,21 @@ export const BasicModal = props => {
     const onSubmit = async e => {
         e.preventDefault()
 
-        try {
-            const res = await addExercise({
-                variables: {
-                    title: formData.title,
-                    exerciseType: formData.exerciseType,
-                    description: formData.description,
-                },
-                update: async (cache, mutationResult) => {
-                    const newExercise = mutationResult.data.createExercise
-                    const exercises = await cache.readQuery({ query: GET_EXERCISES })
-                    
-                    client.writeData({ data: { myExercises: [...exercises.myExercises, ...[newExercise]], } })
-                }
-            })
-            // e = [...z, ...[c]] | where z is an array & c is not an array
-
-            if (!res) {
-                setAlert('Something went wrong', 'warning')
-                window.scrollTo(0,0)
-                return
-            }
-
-            setFormData({                
-                title: '',
-                exerciseType: '',
-                description: ''
-            })
-
-            handleModalToggle()
-
-
-        } catch (e) {
-            console.log(e)
+        // e = [...z, ...[c]] | where z is an array & c is not an array
+        res = submitExercise(formdata)
+        if (!res) {
+            setAlert('Something went wrong', 'warning')
+            window.scrollTo(0,0)
+            return
         }
+
+        setFormData({                
+            title: '',
+            exerciseType: '',
+            description: ''
+        })
+
+        handleModalToggle()
     }
 
     if (!modalToggle) {

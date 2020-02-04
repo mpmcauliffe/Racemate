@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect, } from 'react'
+import ModalFormState from '../context/modalForm/ModalFormState'
 import { useApolloClient, } from '@apollo/react-hooks'
 import { OpSwitch, GridStack, Footer, } from '../components'
 import { WidePageContainer, } from './PageComp'
@@ -23,7 +24,7 @@ export const Home = props => {
 
 
     return (
-        <Fragment>
+        <ModalFormState>
             <WidePageContainer>
                 <OpSwitch 
                     optButtons={optButtons}
@@ -33,7 +34,7 @@ export const Home = props => {
             
             </WidePageContainer>
             <Footer />
-        </Fragment>
+        </ModalFormState>
         
         
     )
