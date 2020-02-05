@@ -11,7 +11,6 @@ export const Home = props => {
     const optButtons                            = ['Exercises', 'Workouts', 'Routine']
     
     client.writeData({ data: { userSelection: userSelection } })
-    client.writeData({ data: { isModalEdit: true } })
 
     useEffect(() => {
         

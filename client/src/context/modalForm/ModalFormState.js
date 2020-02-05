@@ -9,6 +9,9 @@ const ModalFormState = props => {
     const [addExercise]                 = useMutation(ADD_EXERCISE) 
     const client                        = useApolloClient()
 
+    client.writeData({ data: { isModalEdit: false } })
+    client.writeData({ data: { editExerciseId: '' } })
+
 
     const submitExercise = async (formData) => {
         try {
@@ -37,12 +40,17 @@ const ModalFormState = props => {
     const toggleEditOn = () =>  client.writeData({ data: { isModalEdit: true } })    
     const toggleEditOff = () =>  client.writeData({ data: { isModalEdit: false } })    
 
+    const setEditExerciseId = id => client.writeData({ data: { editExerciseId: id } })
+    const clearEditExerciseId = () => client.writeData({ data: { editExerciseId: '' } })
+
 
     return (
         <ModalFormContext.Provider
             value={{ submitExercise, 
                 toggleEditOn,
-                toggleEditOff,  }}
+                toggleEditOff,
+                setEditExerciseId,
+                clearEditExerciseId, }}
 
         >   {props.children}
         </ModalFormContext.Provider>

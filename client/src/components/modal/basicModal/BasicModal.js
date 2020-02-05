@@ -6,24 +6,28 @@ import { BasicModalForm } from './BasicModalForm'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
-import { InfoIcon, } from '../..'
+import { InfoIcon, InfoButton, } from '../..'
 
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS } from '../../../graphql'   
 
 export const BasicModal = props => {
-    const { toggleEditOff, }         = useContext(ModalFormContext)
+    const { toggleEditOff, clearEditExerciseId, }         = useContext(ModalFormContext)
 
-    const client                        = useApolloClient()
-    const { isModalEdit }               = client.readQuery({ query: GET_EDIT_STATUS })
+    const client                                          = useApolloClient()
+    const { isModalEdit }                                 = client.readQuery({ query: GET_EDIT_STATUS })
 
-    const [modalToggle, setModalToggle] = useState(false)
+    const [modalToggle, setModalToggle]                   = useState(false)
 
     useEffect(() => ReactModal.setAppElement('body'), [])
     
     const handleModalToggle = () => {
         setModalToggle(!modalToggle)
-        toggleEditOff()
+
+        if (isModalEdit) { 
+            toggleEditOff() 
+            clearEditExerciseId()
+        }     
     }
     
 
@@ -35,15 +39,17 @@ export const BasicModal = props => {
         )
     }
 
+
+    const { editId } = props.children.props
+
     return (
         
         <ReactModal 
             isOpen={modalToggle}
             style={{ overlay: { zIndex: '5000', },
                 content: modalContent.modalFrame }}>
-            {props.children.props.editId && <div>{props.children.props.editId}</div>}
             
-            <ModalTitle>Add Exercise</ModalTitle>
+            <ModalTitle>{editId ? 'Edit Exercise' : 'Add Exercise'}</ModalTitle>
             <ModalCloseButton>
                 <InfoIcon 
                     onClick={handleModalToggle}
@@ -52,7 +58,7 @@ export const BasicModal = props => {
             </ModalCloseButton>
              {/****/}
 
-            <BasicModalForm />
+            <BasicModalForm handleModalToggle={handleModalToggle} />
         </ReactModal>
     )
 }

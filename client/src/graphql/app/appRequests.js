@@ -27,6 +27,7 @@ export const GET_EXERCISES = gql`
             id
             title
             exerciseType
+            description
             owner {
                 _id
                 name
@@ -34,6 +35,9 @@ export const GET_EXERCISES = gql`
         }
     }
 `
+
+
+
 export const GET_TOGGLE_STATUS = gql`
     query GetToggleStatus {
         userSelection @client
@@ -44,9 +48,11 @@ export const GET_EDIT_STATUS = gql`
         isModalEdit @client
     }
 `
-// title: "dumbell side bend",
-//       exerciseType: "abs",
-//       description: "AAAAAAAAAAAAAAAAAA no"
+export const GET_EDIT_ID = gql`
+    query GetModalStatus {
+        editExerciseId @client
+    }
+`
 export const ADD_EXERCISE = gql`
     mutation($title: String!, $exerciseType: String!, $description: String) {
         createExercise(
@@ -91,3 +97,15 @@ export const SET_EXERCISE = gql`
 //         isLoggedIn @client
 //         #userToken @client
 //     }
+
+// export const GET_SINGE_EXERCISE = gql`
+//     query getSingleExercise($id: String!) {
+//         myExercises {
+//             Exercise(id: $id) {
+//                 title
+//                 exerciseType
+//                 description
+//             }
+//         }
+//     }
+// `

@@ -8,32 +8,40 @@ import { Alert,
     UserLabel, } from '../..'
 
 import { useApolloClient, } from '@apollo/react-hooks'
-import { GET_EDIT_STATUS, } from '../../../graphql'
+import { GET_EDIT_STATUS, GET_EDIT_ID, GET_EXERCISES, } from '../../../graphql'
 
 import Simplebar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
 
-export const BasicModalForm = () => {
+export const BasicModalForm = ({ handleModalToggle }) => {
     const client                                   = useApolloClient()
 
     const { submitExercise, }                      = useContext(ModalFormContext)
     const { setAlert, }                            = useContext(AlertContext)
 
     const { isModalEdit }                          = client.readQuery({ query: GET_EDIT_STATUS })
+    const { editExerciseId }                       = client.readQuery({ query: GET_EDIT_ID })
     
     const [formData, setFormData]                  = useState({
         title: '',
         exerciseType: '',
         description: ''
     })
-    console.log(isModalEdit)
+
+    useEffect(() => {
+        if (isModalEdit) {
+            const myExercises = client.readQuery({ query: GET_EXERCISES, })
+            console.log(myExercises.myExercises)
+        }
+        
+    }, [])
+
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {
         e.preventDefault()
 
-        // e = [...z, ...[c]] | where z is an array & c is not an array
         const res = submitExercise(formData)
         if (!res) {
             setAlert('Something went wrong', 'warning')
@@ -47,7 +55,7 @@ export const BasicModalForm = () => {
             description: ''
         })
 
-        //handleModalToggle()
+        handleModalToggle()
     }
 
     const { title, exerciseType, description } = formData

@@ -14,20 +14,20 @@ import { truncate, } from '../../helpers'
 
 
 export const Card = props => {
-    const client                = useApolloClient()
-    const { toggleEditOn }      = useContext(ModalFormContext)
+    const client                                    = useApolloClient()
+    const { toggleEditOn, setEditExerciseId, }      = useContext(ModalFormContext)
 
     const { info } = props
-
+console.log(info.id)
     const cardActivate = e => {
         e.preventDefault()
         console.log('card activate')
     }
+    
     const editClick = e => {
         e.preventDefault()
-        console.log(info.id)
         toggleEditOn()
-        //client.writeData({ data: { isModalEdit: true } })
+        setEditExerciseId(info.id)
     }
 
     return (
