@@ -21,15 +21,15 @@ const exerciseResolver = {
 
         let createdExercise
         try {
-            // const result = await exercise.save()
-            // const owner = await User.findById(userId)
+            const result = await exercise.save()
+            const owner = await User.findById(userId)
             
-            // if (!owner) {
-            //     throw new Error('User not found!')
-            // }
+            if (!owner) {
+                throw new Error('User not found!')
+            }
             
-            // owner.exercises.push(exercise)
-            // await owner.save()
+            owner.exercises.push(exercise)
+            await owner.save()
 
             return exercise
 

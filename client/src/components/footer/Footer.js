@@ -1,15 +1,24 @@
-import React, { Fragment, } from 'react'
-import { useQuery, } from '@apollo/react-hooks'
+import React, { Fragment, useContext, } from 'react'
+import ModalFormContext from '../../context/modalForm/modalFormContext'
+
 import { Link as ScrollLink } from 'react-scroll'
+
 import { FooterContainer, FooterIcon, } from './FooterComp'
 import { BasicModal, } from '../../components'
+
+import { useQuery, } from '@apollo/react-hooks'
 import { GET_TOGGLE_STATUS } from '../../graphql'
 
 
 
 export const Footer = () => {
-    const { data } = useQuery(GET_TOGGLE_STATUS)
+    const { toggleEditOff, }         = useContext(ModalFormContext)
+    const { data }                   = useQuery(GET_TOGGLE_STATUS)
 
+    const basicClick = e => {
+        e.preventDefault()
+        toggleEditOff()
+    }
     
     return (
         <Fragment>
@@ -26,7 +35,9 @@ export const Footer = () => {
                 {data && <h3>{data.userSelection}</h3>}
                 
                 <BasicModal>
-                    <FooterIcon className='fas fa-plus' />
+                    <FooterIcon 
+                        className='fas fa-plus'
+                        onClick={basicClick} />
                 </BasicModal>
             </FooterContainer>
         </Fragment>

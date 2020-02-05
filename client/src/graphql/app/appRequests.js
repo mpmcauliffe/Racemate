@@ -39,9 +39,9 @@ export const GET_TOGGLE_STATUS = gql`
         userSelection @client
     }
 `
-export const GET_MODAL_STATUS = gql`
+export const GET_EDIT_STATUS = gql`
     query GetModalStatus {
-        modalStatus @client
+        isModalEdit @client
     }
 `
 // title: "dumbell side bend",

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext, } from 'react'
+import ModalFormContext from '../../context/modalForm/modalFormContext'
+
 import { CardContainer, 
         CardIcon, 
         CardName, 
@@ -6,10 +8,15 @@ import { CardContainer,
         IconContainer, } from './CardComp'
 import { BasicModal, } from '../../components'
 
+import { useApolloClient, } from '@apollo/react-hooks'
+
 import { truncate, } from '../../helpers'
 
 
 export const Card = props => {
+    const client                = useApolloClient()
+    const { toggleEditOn }      = useContext(ModalFormContext)
+
     const { info } = props
 
     const cardActivate = e => {
@@ -19,6 +26,8 @@ export const Card = props => {
     const editClick = e => {
         e.preventDefault()
         console.log(info.id)
+        toggleEditOn()
+        //client.writeData({ data: { isModalEdit: true } })
     }
 
     return (
