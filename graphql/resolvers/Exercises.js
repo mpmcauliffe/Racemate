@@ -17,7 +17,7 @@ const exerciseResolver = {
             notes,
             owner: userId,
         })
-        console.log(exercise)
+        //console.log(exercise)
 
         let createdExercise
         try {
@@ -38,10 +38,39 @@ const exerciseResolver = {
             throw e
         }
     },
-    async updateExercise(args, { headers }) {
+    async editExercise(args, { headers }) {
         const userId = getUserId(headers.authorization)
-        console.log(args)
-        //const isUserExercise = 
+
+        const { title, exerciseType, description, id } = args.data
+        const updatedFields = { }
+
+        if (title) updatedFields.title               = title
+        if (exerciseType) updatedFields.exerciseType = exerciseType
+        if (description) updatedFields.description   = description
+        if (id) updatedFields.id                     = id
+
+        try {
+            let user = await User.findById(userId)
+
+            if (!user) {
+                return { message: 'User not found' }
+            }
+
+            exercise = await Exercise.findByIdAndUpdate(
+                updatedFields.id,
+                { $set: updatedFields },
+                { new: true }
+            )
+            console.log(exercise)
+            const { title, exerciseType, description, id } = exercise
+
+            return {  title, exerciseType, description, id 
+                
+            }
+
+        } catch (e) {
+            console.log(e)
+        }
     },
 }
 

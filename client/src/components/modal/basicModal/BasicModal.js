@@ -11,6 +11,7 @@ import { InfoIcon, InfoButton, } from '../..'
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS } from '../../../graphql'   
 
+
 export const BasicModal = props => {
     const { toggleEditOff, clearEditExerciseId, }         = useContext(ModalFormContext)
 
@@ -38,7 +39,6 @@ export const BasicModal = props => {
             </div>
         )
     }
-
 
     const { editId } = props.children.props
 

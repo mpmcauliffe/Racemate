@@ -2,11 +2,12 @@ import React, { useEffect, } from 'react'
 import ModalFormContext from './modalFormContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { ADD_EXERCISE, GET_EXERCISES, } from '../../graphql'
+import { ADD_EXERCISE, GET_EXERCISES, EDIT_EXERCISE, } from '../../graphql'
 
 
 const ModalFormState = props => {
     const [addExercise]                 = useMutation(ADD_EXERCISE) 
+    const [reviseExercise]                 = useMutation(EDIT_EXERCISE) 
     const client                        = useApolloClient()
 
     client.writeData({ data: { isModalEdit: false } })
@@ -37,9 +38,16 @@ const ModalFormState = props => {
         }
     }
 
-    const updateExercise = async (formData) => {
+    const editExercise = async (formData) => {
         try {
-            //const res = await
+            const res = await reviseExercise({
+                variables: {
+                    title: formData.title,
+                    exerciseType: formData.exerciseType,
+                    description: formData.description,
+                    id: formData.id
+                }
+            })
         } catch (e) {
             console.log(e)
             return null
@@ -56,6 +64,7 @@ const ModalFormState = props => {
     return (
         <ModalFormContext.Provider
             value={{ submitExercise, 
+                editExercise,
                 toggleEditOn,
                 toggleEditOff,
                 setEditExerciseId,

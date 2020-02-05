@@ -71,6 +71,23 @@ export const ADD_EXERCISE = gql`
         }
     }
 `
+export const EDIT_EXERCISE = gql`
+    mutation($title: String, $exerciseType: String, $description: String, $id: String) {
+        editExercise (
+            data: {
+                title: $title
+                exerciseType: $exerciseType
+                description: $description
+                id: $id
+            }
+        ) {
+            title
+            exerciseType
+            description
+            id 
+        }
+    }
+`
 export const SET_EXERCISE = gql`
     mutation($data: Exercise!) {
         setExercise(data: $Exercise) {

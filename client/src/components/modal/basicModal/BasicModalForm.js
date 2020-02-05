@@ -17,7 +17,7 @@ import 'simplebar/dist/simplebar.min.css'
 export const BasicModalForm = ({ handleModalToggle }) => {
     const client                                   = useApolloClient()
 
-    const { submitExercise, }                      = useContext(ModalFormContext)
+    const { submitExercise, editExercise, }        = useContext(ModalFormContext)
     const { setAlert, }                            = useContext(AlertContext)
 
     const { isModalEdit }                          = client.readQuery({ query: GET_EDIT_STATUS })
@@ -26,14 +26,15 @@ export const BasicModalForm = ({ handleModalToggle }) => {
     const [formData, setFormData]                  = useState({                
         title: '',
         exerciseType: '',
-        description: ''
+        description: '',
+        id: ''
     })
 
     useEffect(() => {
         if (isModalEdit) {
             const myExercises = client.readQuery({ query: GET_EXERCISES, })
             const editExercise = myExercises.myExercises.filter(exercise => exercise.id === editExerciseId)
-            
+
             setFormData(editExercise[0])
         } 
     }, [isModalEdit, client])
@@ -45,7 +46,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
 
         let res
         if (isModalEdit) {
-
+            res = editExercise(formData)
         } else {
             res = submitExercise(formData)
         }

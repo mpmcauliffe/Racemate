@@ -17,7 +17,7 @@ type Mutation {
 
     ### EXERCISE
     createExercise(data: CreateExerciseInput): Exercise!
-    updateExercise(data: UpdateExerciseInput): Exercise!
+    editExercise(data: UpdateExerciseInput): Exercise!
     deleteExercise(id: ID!): Exercise!
 
     ### SET
@@ -99,6 +99,7 @@ input UpdateExerciseInput {
     title: String
     exerciseType: String
     description: String
+    id: String
     # sets: [Set!]
     notes: String
 }

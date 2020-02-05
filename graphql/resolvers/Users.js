@@ -62,7 +62,7 @@ const userResolver = {
         }
 
         const { name, email, }  = args.data
-        const updatedFields     = {}
+        const updatedFields     = { }
 
         if (name) updatedFields.name    = name
         if (email) updatedFields.email  = email
