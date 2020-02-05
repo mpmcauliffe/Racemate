@@ -23,7 +23,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
     const { isModalEdit }                          = client.readQuery({ query: GET_EDIT_STATUS })
     const { editExerciseId }                       = client.readQuery({ query: GET_EDIT_ID })
     
-    const [formData, setFormData]                  = useState({
+    const [formData, setFormData]                  = useState({                
         title: '',
         exerciseType: '',
         description: ''
@@ -32,17 +32,24 @@ export const BasicModalForm = ({ handleModalToggle }) => {
     useEffect(() => {
         if (isModalEdit) {
             const myExercises = client.readQuery({ query: GET_EXERCISES, })
-            console.log(myExercises.myExercises)
-        }
-        
-    }, [])
+            const editExercise = myExercises.myExercises.filter(exercise => exercise.id === editExerciseId)
+            
+            setFormData(editExercise[0])
+        } 
+    }, [isModalEdit, client])
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {
         e.preventDefault()
 
-        const res = submitExercise(formData)
+        let res
+        if (isModalEdit) {
+
+        } else {
+            res = submitExercise(formData)
+        }
+        
         if (!res) {
             setAlert('Something went wrong', 'warning')
             window.scrollTo(0,0)
@@ -90,8 +97,18 @@ export const BasicModalForm = ({ handleModalToggle }) => {
 
                     <InfoButton
                         type='submit'
-                        wide
-                    > Add Exercise</InfoButton>
+                        wide 
+                    > {isModalEdit ? 'Update Exercise' : 'Add Exercise'}
+                    </InfoButton>
+
+                    {isModalEdit && 
+                        <InfoButton
+                            style={{ color: '#FF5E5E', border: '.2rem solid #FF5E5E' }}
+                            type='submit'
+                            wide 
+                        > Delete Exercise
+                        </InfoButton>
+                    }
                 </FormContainer>
             </Simplebar>
         </form>

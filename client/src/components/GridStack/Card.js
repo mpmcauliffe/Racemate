@@ -18,7 +18,7 @@ export const Card = props => {
     const { toggleEditOn, setEditExerciseId, }      = useContext(ModalFormContext)
 
     const { info } = props
-console.log(info.id)
+
     const cardActivate = e => {
         e.preventDefault()
         console.log('card activate')

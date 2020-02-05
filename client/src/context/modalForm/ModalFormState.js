@@ -2,7 +2,7 @@ import React, { useEffect, } from 'react'
 import ModalFormContext from './modalFormContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { ADD_EXERCISE, GET_EXERCISES, GET_EDIT_STATUS } from '../../graphql'
+import { ADD_EXERCISE, GET_EXERCISES, } from '../../graphql'
 
 
 const ModalFormState = props => {
@@ -31,6 +31,15 @@ const ModalFormState = props => {
             // e = [...z, ...[c]] | where z is an array & c is not an array
             return res
 
+        } catch (e) {
+            console.log(e)
+            return null
+        }
+    }
+
+    const updateExercise = async (formData) => {
+        try {
+            //const res = await
         } catch (e) {
             console.log(e)
             return null

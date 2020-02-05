@@ -62,38 +62,3 @@ export const BasicModal = props => {
         </ReactModal>
     )
 }
-
-// <form onSubmit={onSubmit}>
-//                 <Alert style={{ marginTop: '1rem' }} />
-//                 <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
-//                     <FormContainer>
-//                         <UserLabel htmlFor='title'>Exercise Name</UserLabel>
-//                         <input /* TITLE */
-//                             onChange={onChange}
-//                             value={title}
-//                             name='title'
-//                             type='text'
-//                             required />
-
-//                         <UserLabel htmlFor='exerciseType'>Exercise Type / Muscle Group</UserLabel>
-//                         <input /* EXERCISE_TYPE */
-//                             onChange={onChange}
-//                             value={exerciseType}
-//                             name='exerciseType'
-//                             type='text'
-//                             required />
-
-//                         <UserLabel htmlFor='description'>Description</UserLabel>
-//                         <textarea /* DESCRIPTION */
-//                             onChange={onChange}
-//                             value={description}
-//                             name='description'
-//                             type='text' />
-
-//                         <InfoButton
-//                             type='submit'
-//                             wide
-//                         > Add Exercise</InfoButton>
-//                     </FormContainer>
-//                 </Simplebar>               
-//             </form>

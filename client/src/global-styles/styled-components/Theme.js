@@ -29,6 +29,7 @@ const Theme = {
     /* indicators */
     colorWarning: '#b80000',
     colorWarningLight: '#FFC9C9',
+    colorWarningGlow: '#FF5E5E',
     colorSuccess: '#00b834',
     colorSuccessLight: '#C5FFD6',
 
