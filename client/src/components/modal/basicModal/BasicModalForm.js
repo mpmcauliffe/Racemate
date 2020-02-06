@@ -15,15 +15,17 @@ import 'simplebar/dist/simplebar.min.css'
 
 
 export const BasicModalForm = ({ handleModalToggle }) => {
-    const client                                   = useApolloClient()
+    const client                        = useApolloClient()
 
-    const { submitExercise, editExercise, }        = useContext(ModalFormContext)
-    const { setAlert, }                            = useContext(AlertContext)
+    const { submitExercise,
+         editExercise, 
+         deleteExercise, }              = useContext(ModalFormContext)
+    const { setAlert, }                 = useContext(AlertContext)
 
-    const { isModalEdit }                          = client.readQuery({ query: GET_EDIT_STATUS })
-    const { editExerciseId }                       = client.readQuery({ query: GET_EDIT_ID })
+    const { isModalEdit }               = client.readQuery({ query: GET_EDIT_STATUS })
+    const { editExerciseId }            = client.readQuery({ query: GET_EDIT_ID })
     
-    const [formData, setFormData]                  = useState({                
+    const [formData, setFormData]       = useState({                
         title: '',
         exerciseType: '',
         description: '',
@@ -37,11 +39,11 @@ export const BasicModalForm = ({ handleModalToggle }) => {
 
             setFormData(editExercise[0])
         } 
-    }, [isModalEdit, client])
+    }, [isModalEdit, client, editExerciseId])
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
-    const onSubmit = async e => {
+    const onSubmit = e => {
         e.preventDefault()
 
         let res
@@ -64,6 +66,12 @@ export const BasicModalForm = ({ handleModalToggle }) => {
         })
 
         handleModalToggle()
+    }
+
+    const onDeleteClick = e => {
+        e.preventDefault()
+
+        deleteExercise(formData.id)
     }
 
     const { title, exerciseType, description } = formData
@@ -105,7 +113,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
                     {isModalEdit && 
                         <InfoButton
                             style={{ color: '#FF5E5E', border: '.2rem solid #FF5E5E' }}
-                            type='submit'
+                            onClick={onDeleteClick}
                             wide 
                         > Delete Exercise
                         </InfoButton>

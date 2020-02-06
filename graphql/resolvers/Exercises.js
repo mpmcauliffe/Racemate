@@ -64,13 +64,20 @@ const exerciseResolver = {
             console.log(exercise)
             const { title, exerciseType, description, id } = exercise
 
-            return {  title, exerciseType, description, id 
-                
-            }
+            return {  title, exerciseType, description, id }
 
         } catch (e) {
             console.log(e)
         }
+    },
+    async deleteExercise(args, { headers }) {
+        const deletedExercise = await Exercise.findByIdAndDelete(args.id)
+
+        console.log(deletedExercise)
+
+        const { title, exerciseType, description, id } = deletedExercise
+
+        return { title, exerciseType, description, id }
     },
 }
 

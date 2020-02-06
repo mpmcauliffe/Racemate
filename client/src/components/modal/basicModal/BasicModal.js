@@ -6,7 +6,7 @@ import { BasicModalForm } from './BasicModalForm'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
-import { InfoIcon, InfoButton, } from '../..'
+import { InfoIcon, } from '../..'
 
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS } from '../../../graphql'   

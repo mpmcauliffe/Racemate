@@ -8,13 +8,10 @@ import { CardContainer,
         IconContainer, } from './CardComp'
 import { BasicModal, } from '../../components'
 
-import { useApolloClient, } from '@apollo/react-hooks'
-
 import { truncate, } from '../../helpers'
 
 
 export const Card = props => {
-    const client                                    = useApolloClient()
     const { toggleEditOn, setEditExerciseId, }      = useContext(ModalFormContext)
 
     const { info } = props

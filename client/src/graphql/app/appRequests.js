@@ -65,6 +65,7 @@ export const ADD_EXERCISE = gql`
             id
             title
             exerciseType
+            description
             owner {
                 _id
             }
@@ -85,6 +86,13 @@ export const EDIT_EXERCISE = gql`
             exerciseType
             description
             id 
+        }
+    }
+`
+export const DELETE_EXERCISE = gql`
+    mutation($id: ID!) {
+        deleteExercise (id: $id) {
+            id
         }
     }
 `
