@@ -16,7 +16,7 @@ export const FooterContainer = styled.div`
     padding: 1rem 2rem; 
 
     background: ${props => props.theme.midLtGray}
-    opacity: .7;
+    opacity: .9;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     /* border: .1rem solid green; */

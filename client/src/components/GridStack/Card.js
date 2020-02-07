@@ -6,7 +6,7 @@ import { CardContainer,
         CardName, 
         CardType,
         IconContainer, } from './CardComp'
-import { BasicModal, } from '../../components'
+import { ActiveModal, BasicModal, } from '../../components'
 
 import { truncate, } from '../../helpers'
 
@@ -39,7 +39,13 @@ export const Card = props => {
                         editId={info.id} />
                 </BasicModal>
                 
-                <CardIcon className='fas fa-dumbbell' onClick={cardActivate}></CardIcon>
+                <ActiveModal>
+                    <CardIcon 
+                        className='fas fa-dumbbell' 
+                        onClick={cardActivate}
+                        activeName={truncate(info.title, 25)}
+                        activeId={info.id} />
+                </ActiveModal>
             </IconContainer>
             {/****/}
         </CardContainer>

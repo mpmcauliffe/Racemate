@@ -3,6 +3,7 @@ import ModalFormState from '../context/modalForm/ModalFormState'
 import { useApolloClient, } from '@apollo/react-hooks'
 import { OpSwitch, GridStack, Footer, } from '../components'
 import { WidePageContainer, } from './PageComp'
+//import { UpdateBanner } from '../components'
 
 
 export const Home = props => {

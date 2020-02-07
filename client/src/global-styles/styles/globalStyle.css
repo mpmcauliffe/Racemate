@@ -32,6 +32,11 @@ h4 {
     font-family: "meno-display";
     font-size: 2.4rem;
 }
+h5 {
+    font-family: "proxima-nova-condensed";
+    font-size: 2rem;
+    font-weight: 300;
+}
 
 p {
     font-family:"meno-display";

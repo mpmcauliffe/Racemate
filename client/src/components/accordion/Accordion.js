@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const WarningBanner = () => {
+export const Accordion = () => {
     return (
         <div>
             

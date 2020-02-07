@@ -71,7 +71,15 @@ export const BasicModalForm = ({ handleModalToggle }) => {
     const onDeleteClick = e => {
         e.preventDefault()
 
-        deleteExercise(formData.id)
+        const res = deleteExercise(formData.id)
+
+        if (!res) {
+            setAlert('Something went wrong', 'warning')
+            return
+        }
+
+        setAlert('Exercise deleted')
+        handleModalToggle()
     }
 
     const { title, exerciseType, description } = formData
