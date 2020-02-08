@@ -5,7 +5,7 @@ import ReactModal from 'react-modal'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
-import { InfoIcon, } from '../..'
+import { InfoIcon, Accordion, FormContainer, } from '../..'
 
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS } from '../../../graphql'   
@@ -44,7 +44,10 @@ export const ActiveModal = props => {
                     style={{ fontSize: '5rem' }} />
             </ModalCloseButton>
              {/****/}
-
+            <FormContainer>
+                <Accordion />
+            </FormContainer>
+            
             
         </ReactModal>
     )

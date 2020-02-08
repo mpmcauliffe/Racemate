@@ -44,15 +44,18 @@ const ModalFormState = props => {
     }
 
     const editExercise = async (formData) => {
+
         try {
-            await reviseExercise({
+            const res = await reviseExercise({
                 variables: {
                     title: formData.title,
                     exerciseType: formData.exerciseType,
                     description: formData.description,
                     id: formData.id
-                }
+                },
+                //update: async (cache, mutationResult) => { }
             })
+
         } catch (e) {
             console.log(e)
             return null
