@@ -19,11 +19,19 @@ export const UserInfo = () => {
 
     
     if (loading || !data) {
-        return  <InfoText
+        return  (
+            <Fragment>
+                <InfoSection style={{ marginLeft: '2rem', }}>
+                    <LogoutButton />
+                </InfoSection>
+                <InfoText
                     style={{ marginTop: '10rem',
                         textAlign: 'center', }} >
                     Loading . . .
                 </InfoText>
+            </Fragment>
+            
+        )
     }
 
     const { me } = data
