@@ -87,7 +87,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
     return (
         <form onSubmit={onSubmit}>
             <Alert style={{ marginTop: '1rem' }} />
-            <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
+            <Simplebar style={{ height: '80vh', marginTop: '29px', overflowX: 'hidden' }}>
                 <FormContainer>
                     <UserLabel htmlFor='title'>Exercise Name</UserLabel>
                     <input /* TITLE */

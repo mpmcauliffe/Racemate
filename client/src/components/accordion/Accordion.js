@@ -1,28 +1,36 @@
-import React, { Fragment, } from 'react'
-import { AccordionFront, Arrow, } from './AccordionComp'
+import React, { Fragment, useState, } from 'react'
+import { AccordionFront, Arrow, Segment, } from './AccordionComp'
 
 
-export const Accordion = () => {
+export const Accordion = props => {
+    const [showSegment, setShowSegment] = useState(false)
+
+    const handleCheckboxChange = e => {
+        const target = e.target
+        const value = target.type === 'checkbox' ? target.checked : target.value
+        const name = target.name
+
+        console.log(target, value, name)
+        setShowSegment(!showSegment)
+    }
+
     return (
         <Fragment>
             <AccordionFront>
-                <h3>Sets, reps, and weight</h3>
-                
+                <h3>{props.name}</h3>
                 <Arrow>
-                    <input type='checkbox' />
+                    <input 
+                        type='checkbox'
+                        name='sets'
+                        onChange={handleCheckboxChange} 
+                        //checked={() => } 
+                        />
                     <span />
                 </Arrow>
-            </AccordionFront>
-
-            <AccordionFront>
-                <h3>Endurance and time</h3>
-                
-                <Arrow>
-                    <input type='checkbox' />
-                    <span />
-                </Arrow>
+                <div>
+                    {props.children}
+                </div>
             </AccordionFront>
         </Fragment>
-        
     )
 }

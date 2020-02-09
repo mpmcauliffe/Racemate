@@ -10,6 +10,9 @@ import { InfoIcon, Accordion, FormContainer, } from '../..'
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS } from '../../../graphql'   
 
+import Simplebar from 'simplebar-react'
+import 'simplebar/dist/simplebar.min.css'
+
 
 export const ActiveModal = props => {
     const [modalToggle, setModalToggle]                   = useState(false)
@@ -43,11 +46,31 @@ export const ActiveModal = props => {
                     className='fas fa-times'
                     style={{ fontSize: '5rem' }} />
             </ModalCloseButton>
-             {/****/}
-            <FormContainer>
-                <Accordion />
-            </FormContainer>
-            
+            {/****/}
+            <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
+                <FormContainer>
+                    <Accordion name='Sets, reps & weight'>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Maiores sequi praesentium, tenetur explicabo sapiente quas
+                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
+                        iure id soluta ducimus eaque adipisci?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Maiores sequi praesentium, tenetur explicabo sapiente quas
+                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
+                        iure id soluta ducimus eaque adipisci?</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Maiores sequi praesentium, tenetur explicabo sapiente quas
+                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
+                        iure id soluta ducimus eaque adipisci?</p>
+                    </Accordion>
+                    <Accordion name='Endurance & time'>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Maiores sequi praesentium, tenetur explicabo sapiente quas
+                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
+                        iure id soluta ducimus eaque adipisci?</p>
+                    </Accordion>
+                </FormContainer>
+            </Simplebar>    
             
         </ReactModal>
     )
