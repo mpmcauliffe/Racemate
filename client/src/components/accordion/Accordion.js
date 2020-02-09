@@ -22,12 +22,10 @@ export const Accordion = props => {
                     <input 
                         type='checkbox'
                         name='sets'
-                        onChange={handleCheckboxChange} 
-                        //checked={() => } 
-                        />
+                        onChange={handleCheckboxChange}  />
                     <span />
                 </Arrow>
-                <div>
+                <div className={showSegment ? 'show' : 'hide'}>
                     {props.children}
                 </div>
             </AccordionFront>
