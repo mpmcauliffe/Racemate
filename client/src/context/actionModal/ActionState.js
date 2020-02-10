@@ -14,12 +14,31 @@ const ActionModalState = props => {
     //const initialState = defaultState
     const [state, displatch] = useReducer(actionReducer, defaultState)
 
+    //const handleSetChange = e => changeSetCount(e.target.value)
+    //     repSelection: 'low'
+    //     optButtonsReps: ['low', 'medium', 'high'],
+    //     repRange: '4-8',
+    //     repRangeEnum: ['4-8', '9-18', '19-50'],
+    //     defaultStart: ['8', '12', '30'],
+
+    const setRepSelection = repSelectionInput => {
+        //beasts.indexOf('bison')
+        
+    }
+
 
     return (
         <ActionModalContext.Provider
-            value={{
-                numberOfSets: state.numberOfSets,
-            }}
+            value={{ numberOfSets: state.numberOfSets,
+                repSelection: state.repSelection,
+                optButtonReps: state.optButtonReps,
+                repRange: state.repRange,
+                repRangeEnum: state.repRangeEnum,
+                defaultStart: state.defaultStart,
+                weightSelection: state.weightSelection,
+                optButtonsWeight: state.optButtonsWeight,
+                startingWeight: state.startingWeight,
+                repSteps: state.repSteps, }}
         >   {props.children}
         </ActionModalContext.Provider>
     )
