@@ -1,5 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import ModalFormState from '../context/modalForm/ModalFormState'
+import ActionModalState from '../context/actionModal/ActionState'
 import { useApolloClient, } from '@apollo/react-hooks'
 import { OpSwitch, GridStack, Footer, } from '../components'
 import { WidePageContainer, } from './PageComp'
@@ -25,15 +26,17 @@ export const Home = props => {
 
     return (
         <ModalFormState>
-            <WidePageContainer>
-                <OpSwitch 
-                    optButtons={optButtons}
-                    handleToggle={handleToggle} />
-            
-                <GridStack />
-            
-            </WidePageContainer>
-            <Footer />
+            <ActionModalState>
+                <WidePageContainer>
+                    <OpSwitch 
+                        optButtons={optButtons}
+                        handleToggle={handleToggle} />
+                
+                    <GridStack />
+                
+                </WidePageContainer>
+                <Footer />
+            </ActionModalState>
         </ModalFormState>
         
         

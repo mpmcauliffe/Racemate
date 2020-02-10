@@ -37,7 +37,7 @@ export const ActiveModal = props => {
     const { activeId, activeName } = props.children.props
 
     return (
-        
+
         <ReactModal 
             isOpen={modalToggle}
             style={{ overlay: { zIndex: '5000', },
@@ -51,24 +51,31 @@ export const ActiveModal = props => {
                     style={{ fontSize: '5rem' }} />
             </ModalCloseButton>
             {/****/}
+
             <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
-                <FormContainer>
-                    <InfoButton wide>Save ALL changes</InfoButton>
-                    <Accordion name='Sets, reps & weight'>
-                        <SetGauge />
-                    </Accordion>
-                    <Accordion name='Endurance & time'>
-                    </Accordion>
-                    <Accordion name='Timer'>
-                    
-                    </Accordion>
-                    <Accordion name='Date'>
-                    
-                    </Accordion>
-                    <InfoButton wide>Save ALL changes</InfoButton>
-                </FormContainer>
+                
+                    <FormContainer>
+                        <InfoButton wide>Save ALL changes</InfoButton>
+
+                        <Accordion name='Sets, reps & weight'>
+                            <SetGauge />
+                        </Accordion>
+
+                        <Accordion name='Endurance & time'>
+                        </Accordion>
+
+                        <Accordion name='Timer'>
+                        
+                        </Accordion>
+
+                        <Accordion name='Date'>
+                        
+                        </Accordion>
+
+                        <InfoButton wide>Save ALL changes</InfoButton>
+                    </FormContainer>
+                
             </Simplebar>    
-            
-        </ReactModal>
+        </ReactModal>        
     )
 }

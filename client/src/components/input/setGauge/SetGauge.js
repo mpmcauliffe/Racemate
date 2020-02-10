@@ -1,17 +1,20 @@
-import React, { Fragment, useState, useEffect, } from 'react'
+import React, { Fragment, useState, useEffect, useContext, } from 'react'
+import actionModalContext from '../../../context/actionModal/actionModalContext'
 import { RepInput, SetContainer, } from '../inputComp'
 import { OpSwitch, Accordion, } from '../..'
 
 
 export const SetGauge = () => {
 
-    //const [rules, setRules]
+    const actionContext                             = useContext(actionModalContext)
 
     const [repSelection, setRepSelection]           = useState('low')
     const optButtonsReps                            = ['low', 'medium', 'high']
 
     const [weightSelection, setWeightSelection]     = useState('no')
     const optButtonsWeight                          = ['no', 'yes']
+
+    console.log(actionContext)
 
     useEffect(() => {
         
