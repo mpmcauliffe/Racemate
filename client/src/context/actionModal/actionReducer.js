@@ -4,5 +4,22 @@ import { _setNumberOfSets_,
 
 
 export default (state, action) => {
-    return state
+    switch (action.type) {
+        case _setRepSelection_: 
+            return {
+                ...state,
+                repRange: state.repRangeEnum[action.payload],
+                defaultStart: state.defaultStartEnum[action.payload],
+            }
+
+        default:
+            return state
+    }
 }
+
+//     repSelection: 'low'
+//     optButtonsReps: ['low', 'medium', 'high'],
+//     repRange: '4-8',
+//     repRangeEnum: ['4-8', '9-18', '19-50'],
+//     defaultStart: '8',
+//     defaultStartEnum: ['8', '12', '30'],

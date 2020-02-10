@@ -10,7 +10,8 @@ export const defaultState = {
     optButtonsReps: ['low', 'medium', 'high'],
     repRange: '4-8',
     repRangeEnum: ['4-8', '9-18', '19-50'],
-    defaultStart: ['8', '12', '30'],
+    defaultStart: '8',
+    defaultStartEnum: ['8', '12', '30'],
 
     weightSelection: false,
     optButtonsWeight: ['no', 'yes'],

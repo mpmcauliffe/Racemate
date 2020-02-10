@@ -12,7 +12,7 @@ const ActionModalState = props => {
      */
 
     //const initialState = defaultState
-    const [state, displatch] = useReducer(actionReducer, defaultState)
+    const [state, dispatch] = useReducer(actionReducer, defaultState)
 
     //const handleSetChange = e => changeSetCount(e.target.value)
     //     repSelection: 'low'
@@ -21,9 +21,14 @@ const ActionModalState = props => {
     //     repRangeEnum: ['4-8', '9-18', '19-50'],
     //     defaultStart: ['8', '12', '30'],
 
-    const setRepSelection = repSelectionInput => {
-        //beasts.indexOf('bison')
+    const updateRepSelection = repSelectionIndex => {
         
+        console.log(repSelectionIndex)
+
+        dispatch({ 
+            type: _setRepSelection_, 
+            payload: repSelectionIndex 
+        })
     }
 
 
@@ -38,7 +43,9 @@ const ActionModalState = props => {
                 weightSelection: state.weightSelection,
                 optButtonsWeight: state.optButtonsWeight,
                 startingWeight: state.startingWeight,
-                repSteps: state.repSteps, }}
+                repSteps: state.repSteps,
+            
+                updateRepSelection, }}
         >   {props.children}
         </ActionModalContext.Provider>
     )
@@ -55,7 +62,8 @@ export default ActionModalState
 //     optButtonsReps: ['low', 'medium', 'high'],
 //     repRange: '4-8',
 //     repRangeEnum: ['4-8', '9-18', '19-50'],
-//     defaultStart: ['8', '12', '30'],
+//     defaultStart: '8',
+//     defaultStartEnum: ['8', '12', '30'],
 
 //     weightSelection: false,
 //     optButtonsWeight: ['no', 'yes'],

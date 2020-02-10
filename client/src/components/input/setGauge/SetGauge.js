@@ -7,7 +7,7 @@ import { OpSwitch, Accordion, } from '../..'
 export const SetGauge = () => {
 
     const actionContext                             = useContext(actionModalContext)
-    //const { handleSetChange }                       = actionContext
+    const { updateRepSelection, repRange, }                       = actionContext
 
     const [setCount, changeSetCount]                = useState('4')
 
@@ -22,7 +22,6 @@ export const SetGauge = () => {
         if (weightSelection) {
             console.log(setCount, repSelection, weightSelection)
         }
-        console.log(optButtonsReps.indexOf(repSelection))
     }, [repSelection, weightSelection, setCount])
 
     const handleSetChange = e => changeSetCount(e.target.value)
@@ -30,7 +29,7 @@ export const SetGauge = () => {
 
     const handleToggle = buttonName => {
         setRepSelection(buttonName)
-        console.log(buttonName)
+        updateRepSelection(optButtonsReps.indexOf(buttonName))
     }
 
     const handleToggleWeights = () => setWeightSelection(!weightSelection)
@@ -57,7 +56,8 @@ export const SetGauge = () => {
                     <p>Rep Magnitude</p>
                     <OpSwitch 
                         optButtons={optButtonsReps}
-                        handleToggle={handleToggle} />                              
+                        handleToggle={handleToggle} />     
+                    <p info>between {repRange} reps</p>                         
                 </SetContainer>
 
                 <SetContainer>
@@ -73,7 +73,12 @@ export const SetGauge = () => {
                         name={`Set ${i+1}`} 
                         internal >
                         <SetContainer>
-                            <input type="range" name="points" min="0" max="10" />
+                            <input 
+                                type='range' 
+                                name='repMeter' 
+                                min={repRange.split('-')[0]} 
+                                max={repRange.split('-')[1]} />
+
                             {weightSelection && [...Array(8)].map((_, i) => (
                                 <RepInput 
                                     key={i}

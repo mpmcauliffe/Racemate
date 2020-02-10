@@ -12,7 +12,7 @@ export const SetContainer = styled.div`
     p {
         font-size: 2.1rem;
         margin: 1rem;
-        color: ${props => props.theme.midLtGray};
+        color: ${props => props.info ? props.theme.primaryGray : props.theme.midLtGray};
     }
 `
 export const RadioContainer = styled.form`
