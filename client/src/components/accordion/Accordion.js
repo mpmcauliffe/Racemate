@@ -6,11 +6,11 @@ export const Accordion = props => {
     const [showSegment, setShowSegment] = useState(false)
 
     const handleCheckboxChange = () => setShowSegment(!showSegment)
-    
 
+    
     return (
         <Fragment>
-            <AccordionFront>
+            <AccordionFront internal={props.internal}>
                 <h3>{props.name}</h3>
                 <Arrow>
                     <input 

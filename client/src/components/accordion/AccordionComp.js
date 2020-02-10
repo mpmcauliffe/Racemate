@@ -8,7 +8,7 @@ export const AccordionFront = styled.div`
     flex-wrap: wrap;
 
     min-height: 6rem;
-    width: 100%;
+    width: ${props => props.internal ? '90%' : '100%'};
 
     
     padding: 0 2rem 0 2rem;
@@ -33,7 +33,7 @@ export const AccordionFront = styled.div`
         transition: all 0.4s ease-out;
     }
     .show {
-        max-height: 60rem;
+        /* max-height: 60rem; */
         margin-bottom: 10rem;
         opacity: 1;
         transition: all 0.4s ease-out;      

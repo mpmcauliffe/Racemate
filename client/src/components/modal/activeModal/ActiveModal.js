@@ -2,11 +2,14 @@ import React, { useState, useEffect, useContext, } from 'react'
 import ModalFormContext from '../../../context/modalForm/modalFormContext'
 import ReactModal from 'react-modal'
 
+import { SetGauge, } from '../../input'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
-import { SetGauge, } from '../../input'
-import { InfoIcon, Accordion, FormContainer, } from '../..'
+import { InfoIcon, 
+    Accordion, 
+    FormContainer, 
+    InfoButton, } from '../..'
 
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS } from '../../../graphql'   
@@ -50,6 +53,7 @@ export const ActiveModal = props => {
             {/****/}
             <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
                 <FormContainer>
+                    <InfoButton wide>Save ALL changes</InfoButton>
                     <Accordion name='Sets, reps & weight'>
                         <SetGauge />
                     </Accordion>
@@ -58,6 +62,10 @@ export const ActiveModal = props => {
                     <Accordion name='Timer'>
                     
                     </Accordion>
+                    <Accordion name='Date'>
+                    
+                    </Accordion>
+                    <InfoButton wide>Save ALL changes</InfoButton>
                 </FormContainer>
             </Simplebar>    
             

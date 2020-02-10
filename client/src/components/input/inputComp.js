@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-// type='number' name='quantity'
-//                 min='0' max='100' step='10' value='30'
+
 export const SetContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -22,7 +21,6 @@ export const RadioContainer = styled.form`
 `
 export const RepInput = styled.input.attrs(props => ({
     type: 'number',
-    name: 'weight',
     min: '0'
 }))`
     flex-basis: 20%;
