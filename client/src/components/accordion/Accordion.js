@@ -5,14 +5,8 @@ import { AccordionFront, Arrow, Segment, } from './AccordionComp'
 export const Accordion = props => {
     const [showSegment, setShowSegment] = useState(false)
 
-    const handleCheckboxChange = e => {
-        const target = e.target
-        const value = target.type === 'checkbox' ? target.checked : target.value
-        const name = target.name
-
-        console.log(target, value, name)
-        setShowSegment(!showSegment)
-    }
+    const handleCheckboxChange = () => setShowSegment(!showSegment)
+    
 
     return (
         <Fragment>

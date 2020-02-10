@@ -3,21 +3,29 @@ import styled from 'styled-components'
 
 export const AccordionFront = styled.div`
     display: flex;
-    overflow-x: hidden;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 
     min-height: 6rem;
     width: 100%;
 
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    
     padding: 0 2rem 0 2rem;
-
-    border: .1rem solid ${props => props.theme.primaryGray};
+    border-top: .1rem solid ${props => props.theme.primaryGray};
+    border-bottom: .1rem solid ${props => props.theme.primaryGray};
 
     h3 {
         color: ${props => props.theme.primaryGray};
     }
+    & > div {
+        flex-basis: 100%;
+        color: ${props => props.theme.midLtGray};
+    }
+    & > div p {
+        color: ${props => props.theme.midLtGray};
+    }
+
     .hide {
         opacity: 0;
         max-height: 0;
@@ -28,24 +36,9 @@ export const AccordionFront = styled.div`
         max-height: 60rem;
         margin-bottom: 10rem;
         opacity: 1;
-        transition: all 0.4s ease-out;
+        transition: all 0.4s ease-out;      
     }
 `
-export const Segment = styled.div`
-    /* color: lightgray; */
-    /* height: 10rem; */
-    .hide {
-        opacity: 0;
-        max-height: 0;
-        overflow-y: hidden;
-        transition: all 0.4s ease-out;
-    }
-
-    .show {
-        
-    }
-`
-
 export const Arrow = styled.label`
     position: relative;
     right: 4rem;

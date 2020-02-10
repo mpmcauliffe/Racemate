@@ -5,6 +5,7 @@ import ReactModal from 'react-modal'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
+import { SetGauge, } from '../../input'
 import { InfoIcon, Accordion, FormContainer, } from '../..'
 
 import { useApolloClient, } from '@apollo/react-hooks'
@@ -50,24 +51,12 @@ export const ActiveModal = props => {
             <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
                 <FormContainer>
                     <Accordion name='Sets, reps & weight'>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Maiores sequi praesentium, tenetur explicabo sapiente quas
-                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
-                        iure id soluta ducimus eaque adipisci?</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Maiores sequi praesentium, tenetur explicabo sapiente quas
-                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
-                        iure id soluta ducimus eaque adipisci?</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Maiores sequi praesentium, tenetur explicabo sapiente quas
-                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
-                        iure id soluta ducimus eaque adipisci?</p>
+                        <SetGauge />
                     </Accordion>
                     <Accordion name='Endurance & time'>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Maiores sequi praesentium, tenetur explicabo sapiente quas
-                        labore possimus illo accusamus ullam rerum sit quibusdam fuga
-                        iure id soluta ducimus eaque adipisci?</p>
+                    </Accordion>
+                    <Accordion name='Timer'>
+                    
                     </Accordion>
                 </FormContainer>
             </Simplebar>    
