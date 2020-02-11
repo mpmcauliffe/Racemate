@@ -12,12 +12,13 @@ export const SetContainer = styled.div`
     p {
         font-size: 2.1rem;
         margin: 1rem;
-        color: ${props => props.info ? props.theme.primaryGray : props.theme.midLtGray};
+        color: ${props => props.theme.midLtGray};
     }
 `
-export const RadioContainer = styled.form`
-    display: flex;
-    flex-basis: 100%;
+export const UpdateText = styled.p`
+    font-size: 2.1rem;
+    margin: 1rem;
+    &&& { color: ${props => props.theme.primaryGray}; } /* ANNOYING */
 `
 export const RepInput = styled.input.attrs(props => ({
     type: 'number',

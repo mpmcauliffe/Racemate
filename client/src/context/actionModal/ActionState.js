@@ -14,29 +14,19 @@ const ActionModalState = props => {
     //const initialState = defaultState
     const [state, dispatch] = useReducer(actionReducer, defaultState)
 
-    //const handleSetChange = e => changeSetCount(e.target.value)
-    //     repSelection: 'low'
-    //     optButtonsReps: ['low', 'medium', 'high'],
-    //     repRange: '4-8',
-    //     repRangeEnum: ['4-8', '9-18', '19-50'],
-    //     defaultStart: ['8', '12', '30'],
 
-    const updateRepSelection = repSelectionIndex => {
+    const updateSetCount = e =>  dispatch({ type: _setNumberOfSets_, payload: e.target.value })
         
-        console.log(repSelectionIndex)
+    const updateRepSelection = repSelectionIndex => dispatch({ type: _setRepSelection_, payload: repSelectionIndex })
 
-        dispatch({ 
-            type: _setRepSelection_, 
-            payload: repSelectionIndex 
-        })
-    }
+    const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
 
 
     return (
         <ActionModalContext.Provider
             value={{ numberOfSets: state.numberOfSets,
                 repSelection: state.repSelection,
-                optButtonReps: state.optButtonReps,
+                optButtonsReps: state.optButtonsReps,
                 repRange: state.repRange,
                 repRangeEnum: state.repRangeEnum,
                 defaultStart: state.defaultStart,
@@ -45,7 +35,10 @@ const ActionModalState = props => {
                 startingWeight: state.startingWeight,
                 repSteps: state.repSteps,
             
-                updateRepSelection, }}
+                updateSetCount,
+                updateRepSelection,
+                updateWeightSelection,
+                 }}
         >   {props.children}
         </ActionModalContext.Provider>
     )

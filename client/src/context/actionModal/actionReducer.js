@@ -5,21 +5,27 @@ import { _setNumberOfSets_,
 
 export default (state, action) => {
     switch (action.type) {
+        case _setNumberOfSets_:
+            return {
+                ...state,
+                numberOfSets: action.payload,
+            }
+
         case _setRepSelection_: 
             return {
                 ...state,
+                repSelection: state.optButtonsReps[action.payload],
                 repRange: state.repRangeEnum[action.payload],
                 defaultStart: state.defaultStartEnum[action.payload],
+            }
+
+        case _setWeightSelection_: 
+            return {
+                ...state,
+                weightSelection: !state.weightSelection,
             }
 
         default:
             return state
     }
 }
-
-//     repSelection: 'low'
-//     optButtonsReps: ['low', 'medium', 'high'],
-//     repRange: '4-8',
-//     repRangeEnum: ['4-8', '9-18', '19-50'],
-//     defaultStart: '8',
-//     defaultStartEnum: ['8', '12', '30'],

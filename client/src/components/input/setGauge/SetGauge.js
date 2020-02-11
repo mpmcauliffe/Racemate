@@ -1,41 +1,19 @@
 import React, { Fragment, useState, useEffect, useContext, } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
-import { RepInput, SetContainer, } from '../inputComp'
+import { RepInput, SetContainer, UpdateText, } from '../inputComp'
 import { OpSwitch, Accordion, } from '../..'
 
 
 export const SetGauge = () => {
+    // There's a lot going on here. This component will allow a user to
+    // decide how much they want to micromanage this portion of the app
+    const { numberOfSets, updateSetCount, updateRepSelection, 
+        repRange, optButtonsReps, optButtonsWeight, weightSelection, 
+        updateWeightSelection, } = useContext(actionModalContext)
 
-    const actionContext                             = useContext(actionModalContext)
-    const { updateRepSelection, repRange, }                       = actionContext
+    const handleToggle = buttonName => updateRepSelection(optButtonsReps.indexOf(buttonName))
 
-    const [setCount, changeSetCount]                = useState('4')
-
-    const [repSelection, setRepSelection]           = useState('low')
-    const optButtonsReps                            = ['low', 'medium', 'high']
-
-    const [weightSelection, setWeightSelection]     = useState(false)
-    const optButtonsWeight                          = ['no', 'yes']
-
-
-    useEffect(() => { 
-        if (weightSelection) {
-            console.log(setCount, repSelection, weightSelection)
-        }
-    }, [repSelection, weightSelection, setCount])
-
-    const handleSetChange = e => changeSetCount(e.target.value)
-    
-
-    const handleToggle = buttonName => {
-        setRepSelection(buttonName)
-        updateRepSelection(optButtonsReps.indexOf(buttonName))
-    }
-
-    const handleToggleWeights = () => setWeightSelection(!weightSelection)
-
-    //const handleWeightInputChange = () => 
-    //const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+    const handleToggleWeights = () => updateWeightSelection()
 
 
     return (
@@ -44,8 +22,8 @@ export const SetGauge = () => {
                 <SetContainer>
                     <p>How many sets?</p>
                     <RepInput 
-                        value={setCount}
-                        onChange={handleSetChange}
+                        value={numberOfSets}
+                        onChange={updateSetCount}
                         name='numRepsInput'
                         max='100'
                         min='1' 
@@ -57,7 +35,7 @@ export const SetGauge = () => {
                     <OpSwitch 
                         optButtons={optButtonsReps}
                         handleToggle={handleToggle} />     
-                    <p info>between {repRange} reps</p>                         
+                    <UpdateText>between {repRange} reps</UpdateText>                         
                 </SetContainer>
 
                 <SetContainer>
@@ -67,11 +45,11 @@ export const SetGauge = () => {
                         handleToggle={handleToggleWeights} />
                 </SetContainer>
 
-                {setCount && [...Array(parseInt(setCount))].map((_, i) => (
+                {numberOfSets && [...Array(parseInt(numberOfSets))].map((_, i) => (
                     <Accordion 
                         key={i}
                         name={`Set ${i+1}`} 
-                        internal >
+                        internal>
                         <SetContainer>
                             <input 
                                 type='range' 
@@ -99,173 +77,3 @@ export const SetGauge = () => {
         
     )
 }
-
-// <Accordion name='Set 1' internal>
-//                     <SetContainer>
-                        
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                        
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />                   
-//                     </SetContainer>
-//                 </Accordion>
-//                 <Accordion name='Set 1' internal>
-//                     <SetContainer>
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                        
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-//                     </SetContainer>
-//                 </Accordion>
-//                 <Accordion name='Set 1' internal>
-//                     <SetContainer>
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                        
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-//                     </SetContainer>
-//                 </Accordion>
-//                 <Accordion name='Set 1' internal>
-//                     <SetContainer>
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                        
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='2000' />
-                    
-//                         <RepInput 
-//                             max='100' 
-//                             step='10' 
-//                             value='30' />
-//                     </SetContainer>
-//                 </Accordion>
