@@ -2,7 +2,8 @@ import React, { useReducer, } from 'react'
 import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
-import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_, } from './types'
+import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_, 
+    _setRange_, _setIndividualRep_, } from './types'
 
 
 const ActionModalState = props => {
@@ -21,6 +22,10 @@ const ActionModalState = props => {
 
     const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
 
+    const updateRange = newRangeValue => dispatch({ type: _setRange_, payload: newRangeValue })
+   
+    const updateIndividualRep = newRepValue => dispatch({ type: _setIndividualRep_, payload: newRepValue })
+
 
     return (
         <ActionModalContext.Provider
@@ -29,15 +34,18 @@ const ActionModalState = props => {
                 optButtonsReps: state.optButtonsReps,
                 repRange: state.repRange,
                 repRangeEnum: state.repRangeEnum,
-                defaultStart: state.defaultStart,
+                rangeValue: state.rangeValue,
                 weightSelection: state.weightSelection,
                 optButtonsWeight: state.optButtonsWeight,
                 startingWeight: state.startingWeight,
                 repSteps: state.repSteps,
-            
+                baseSets: state.baseSets,
+
                 updateSetCount,
                 updateRepSelection,
                 updateWeightSelection,
+                updateRange,
+                // createRepArray,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>
@@ -47,6 +55,7 @@ const ActionModalState = props => {
 
 export default ActionModalState
 
+//y=x.map(unit => { return [...Array(3).fill(7)] })
 
 // export const initialState = {
 //     numberOfSets: '4',

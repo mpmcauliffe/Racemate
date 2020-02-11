@@ -7,7 +7,7 @@ export const SetContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    margin: 3rem auto;
+    margin: ${props => props.short ? '1rem auto' : '3rem auto'};
 
     p {
         font-size: 2.1rem;
