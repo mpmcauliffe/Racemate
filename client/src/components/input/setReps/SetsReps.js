@@ -7,20 +7,13 @@ import { OpSwitch, } from '../..'
 
 export const SetReps = () => {
     // CONTEXT .V.
-    const { numberOfSets,  repRange, optButtonsReps, optButtonsWeight,     
-        baseObject, } = useContext(actionModalContext)
+    const { numberOfSets,  repRange, optButtonsReps, optButtonsWeight, } = useContext(actionModalContext)
 
     // CONTEXT (F)
     const { updateSetCount, updateRepSelection, updateWeightSelection, } = useContext(actionModalContext)
 
     // CONTEXT {O}
-    const {  } = useContext(actionModalContext)
-
-    
-    useEffect(() => { 
-        if (Object.entries(baseObject).length === 0) { console.log('AAAAA') }
-        
-    }, [])
+    // const {  } = useContext(actionModalContext)
   
     useEffect(() => { return () => { console.log('will unmount') }}, [])
 
@@ -39,8 +32,8 @@ export const SetReps = () => {
                         value={numberOfSets}
                         onChange={updateSetCount}
                         name='numRepsInput'
-                        max='100'
-                        min='1' 
+                        max={20}
+                        min={1} 
                         step='1' />
                 </SetContainer>
 

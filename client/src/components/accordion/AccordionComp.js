@@ -34,7 +34,7 @@ export const AccordionFront = styled.div`
     }
     .show {
         /* max-height: 60rem; */
-        margin-bottom: 10rem;
+        margin-bottom: 4rem;
         opacity: 1;
         transition: all 0.4s ease-out;      
     }

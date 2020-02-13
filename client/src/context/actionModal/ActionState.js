@@ -3,8 +3,7 @@ import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
 import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_, 
-    _setRange_, _setIndividualRep_, _initiateWeightless_, _initiateWeightlessArray_,
-    _initiateWeightedArray_, } from './types'
+    _setRange_, _setIndividualRep_, _createInitialObject_, } from './types'
 
 
 const ActionModalState = props => {
@@ -17,7 +16,7 @@ const ActionModalState = props => {
     const [state, dispatch] = useReducer(actionReducer, defaultState)
 
 
-    const updateSetCount = e =>  dispatch({ type: _setNumberOfSets_, payload: e.target.value })
+    const updateSetCount = e =>  e.target.value > 0 ? dispatch({ type: _setNumberOfSets_, payload: e.target.value }) : -1
         
     const updateRepSelection = repSelectionIndex => dispatch({ type: _setRepSelection_, payload: repSelectionIndex })
 
@@ -27,9 +26,7 @@ const ActionModalState = props => {
    
     const updateIndividualRep = newRepValue => dispatch({ type: _setIndividualRep_, payload: newRepValue })
 
-    const initiateWeightlessArray = () => dispatch({ type: _initiateWeightlessArray_, })
-
-    const initiateWeightedArray = () => dispatch({ type: _initiateWeightlessArray_, })
+    const createInitialObject = () => dispatch({ type: _createInitialObject_ })
 
 
     return (
@@ -51,8 +48,7 @@ const ActionModalState = props => {
                 updateRepSelection,
                 updateWeightSelection,
                 updateRange,
-                initiateWeightlessArray,
-                // createRepArray,
+                createInitialObject,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>
