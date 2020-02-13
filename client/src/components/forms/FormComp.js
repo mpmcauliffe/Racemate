@@ -8,6 +8,7 @@ export const FormContainer = styled.div`
     align-items: center;
     padding-top: 2rem;
     margin-bottom: 10rem;
+    overflow-x: hidden;
 
     @media (min-width: 768px) {
         width: 80%;

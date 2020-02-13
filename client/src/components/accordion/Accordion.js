@@ -1,5 +1,5 @@
 import React, { Fragment, useState, } from 'react'
-import { AccordionFront, Arrow, Segment, } from './AccordionComp'
+import { AccordionFront, Arrow, } from './AccordionComp'
 
 
 export const Accordion = props => {

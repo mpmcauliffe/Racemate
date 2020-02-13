@@ -1,1 +1,1 @@
-export * from './setGauge/SetGauge'
+export * from './setReps/SetsReps'

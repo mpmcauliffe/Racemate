@@ -8,10 +8,8 @@ import { IS_LOGGED_IN } from '../../graphql'
 
 export const Lock = props => {
     const { data } = useQuery(IS_LOGGED_IN)
-
-    useEffect(() => {
-        
-    }, [data])
+    
+    useEffect(() => { }, [data])
 
     return (
         <Switch>

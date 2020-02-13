@@ -10,6 +10,7 @@ import { ApolloProvider as HookProvider  } from '@apollo/react-hooks'
 import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { onError } from 'apollo-link-error'
 
 import App from './App'
 import { userTypes, appTypes, appResolver, } from './graphql'
@@ -37,8 +38,23 @@ const authLink = setContext((_, { headers }) => {
     }
 })
 
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+        graphQLErrors.map(({ extensions }) => {
+            console.log(extensions)
+        })
+        graphQLErrors.map(({ message, locations, path }) =>
+            console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,),
+        )
+    }
+    if (networkError) {
+        console.log(`[Network error]: ${networkError}`)
+    }
+})
+
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
+    errorLink,
     cache,
     userTypes,
     appTypes,

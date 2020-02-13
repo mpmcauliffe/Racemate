@@ -1,7 +1,5 @@
-import { _setNumberOfSets_, 
-    _setRepSelection_, 
-    _setWeightSelection_,
-    _setRange_, } from './types'
+import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_,
+    _setRange_,  _initiateWeightlessArray_, } from './types'
 
 
 export default (state, action) => {
@@ -39,6 +37,12 @@ export default (state, action) => {
             return {
                 ...state,
                 rangeValue: action.payload,
+            }
+
+        case _initiateWeightlessArray_:
+            return { //[...Array(4)].map(set => startingWeight)
+                ...state, 
+                baseSets: [...Array(parseInt(state.numberOfSets)).fill(state.averageNumberOfReps)]
             }
 
         default:

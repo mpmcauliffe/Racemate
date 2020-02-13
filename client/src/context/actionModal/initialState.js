@@ -13,6 +13,7 @@ export const defaultState = {
     rangeValue: '8',
     defaultStartEnum: ['8', '12', '30'],
     actualNumberOfReps: [ ],
+    averageNumberOfReps: '8',
 
     weightSelection: false,
     optButtonsWeight: ['no', 'yes'],
@@ -21,4 +22,7 @@ export const defaultState = {
     repSteps: '2.5',
 
     baseSets: [...Array(4)].map(emptySet => { return [...Array(8).fill('x')] }),
+
+    baseObject: { },
 }
+//[...Array(4)].map(set => startingWeight) 

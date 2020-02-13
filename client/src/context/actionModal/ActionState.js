@@ -3,7 +3,8 @@ import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
 import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_, 
-    _setRange_, _setIndividualRep_, } from './types'
+    _setRange_, _setIndividualRep_, _initiateWeightless_, _initiateWeightlessArray_,
+    _initiateWeightedArray_, } from './types'
 
 
 const ActionModalState = props => {
@@ -26,6 +27,10 @@ const ActionModalState = props => {
    
     const updateIndividualRep = newRepValue => dispatch({ type: _setIndividualRep_, payload: newRepValue })
 
+    const initiateWeightlessArray = () => dispatch({ type: _initiateWeightlessArray_, })
+
+    const initiateWeightedArray = () => dispatch({ type: _initiateWeightlessArray_, })
+
 
     return (
         <ActionModalContext.Provider
@@ -40,11 +45,13 @@ const ActionModalState = props => {
                 startingWeight: state.startingWeight,
                 repSteps: state.repSteps,
                 baseSets: state.baseSets,
+                baseObject: state.baseObject,
 
                 updateSetCount,
                 updateRepSelection,
                 updateWeightSelection,
                 updateRange,
+                initiateWeightlessArray,
                 // createRepArray,
                  }}
         >   {props.children}

@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext, } from 'react'
-import ModalFormContext from '../../../context/modalForm/modalFormContext'
+import React, { useState, useEffect, } from 'react'
 import ReactModal from 'react-modal'
 
-import { SetGauge, } from '../../input'
+import { SetReps, } from '../../input'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
@@ -10,9 +9,6 @@ import { InfoIcon,
     Accordion, 
     FormContainer, 
     InfoButton, } from '../..'
-
-import { useApolloClient, } from '@apollo/react-hooks'
-import { GET_EDIT_STATUS } from '../../../graphql'   
 
 import Simplebar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
@@ -34,7 +30,7 @@ export const ActiveModal = props => {
         )
     }
 
-    const { activeId, activeName } = props.children.props
+    const { activeName } = props.children.props
 
     return (
 
@@ -58,7 +54,7 @@ export const ActiveModal = props => {
                         <InfoButton wide>Save ALL changes</InfoButton>
 
                         <Accordion name='Sets, reps & weight'>
-                            <SetGauge />
+                            <SetReps />
                         </Accordion>
 
                         <Accordion name='Endurance & time'>
