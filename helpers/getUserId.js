@@ -13,8 +13,15 @@ const getUserId = (header, requireAuth = true) => {
 
     if (header) {
         const token = header.replace('Bearer ', '')
-        const decoded = jwt.verify(token, secret)
-        return decoded.userId
+
+        try {
+            const decoded = jwt.verify(token, secret)
+            return decoded.userId
+
+        } catch (e) {
+            throw new Error('AUTH ERROR!')
+        }
+        
     }
 
     if (requireAuth) {

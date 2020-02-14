@@ -7,22 +7,23 @@ import { OpSwitch, } from '../..'
 
 export const SetReps = () => {
     // CONTEXT .V.
-    const { numberOfSets,  repRange, optButtonsReps, optButtonsWeight, } = useContext(actionModalContext)
+    const { numberOfSets, optButtonsWeight, } = useContext(actionModalContext)
 
     // CONTEXT (F)
-    const { updateSetCount, updateRepSelection, updateWeightSelection, } = useContext(actionModalContext)
+    const { updateSetCount, updateWeightSelection, changeObject, } = useContext(actionModalContext)
 
     // CONTEXT {O}
     // const {  } = useContext(actionModalContext)
   
     useEffect(() => { return () => { console.log('will unmount') }}, [])
+    
+    const handleToggleWeights = () => {
+        updateWeightSelection()
 
-
-    const handleToggle = buttonName => updateRepSelection(optButtonsReps.indexOf(buttonName))
-
-    const handleToggleWeights = () => updateWeightSelection()
-
-
+        changeObject()
+    }
+    
+    
     return (
 
             <form>
@@ -36,15 +37,7 @@ export const SetReps = () => {
                         min={1} 
                         step='1' />
                 </SetContainer>
-
-                <SetContainer>
-                    <p>Rep Magnitude</p>
-                    <OpSwitch 
-                        optButtons={optButtonsReps}
-                        handleToggle={handleToggle} />     
-                    <UpdateText>between {repRange} reps</UpdateText>                         
-                </SetContainer>
-
+                
                 <SetContainer>
                     <p>Does this exercise require weights?</p>
                     <OpSwitch 

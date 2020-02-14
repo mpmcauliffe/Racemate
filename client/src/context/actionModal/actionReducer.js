@@ -1,7 +1,8 @@
-import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_,
-    _setRange_, _createInitialObject_, } from './types'
+import { _setNumberOfSets_, _setWeightSelection_,
+    _setRange_, _createInitialObject_, _changeObject_, 
+    _setWeightActual_, } from './types'
 
-import { buildObject, removeObjKeys, } from '../../helpers'
+import { buildObject, removeObjKeys, refillObjValues, } from '../../helpers'
 
 
 export default (state, action) => {
@@ -11,23 +12,19 @@ export default (state, action) => {
                 ...state,
                 numberOfSets: action.payload > 0 ? action.payload : '1',
                 baseObject: parseInt(action.payload) > Object.keys(state.baseObject).length 
-                    ? buildObject(state.baseObject, parseInt(action.payload), 'set', state.rangeValue) 
+                    ? buildObject(state.baseObject, parseInt(action.payload), 'set', state.baseValue) 
                     : removeObjKeys(state.baseObject, parseInt(action.payload), 'set')
             }
 
-        case _setRepSelection_: 
-            return {
-                ...state,
-                repSelection: state.optButtonsReps[action.payload],
-                repRange: state.repRangeEnum[action.payload],
-                defaultStart: state.defaultStartEnum[action.payload],
-                rangeValue: state.defaultStartEnum[action.payload]
-            }
-
         case _setWeightSelection_: 
-            return {
+            return { // refillObjValues = (obj, internalValue)
                 ...state,
                 weightSelection: !state.weightSelection,
+                baseValue: state.weightSelection ? state.fillArray : state.rangeValue,
+                // baseObject: Object.keys(state.baseObject).map(set => state.baseValue)
+                // baseObject: state.weightSelection 
+                //     ? refillObjValues(state.baseObject, [...Array(state.rangeValue).fill(state.startingWeight)]) 
+                //     : refillObjValues(state.baseObject, state.realNumberOfReps),
             }
         
         case _setRange_: 
@@ -39,7 +36,24 @@ export default (state, action) => {
         case _createInitialObject_: 
             return { // buildObject = (obj, depth, name, value)
                 ...state,
-                baseObject: buildObject(state.baseObject, 4, 'set', state.rangeValue)
+                baseObject: buildObject(state.baseObject, 4, 'set', state.baseValue),
+                fillArray: [...Array(parseInt(state.rangeValue)).fill(state.weightValue)]
+            }
+
+        case _changeObject_:
+            return { // refillObjValues = (obj, size, name, val1, val2, )
+                ...state,
+                baseObject: refillObjValues(state.baseObject, state.numberOfSets, 'set',  state.rangeValue, state.fillArray),
+                weightOption: false,
+            }
+
+        case _setWeightActual_:
+            return { //obj[key][index]
+                ...state,
+                baseObject: Object.keys(state.baseObject).map((key, i) => {
+                    
+                }), 
+                weightOption: true,
             }
 
         default:

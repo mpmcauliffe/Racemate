@@ -1,6 +1,7 @@
-export const _setRepSelection_              = '_setRepSelection_'
 export const _setWeightSelection_           = '_setWeightSelection_'
 export const _setNumberOfSets_              = '_setNumberOfSets_'
 export const _setRange_                     = '_setRange_'
 export const _setIndividualRep_             = '_setIndividualRep_'
 export const _createInitialObject_          = '_createInitialObject'
+export const _changeObject_                 = '_changeObject_'
+export const _setWeightActual_              = '_setWeightActual_'

@@ -6,32 +6,32 @@ import { Accordion, } from '../..'
 
 export const SetGauge = () => {
     // CONTEXT .V.
-    const { numberOfSets, baseSets, rangeValue, repRange, weightSelection, } = useContext(actionModalContext)
+    const { numberOfSets, rangeValue, weightSelection, baseValue, weightValue, } = useContext(actionModalContext)
 
     // CONTEXT (F)
-    const { updateRange, createInitialObject, } = useContext(actionModalContext)
+    const { updateRange, createInitialObject, updateWeightActual } = useContext(actionModalContext)
 
     // CONTEXT {O}
     const { baseObject, } = useContext(actionModalContext)
 
     useEffect(() => { if (Object.entries(baseObject).length === 0) { createInitialObject() } }, [])
 
-    console.log(baseObject)
+    //console.log(baseObject)
        
     const handleRangeChange = e => updateRange(e.target.value)
 
-    const updateRep = e => console.log(e.target)
+    const updateRep = e => {
+         
+        //console.log([e.target.name], e.target.value)
+    }
     
-    // Object.keys(myObject).map(function(key, index) {
-    //     myObject[key] *= 2;
-    //   });
 
     return (
         <Fragment>
-            {numberOfSets && Object.keys(baseObject).map((set, i) => (
+            {numberOfSets && Object.keys(baseObject).map((key, i) => (
                 <Accordion 
-                    key={set}
-                    name={`Set ${i+1}`} 
+                    key={key}
+                    name={key.replace('_', ' ')} 
                     internal>
 
                     <SetContainer short>
@@ -41,22 +41,29 @@ export const SetGauge = () => {
                             onChange={handleRangeChange}
                             type='range' 
                             name='repMeter' 
-                            min={repRange.split('-')[0]} 
-                            max={repRange.split('-')[1]}
+                            min={4} 
+                            max={50}
                             style={{ flexBasis: '100%' }} />
-
-                        {weightSelection && baseSets[i].map((rep, j) => (
-                            <RepInput 
-                                key={`${i}-${j}`} /* NOT RECOMMENDED KEY - uuid.v4() leads to unpredictable behavior */
-                                value='30'
-                                onChange={updateRep}
-                                name={`weightInput_${i}-${j}`}
-                                max='9999' 
-                                step='1' />
-                        ))}
+                        {Array.isArray(baseObject[Object.keys(baseObject)[0]]) && weightSelection 
+                            ?  ( 
+                                baseObject[key].map((rep, j) => (
+                                    <RepInput 
+                                        key={`${key}_${i}-${j}`}
+                                        value={baseObject[key][j]}
+                                        onChange={updateRep}
+                                        name={`${key}-${j}`}
+                                        max='9999' 
+                                        step='1' />
+                                ))
+                            ) : (null)
+                        } 
+                        
                     </SetContainer>
                 </Accordion>
             ))}
+            
         </Fragment>
     )
 }
+//`${key}_${i}-${j}`      >> KEY
+//`weightInput_${i}-${j}` >> NAME

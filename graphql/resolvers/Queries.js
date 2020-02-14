@@ -44,6 +44,9 @@ const Query = {
     myExercises: async (args, { headers }) => {
         try {
             const userId = getUserId(headers.authorization)
+            // if (userId === 'AUTH ERROR!') {
+            //     throw new Error('AUTH TOKEN ERROR')
+            // }
 
             const exercises = await Exercise.find({ owner: userId })
             

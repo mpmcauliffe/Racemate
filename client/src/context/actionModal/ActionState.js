@@ -2,8 +2,9 @@ import React, { useReducer, } from 'react'
 import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
-import { _setNumberOfSets_, _setRepSelection_, _setWeightSelection_, 
-    _setRange_, _setIndividualRep_, _createInitialObject_, } from './types'
+import { _setNumberOfSets_, _setWeightSelection_, 
+    _setRange_, _setIndividualRep_, _createInitialObject_,
+    _changeObject_, _setWeightActual_, } from './types'
 
 
 const ActionModalState = props => {
@@ -18,8 +19,6 @@ const ActionModalState = props => {
 
     const updateSetCount = e =>  e.target.value > 0 ? dispatch({ type: _setNumberOfSets_, payload: e.target.value }) : -1
         
-    const updateRepSelection = repSelectionIndex => dispatch({ type: _setRepSelection_, payload: repSelectionIndex })
-
     const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
 
     const updateRange = newRangeValue => dispatch({ type: _setRange_, payload: newRangeValue })
@@ -28,27 +27,42 @@ const ActionModalState = props => {
 
     const createInitialObject = () => dispatch({ type: _createInitialObject_ })
 
+    const changeObject = () => dispatch({ type: _changeObject_ })
+
+    const updateWeightActual = (name, newWeight) => {
+        //obj[key][index]
+        //["set_1_0"] "11"
+        //tabId = id.split("_").pop()
+//         var str = "Hello world!";
+// var res = str.substring(1, 4)
+        const elementKey = name[0].substring(0, 5) 
+        const arrayLocation = name[0].split('-').pop()
+
+        
+        
+        dispatch({ type: _setWeightActual_, payload: { elementKey, arrayLocation, newWeight } })
+    }
+
 
     return (
         <ActionModalContext.Provider
             value={{ numberOfSets: state.numberOfSets,
-                repSelection: state.repSelection,
-                optButtonsReps: state.optButtonsReps,
-                repRange: state.repRange,
-                repRangeEnum: state.repRangeEnum,
                 rangeValue: state.rangeValue,
                 weightSelection: state.weightSelection,
                 optButtonsWeight: state.optButtonsWeight,
                 startingWeight: state.startingWeight,
                 repSteps: state.repSteps,
-                baseSets: state.baseSets,
                 baseObject: state.baseObject,
+                baseValue: state.baseValue,
+                weightValue: state.weightValue,
+                weightOption: state.weightOption,
 
                 updateSetCount,
-                updateRepSelection,
                 updateWeightSelection,
                 updateRange,
                 createInitialObject,
+                changeObject,
+                updateWeightActual,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

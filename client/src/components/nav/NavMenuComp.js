@@ -83,7 +83,7 @@ export const NavMenuKit = styled.div`
         display: inline-block;
         width: 3rem;
         height: 0.2rem;
-        background-color: ${props => props.theme.primaryGray};
+        background-color: ${props => props.theme.colorLight};
     }
     .navigation__icon::before, .navigation__icon::after {
         content: "";

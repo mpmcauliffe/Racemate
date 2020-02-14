@@ -38,6 +38,17 @@ export const removeObjKeys = (obj, newQuantity, name) => {
     return removeObjKeys(obj, newQuantity, name)
 }
 
+export const refillObjValues = (obj, size, name, val1, val2, ) => {
+    if (size === 0) { return obj }
+
+    if (Array.isArray(obj[Object.keys(obj)[0]])) {
+        obj[`${name}_${size}`] = val1
+        return refillObjValues(obj, --size, name, val1)
+    }
+    obj[`${name}_${size}`] = val2
+    return refillObjValues(obj, --size, name, val1, val2)
+}
+
 // BUT THIS IS THE MONSTROSITY I CREATED FOR ADDING AND REMOVING ARRAYS FROM AND ARRAY
     // state.baseSets.length > action.payload 
     //     ? state.baseSets.slice(0, action.payload)
