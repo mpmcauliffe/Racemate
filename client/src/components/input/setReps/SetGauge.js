@@ -17,29 +17,37 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-console.log(baseSets)
+    console.log(baseSets)
+    const handleRangeChange = e => updateRange(e.target.name, e.target.value)
 
     const updateRep = e => console.log(e.target)
     
     return (
         <Fragment>
-            {numberOfSets && baseSets.map((holder, i) => (
+            {numberOfSets && baseSets.map((set, i) => (
                 <Accordion 
                     key={i} /* NOT RECOMMENDED KEY - uuid.v4() leads to unpredictable behavior */
                     name={`Set ${i+1}`} 
                     internal>
 
                     <SetContainer short>
-                        <UpdateText>{repValue} reps</UpdateText>
-                        <input 
-                            value={repValue}
-                            onChange={updateRange}
+                        <UpdateText>number of reps</UpdateText>
+
+                        <RepInput  
+                            value={Array.isArray(set) ? set.length : set[i]}
+                            onChange={handleRangeChange}
+                            name={i} 
+                            step='1' 
+                            counter />
+
+                        {/*****<input 
+                            value={i}
+                            onChange={handleRangeChange}
+                            name={i}
                             type='range' 
                             min={4} 
                             max={50}
-                            style={{ flexBasis: '100%' }} />
-
-                        {/***** *****/}
+                            style={{ flexBasis: '100%' }} /> *****/}
                         {weightSelection && baseSets[i].map((rep, j) => (
                             <RepInput 
                                 key={`${i}-${j}`} 

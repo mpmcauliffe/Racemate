@@ -28,6 +28,9 @@ export const RepInput = styled.input.attrs(props => ({
     margin: .3rem .1rem;
     font-size: ${props => props.value > 999 ? '1.5rem' : '1.9rem'};
 
+    background: ${props => props.counter && props.theme.colorDark};
+    color: ${props => props.counter && props.theme.lightGray}
+
     @media(max-width: 480px) {
         flex-basis: 40%;
         margin: 1rem;
