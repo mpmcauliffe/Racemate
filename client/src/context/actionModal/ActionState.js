@@ -37,7 +37,6 @@ const ActionModalState = props => {
 // var res = str.substring(1, 4)
         const elementKey = name[0].substring(0, 5) 
         const arrayLocation = name[0].split('-').pop()
-
         
         
         dispatch({ type: _setWeightActual_, payload: { elementKey, arrayLocation, newWeight } })

@@ -50,9 +50,30 @@ export default (state, action) => {
         case _setWeightActual_:
             return { //obj[key][index]
                 ...state,
-                baseObject: Object.keys(state.baseObject).map((key, i) => {
+                baseObject: {
+                    ...state.baseObject,
+                    [state.baseObject[action.payload.elementKey]]: [state.baseObject[action.payload.elementKey][parseInt(action.payload.arrayLocation)]] = [action.payload.newWeight], 
+                    // [
+                    //     ...state.baseObject[action.payload.elementKey],
+                    //     state.baseObject[action.payload.elementKey][parseInt(action.payload.arrayLocation)] = action.payload.newWeight
+                    // ],
+                    //...state.baseObject,
+                },
+                // Object.keys(state.baseObject).map((key, i) => {
+                //     console.log(key)
+                //     if (key === action.payload.elementKey) {
+                //         Object.keys(state.baseObject[action.payload.elementKey]).map((rep, j) => {
+
+                //             if (action.payload.arrayLocation === j.toString()) {
+                //                 state.baseObject[action.payload.elementKey][rep] = action.payload.newWeight
+                //                 console.log(state.baseObject[action.payload.elementKey][rep])
+                //             }
+                //             console.log(state.baseObject[action.payload.elementKey])
+                //             return state.baseObject[action.payload.elementKey][rep]
+                //         })
+                //     }
+                // }),
                     
-                }), 
                 weightOption: true,
             }
 

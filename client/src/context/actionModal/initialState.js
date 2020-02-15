@@ -2,7 +2,7 @@
 export const defaultState = {
     numberOfSets: '4',
 
-    rangeValue: '12',
+    rangeValue: '8',
 
     weightSelection: false,
     optButtonsWeight: ['no', 'yes'],

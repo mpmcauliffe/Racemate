@@ -16,12 +16,12 @@ export const SetGauge = () => {
 
     useEffect(() => { if (Object.entries(baseObject).length === 0) { createInitialObject() } }, [])
 
-    //console.log(baseObject)
+    console.log(baseObject)
        
     const handleRangeChange = e => updateRange(e.target.value)
 
     const updateRep = e => {
-         
+        updateWeightActual([e.target.name], e.target.value)
         //console.log([e.target.name], e.target.value)
     }
     
