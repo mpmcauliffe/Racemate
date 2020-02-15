@@ -59,3 +59,8 @@ export const refillObjValues = (obj, size, name, val1, val2, ) => {
     //         })
     //     ]
 // [...a, ...[...Array(2)].map(emptySet => { return [...Array(2).fill(8)] })]
+
+
+// parseInt(action.payload) > Object.keys(state.baseArray).length 
+//                     ? buildObject(state.baseArray, parseInt(action.payload), 'set', state.baseValue) 
+//                     : removeObjKeys(state.baseArray, parseInt(action.payload), 'set')

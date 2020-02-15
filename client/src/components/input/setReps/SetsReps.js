@@ -10,34 +10,28 @@ export const SetReps = () => {
     const { numberOfSets, optButtonsWeight, } = useContext(actionModalContext)
 
     // CONTEXT (F)
-    const { updateSetCount, updateWeightSelection, changeObject, } = useContext(actionModalContext)
+    const { updateSetCount, updateWeightSelection, } = useContext(actionModalContext)
 
     // CONTEXT {O}
     // const {  } = useContext(actionModalContext)
-  
-    useEffect(() => { return () => { console.log('will unmount') }}, [])
     
-    const handleToggleWeights = () => {
-        updateWeightSelection()
+    // useEffect(() => { }, [])
+    // useEffect(() => { return () => { console.log('will unmount') }}, [])
 
-        changeObject()
-    }
-    
-    
+
+    const handleToggleWeights = () => updateWeightSelection()
+
+
     return (
-
             <form>
                 <SetContainer>
                     <p>How many sets?</p>
                     <RepInput 
                         value={numberOfSets}
                         onChange={updateSetCount}
-                        name='numRepsInput'
-                        max={20}
-                        min={1} 
                         step='1' />
                 </SetContainer>
-                
+
                 <SetContainer>
                     <p>Does this exercise require weights?</p>
                     <OpSwitch 
@@ -49,4 +43,3 @@ export const SetReps = () => {
             </form>
     )
 }
-//[...Array(parseInt(numberOfSets))] `${i}_${uuid.v4()}`

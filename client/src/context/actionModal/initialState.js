@@ -7,13 +7,8 @@ export const defaultState = {
     weightSelection: false,
     optButtonsWeight: ['no', 'yes'],
 
-    weightValue: '10',
-    repSteps: '.5',
-    weightOption: false,    
+    weightSteps: '.5',
 
-    baseObject: { },
-    baseValue: '8',
-    fillArray: [ ],
+    baseSets: [...Array(4).fill('8')]
 }
-//[...Array(4)].map(set => startingWeight) 
-//baseSets: [...Array(4)].map(emptySet => { return [...Array(8).fill('x')] }),
+//[...Array(4)].map(emptySet => { return [...Array(8).fill('x')] }),

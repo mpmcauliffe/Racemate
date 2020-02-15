@@ -1,3 +1,4 @@
+
 import React, { Fragment, useEffect, useContext,  } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
 import { RepInput, SetContainer, UpdateText, } from '../inputComp'
@@ -6,62 +7,46 @@ import { Accordion, } from '../..'
 
 export const SetGauge = () => {
     // CONTEXT .V.
-    const { numberOfSets, rangeValue, weightSelection, baseValue, weightValue, } = useContext(actionModalContext)
-
+    const { numberOfSets, rangeValue, weightSelection, } = useContext(actionModalContext)
+    
     // CONTEXT (F)
-    const { updateRange, createInitialObject, updateWeightActual } = useContext(actionModalContext)
+    const { updateRange, } = useContext(actionModalContext)
 
     // CONTEXT {O}
-    const { baseObject, } = useContext(actionModalContext)
-
-    useEffect(() => { if (Object.entries(baseObject).length === 0) { createInitialObject() } }, [])
-
-    console.log(baseObject)
-       
-    const handleRangeChange = e => updateRange(e.target.value)
-
-    const updateRep = e => {
-        updateWeightActual([e.target.name], e.target.value)
-        //console.log([e.target.name], e.target.value)
-    }
+    const { baseSets, } = useContext(actionModalContext)
+console.log(baseSets)
+    const updateRep = e => console.log(e.target)
     
-
     return (
         <Fragment>
-            {numberOfSets && Object.keys(baseObject).map((key, i) => (
+            {numberOfSets && baseSets.map((holder, i) => (
                 <Accordion 
-                    key={key}
-                    name={key.replace('_', ' ')} 
+                    key={i} /* NOT RECOMMENDED KEY - uuid.v4() leads to unpredictable behavior */
+                    name={`Set ${i+1}`} 
                     internal>
 
                     <SetContainer short>
                         <UpdateText>{rangeValue} reps</UpdateText>
                         <input 
                             value={rangeValue}
-                            onChange={handleRangeChange}
+                            onChange={updateRange}
                             type='range' 
-                            name='repMeter' 
                             min={4} 
                             max={50}
                             style={{ flexBasis: '100%' }} />
-                        {Array.isArray(baseObject[Object.keys(baseObject)[0]]) && weightSelection 
-                            ?  ( 
-                                baseObject[key].map((rep, j) => (
-                                    <RepInput 
-                                        key={`${key}_${i}-${j}`}
-                                        value={baseObject[key][j]}
-                                        onChange={updateRep}
-                                        name={`${key}-${j}`}
-                                        max='9999' 
-                                        step='1' />
-                                ))
-                            ) : (null)
-                        } 
-                        
+
+                        {weightSelection && baseSets[i].map((rep, j) => (
+                            <RepInput 
+                                key={`${i}-${j}`} /* NOT RECOMMENDED KEY - uuid.v4() leads to unpredictable behavior */
+                                value='30'
+                                onChange={updateRep}
+                                name={`weightInput_${i}-${j}`}
+                                max='9999' 
+                                step='1' />
+                        ))}
                     </SetContainer>
                 </Accordion>
             ))}
-            
         </Fragment>
     )
 }
