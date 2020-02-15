@@ -23,7 +23,11 @@ const ActionModalState = props => {
         
     const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
 
-    const updateRange = (name, newRepValue) => dispatch({ type: _setRange_, payload: { name, newRepValue } })
+    const updateRange = (name, newRepValue) => {
+        //if (newRepValue > 0 && newRepValue < 51) {
+            dispatch({ type: _setRange_, payload: { name, newRepValue } })
+        //}
+    }
 
     const changeToWeightedArray = () => dispatch({ type: _changeToWeightedArray_ })
    

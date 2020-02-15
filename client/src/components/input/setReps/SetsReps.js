@@ -36,6 +36,7 @@ export const SetReps = () => {
                     <RepInput 
                         value={numberOfSets}
                         onChange={updateSetCount}
+                        type='number'
                         step='1' />
                 </SetContainer>
 

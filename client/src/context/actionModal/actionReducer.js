@@ -35,23 +35,25 @@ export default (state, action) => {
             }
         
         case _setRange_: 
-        console.log(state.baseSets[parseInt(action.payload.name)])
             return {
                 ...state,
                 repValue: action.payload.newRepValue,
                 baseSets: state.weightSelection
-                    ? (
-                        [
-                            ...state.baseSets,
-                            ...state.baseSets[parseInt(action.payload.name)].push(state.weightValue)
-                        ]
-                    ) : (
-                        [
-                            ...state.baseSets,
-                            state.baseSets[parseInt(action.payload.name)] = action.payload.newRepValue
-                        ]
-                            
-                    )
+                    ?   (
+                            action.payload.newRepValue > state.baseSets[action.payload.name].length
+                                ? state.baseSets
+                                    .map((set, i) => parseInt(action.payload.name) === i 
+                                        ? [...state.baseSets[i], ...Array(action.payload.newRepValue).fill(state.weightValue)] 
+                                        : set
+                                    )                       
+                                : state.baseSets
+                                    .map((set, i) => parseInt(action.payload.name) === i 
+                                        ? set.slice(0, action.payload.newRepValue) 
+                                        : set
+                                    )                                
+                        )  
+                    : state.baseSets.map((rep, i) => parseInt(action.payload.name) === i ? action.payload.newRepValue : rep)                                                  
+                    
             }
 
         case _changeToWeightedArray_:

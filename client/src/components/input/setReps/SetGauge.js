@@ -17,7 +17,7 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-    console.log(baseSets)
+    //console.log(baseSets)
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
 
     const updateRep = e => console.log(e.target)
@@ -31,14 +31,19 @@ export const SetGauge = () => {
                     internal>
 
                     <SetContainer short>
-                        <UpdateText>number of reps</UpdateText>
-
-                        <RepInput  
-                            value={Array.isArray(set) ? set.length : set[i]}
-                            onChange={handleRangeChange}
-                            name={i} 
-                            step='1' 
-                            counter />
+                        <div style={{ display: 'flex', flexBasis: '100%', marginBottom: '2rem', }}>
+                            <UpdateText style={{ flexBasis: '50%' }}>number of reps</UpdateText>
+                            
+                            <RepInput  
+                                value={Array.isArray(set) ? set.length : baseSets[i]}
+                                onChange={handleRangeChange}
+                                name={i}
+                                type='number' 
+                                step='1' 
+                                counter
+                                style={{ flexBasis: '50%' }}  />
+                        </div>
+                        
 
                         {/*****<input 
                             value={i}
