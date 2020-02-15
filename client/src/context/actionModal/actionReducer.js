@@ -1,6 +1,6 @@
   
 import { _setNumberOfSets_, _setWeightSelection_,
-    _setRange_,  _initiateWeightlessArray_, } from './types'
+    _setRange_, _changeToWeightedArray_, _changeToWeightless_, } from './types'
 
 
 export default (state, action) => {
@@ -9,14 +9,23 @@ export default (state, action) => {
             return { //[...a, ...[...Array(2)].map(emptySet => { return [...Array(2).fill(8)] })]
                 ...state,
                 numberOfSets: action.payload > 0 ? action.payload : '1',
-                baseSets: state.baseSets.length > action.payload 
-                    ? state.baseSets.slice(0, action.payload)
-                    : [
-                        ...state.baseSets, 
-                        ...[...Array(action.payload - state.baseSets.length)].map(set => {
-                            return [...Array(parseInt(state.rangeValue)).fill('10')]
-                        })
-                    ]
+                baseSets: state.weightSelection 
+                    ?   (
+                            state.baseSets.length > action.payload 
+                                ? state.baseSets.slice(0, action.payload)
+                                : [
+                                    ...state.baseSets, 
+                                    ...[...Array(action.payload - state.baseSets.length)]
+                                            .map(set => { return [...Array(parseInt(state.repValue)).fill(state.weightValue)] })
+                                ]
+                    ) : (
+                            state.baseSets.length > action.payload
+                                ? state.baseSets.slice(0, action.payload)
+                                : [
+                                    ...state.baseSets, 
+                                    ...Array(action.payload - state.baseSets.length).fill(state.repValue)
+                                ]
+                        )
             }
 
         case _setWeightSelection_: 
@@ -28,14 +37,22 @@ export default (state, action) => {
         case _setRange_: 
             return {
                 ...state,
-                rangeValue: action.payload,
+                repValue: action.payload,
             }
 
-        // case _initiateWeightlessArray_:
-        //     return { //[...Array(4)].map(set => startingWeight)
-        //         ...state, 
-        //         baseSets: [...Array(parseInt(state.numberOfSets)).fill(state.averageNumberOfReps)]
-        //     }
+        case _changeToWeightedArray_:
+            return {
+                ...state,
+                baseSets: [...Array(parseInt(state.numberOfSets))]
+                            .map(set => { return [...Array(parseInt(state.repValue)).fill(state.weightValue)] })
+            }
+        
+        case  _changeToWeightless_:
+            return {
+                ...state,
+                baseSets: [...Array(parseInt(state.numberOfSets)).fill(state.repValue)]
+            }
+
 
         default:
             return state

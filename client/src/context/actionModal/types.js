@@ -1,3 +1,5 @@
 export const _setWeightSelection_           = '_setWeightSelection_'
 export const _setNumberOfSets_              = '_setNumberOfSets_'
 export const _setRange_                     = '_setRange_'
+export const _changeToWeightedArray_        = '_changeToWeightedArray_'
+export const _changeToWeightless_           = '_changeToWeightless_'

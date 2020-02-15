@@ -10,16 +10,23 @@ export const SetReps = () => {
     const { numberOfSets, optButtonsWeight, } = useContext(actionModalContext)
 
     // CONTEXT (F)
-    const { updateSetCount, updateWeightSelection, } = useContext(actionModalContext)
+    const { updateSetCount, updateWeightSelection, changeToWeightless, 
+        changeToWeightedArray, } = useContext(actionModalContext)
 
     // CONTEXT {O}
     // const {  } = useContext(actionModalContext)
-    
-    // useEffect(() => { }, [])
     // useEffect(() => { return () => { console.log('will unmount') }}, [])
 
 
-    const handleToggleWeights = () => updateWeightSelection()
+    const handleToggleWeights = buttonName => {
+        updateWeightSelection()
+
+        if (buttonName === 'yes') {
+            changeToWeightedArray()
+        } else {
+            changeToWeightless()
+        }
+    }
 
 
     return (

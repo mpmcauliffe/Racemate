@@ -55,7 +55,7 @@ export const refillObjValues = (obj, size, name, val1, val2, ) => {
     //     : [
     //         ...state.baseSets, 
     //         ...[...Array(action.payload - state.baseSets.length)].map(set => {
-    //             return [...Array(parseInt(state.rangeValue)).fill('10')]
+    //             return [...Array(parseInt(state.repValue)).fill('10')]
     //         })
     //     ]
 // [...a, ...[...Array(2)].map(emptySet => { return [...Array(2).fill(8)] })]

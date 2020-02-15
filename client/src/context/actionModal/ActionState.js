@@ -2,8 +2,8 @@ import React, { useReducer, } from 'react'
 import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
-import { _setNumberOfSets_,  _setWeightSelection_, 
-    _setRange_, } from './types'
+import { _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
+    _changeToWeightedArray_, _changeToWeightless_, } from './types'
 
 
 const ActionModalState = props => {
@@ -15,18 +15,24 @@ const ActionModalState = props => {
     //const initialState = defaultState
     const [state, dispatch] = useReducer(actionReducer, defaultState)
 
-
-    const updateSetCount = e =>  dispatch({ type: _setNumberOfSets_, payload: e.target.value })
+    const updateSetCount = e => {
+        if (e.target.value > 0) {
+            dispatch({ type: _setNumberOfSets_, payload: e.target.value })
+        }
+    } 
         
     const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
 
-    const updateRange = newRangeValue => dispatch({ type: _setRange_, payload: newRangeValue })
+    const updateRange = newrepValue => dispatch({ type: _setRange_, payload: newrepValue })
+
+    const changeToWeightedArray = () => dispatch({ type: _changeToWeightedArray_ })
    
+    const changeToWeightless = () => dispatch({ type: _changeToWeightless_ })
 
     return (
         <ActionModalContext.Provider
             value={{ numberOfSets: state.numberOfSets,
-                rangeValue: state.rangeValue,
+                repValue: state.repValue,
                 weightSelection: state.weightSelection,
                 optButtonsWeight: state.optButtonsWeight,
                 baseSets: state.baseSets,
@@ -34,6 +40,8 @@ const ActionModalState = props => {
                 updateSetCount,
                 updateWeightSelection,
                 updateRange,
+                changeToWeightless,
+                changeToWeightedArray,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

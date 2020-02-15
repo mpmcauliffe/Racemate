@@ -2,13 +2,13 @@
 export const defaultState = {
     numberOfSets: '4',
 
-    rangeValue: '8',
+    repValue: '8',
 
     weightSelection: false,
     optButtonsWeight: ['no', 'yes'],
 
+    weightValue: '10',
     weightSteps: '.5',
 
-    baseSets: [...Array(4).fill('8')]
+    baseSets: [ ]
 }
-//[...Array(4)].map(emptySet => { return [...Array(8).fill('x')] }),
