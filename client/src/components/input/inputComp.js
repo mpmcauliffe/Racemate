@@ -29,7 +29,27 @@ export const RepInput = styled.input.attrs(props => ({
     font-size: ${props => props.value > 999 ? '1.5rem' : '1.9rem'};
 
     background: ${props => props.counter && props.theme.colorDark};
-    color: ${props => props.counter && props.theme.lightGray}
+    color: ${props => props.counter && props.theme.lightGray};
+
+    @media(max-width: 480px) {
+        flex-basis: 40%;
+        margin: 1rem;
+    }
+    @media(max-width: 400px) {
+        /* flex-basis: 40%; */
+        margin: .1rem;
+    }
+`
+export const Spool = styled.select.attrs(props => ({
+    type: 'number',
+    min: '0'
+}))`
+    flex-basis: 20%;
+    margin: .3rem .1rem;
+    font-size: ${props => props.value > 999 ? '1.5rem' : '1.9rem'};
+
+    background: ${props => props.counter && props.theme.colorDark};
+    color: ${props => props.counter && props.theme.lightGray};
 
     @media(max-width: 480px) {
         flex-basis: 40%;

@@ -7,14 +7,14 @@ import { OpSwitch, } from '../..'
 
 export const SetReps = () => {
     // CONTEXT .V.
-    const { numberOfSets, optButtonsWeight, } = useContext(actionModalContext)
+    const { numberOfSets, } = useContext(actionModalContext)
 
     // CONTEXT (F)
     const { updateSetCount, updateWeightSelection, changeToWeightless, 
         changeToWeightedArray, } = useContext(actionModalContext)
 
     // CONTEXT {O}
-    // const {  } = useContext(actionModalContext)
+    const { optButtonsWeight, } = useContext(actionModalContext)
     // useEffect(() => { return () => { console.log('will unmount') }}, [])
 
 

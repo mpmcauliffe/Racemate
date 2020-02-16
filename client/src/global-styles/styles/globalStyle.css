@@ -52,7 +52,8 @@ a {
 }
 
 label, 
-input, 
+input,
+select, 
 textarea {
     font-family: "proxima-nova";
     font-weight: 100;
@@ -63,6 +64,7 @@ label {
     font-size: 1.9rem;
 }
 input,
+select,
 textarea {
     height: 3.5rem;
     width: 80%;
@@ -79,7 +81,8 @@ textarea {
 input:focus, 
 textarea:focus, 
 select:focus, 
-button:focus {
+button:focus,
+select:focus {
     border: .2rem solid #ff7730;
     outline: none;
 }

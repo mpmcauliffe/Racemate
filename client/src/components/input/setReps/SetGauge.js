@@ -2,6 +2,7 @@
 import React, { Fragment, useEffect, useContext,  } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
 import { RepInput, SetContainer, UpdateText, } from '../inputComp'
+import { SpoolInput, } from '../'
 import { Accordion, } from '../..'
 
 
@@ -13,11 +14,11 @@ export const SetGauge = () => {
     const { updateRange, changeToWeightless, } = useContext(actionModalContext)
 
     // CONTEXT {O}
-    const { baseSets, } = useContext(actionModalContext)
+    const { baseSets, spoolInputArray, } = useContext(actionModalContext)
 
     useEffect(() => { changeToWeightless() }, [])
 
-    //console.log(baseSets)
+    console.log(baseSets)
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
 
     const updateRep = e => console.log(e.target)
@@ -34,25 +35,26 @@ export const SetGauge = () => {
                         <div style={{ display: 'flex', flexBasis: '100%', marginBottom: '2rem', }}>
                             <UpdateText style={{ flexBasis: '50%' }}>number of reps</UpdateText>
                             
-                            <RepInput  
-                                value={Array.isArray(set) ? set.length : baseSets[i]}
-                                onChange={handleRangeChange}
-                                name={i}
-                                type='number' 
-                                step='1' 
-                                counter
-                                style={{ flexBasis: '50%' }}  />
+                            {window.innerWidth > 768 
+                                ?   <RepInput 
+                                        value={Array.isArray(set) ? set.length : baseSets[i]}
+                                        onChange={handleRangeChange}
+                                        name={i}
+                                        type='number' 
+                                        step='1' 
+                                        counter
+                                        style={{ flexBasis: '50%' }}  />
+                                :   <SpoolInput
+                                        actualValue={Array.isArray(set) ? set.length : baseSets[i]}
+                                        options={spoolInputArray}
+                                        onChange={handleRangeChange}
+                                        name={i.toString()}
+                                        counter
+                                        style={{ flexBasis: '50%' }}  />
+                            }
+                            
                         </div>
                         
-
-                        {/*****<input 
-                            value={i}
-                            onChange={handleRangeChange}
-                            name={i}
-                            type='range' 
-                            min={4} 
-                            max={50}
-                            style={{ flexBasis: '100%' }} /> *****/}
                         {weightSelection && baseSets[i].map((rep, j) => (
                             <RepInput 
                                 key={`${i}-${j}`} 

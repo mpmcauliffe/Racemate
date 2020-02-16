@@ -1,6 +1,7 @@
 
 export const defaultState = {
     numberOfSets: '4',
+    spoolInputArray: [...Array(24)].map((_, i) => i+1),
 
     repValue: '8',
 

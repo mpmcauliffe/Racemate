@@ -16,14 +16,13 @@ const ActionModalState = props => {
     const [state, dispatch] = useReducer(actionReducer, defaultState)
 
     const updateSetCount = e => {
-        if (e.target.value > 0) {
-            dispatch({ type: _setNumberOfSets_, payload: e.target.value })
-        }
+            dispatch({ type: _setNumberOfSets_, payload: e.target.value }) 
     } 
         
     const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
 
     const updateRange = (name, newRepValue) => {
+        console.log(name, newRepValue)
         //if (newRepValue > 0 && newRepValue < 51) {
             dispatch({ type: _setRange_, payload: { name, newRepValue } })
         //}
@@ -40,6 +39,7 @@ const ActionModalState = props => {
                 weightSelection: state.weightSelection,
                 optButtonsWeight: state.optButtonsWeight,
                 baseSets: state.baseSets,
+                spoolInputArray: state.spoolInputArray,
 
                 updateSetCount,
                 updateWeightSelection,
