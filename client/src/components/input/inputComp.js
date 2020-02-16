@@ -15,6 +15,7 @@ export const SetContainer = styled.div`
         color: ${props => props.theme.midLtGray};
     }
 `
+
 export const InternalContainer = styled.div`
     display: flex; 
     justify-content: center;
@@ -22,18 +23,29 @@ export const InternalContainer = styled.div`
     flex-basis: 100%; 
     margin-bottom: 2rem;
 `
+
 export const UpdateText = styled.p`
     font-size: 2.1rem;
     margin: 1rem;
     &&& { color: ${props => props.theme.primaryGray}; } /* ANNOYING */
 `
+
 export const OptionText = styled.p`
-    font-size: 2.1rem;
     margin: 1rem;
+    flex-basis: 100%;
+    
+    font-size: 2.1rem; 
     text-align: center;
-    &&& { color: ${props => props.theme.secondaryLight}; } /* ANNOYING */
+
     cursor: pointer;
+
+    &&& { color: ${props => props.theme.secondaryLight}; } /* ANNOYING */
+    
+    @media(max-width: 480px) {
+        &&& { font-size: 1.6rem; } 
+    }
 `
+
 export const RepInput = styled.input.attrs(props => ({
     type: 'number',
     min: '0'
@@ -54,6 +66,7 @@ export const RepInput = styled.input.attrs(props => ({
         margin: .1rem;
     }
 `
+
 export const Spool = styled.select`
     height: 3.5rem;
     width: 80%;

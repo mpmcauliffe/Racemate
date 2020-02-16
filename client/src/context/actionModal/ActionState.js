@@ -38,6 +38,9 @@ const ActionModalState = props => {
         dispatch({ type: _updateWeightInput_, payload: { xCoord, yCoord, newWeightValue } })
     }
 
+    // OPTIONS TO UPDATE SETS AND REPS APPEAR WITHIN INDIVIDUAL SETS WHEN CHANGES ARE DETECTED
+    const triggerOptionReps = startingLocation => dispatch({ type: _optionUpdateRepsCount_, payload: startingLocation })
+
     return (
         <ActionModalContext.Provider
             value={{ numberOfSets: state.numberOfSets,
@@ -46,7 +49,9 @@ const ActionModalState = props => {
                 optButtonsWeight: state.optButtonsWeight,
                 baseSets: state.baseSets,
                 spoolInputArray: state.spoolInputArray,
-                changeOption: state.changeOption,
+                changeOptionReps: state.changeOptionReps,
+                changeOptionWeight: state.changeOptionWeight,
+                currentWeight: state.currentWeight,
 
                 updateSetCount,
                 updateWeightSelection,
@@ -54,6 +59,7 @@ const ActionModalState = props => {
                 changeToWeightless,
                 changeToWeightedArray,
                 updateWeightInput,
+                triggerOptionReps,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

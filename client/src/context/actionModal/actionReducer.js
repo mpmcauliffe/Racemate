@@ -9,7 +9,7 @@ export default (state, action) => {
         case _setNumberOfSets_:
             return { //[...a, ...[...Array(2)].map(emptySet => { return [...Array(2).fill(8)] })]
                 ...state,
-                numberOfSets: action.payload > 0 ? action.payload : '1',
+                numberOfSets: action.payload,
                 baseSets: state.weightSelection 
                     ?   (
                             state.baseSets.length > action.payload 
@@ -42,9 +42,7 @@ export default (state, action) => {
                 ...state,
                 repValue: newRepValue,
 
-                changeOption: !state.weightSelection
-                    ? state.changeOption.map((item, i) => parseInt(name) === i ? true : item)
-                    : state.changeOption,
+                changeOptionReps: state.changeOptionReps.map((item, i) => parseInt(name) === i ? true : item),
 
                 baseSets: state.weightSelection
                     ?   (
@@ -64,7 +62,6 @@ export default (state, action) => {
                                     )                                
                         )  
                     : state.baseSets.map((rep, i) => parseInt(name) === i ? newRepValue : rep)                                                  
-                    
             }
 
         case _updateWeightInput_:
@@ -72,11 +69,10 @@ export default (state, action) => {
 
             return {
                 ...state,
+                currentWeight: newWeightValue,
 
-                changeOption: state.weightSelection
-                    ? state.changeOption.map((item, i) => yCoord === i ? true : item)
-                    : state.changeOption,
-
+                changeOptionWeight: state.changeOptionWeight.map((item, i) => yCoord === i ? true : item),
+                    
                 baseSets: [
                     ...state.baseSets.map((set, i) => yCoord === i 
                         ? set.map((rep, j) => xCoord === j ? rep = newWeightValue : rep)
@@ -88,16 +84,47 @@ export default (state, action) => {
         case _changeToWeightedArray_:
             return {
                 ...state,
-                changeOption: [...Array(4)].map(() => false),
+                changeOptionReps: [...Array(parseInt(state.numberOfSets))].map(() => false),
                 baseSets: [...Array(parseInt(state.numberOfSets))]
                             .map(set => { return [...Array(parseInt(state.repValue)).fill(state.weightValue)] })
             }
         
+        // RUNS ON INITIAL RENDER
         case  _changeToWeightless_:
             return {
                 ...state,
-                changeOption: [...Array(4)].map(() => false),
-                baseSets: [...Array(parseInt(state.numberOfSets)).fill(state.repValue)]
+                changeOptionReps: [...Array(parseInt(state.numberOfSets))].map(() => false),
+                changeOptionWeight: [...Array(parseInt(state.numberOfSets))].map(() => false),
+                baseSets: [...Array(parseInt(state.numberOfSets)).fill(state.repValue)],    
+            }
+
+        case _optionUpdateRepsCount_:
+            const location = parseInt(action.payload)
+
+            return {
+                ...state,
+
+                changeOptionReps: [...Array(parseInt(state.numberOfSets))].map(() => false),
+
+                baseSets: state.weightSelection
+                    ?   (
+                            location + 1 === state.baseSets.length 
+                                ?   state.baseSets
+                                :   state.baseSets[location + 1].length < state.baseSets[location].length 
+                                    ?   state.baseSets.map((set, i) => location < i
+                                            ?   [...state.baseSets[location], 
+                                                    ...Array(parseInt(state.repValue) 
+                                                    - state.baseSets[location].length)
+                                                .fill(state.weightValue)]
+                                            :   set
+                                        )
+                                    :   state.baseSets.map((set, i) => location < i
+                                            ?   set.slice(0, parseInt(state.repValue))
+                                            :   set
+                                    )
+                                                     
+                        )  
+                    : state.baseSets.map((rep, i) => location < i ? state.repValue : rep) 
             }
 
 

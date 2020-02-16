@@ -1,7 +1,7 @@
 
 export const defaultState = {
     numberOfSets: '4',
-    spoolInputArray: [...Array(24)].map((_, i) => i+1),
+    spoolInputArray: [...Array(49)].map((_, i) => i+1),
 
     repValue: '8',
 
@@ -9,8 +9,12 @@ export const defaultState = {
     optButtonsWeight: ['no', 'yes'],
 
     weightValue: '10',
+    currentWeight: '10',
     weightSteps: '.5',
-    changeOption: [...Array(4)].map(() => false),
+
+    changeOptionReps: [ ],
+    changeOptionWeight: [ ],
 
     baseSets: [ ],
 }
+//[...Array(4)].map(() => false)
