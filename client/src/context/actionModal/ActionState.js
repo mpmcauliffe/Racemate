@@ -3,7 +3,8 @@ import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
 import { _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
-    _changeToWeightedArray_, _changeToWeightless_, } from './types'
+    _changeToWeightedArray_, _changeToWeightless_, _updateWeightInput_, 
+    _optionUpdateRepsCount_, } from './types'
 
 
 const ActionModalState = props => {
@@ -15,22 +16,27 @@ const ActionModalState = props => {
     //const initialState = defaultState
     const [state, dispatch] = useReducer(actionReducer, defaultState)
 
-    const updateSetCount = e => {
-            dispatch({ type: _setNumberOfSets_, payload: e.target.value }) 
-    } 
-        
+    // NUMBER OF SETS
+    const updateSetCount = e => dispatch({ type: _setNumberOfSets_, payload: e.target.value }) 
+    
+    // CHOICE BETWEEN WEIGHTLESS AND WEIGHTED EXERCISE
     const updateWeightSelection = () => dispatch({ type: _setWeightSelection_, })
-
-    const updateRange = (name, newRepValue) => {
-        //console.log(name, newRepValue)
-        //if (newRepValue > 0 && newRepValue < 51) {
-            dispatch({ type: _setRange_, payload: { name, newRepValue } })
-        //}
-    }
-
+    // UPDATE ARRAY TO INCLUDE VALUES FOR WEIGHTED REPS ... 2D ARRAY
     const changeToWeightedArray = () => dispatch({ type: _changeToWeightedArray_ })
-   
+    // UPDATE ARRAY FOR WEIGHTLESS REPS ... 1D ARRAY
     const changeToWeightless = () => dispatch({ type: _changeToWeightless_ })
+
+    // NUMBER OF REPS ... IN INDIVIDUAL SETS
+    const updateRange = (name, newRepValue) => dispatch({ type: _setRange_, payload: { name, newRepValue } })
+    // WEIGHT QUANTITY PER REP
+    const updateWeightInput = (name, newWeightValue) => {
+        // NAME FORMAT: weightInput_i-j
+        const coordYX   = name.split('_')[1].split('-')
+        const yCoord    = parseInt(coordYX[0])
+        const xCoord    = parseInt(coordYX[1])
+
+        dispatch({ type: _updateWeightInput_, payload: { xCoord, yCoord, newWeightValue } })
+    }
 
     return (
         <ActionModalContext.Provider
@@ -40,12 +46,14 @@ const ActionModalState = props => {
                 optButtonsWeight: state.optButtonsWeight,
                 baseSets: state.baseSets,
                 spoolInputArray: state.spoolInputArray,
+                changeOption: state.changeOption,
 
                 updateSetCount,
                 updateWeightSelection,
                 updateRange,
                 changeToWeightless,
                 changeToWeightedArray,
+                updateWeightInput,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

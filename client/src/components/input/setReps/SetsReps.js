@@ -2,6 +2,7 @@ import React, { useEffect, useContext, } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
 import { SetGauge } from './SetGauge'
 import { RepInput, SetContainer, UpdateText, } from '../inputComp'
+import { SpoolInput, } from '../'
 import { OpSwitch, } from '../..'
 
 
@@ -14,7 +15,7 @@ export const SetReps = () => {
         changeToWeightedArray, } = useContext(actionModalContext)
 
     // CONTEXT {O}
-    const { optButtonsWeight, } = useContext(actionModalContext)
+    const { optButtonsWeight, spoolInputArray, } = useContext(actionModalContext)
     // useEffect(() => { return () => { console.log('will unmount') }}, [])
 
 
@@ -33,11 +34,19 @@ export const SetReps = () => {
             <form>
                 <SetContainer>
                     <p>How many sets?</p>
-                    <RepInput 
-                        value={numberOfSets}
-                        onChange={updateSetCount}
-                        type='number'
-                        step='1' />
+                    {window.innerWidth > 768 
+                        ?   <RepInput 
+                                value={numberOfSets}
+                                onChange={updateSetCount}
+                                type='number'
+                                step='1' />
+                        :   <SpoolInput
+                                actualValue={numberOfSets}
+                                options={spoolInputArray}
+                                updateSelect={updateSetCount}
+                                style={{ flexBasis: '50%' }}  />
+                    }
+                    
                 </SetContainer>
 
                 <SetContainer>

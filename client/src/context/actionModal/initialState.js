@@ -10,6 +10,7 @@ export const defaultState = {
 
     weightValue: '10',
     weightSteps: '.5',
+    changeOption: [...Array(4)].map(() => false),
 
-    baseSets: [ ]
+    baseSets: [ ],
 }

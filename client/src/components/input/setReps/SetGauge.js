@@ -1,7 +1,7 @@
 
 import React, { Fragment, useEffect, useContext,  } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
-import { RepInput, SetContainer, UpdateText, } from '../inputComp'
+import { SetContainer, InternalContainer, RepInput,  UpdateText, OptionText, } from '../inputComp'
 import { SpoolInput, } from '../'
 import { Accordion, } from '../..'
 
@@ -11,17 +11,17 @@ export const SetGauge = () => {
     const { numberOfSets, repValue, weightSelection, } = useContext(actionModalContext)
     
     // CONTEXT (F)
-    const { updateRange, changeToWeightless, } = useContext(actionModalContext)
+    const { updateRange, changeToWeightless, updateWeightInput, } = useContext(actionModalContext)
 
-    // CONTEXT {O}
-    const { baseSets, spoolInputArray, } = useContext(actionModalContext)
+    // CONTEXT [A] {O}
+    const { baseSets, spoolInputArray, changeOption } = useContext(actionModalContext)
 
     useEffect(() => { changeToWeightless() }, [])
 
-    //console.log(baseSets)
+    //console.log(changeOption)
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
 
-    const updateRep = e => console.log(e.target)
+    const updateRep = e => updateWeightInput(e.target.name, e.target.value)
     
     return (
         <Fragment>
@@ -32,8 +32,8 @@ export const SetGauge = () => {
                     internal>
 
                     <SetContainer short>
-                        <div style={{ display: 'flex', flexBasis: '100%', marginBottom: '2rem', }}>
-                            <UpdateText style={{ flexBasis: '50%' }}>number of reps</UpdateText>
+                        <InternalContainer>
+                            <UpdateText style={{ flexBasis: '50%' }}>Number of reps</UpdateText>
                             
                             {window.innerWidth > 768 
                                 ?   <RepInput 
@@ -52,16 +52,26 @@ export const SetGauge = () => {
                                         counter
                                         style={{ flexBasis: '50%' }}  />
                             }
-                            
-                        </div>
+                        </InternalContainer>
+                        {changeOption[i] && !weightSelection 
+                            ?   <OptionText
+                                >   Change upcoming sets to {baseSets[i]} reps?
+                                </OptionText>
+                            : ''
+                        }
                         
-                        {weightSelection && baseSets[i].map((rep, j) => (
+                        {/*** ***/}
+                        {weightSelection &&  <UpdateText 
+                                    style={{ flexBasis: '100%', textAlign: 'center' }}>
+                                        Weight quantity per rep
+                                    </UpdateText> 
+                        }
+                        {weightSelection && baseSets[i].map((rep, j) => (  
                             <RepInput 
                                 key={`${i}-${j}`} 
-                                value='30'
+                                value={baseSets[i][j]}
                                 onChange={updateRep}
                                 name={`weightInput_${i}-${j}`}
-                                max='9999' 
                                 step='1' />
                         ))}
                     </SetContainer>
