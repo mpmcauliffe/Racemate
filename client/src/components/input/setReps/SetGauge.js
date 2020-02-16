@@ -18,7 +18,7 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-    console.log(baseSets)
+    //console.log(baseSets)
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
 
     const updateRep = e => console.log(e.target)
@@ -41,13 +41,13 @@ export const SetGauge = () => {
                                         onChange={handleRangeChange}
                                         name={i}
                                         type='number' 
-                                        step='1' 
+                                        //step='1' 
                                         counter
                                         style={{ flexBasis: '50%' }}  />
                                 :   <SpoolInput
                                         actualValue={Array.isArray(set) ? set.length : baseSets[i]}
                                         options={spoolInputArray}
-                                        onChange={handleRangeChange}
+                                        updateSelect={handleRangeChange}
                                         name={i.toString()}
                                         counter
                                         style={{ flexBasis: '50%' }}  />

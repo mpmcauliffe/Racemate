@@ -43,7 +43,10 @@ export default (state, action) => {
                             action.payload.newRepValue > state.baseSets[action.payload.name].length
                                 ? state.baseSets
                                     .map((set, i) => parseInt(action.payload.name) === i 
-                                        ? [...state.baseSets[i], ...Array(action.payload.newRepValue).fill(state.weightValue)] 
+                                        ? [...state.baseSets[parseInt(action.payload.name)], 
+                                            ...Array(parseInt(action.payload.newRepValue) 
+                                                - state.baseSets[parseInt(action.payload.name)].length)
+                                            .fill(state.weightValue)] 
                                         : set
                                     )                       
                                 : state.baseSets

@@ -4,11 +4,11 @@ import { Spool, } from './inputComp'
 
 
 /** THIS IS HACKY BUT I NEEDED A SOLUTION FOR NUMERIC INPUTS ON A MOBILE DEVICE */
-export const SpoolInput = ({ options, name, actualValue, onChange, }) => {
+export const SpoolInput = ({ options, name, actualValue, updateSelect, }) => {
     return (
         <Spool
             value={actualValue} 
-            onChange={onChange}
+            onChange={updateSelect}
             name={name} >
             {options.map(inputItem => (
                 <option 
