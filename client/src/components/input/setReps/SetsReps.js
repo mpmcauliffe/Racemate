@@ -12,11 +12,11 @@ export const SetReps = () => {
 
     // CONTEXT (F)
     const { updateSetCount, updateWeightSelection, changeToWeightless, 
-        changeToWeightedArray, } = useContext(actionModalContext)
+        changeToWeightedArray, triggerReset } = useContext(actionModalContext)
 
     // CONTEXT {O}
     const { optButtonsWeight, spoolInputArray, } = useContext(actionModalContext)
-    // useEffect(() => { return () => { console.log('will unmount') }}, [])
+    useEffect(() => { return () => { triggerReset() }}, [])
 
 
     const handleToggleWeights = buttonName => {
@@ -33,7 +33,7 @@ export const SetReps = () => {
     return (
             <form>
                 <SetContainer>
-                    <p>How many sets?</p>
+                    <UpdateText style={{ flexBasis: '50%' }}>How many sets?</UpdateText>
                     {window.innerWidth > 768 
                         ?   <RepInput 
                                 value={numberOfSets}
@@ -50,7 +50,7 @@ export const SetReps = () => {
                 </SetContainer>
 
                 <SetContainer>
-                    <p>Does this exercise require weights?</p>
+                    <UpdateText>Does this exercise require weights?</UpdateText>
                     <OpSwitch 
                         optButtons={optButtonsWeight}
                         handleToggle={handleToggleWeights} />

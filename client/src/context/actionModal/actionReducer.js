@@ -1,7 +1,8 @@
   
 import { _setNumberOfSets_, _setWeightSelection_,
     _setRange_, _changeToWeightedArray_, _changeToWeightless_, 
-    _updateWeightInput_, _optionUpdateRepsCount_, } from './types'
+    _updateWeightInput_, _optionUpdateRepsCount_,
+    _optionWeightLocal_, _optionWeightGlobal_, _resetState_, } from './types'
 
 
 export default (state, action) => {
@@ -122,9 +123,61 @@ export default (state, action) => {
                                             ?   set.slice(0, parseInt(state.repValue))
                                             :   set
                                     )
-                                                     
                         )  
                     : state.baseSets.map((rep, i) => location < i ? state.repValue : rep) 
+            }
+
+        case _optionWeightLocal_:
+            const setLocation = parseInt(action.payload) 
+            const exactLocation = state.baseSets[setLocation].lastIndexOf(state.currentWeight)
+
+            return {
+                ...state, 
+                changeOptionWeight: [...Array(parseInt(state.numberOfSets))].map(() => false),
+
+                baseSets: [
+                    ...state.baseSets.map((set, i) => setLocation === i
+                        ?   set.map((rep, j) => exactLocation < j 
+                                ?   state.currentWeight
+                                :   rep
+                            )
+                        : set
+                    )
+                ]
+            }
+
+        case _optionWeightGlobal_:
+            const globalSetLocation = parseInt(action.payload) 
+            const rowLocation = state.baseSets[globalSetLocation].lastIndexOf(state.currentWeight)
+
+            return {
+                ...state,
+                changeOptionWeight: [...Array(parseInt(state.numberOfSets))].map(() => false),
+
+                baseSets: [
+                    ...state.baseSets.map((set, i) => globalSetLocation === i
+                        ?   set.map((rep, j) => rowLocation < j 
+                                ?   state.currentWeight
+                                :   rep
+                            )
+                        : set
+                    )
+                ]
+            }
+
+        case _resetState_:
+            return {
+                numberOfSets: '4',
+                spoolInputArray: [...Array(49)].map((_, i) => i+1),
+                repValue: '8',
+                weightSelection: false,
+                optButtonsWeight: ['no', 'yes'],
+                weightValue: '10',
+                currentWeight: '10',
+                weightSteps: '.5',
+                changeOptionReps: [ ],
+                changeOptionWeight: [ ],
+                baseSets: [ ],
             }
 
 

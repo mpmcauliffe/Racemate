@@ -9,11 +9,11 @@ export const SetContainer = styled.div`
     width: 100%;
     margin: ${props => props.short ? '1rem auto' : '3rem auto'};
 
-    p {
+    /* p {
         font-size: 2.1rem;
         margin: 1rem;
         color: ${props => props.theme.midLtGray};
-    }
+    } */
 `
 
 export const InternalContainer = styled.div`
@@ -31,16 +31,14 @@ export const UpdateText = styled.p`
 `
 
 export const OptionText = styled.p`
-    margin: 1rem;
-    flex-basis: 100%;
-    
+    position: ${props => props.weights ? 'static' : 'absolute'};
     font-size: 2.1rem; 
-    text-align: center;
-
     cursor: pointer;
-
-    &&& { color: ${props => props.theme.secondaryLight}; } /* ANNOYING */
     
+    &&& { 
+            margin-top: ${props => props.weights ? '-.5rem' : '3.5rem'};
+            color: ${props => props.theme.secondaryLight};
+        }    
     @media(max-width: 480px) {
         &&& { font-size: 1.6rem; } 
     }

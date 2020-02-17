@@ -4,7 +4,8 @@ import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
 import { _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
     _changeToWeightedArray_, _changeToWeightless_, _updateWeightInput_, 
-    _optionUpdateRepsCount_, } from './types'
+    _optionUpdateRepsCount_, _optionWeightLocal_, _optionWeightGlobal_, 
+    _resetState_, } from './types'
 
 
 const ActionModalState = props => {
@@ -40,6 +41,17 @@ const ActionModalState = props => {
 
     // OPTIONS TO UPDATE SETS AND REPS APPEAR WITHIN INDIVIDUAL SETS WHEN CHANGES ARE DETECTED
     const triggerOptionReps = startingLocation => dispatch({ type: _optionUpdateRepsCount_, payload: startingLocation })
+    // UPDATE WEIGHT IN SINGLE SET
+    const triggerWeightLocal = startingLocation => dispatch({ type: _optionWeightLocal_, payload: startingLocation })
+    // UPDATE WEIGHT IN ALL SETS
+    const triggerWeightGlobal = startingLocation => dispatch({ type: _optionWeightGlobal_, payload: startingLocation })
+
+    // this is a failsafe for componentWillUnmount()
+    // when the modal is closed this will reselt current state to default state
+    // THIS IS IN PLACE UNTIL I FIND ANOTHER ALTERNATIVE TO THE PROBLEM
+    const triggerReset = () => dispatch({ type: _resetState_ })
+
+
 
     return (
         <ActionModalContext.Provider
@@ -52,6 +64,7 @@ const ActionModalState = props => {
                 changeOptionReps: state.changeOptionReps,
                 changeOptionWeight: state.changeOptionWeight,
                 currentWeight: state.currentWeight,
+                
 
                 updateSetCount,
                 updateWeightSelection,
@@ -60,6 +73,9 @@ const ActionModalState = props => {
                 changeToWeightedArray,
                 updateWeightInput,
                 triggerOptionReps,
+                triggerWeightLocal,
+                triggerWeightGlobal,
+                triggerReset,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

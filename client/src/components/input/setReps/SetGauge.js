@@ -12,7 +12,7 @@ export const SetGauge = () => {
     
     // CONTEXT (F)
     const { updateRange, changeToWeightless, updateWeightInput, 
-        triggerOptionReps, } = useContext(actionModalContext)
+        triggerOptionReps, triggerWeightLocal, triggerWeightGlobal, } = useContext(actionModalContext)
 
     // CONTEXT [A] {O}
     const { baseSets, spoolInputArray, changeOptionReps, 
@@ -20,12 +20,17 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-    //console.log(changeOptionWeight)
+    console.log(baseSets)
+    // updates local rep value
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
-
+    // updates single weight input
     const updateRep = e => updateWeightInput(e.target.name, e.target.value)
-    
+    // updates upcoming reps globally
     const handleOptionRepsClick = e => triggerOptionReps(e.target.getAttribute('name'))
+    // updates upcoming weight values locally
+    const handleOptLocalClick = e => triggerWeightLocal(e.target.getAttribute('name'))
+    // updates upcoming weight values globally
+    const handleOptGlobalClick = e => triggerWeightGlobal(e.target.getAttribute('name'))
 
 
     return (
@@ -57,38 +62,49 @@ export const SetGauge = () => {
                                         counter
                                         style={{ flexBasis: '50%' }}  />
                             }
-                        </InternalContainer>
-                        {changeOptionReps[i] &&  
-                               <OptionText
+                            {changeOptionReps[i] &&
+                                <OptionText
                                     name={i}
                                     onClick={handleOptionRepsClick}
                                 >   Change upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
-                                </OptionText>                           
-                        }
-                        
+                                </OptionText>  
+                            }
+                        </InternalContainer>
+
                         {/*** ***/}
                         {weightSelection &&  <UpdateText 
                                     style={{ flexBasis: '100%', textAlign: 'center' }}>
                                         Weight quantity per rep
                                     </UpdateText> 
                         }
+                        {weightSelection && Array.isArray(baseSets[i])
+                            ?   (
+                                    baseSets[i].map((rep, j) => (  
+                                        <RepInput 
+                                            key={`${i}-${j}`} 
+                                            value={baseSets[i][j]}
+                                            onChange={updateRep}
+                                            name={`weightInput_${i}-${j}`}
+                                            step='1' />
+                                    ))
+                            ) : (null)}
+                            
                         {changeOptionWeight[i] &&
-                            <OptionText
-                            >   Change upcoming reps in THIS set to {currentWeight}?
-                            </OptionText>
-                        }
-                        {weightSelection && baseSets[i].map((rep, j) => (  
-                            <RepInput 
-                                key={`${i}-${j}`} 
-                                value={baseSets[i][j]}
-                                onChange={updateRep}
-                                name={`weightInput_${i}-${j}`}
-                                step='1' />
-                        ))}
-                        {changeOptionWeight[i] &&
-                            <OptionText
-                            >   Change upcoming reps in ALL sets to {currentWeight}?
-                            </OptionText>
+                            <InternalContainer style={{ flexDirection: 'column', margin: '1rem auto 2rem auto' }}>
+                                <OptionText
+                                    weights
+                                    name={i}
+                                    onClick={handleOptLocalClick}
+                                >   Change upcoming reps in THIS set to {currentWeight}?
+                                </OptionText>
+
+                                <OptionText 
+                                    weights
+                                    name={i}
+                                    onClick={handleOptGlobalClick} 
+                                >   Change upcoming reps in ALL sets to {currentWeight}?
+                                </OptionText>
+                            </InternalContainer>                        
                         }
                     </SetContainer>
                 </Accordion>
