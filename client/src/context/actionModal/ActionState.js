@@ -1,11 +1,13 @@
 import React, { useReducer, } from 'react'
+
 import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
 import { defaultState } from './initialState'
+
 import { _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
     _changeToWeightedArray_, _changeToWeightless_, _updateWeightInput_, 
     _optionUpdateRepsCount_, _optionWeightLocal_, _optionWeightGlobal_, 
-    _resetState_, } from './types'
+    _updateDate_, _resetState_, } from './types'
 
 
 const ActionModalState = props => {
@@ -45,6 +47,10 @@ const ActionModalState = props => {
     const triggerWeightLocal = startingLocation => dispatch({ type: _optionWeightLocal_, payload: startingLocation })
     // UPDATE WEIGHT IN ALL SETS
     const triggerWeightGlobal = startingLocation => dispatch({ type: _optionWeightGlobal_, payload: startingLocation })
+    
+    // UPDATE DATE
+    const updateDate = newDate => dispatch({ type: _updateDate_, payload: newDate })
+
 
     // this is a failsafe for componentWillUnmount()
     // when the modal is closed this will reselt current state to default state
@@ -65,6 +71,8 @@ const ActionModalState = props => {
                 changeOptionWeight: state.changeOptionWeight,
                 currentWeight: state.currentWeight,
                 
+                date: state.date,
+                
 
                 updateSetCount,
                 updateWeightSelection,
@@ -75,6 +83,7 @@ const ActionModalState = props => {
                 triggerOptionReps,
                 triggerWeightLocal,
                 triggerWeightGlobal,
+                updateDate,
                 triggerReset,
                  }}
         >   {props.children}

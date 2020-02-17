@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react'
 import ReactModal from 'react-modal'
 
-import { SetReps, } from '../../input'
+import { SetReps, DateModule, } from '../../input'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
@@ -65,7 +65,7 @@ export const ActiveModal = props => {
                         </Accordion>
 
                         <Accordion name='Date'>
-                        
+                            <DateModule />
                         </Accordion>
 
                         <InfoButton wide>Save ALL changes</InfoButton>

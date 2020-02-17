@@ -20,7 +20,7 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-    console.log(baseSets)
+    // console.log(baseSets)
     // updates local rep value
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
     // updates single weight input
@@ -51,7 +51,6 @@ export const SetGauge = () => {
                                         onChange={handleRangeChange}
                                         name={i}
                                         type='number' 
-                                        //step='1' 
                                         counter
                                         style={{ flexBasis: '50%' }}  />
                                 :   <SpoolInput
@@ -85,6 +84,7 @@ export const SetGauge = () => {
                                             value={baseSets[i][j]}
                                             onChange={updateRep}
                                             name={`weightInput_${i}-${j}`}
+                                            type='number'
                                             step='1' />
                                     ))
                             ) : (null)}

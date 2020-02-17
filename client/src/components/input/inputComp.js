@@ -45,7 +45,6 @@ export const OptionText = styled.p`
 `
 
 export const RepInput = styled.input.attrs(props => ({
-    type: 'number',
     min: '0'
 }))`
     flex-basis: 20%;

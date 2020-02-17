@@ -1,8 +1,10 @@
-  
+import Moment from 'moment'  
+
 import { _setNumberOfSets_, _setWeightSelection_,
     _setRange_, _changeToWeightedArray_, _changeToWeightless_, 
     _updateWeightInput_, _optionUpdateRepsCount_,
-    _optionWeightLocal_, _optionWeightGlobal_, _resetState_, } from './types'
+    _optionWeightLocal_, _optionWeightGlobal_, _resetState_,
+    _updateDate_, } from './types'
 
 
 export default (state, action) => {
@@ -167,6 +169,12 @@ export default (state, action) => {
                 ]
             }
 
+        case _updateDate_:
+            return {
+                ...state,
+                date: action.payload,
+            }
+
         case _resetState_:
             return {
                 numberOfSets: '4',
@@ -179,6 +187,8 @@ export default (state, action) => {
                 changeOptionReps: [ ],
                 changeOptionWeight: [ ],
                 baseSets: [ ],
+
+                date: Moment().format('YYYY-MM-D'),
             }
 
 

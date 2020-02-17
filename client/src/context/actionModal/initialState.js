@@ -1,7 +1,9 @@
+import Moment from 'moment'
 
 export const defaultState = {
+    // sets reps and weights
     numberOfSets: '4',
-    spoolInputArray: [...Array(49)].map((_, i) => i+1),
+    spoolInputArray: [...Array(50)].map((_, i) => i+1),
 
     repValue: '8',
 
@@ -15,5 +17,8 @@ export const defaultState = {
     changeOptionWeight: [ ],
 
     baseSets: [ ],
+
+    // date for date today
+    date: Moment().format('YYYY-MM-D'),
 }
-//[...Array(4)].map(() => false)
+//[...Array(4)].map(() => false)yyyy-MM-dd
