@@ -18,7 +18,7 @@ export default (state, action) => {
                                 : [
                                     ...state.baseSets, 
                                     ...[...Array(action.payload - state.baseSets.length)]
-                                            .map(set => { return [...Array(parseInt(state.repValue)).fill(state.weightValue)] })
+                                            .map(set => { return [...Array(parseInt(state.repValue)).fill(state.currentWeight)] })
                                 ]
                     ) : (
                             state.baseSets.length > action.payload
@@ -53,7 +53,7 @@ export default (state, action) => {
                                         ?   [...state.baseSets[parseInt(name)], 
                                                 ...Array(parseInt(newRepValue) 
                                                     - state.baseSets[parseInt(name)].length)
-                                                .fill(state.weightValue)] 
+                                                .fill(state.currentWeight)] 
                                         :   set
                                     )                       
                                 : state.baseSets
@@ -87,7 +87,7 @@ export default (state, action) => {
                 ...state,
                 changeOptionReps: [...Array(parseInt(state.numberOfSets))].map(() => false),
                 baseSets: [...Array(parseInt(state.numberOfSets))]
-                            .map(set => { return [...Array(parseInt(state.repValue)).fill(state.weightValue)] })
+                            .map(set => { return [...Array(parseInt(state.repValue)).fill(state.currentWeight)] })
             }
         
         // RUNS ON INITIAL RENDER
@@ -116,7 +116,7 @@ export default (state, action) => {
                                             ?   [...state.baseSets[location], 
                                                     ...Array(parseInt(state.repValue) 
                                                     - state.baseSets[location].length)
-                                                .fill(state.weightValue)]
+                                                .fill(state.currentWeight)]
                                             :   set
                                         )
                                     :   state.baseSets.map((set, i) => location < i
@@ -155,12 +155,14 @@ export default (state, action) => {
                 changeOptionWeight: [...Array(parseInt(state.numberOfSets))].map(() => false),
 
                 baseSets: [
-                    ...state.baseSets.map((set, i) => globalSetLocation === i
-                        ?   set.map((rep, j) => rowLocation < j 
-                                ?   state.currentWeight
-                                :   rep
-                            )
-                        : set
+                    ...state.baseSets.map((set, i) => globalSetLocation <= i
+                        ?   globalSetLocation === i
+                                ?   set.map((rep, j) => rowLocation < j 
+                                        ?   state.currentWeight
+                                        :   rep
+                                    )
+                                :   set.map((rep, j) => state.currentWeight)
+                        :   set //.map((rep, j) => state.currentWeight)
                     )
                 ]
             }
@@ -172,7 +174,6 @@ export default (state, action) => {
                 repValue: '8',
                 weightSelection: false,
                 optButtonsWeight: ['no', 'yes'],
-                weightValue: '10',
                 currentWeight: '10',
                 weightSteps: '.5',
                 changeOptionReps: [ ],

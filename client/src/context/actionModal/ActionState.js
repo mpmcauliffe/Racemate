@@ -84,22 +84,3 @@ const ActionModalState = props => {
 
 
 export default ActionModalState
-
-//y=x.map(unit => { return [...Array(3).fill(7)] })
-
-// export const initialState = {
-//     numberOfSets: '4',
-
-//     repSelection: 'low'
-//     optButtonsReps: ['low', 'medium', 'high'],
-//     repRange: '4-8',
-//     repRangeEnum: ['4-8', '9-18', '19-50'],
-//     defaultStart: '8',
-//     defaultStartEnum: ['8', '12', '30'],
-
-//     weightSelection: false,
-//     optButtonsWeight: ['no', 'yes'],
-
-//     startingWeight: '10'
-//     repSteps: '2.5'
-// }

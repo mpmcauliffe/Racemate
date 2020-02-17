@@ -8,7 +8,6 @@ export const defaultState = {
     weightSelection: false,
     optButtonsWeight: ['no', 'yes'],
 
-    weightValue: '10',
     currentWeight: '10',
     weightSteps: '.5',
 
