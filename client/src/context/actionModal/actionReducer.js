@@ -168,20 +168,14 @@ export default (state, action) => {
                     )
                 ]
             }
-
-        case _updateDate_:
-            return {
-                ...state,
-                date: action.payload,
-            }
-
+            
         case _resetState_:
             return {
                 numberOfSets: '4',
                 spoolInputArray: [...Array(49)].map((_, i) => i+1),
                 repValue: '8',
                 weightSelection: false,
-                optButtonsWeight: ['no', 'yes'],
+                changeOptionBin: ['no', 'yes'],
                 currentWeight: '10',
                 weightSteps: '.5',
                 changeOptionReps: [ ],

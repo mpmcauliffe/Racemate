@@ -91,13 +91,15 @@ export const SetGauge = () => {
                             
                         {changeOptionWeight[i] &&
                             <InternalContainer style={{ flexDirection: 'column', margin: '1rem auto 2rem auto' }}>
+                                <br /><br /><br />
                                 <OptionText
                                     weights
                                     name={i}
                                     onClick={handleOptLocalClick}
+                                    style={{ marginBottom: '1.3rem', }}
                                 >   Change upcoming reps in THIS set to {currentWeight}?
                                 </OptionText>
-
+                                <br /><br />
                                 <OptionText 
                                     weights
                                     name={i}

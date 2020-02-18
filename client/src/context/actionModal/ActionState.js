@@ -2,12 +2,16 @@ import React, { useReducer, } from 'react'
 
 import ActionModalContext from './actionModalContext'
 import actionReducer from './actionReducer'
+import timeReducer from './timeReducer'
 import { defaultState } from './initialState'
 
-import { _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
+import { // ACTION STATE 
+    _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
     _changeToWeightedArray_, _changeToWeightless_, _updateWeightInput_, 
     _optionUpdateRepsCount_, _optionWeightLocal_, _optionWeightGlobal_, 
-    _updateDate_, _resetState_, } from './types'
+    _updateDate_, _resetState_, 
+    // TIME STATE
+    _setDistanceTrigger_} from './types'
 
 
 const ActionModalState = props => {
@@ -17,7 +21,8 @@ const ActionModalState = props => {
      */
 
     //const initialState = defaultState
-    const [state, dispatch] = useReducer(actionReducer, defaultState)
+    const [actionState, dispatch] = useReducer(actionReducer, defaultState)
+    const [timeState, timeDispatch] = useReducer(timeReducer, defaultState)
 
     // NUMBER OF SETS
     const updateSetCount = e => dispatch({ type: _setNumberOfSets_, payload: e.target.value }) 
@@ -48,30 +53,35 @@ const ActionModalState = props => {
     // UPDATE WEIGHT IN ALL SETS
     const triggerWeightGlobal = startingLocation => dispatch({ type: _optionWeightGlobal_, payload: startingLocation })
     
-    // UPDATE DATE
-    const updateDate = newDate => dispatch({ type: _updateDate_, payload: newDate })
-
-
     // this is a failsafe for componentWillUnmount()
     // when the modal is closed this will reselt current state to default state
     // THIS IS IN PLACE UNTIL I FIND ANOTHER ALTERNATIVE TO THE PROBLEM
     const triggerReset = () => dispatch({ type: _resetState_ })
 
+    //** TIME STATE **//
+    // UPDATE DATE
+    const updateDate = newDate => timeDispatch({ type: _updateDate_, payload: newDate })
 
+    const updateDistanceTrigger = () => timeDispatch({ type: _setDistanceTrigger_ })
 
     return (
         <ActionModalContext.Provider
-            value={{ numberOfSets: state.numberOfSets,
-                repValue: state.repValue,
-                weightSelection: state.weightSelection,
-                optButtonsWeight: state.optButtonsWeight,
-                baseSets: state.baseSets,
-                spoolInputArray: state.spoolInputArray,
-                changeOptionReps: state.changeOptionReps,
-                changeOptionWeight: state.changeOptionWeight,
-                currentWeight: state.currentWeight,
-                
-                date: state.date,
+            value={{ numberOfSets: actionState.numberOfSets,
+                repValue: actionState.repValue,
+                weightSelection: actionState.weightSelection,
+                changeOptionBin: actionState.changeOptionBin,
+                baseSets: actionState.baseSets,
+                spoolInputArray: actionState.spoolInputArray,
+                changeOptionReps: actionState.changeOptionReps,
+                changeOptionWeight: actionState.changeOptionWeight,
+                currentWeight: actionState.currentWeight,
+
+                hoursMinutes: timeState.hoursMinutes,
+                manualTime: timeState.manualTime,
+                timeDistanceArray: timeState.timeDistanceArray,
+                isDistanceExercise: timeState.isDistanceExercise,
+                optBtnDistanceUnit: timeState.optBtnDistanceUnit,
+                date: timeState.date,
                 
 
                 updateSetCount,
@@ -83,8 +93,10 @@ const ActionModalState = props => {
                 triggerOptionReps,
                 triggerWeightLocal,
                 triggerWeightGlobal,
-                updateDate,
                 triggerReset,
+
+                updateDistanceTrigger,
+                updateDate,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

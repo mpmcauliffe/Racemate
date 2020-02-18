@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react'
 import ReactModal from 'react-modal'
 
-import { SetReps, DateModule, } from '../../input'
+import { SetReps, DateModule, TimeDistance, } from '../../input'
 import { ModalTitle, 
     ModalCloseButton, 
     modalContent, } from '../ModalComp'
@@ -57,11 +57,12 @@ export const ActiveModal = props => {
                             <SetReps />
                         </Accordion>
 
-                        <Accordion name='Endurance & time'>
+                        <Accordion name='Stopwatch and timer'>
+                        
                         </Accordion>
 
-                        <Accordion name='Timer'>
-                        
+                        <Accordion name='Time & distance (manual)'>
+                            <TimeDistance />
                         </Accordion>
 
                         <Accordion name='Date'>

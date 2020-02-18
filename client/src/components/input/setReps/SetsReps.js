@@ -15,7 +15,7 @@ export const SetReps = () => {
         changeToWeightedArray, triggerReset } = useContext(actionModalContext)
 
     // CONTEXT {O}
-    const { optButtonsWeight, spoolInputArray, } = useContext(actionModalContext)
+    const { changeOptionBin, spoolInputArray, } = useContext(actionModalContext)
     useEffect(() => { return () => { triggerReset() }}, [])
 
 
@@ -52,7 +52,7 @@ export const SetReps = () => {
                 <SetContainer>
                     <UpdateText>Does this exercise require weights?</UpdateText>
                     <OpSwitch 
-                        optButtons={optButtonsWeight}
+                        optButtons={changeOptionBin}
                         handleToggle={handleToggleWeights} />
                 </SetContainer>
 
