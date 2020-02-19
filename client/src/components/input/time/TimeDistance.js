@@ -12,7 +12,7 @@ export const TimeDistance = () => {
         optBtnDistanceUnit, } = useContext(actionModalContext)
 
     const { updateDistanceTrigger, addTimeDisElement, 
-        setDisTag, } = useContext(actionModalContext)
+        setDisTag, removeTimeDisElement } = useContext(actionModalContext)
 
     const { timeDistanceArray, } = useContext(actionModalContext)
 
@@ -57,7 +57,10 @@ export const TimeDistance = () => {
                                     comp2={true}  />
                             ))                        
                         }
-                        <InfoIcon className='fas fa-times' style={{ marginLeft: '5%', fontSize: '5rem' }} />
+                        <InfoIcon
+                            onClick={removeTimeDisElement} 
+                            className='fas fa-times' 
+                            style={{ marginLeft: '5%', fontSize: '5rem' }} />
                         <InfoIcon 
                             onClick={addTimeDisElement}
                             className='fas fa-plus' 

@@ -1,7 +1,7 @@
 import { buildTimeString } from '../../helpers'
 
 import {  _updateDate_, _setDistanceTrigger_, _addTimeDisItem_,
-    _setTimeOrDis_, _setDistanceTag_, } from './types'
+    _setTimeOrDis_, _setDistanceTag_, _removeTimeDisItem_, } from './types'
 
 export default (state, action) => {
     let unit
@@ -37,6 +37,14 @@ export default (state, action) => {
                         distance: '', 
                     })
                 ]
+            }
+
+        case _removeTimeDisItem_:
+            return {
+                ...state,
+                timeDistanceArray: state.timeDistanceArray.length > 1
+                    ? [...state.timeDistanceArray.slice(0, state.timeDistanceArray.length - 1)]
+                    : state.timeDistanceArray
             }
 
         case  _setDistanceTrigger_:
