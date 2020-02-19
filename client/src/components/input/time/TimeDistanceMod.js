@@ -1,43 +1,44 @@
 import React, { Fragment, useContext, } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
 
-import { SetContainer, InternalContainer, RepInput,  UpdateText, OptionText, } from '../inputComp'
+import { InternalContainer, RepInput,  UpdateText, } from '../inputComp'
 import { SpoolInput, } from '../'
-import { InfoIcon, } from '../..'
-import { InfoText } from '../../forms/FormComp'
+//import { InfoIcon, } from '../..'
 
 import { extractTimeUnit, } from '../../../helpers'
 
 
 export const TimeDistanceMod = props => {
-    const { hoursMinutes, changeOptionBin, isDistanceExercise,
-        optBtnDistanceUnit, } = useContext(actionModalContext)
-
-    const { updateDistanceTrigger, addTimeDisElement, updateTime, } = useContext(actionModalContext)
-
+    // .V.
+    const { hoursMinutes, distUnitSelction, } = useContext(actionModalContext)
+    // {F}
+    const { setTimeOrDis, } = useContext(actionModalContext)
+    // [A] {O}
     const { timeDistanceArray, } = useContext(actionModalContext)
+
+    const handleDisInput = e => console.log(e.target.name, e.target.value)
+
 
     return (
         <Fragment> 
-            {comp2 &&
+            {props.comp2 &&
                 <InternalContainer>
                     <UpdateText style={{ flexBasis: '50%' }}>Distance</UpdateText>
                     <RepInput 
-                        value={'0'}
-                        //onChange={handleRangeChange}
-                        name={`${props.disTag}_${props.name}_D`}
+                        value={props.timeDisUnit.distance.split(' ')[0]}
+                        onChange={(e) => setTimeOrDis(e.target.name, e.target.value)}
+                        name={`${distUnitSelction}_${props.name}_D`}
                         type='number' 
                         style={{ flexBasis: '50%' }}  />
                 </InternalContainer>
             }
-            
 
             <InternalContainer>
                 <UpdateText style={{ flexBasis: '20%' }}>Hours</UpdateText>
                 <SpoolInput
                     actualValue={extractTimeUnit(timeDistanceArray[0].time, 'hrs')}
                     options={hoursMinutes.slice(0, 9)}
-                    updateSelect={(e) => updateTime(e.target.name, e.target.value)}
+                    updateSelect={(e) => setTimeOrDis(e.target.name, e.target.value)}
                     name={`hrs_${props.name}_T`}
                     style={{ flexBasis: '30%' }}  />
                 
@@ -46,11 +47,10 @@ export const TimeDistanceMod = props => {
                 <SpoolInput
                     actualValue={extractTimeUnit(timeDistanceArray[0].time, 'min')}
                     options={hoursMinutes}
-                    updateSelect={(e) => updateTime(e.target.name, e.target.value)}
+                    updateSelect={(e) => setTimeOrDis(e.target.name, e.target.value)}
                     name={`min_${props.name}_T`}
                     style={{ flexBasis: '30%' }} /> 
             </InternalContainer>
         </Fragment>
-        
     )
 }

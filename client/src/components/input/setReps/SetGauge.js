@@ -8,7 +8,7 @@ import { Accordion, } from '../..'
 
 export const SetGauge = () => {
     // CONTEXT .V.
-    const { numberOfSets, repValue, weightSelection, currentWeight, } = useContext(actionModalContext)
+    const { numberOfSets, weightSelection, currentWeight, } = useContext(actionModalContext)
     
     // CONTEXT (F)
     const { updateRange, changeToWeightless, updateWeightInput, 

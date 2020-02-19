@@ -1,61 +1,36 @@
 import React, { useEffect, useContext, } from 'react'
 import actionModalContext from '../../../context/actionModal/actionModalContext'
 
-import { SetContainer, InternalContainer, RepInput,  UpdateText, OptionText, } from '../inputComp'
-import { SpoolInput, } from '../'
-import { OpSwitch, Accordion, InfoIcon, } from '../..'
-import { InfoText } from '../../forms/FormComp'
-
-import { extractTimeUnit, } from '../../../helpers'
+import { TimeDistanceMod } from './TimeDistanceMod'
+import { SetContainer, InternalContainer,
+    UpdateText, } from '../inputComp'
+import { OpSwitch, InfoIcon, } from '../..'
 
 
 export const TimeDistance = () => {
-    const { hoursMinutes, changeOptionBin, isDistanceExercise,
+    const { changeOptionBin, isDistanceExercise,
         optBtnDistanceUnit, } = useContext(actionModalContext)
 
-    const { updateDistanceTrigger, addTimeDisElement, updateTime, } = useContext(actionModalContext)
+    const { updateDistanceTrigger, addTimeDisElement, 
+        setDisTag, } = useContext(actionModalContext)
 
     const { timeDistanceArray, } = useContext(actionModalContext)
 
     useEffect(() => { addTimeDisElement() }, [])
 
     console.log(timeDistanceArray)
-    const updateHours = e => console.log(e.target.name, e.target.value)
 
-    //const handleToggleDistance = buttonName => console.log(buttonName)
+    const handleToggleDisTag = buttonName => setDisTag(buttonName)
+
 
     return (
         <form>
-        
             <SetContainer>
                     {timeDistanceArray.length > 0 &&
-                        <InternalContainer>
-                            <UpdateText style={{ flexBasis: '20%' }}>Hours</UpdateText>
-                            <SpoolInput
-                                actualValue={extractTimeUnit(timeDistanceArray[0].time, 'hrs')}
-                                options={hoursMinutes.slice(0, 9)}
-                                updateSelect={(e) => updateTime(e.target.name, e.target.value)}
-                                name='hrs_0_T'
-                                style={{ flexBasis: '30%' }}  />
-                            
-
-                            <UpdateText style={{ flexBasis: '20%' }}>Minutes</UpdateText>
-                            <SpoolInput
-                                actualValue={extractTimeUnit(timeDistanceArray[0].time, 'min')}
-                                options={hoursMinutes}
-                                updateSelect={(e) => updateTime(e.target.name, e.target.value)}
-                                name='min_0_T'
-                                style={{ flexBasis: '30%' }} /> 
-                        </InternalContainer>    
+                        <TimeDistanceMod
+                            name='0'
+                            comp2={false}  />
                     }
-                
-                
-                    
-                {/*****<Accordion 
-                    name={'Time only'} 
-                    internal>
-
-                    <InternalContainer> *****/}
             </SetContainer>         
             
             <SetContainer>
@@ -66,13 +41,53 @@ export const TimeDistance = () => {
             </SetContainer>
 
                 {isDistanceExercise &&
-                    <SetContainer>
+                    <SetContainer style={{ justifyContent: 'space-between' }}>
                         <InternalContainer style={{ flexDirection: 'column' }}>
                             <UpdateText>Select a distance unit</UpdateText>
                             <OpSwitch 
                                 optButtons={optBtnDistanceUnit}
-                                handleToggle={updateDistanceTrigger} />
+                                handleToggle={handleToggleDisTag} />
                         </InternalContainer>
+                        {timeDistanceArray.length > 0 &&
+                            timeDistanceArray.map((timeDisUnit, i) => (
+                                <TimeDistanceMod
+                                    key={i}
+                                    timeDisUnit={timeDisUnit}
+                                    name={i}
+                                    comp2={true}  />
+                            ))                        
+                        }
+                        <InfoIcon className='fas fa-times' style={{ marginLeft: '5%', fontSize: '5rem' }} />
+                        <InfoIcon 
+                            onClick={addTimeDisElement}
+                            className='fas fa-plus' 
+                            style={{ marginRight: '5%', fontSize: '5rem' }} />
+                    </SetContainer>
+                }
+        </form>
+    )
+}
+
+
+/**
+ * <InternalContainer>
+                            <UpdateText style={{ flexBasis: '20%' }}>Hours</UpdateText>
+                            <SpoolInput
+                                actualValue={extractTimeUnit(timeDistanceArray[0].time, 'hrs')}
+                                options={hoursMinutes.slice(0, 9)}
+                                updateSelect={(e) => setTimeOrDis(e.target.name, e.target.value)}
+                                name='hrs_0_T'
+                                style={{ flexBasis: '30%' }}  />
+                            
+
+                            <UpdateText style={{ flexBasis: '20%' }}>Minutes</UpdateText>
+                            <SpoolInput
+                                actualValue={extractTimeUnit(timeDistanceArray[0].time, 'min')}
+                                options={hoursMinutes}
+                                updateSelect={(e) => setTimeOrDis(e.target.name, e.target.value)}
+                                name='min_0_T'
+                                style={{ flexBasis: '30%' }} /> 
+                        </InternalContainer>    
 
                         <InternalContainer>
                             <UpdateText style={{ flexBasis: '50%' }}>Distance</UpdateText>
@@ -83,12 +98,4 @@ export const TimeDistance = () => {
                                 type='number' 
                                 style={{ flexBasis: '50%' }}  />
                         </InternalContainer>
-                        <InfoIcon className='fas fa-clock' style={{ fontSize: '5rem' }} />
-
-                    </SetContainer>
-                    
-                }
-            
-        </form>
-    )
-}
+ */

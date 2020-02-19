@@ -11,7 +11,7 @@ import { // ACTION STATE
     _optionUpdateRepsCount_, _optionWeightLocal_, _optionWeightGlobal_, 
     _updateDate_, _resetState_, 
     // TIME STATE
-    _setDistanceTrigger_, _addTimeDisItem_, _updateTime_, } from './types'
+    _setDistanceTrigger_, _addTimeDisItem_, _setTimeOrDis_, _setDistanceTag_, } from './types'
 
 
 const ActionModalState = props => {
@@ -64,9 +64,11 @@ const ActionModalState = props => {
 
     const addTimeDisElement = () => timeDispatch({ type: _addTimeDisItem_ })
 
-    const updateTime = (name, timeValue) => timeDispatch({ type: _updateTime_, payload: { name, timeValue } })
+    const setTimeOrDis = (name, newValue) => timeDispatch({ type: _setTimeOrDis_, payload: { name, newValue } })
 
     const updateDistanceTrigger = () => timeDispatch({ type: _setDistanceTrigger_ })
+
+    const setDisTag = distanceType => timeDispatch({ type: _setDistanceTag_, payload: distanceType })
 
     return (
         <ActionModalContext.Provider
@@ -85,9 +87,10 @@ const ActionModalState = props => {
                 timeDistanceArray: timeState.timeDistanceArray,
                 isDistanceExercise: timeState.isDistanceExercise,
                 optBtnDistanceUnit: timeState.optBtnDistanceUnit,
+                distUnitSelction: timeState.distUnitSelction,
                 date: timeState.date,
                 
-
+    
                 updateSetCount,
                 updateWeightSelection,
                 updateRange,
@@ -101,8 +104,9 @@ const ActionModalState = props => {
 
                 updateDistanceTrigger,
                 addTimeDisElement,
-                updateTime,
+                setTimeOrDis,
                 updateDate,
+                setDisTag,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

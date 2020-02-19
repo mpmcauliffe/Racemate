@@ -1,6 +1,6 @@
 import React, { Fragment, useState, } from 'react'
 import { AccordionFront, Arrow, } from './AccordionComp'
-import { Link as ScrollLink } from 'react-scroll'
+//import { Link as ScrollLink } from 'react-scroll'
 
 
 export const Accordion = props => {

@@ -1,30 +1,28 @@
 import { buildTimeString } from '../../helpers'
 
 import {  _updateDate_, _setDistanceTrigger_, _addTimeDisItem_,
-    _updateTime_, } from './types'
+    _setTimeOrDis_, _setDistanceTag_, } from './types'
 
 export default (state, action) => {
-    let unitTime
+    let unit
     let unitDistance
     let location
-    let time
-    let distance
+    let updatedValue
     let dim
     let name
 
     switch(action.type) {
-        case _updateTime_:
-            // {name: "hrs_0", timeUnit: "4"}
-
-            [unitTime, location, dim] = action.payload.name.split('_')
-            time = action.payload.timeValue
-            console.log(unitTime, location, time)
-
+        case _setTimeOrDis_:
+            [unit, location, dim] = action.payload.name.split('_')
+            updatedValue = action.payload.newValue
+    
             return { //buildTimeString = (timeValue, mod, timeArr)
                 ...state,
                 timeDistanceArray: [
                     ...state.timeDistanceArray.map((obj, i) => parseInt(location) === i 
-                        ? dim === 'T' ? { ...obj, time: buildTimeString(time, unitTime, obj.time) } : { obj, distance: 'Sedna' }
+                        ? dim === 'T' 
+                            ? { ...obj, time: buildTimeString(updatedValue, unit, obj.time) } 
+                            : { ...obj, distance: `${updatedValue} ${unit}` }
                         : obj
                 )],
             }
@@ -45,6 +43,13 @@ export default (state, action) => {
             return {
                 ...state,
                 isDistanceExercise: !state.isDistanceExercise
+            }
+
+        case _setDistanceTag_: 
+        console.log(action.payload)
+            return {
+                ...state,
+                distUnitSelction: action.payload
             }
 
         case _updateDate_:

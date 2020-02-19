@@ -28,7 +28,7 @@ export const defaultState = {
     /*************
     / TIME STATE
     **************/
-    hoursMinutes: [...Array(61)].map((_, i) => i < 1 ? '' : i < 10 ? '0' + i : i),
+    hoursMinutes: [...Array(60)].map((_, i) => i < 1 ? '' : i < 10 ? '0' + i : i),
     manualTime: {
         hours: '',
         minutes: ''
