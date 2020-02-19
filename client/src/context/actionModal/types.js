@@ -13,6 +13,8 @@ export const _resetState_                   = '_resetState_'
 
 /** TIME TYPES **/
 export const _updateDate_                   = '_updateDate_' 
+export const _addTimeDisItem_               = '_addTimeDisItem_' 
+export const _updateTime_                   = '_updateTime_'
 export const _setDistanceTrigger_           = '_changeDistanceTrigger_'
 export const _setDistanceUnit_              = '_setDistanceUnit_'
 

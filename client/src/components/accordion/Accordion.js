@@ -1,5 +1,6 @@
 import React, { Fragment, useState, } from 'react'
 import { AccordionFront, Arrow, } from './AccordionComp'
+import { Link as ScrollLink } from 'react-scroll'
 
 
 export const Accordion = props => {
@@ -10,14 +11,17 @@ export const Accordion = props => {
     
     return (
         <Fragment>
-            <AccordionFront internal={props.internal}>
+            <AccordionFront
+                id={props.name} 
+                internal={props.internal}>
+                
                 <h3>{props.name}</h3>
-                <Arrow>
+                <Arrow>                
                     <input 
                         type='checkbox'
                         name='sets'
                         onChange={handleCheckboxChange}  />
-                    <span />
+                    <span />     
                 </Arrow>
                 <div className={showSegment ? 'show' : 'hide'}>
                     {props.children}
@@ -26,3 +30,12 @@ export const Accordion = props => {
         </Fragment>
     )
 }
+
+/*
+<ScrollLink
+    to='navHeader' 
+    spy={true}
+    smooth={true}
+    offset={-70}
+    duration= {500} >
+ */

@@ -28,7 +28,7 @@ export const defaultState = {
     /*************
     / TIME STATE
     **************/
-    hoursMinutes: [...Array(61)].map((_, i) => i),
+    hoursMinutes: [...Array(61)].map((_, i) => i < 1 ? '' : i < 10 ? '0' + i : i),
     manualTime: {
         hours: '',
         minutes: ''
@@ -37,6 +37,7 @@ export const defaultState = {
     isDistanceExercise: false,
     optBtnDistanceUnit: ['miles', 'kilometers', 'laps'],
     distUnitSelction: 'miles',
+    timeStrArr: ['00','00','00','000'],
 
     // date for date today
     date: Moment().format('YYYY-MM-D'),

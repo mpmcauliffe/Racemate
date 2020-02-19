@@ -93,7 +93,7 @@ export default (state, action) => {
             }
         
         // RUNS ON INITIAL RENDER
-        case  _changeToWeightless_:
+        case _changeToWeightless_:
             return {
                 ...state,
                 changeOptionReps: [...Array(parseInt(state.numberOfSets))].map(() => false),
