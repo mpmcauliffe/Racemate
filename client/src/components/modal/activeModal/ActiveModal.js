@@ -1,13 +1,11 @@
 import React, { useState, useEffect, } from 'react'
 import ReactModal from 'react-modal'
 
-import { SetReps, DateModule, TimeDistance, } from '../../input'
-import { ModalTitle, 
-    ModalCloseButton, 
+import { SetReps, DateModule, TimeDistance,
+    Stopwatch, } from '../../input'
+import { ModalTitle, ModalCloseButton, 
     modalContent, } from '../ModalComp'
-import { InfoIcon, 
-    Accordion, 
-    FormContainer, 
+import { InfoIcon,  Accordion, FormContainer, 
     InfoButton, } from '../..'
 
 import Simplebar from 'simplebar-react'
@@ -57,8 +55,8 @@ export const ActiveModal = props => {
                             <SetReps />
                         </Accordion>
 
-                        <Accordion name='Stopwatch and timer'>
-                        
+                        <Accordion name='Stopwatch'>
+                            <Stopwatch />
                         </Accordion>
 
                         <Accordion name='Time & distance (manual)'>

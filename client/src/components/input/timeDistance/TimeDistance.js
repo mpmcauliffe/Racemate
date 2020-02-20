@@ -18,8 +18,7 @@ export const TimeDistance = () => {
 
     useEffect(() => { addTimeDisElement() }, [])
 
-    console.log(timeDistanceArray)
-
+    // console.log(timeDistanceArray)
     const handleToggleDisTag = buttonName => setDisTag(buttonName)
 
 

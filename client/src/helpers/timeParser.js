@@ -10,7 +10,7 @@ export const extractTimeUnit = (str, mod) => {
 
     const strSplit = str.split(':')
     const modLocation = modArray.indexOf(mod)
-
+console.log(strSplit[modLocation])
     return strSplit[modLocation]
 }
 
