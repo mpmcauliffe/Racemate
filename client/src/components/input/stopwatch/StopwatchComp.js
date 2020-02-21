@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const SWtext = styled.h1`
     flex-basis: 100%;
+    margin: 2rem auto 4rem auto;
     font-size: 10rem;
     font-weight: 400;
     text-align: center;
@@ -24,4 +25,12 @@ export const BtnRound = styled.button`
     &:focus {
         border-color: ${props => props.theme.primaryGray}
     }
+`
+export const LapContainer = styled.div`
+    height: 5rem;
+`
+export const LapText = styled.p`
+    font-size: 3rem;
+    text-align: center;
+    &&& { color: ${props => props.theme.secondaryDark}; }
 `

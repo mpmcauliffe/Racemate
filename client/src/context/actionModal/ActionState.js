@@ -12,7 +12,7 @@ import { // ACTION STATE
     _updateDate_, _resetState_, 
     // TIME STATE
     _setDistanceTrigger_, _addTimeDisItem_, _setTimeOrDis_, _setDistanceTag_, 
-    _removeTimeDisItem_, } from './types'
+    _removeTimeDisItem_, _splitLap_, } from './types'
 
 
 const ActionModalState = props => {
@@ -72,6 +72,9 @@ const ActionModalState = props => {
 
     const setDisTag = distanceType => timeDispatch({ type: _setDistanceTag_, payload: distanceType })
 
+    const splitLap = lapTime => timeDispatch({ type: _splitLap_, payload: lapTime })
+
+
     return (
         <ActionModalContext.Provider
             value={{ numberOfSets: actionState.numberOfSets,
@@ -110,6 +113,7 @@ const ActionModalState = props => {
                 setTimeOrDis,
                 updateDate,
                 setDisTag,
+                splitLap,
                  }}
         >   {props.children}
         </ActionModalContext.Provider>

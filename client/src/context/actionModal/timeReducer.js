@@ -1,7 +1,8 @@
 import { buildTimeString } from '../../helpers'
 
 import {  _updateDate_, _setDistanceTrigger_, _addTimeDisItem_,
-    _setTimeOrDis_, _setDistanceTag_, _removeTimeDisItem_, } from './types'
+    _setTimeOrDis_, _setDistanceTag_, _removeTimeDisItem_,
+    _splitLap_,  } from './types'
 
 export default (state, action) => {
     let unit
@@ -25,6 +26,19 @@ export default (state, action) => {
                             : { ...obj, distance: `${updatedValue} ${unit}` }
                         : obj
                 )],
+            }
+
+        case _splitLap_: 
+            location = state.timeDistanceArray.length - 1
+
+            return {
+                ...state,
+                timeDistanceArray: [
+                    ...state.timeDistanceArray.map((obj, i) => location === i
+                        ? { ...obj, time: action.payload }
+                        : obj
+                    )
+                ]
             }
 
         case _addTimeDisItem_:
@@ -69,5 +83,4 @@ export default (state, action) => {
         default:
             return state
     }
-
 }

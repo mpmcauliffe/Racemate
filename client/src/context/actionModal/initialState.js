@@ -37,7 +37,7 @@ export const defaultState = {
     isDistanceExercise: false,
     optBtnDistanceUnit: ['miles', 'kilometers', 'laps'],
     distUnitSelction: 'miles',
-    timeStrArr: ['00','00','00','000'],
+    timeStrArr: ['00','00','00'],
 
     // date for date today
     date: Moment().format('YYYY-MM-D'),

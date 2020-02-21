@@ -19,4 +19,5 @@ export const _setTimeOrDis_                 = '_setTimeOrDis_'
 export const _setDistanceTrigger_           = '_changeDistanceTrigger_'
 export const _setDistanceUnit_              = '_setDistanceUnit_'
 export const _setDistanceTag_               = '_setDistanceTag_'
+export const _splitLap_                     = '_splitLap_'
 
