@@ -17,11 +17,11 @@ export const Stopwatch = () => {
     const [min, setMin] = useState('00')
     const [hrs, setHrs] = useState('00')
 
-console.log(timeDistanceArray)
+    //console.log(timeDistanceArray)
     const handleStartStop = () => setStart(!start)
     
     const executeSplit = () => {
-        splitLap(`${hrs}:${min}:${sec}`)
+        splitLap(`${hrs}:${min}:${sec}.${dec}`)
         addTimeDisElement()
     }
     
@@ -32,7 +32,13 @@ console.log(timeDistanceArray)
     }
 
     const timeTracker = () => {
-        setSec(prevSec => prevSec === '59' ? '00' : incrementString(prevSec))
+        setDec(prevSec => prevSec === '09' ? '00' : incrementString(prevSec))
+        setSec(prevSec => prevSec === '59' 
+            ? '00' 
+            : dec === '09'
+                ? incrementString(prevSec)
+                : prevSec        
+        )
         setMin(prevMin => prevMin === '59' 
             ? '00' 
             : sec === '59' 
@@ -48,7 +54,7 @@ console.log(timeDistanceArray)
     }
 
     useEffect(() => {
-        const timer = setInterval(() => timeTracker(), 1000)
+        const timer = setInterval(() => timeTracker(), 100)
         
         if (!start) {
             console.log('cleared')
@@ -56,12 +62,12 @@ console.log(timeDistanceArray)
         }
         
         return () => { clearInterval(timer) }
-    }, [start, sec, min, hrs])
+    }, [start, dec, sec, min, hrs])
 
 
     return (
         <SetContainer>
-            <SWtext>{hrs}:{min}:{sec}</SWtext>
+            <SWtext full={hrs !== '00' && true}>{hrs !== '00' && `${hrs}:`}{min}:{sec}.{dec}</SWtext>
 
             <InternalContainer style={{ justifyContent: 'space-between' }}>
                 <BtnRound
@@ -93,7 +99,7 @@ console.log(timeDistanceArray)
                     <InternalContainer 
                         key={`${i}_${lap.time}`}
                         style={{ height: '5rem' }}>
-                        {lap.time !== '00:00:00' && <LapText>Lap {i+1}: {lap.time}</LapText>}
+                        {lap.time !== '00:00:00:00' && <LapText>Lap {i+1}:&emsp;{lap.time}</LapText>}
                     </InternalContainer>
                 ))         
             }

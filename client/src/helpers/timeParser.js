@@ -1,6 +1,6 @@
 
 
-const modArray = ['hrs', 'min', 'sec']
+const modArray = ['hrs', 'min', 'sec', 'dec']
 
 export const extractTimeUnit = (str, mod) => {
     // hrs, min, sec, mil
@@ -8,7 +8,7 @@ export const extractTimeUnit = (str, mod) => {
     
     if(!str) { return '' }
 
-    const strSplit = str.split(':')
+    const strSplit = str.split(/[\:.]+/)
     const modLocation = modArray.indexOf(mod)
 
     return strSplit[modLocation]
@@ -24,10 +24,14 @@ export const buildTimeString = (timeValue, mod, originalString) => {
     //timeValue = mod === 'mil' ? '0' + timeValue : timeValue
 
     const modLocation = modArray.indexOf(mod)
-    const timeArr = originalString.split(':')
+    const timeArr = originalString.split(/[\:.]+/)
     timeArr[modLocation] = timeValue
-
-    return timeArr.join(':')
+    
+    const subWhole = timeArr.join(':')
+    const subOne   = subWhole.substring(0,8)
+    const subTwo   = subWhole.substring(9,11)
+    
+    return `${subOne}.${subTwo}` 
 }
 
 export const incrementString = (numStr) => {
