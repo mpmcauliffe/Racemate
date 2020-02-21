@@ -90,5 +90,12 @@ export const Spool = styled.select`
         margin: .1rem;
     }
 `
+export const ExactContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10rem;
+`
+
 //@media (min-width: 1024px)
 
