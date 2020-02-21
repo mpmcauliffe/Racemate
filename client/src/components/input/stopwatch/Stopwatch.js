@@ -3,27 +3,63 @@ import { SWtext, BtnRound, } from './StopwatchComp'
 import { SetContainer, InternalContainer, UpdateText, } from '../inputComp'
 import { InfoIcon, } from '../..'
 
+import { incrementString } from '../../../helpers'
+
 
 export const Stopwatch = () => {
     const [start, setStart] = useState(false)
-    const [cen, setCen] = useState('00')
+    const [dec, setDec] = useState('00')
     const [sec, setSec] = useState('00')
     const [min, setMin] = useState('00')
     const [hrs, setHrs] = useState('00')
 
+
     const handleStartStop = () => setStart(!start)
+    
+    const executeSplit = () => console.log('split')
+    
+    const executeReset = () => {
+        setSec('00')
+        setMin('00')
+        setHrs('00')
+    }
+
+    const timeTracker = () => {
+        setSec(prevSec => prevSec === '59' ? '00' : incrementString(prevSec))
+        setMin(prevMin => prevMin === '59' 
+            ? '00' 
+            : sec === '59' 
+                ? incrementString(prevMin) 
+                : prevMin
+        )
+        setHrs(prevHrs => prevHrs === '59' 
+            ? '00' 
+            : min === '59' 
+                ? incrementString(prevHrs) 
+                : prevHrs
+        )
+    }
 
     useEffect(() => {
+        const timer = setInterval(() => timeTracker(), 1000)
+        
+        if (!start) {
+            console.log('cleared')
+            clearInterval(timer)
+        }
+        
+        return () => { clearInterval(timer) }
+    }, [start, sec, min, hrs])
 
-    })
 
     return (
         <SetContainer>
-            <SWtext>{hrs}:{min}:{sec}:{cen}</SWtext>
+            <SWtext>{hrs}:{min}:{sec}</SWtext>
 
             <InternalContainer style={{ justifyContent: 'space-between' }}>
                 <BtnRound
-                style={{ marginLeft: '5%' }} >
+                    onClick={start ? executeSplit : executeReset}
+                    style={{ marginLeft: '5%' }} >
                     {!start && <InfoIcon 
                         className="fas fa-reply" 
                         style={{ fontSize: '5rem' }} />}

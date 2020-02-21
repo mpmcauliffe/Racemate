@@ -10,7 +10,7 @@ export const extractTimeUnit = (str, mod) => {
 
     const strSplit = str.split(':')
     const modLocation = modArray.indexOf(mod)
-console.log(strSplit[modLocation])
+
     return strSplit[modLocation]
 }
 
@@ -27,4 +27,14 @@ export const buildTimeString = (timeValue, mod, originalString) => {
     timeArr[modLocation] = timeValue
 
     return timeArr.join(':')
+}
+
+export const incrementString = (numStr) => {
+    let [numOne, numTwo] = numStr.split('')
+
+    numTwo = numTwo === '9' ? '0' : (parseInt(numTwo) + 1).toString() 
+    numOne = numTwo === '0' ? (parseInt(numOne) + 1).toString() : numOne
+
+    //console.log(numOne, numTwo)
+    return numOne + numTwo
 }
