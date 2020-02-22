@@ -26,6 +26,7 @@ export const Stopwatch = () => {
     }
     
     const executeReset = () => {
+        setDec('00')
         setSec('00')
         setMin('00')
         setHrs('00')
