@@ -31,6 +31,6 @@ export const LapContainer = styled.div`
 export const LapText = styled.p`
     font-size: 3rem;
     text-align: center;
-    line-spacing: 1rem;
+    line-spacing: 7rem;
     &&& { color: ${props => props.theme.secondaryDark}; }
 `

@@ -109,53 +109,66 @@ input UpdateExerciseInput {
 ### SET
 #####################################################################
 
-# type Set {
-#     date: String!
-#     reps: [Int]
-#     weight: [Int]
-#     distance: Float
-#     time: Float
-# }
 type Set {
-    isWeighted: Boolean!
-    softUnit: [String!]
-    heaveyUnit: [WeightedUnit!]
-}
-type WeightedUnit {
-    unit: [String!]
+    date: String!
+    reps: [Int]
+    weight: [Int]
+    distance: Float
+    time: Float
 }
 
-type TimeDistance {
-    usesDistance: Boolean!
-    distanceUnit: DistanceType!
-    timeDistanceRecord: [TimeDistanceUnit!]
+
+
+# type Set {
+#     isWeighted: Boolean!
+#     softUnit: [String!]
+#     heaveyUnit: [WeightedUnit!]
+# }
+# type WeightedUnit {
+#     unit: [String!]
+# }
+
+# type TimeDistance {
+#     usesDistance: Boolean!
+#     distanceUnit: DistanceType!
+#     timeDistanceRecord: [TimeDistanceUnit!]
     
-}
-type TimeDistanceUnit {
-    time: String
-    distance: String
-}
-enum DistanceType {
-    MILES
-    KILOMETERS
-    LAPS
-}
+# }
+# type TimeDistanceUnit {
+#     time: String
+#     distance: String
+# }
+# enum DistanceType {
+#     MILES
+#     KILOMETERS
+#     LAPS
+# }
+
+# input ExerciseUnit {
+#     date: String!
+#     set: Set
+#     timeDistance: TimeDistance
+# }
+
+# type ExerciseUnit {
+#     id: ID!
+#     date: String!
+#     set: Set
+#     timeDistance: TimeDistance
+#     exercise: Exercise
+# }
+
+
 
 input CreateSetInput {
+    exerciseId: String!
     date: String!
-    set: Set!
-    timeDistance: TimeDistance
+    reps: String
+    weight: String
+    distance: String
+    distanceUnit: String
+    time: String
 }
-
-# input CreateSetInput {
-#     exerciseId: String!
-#     date: String!
-#     reps: String
-#     weight: String
-#     distance: String
-#     distanceUnit: String
-#     time: String
-# }
 
 
 #####################################################################
