@@ -100,7 +100,6 @@ input UpdateExerciseInput {
     exerciseType: String
     description: String
     id: String
-    # sets: [Set!]
     notes: String
 }
 
@@ -109,15 +108,36 @@ input UpdateExerciseInput {
 ### SET
 #####################################################################
 
+# type Set {
+#     date: String!
+#     reps: [Int]
+#     weight: [Int]
+#     distance: Float
+#     time: Float
+# }
+
 type Set {
+    _id: ID!
     date: String!
-    reps: [Int]
-    weight: [Int]
-    distance: Float
-    time: Float
+    isWeighted: Boolean!
+    usesDistance: Boolean!
+    exUnitStr: String
+    distanceUnit: String
+    exercise: Exercise!
 }
 
-
+input CreateSetInput {
+    date: String!
+    isWeighted: Boolean!
+    usesDistance: Boolean!
+    exUnitStr: String
+    distanceUnit: String
+}
+# input CreateUserInput {
+#     name: String!
+#     email: String!
+#     password: String!
+# }
 
 # type Set {
 #     isWeighted: Boolean!
@@ -160,15 +180,7 @@ type Set {
 
 
 
-input CreateSetInput {
-    exerciseId: String!
-    date: String!
-    reps: String
-    weight: String
-    distance: String
-    distanceUnit: String
-    time: String
-}
+
 
 
 #####################################################################
