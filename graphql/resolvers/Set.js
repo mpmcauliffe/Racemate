@@ -6,14 +6,16 @@ const getUserId             = require('../../helpers/getUserId')
 
 const setResolver = {
     async createSet(args, { headers }) {
-    // exercise: String!
-    // date: String!
-    // reps: String
-    // weight: String
-    // distance: Float
-    // time: Float
+        // _id: ID!
+        // date: String!
+        // isWeighted: Boolean!
+        // usesDistance: Boolean!
+        // exUnitStr: String
+        // distanceUnit: String
+        // exerciseId: String!
+    console.log(args.data)
         const userId = getUserId(headers.authorization)
-        const { exerciseId, date, reps, weight, distance, time, } = args.data
+        const { exerciseId, date, isWeighted, usesDistance, distanceUnit, exUnitStr } = args.data
 
 
         let exercise = await Exercise.findById({ _id: exerciseId, })
@@ -23,22 +25,22 @@ const setResolver = {
 
         const set = {
             date,
-            reps: reps.split(' '),
-            weight: weight.split(' '),
-            distance,
-            time,
+            isWeighted,
+            usesDistance,
+            distanceUnit,
+            exUnitStr
         }
         let { sets } = exercise
         sets.push(set)
-        //console.log(sets)
-
-        exercise = await Exercise.findByIdAndUpdate(
-            exerciseId,
-            { $set: { sets } },
-            { new: true }
-        )
         console.log(exercise)
-        return newSet
+
+        // exercise = await Exercise.findByIdAndUpdate(
+        //     exerciseId,
+        //     { $set: { sets } },
+        //     { new: true }
+        // )
+        console.log(exercise)
+        // return newSet
     },
 }
 

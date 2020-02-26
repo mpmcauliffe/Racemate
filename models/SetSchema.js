@@ -8,10 +8,10 @@ const SetSchema = new Schema({
         type: String,
         required: true,
     },
-    reps: [Number],
-    weight: [Number],
-    distance: Number,
-    time: Number,
+    isWeighted: Boolean,
+    usesDistance: Boolean,
+    distanceUnit: String,
+    exUnitStr: String,
 })
 
 
