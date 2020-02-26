@@ -32,15 +32,15 @@ const setResolver = {
         }
         let { sets } = exercise
         sets.push(set)
-        console.log(exercise)
+        //console.log(exercise)
 
-        // exercise = await Exercise.findByIdAndUpdate(
-        //     exerciseId,
-        //     { $set: { sets } },
-        //     { new: true }
-        // )
+        exercise = await Exercise.findByIdAndUpdate(
+            exerciseId,
+            { $set: { sets } },
+            { new: true }
+        )
         console.log(exercise)
-        // return newSet
+        return set
     },
 }
 

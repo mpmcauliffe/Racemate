@@ -19,6 +19,10 @@ export const ActiveModal = props => {
     
     const handleModalToggle = () => setModalToggle(!modalToggle)
     
+    const onSaveClick = e => {
+        console.log('AAAAAA!')
+    }
+
     
     if (!modalToggle) {
         return (
@@ -49,7 +53,10 @@ export const ActiveModal = props => {
             <Simplebar style={{ height: '80vh', marginTop: '29px', }}>
                 
                     <FormContainer>
-                        <InfoButton wide>Save ALL changes</InfoButton>
+                        <InfoButton 
+                            wide
+                            onClick={onSaveClick}
+                            style={{ marginBottom: '5rem' }}>Save ALL changes</InfoButton>
 
                         <Accordion name='Sets, reps & weight'>
                             <SetReps />
@@ -67,7 +74,10 @@ export const ActiveModal = props => {
                             <DateModule />
                         </Accordion>
 
-                        <InfoButton wide>Save ALL changes</InfoButton>
+                        <InfoButton 
+                            wide
+                            onClick={onSaveClick}
+                            style={{ marginTop: '5rem' }}>Save ALL changes</InfoButton>
                     </FormContainer>
                 
             </Simplebar>    
