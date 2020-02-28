@@ -36,8 +36,6 @@ export const GET_EXERCISES = gql`
     }
 `
 
-
-
 export const GET_TOGGLE_STATUS = gql`
     query GetToggleStatus {
         userSelection @client
@@ -103,6 +101,38 @@ export const SET_EXERCISE = gql`
         } 
     } 
 `
+
+export const CREATE_SET = gql`
+    mutation(
+        $exerciseId: String, 
+        $date: String, 
+        $isWeighted: Boolean, 
+        $usesDistance: Boolean, 
+        $distanceUnit: String,
+        $setUnit: String,
+        $timeDisUnit: String
+    ) {
+        createSet(
+            data: {
+                exerciseId: $exerciseId,
+                date: $date,
+                isWeighted: $isWeighted,
+                usesDistance: $usesDistance,
+                distanceUnit: $distanceUnit,
+                setUnit: $setUnit,
+                timeDisUnit: $timeDisUnit
+            }
+        ) {
+            exerciseId
+            date
+            isWeighted
+            usesDistance
+            exUnitStr
+        }
+    }
+`
+
+
 // const ITEM_DELETE = gql`
 //   mutation ItemDelete($id: ID!) {
 //     itemDelete(id: $id) {

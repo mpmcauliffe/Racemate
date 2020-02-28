@@ -121,8 +121,9 @@ type Set {
     date: String!
     isWeighted: Boolean!
     usesDistance: Boolean!
-    exUnitStr: String
     distanceUnit: String
+    setUnit: String
+    timeDisUnit: String
     exerciseId: String!
 }
 
@@ -131,8 +132,9 @@ input CreateSetInput {
     date: String!
     isWeighted: Boolean!
     usesDistance: Boolean!
-    exUnitStr: String
     distanceUnit: String
+    setUnit: String
+    timeDisUnit: String
 }
 
 # input CreateUserInput {

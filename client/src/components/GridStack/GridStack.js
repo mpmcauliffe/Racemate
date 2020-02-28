@@ -21,7 +21,6 @@ export const GridStack = () => {
                 <Card 
                     key={item.id}
                     info={item} />
-                                            
             ))}    
         </MainGrid>
     )

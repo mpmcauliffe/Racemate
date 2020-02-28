@@ -1,13 +1,35 @@
 import React, { useReducer, } from 'react'
-
 import SetContext from './setContext'
+
+import { useApolloClient, useMutation, } from '@apollo/react-hooks'
+import { CREATE_SET, } from '../../graphql'
 
 
 const SetState = props => {
+    const [createSet] = useMutation(CREATE_SET)
+    
+    const hardSave = async (dataObj) => {
+        const { activeId, date, isWeighted, usesDistance, distanceUnit, setUnit, timeDisUnit } = dataObj
 
+
+        const res = await createSet({
+            variables: {
+                activeId, 
+                date, 
+                isWeighted, 
+                usesDistance, 
+                distanceUnit, 
+                setUnit, 
+                timeDisUnit,
+            }
+        })
+    }
 
     return (
         <SetContext.Provider
+            value={{
+                hardSave,
+                }}
         >   {props.children}
         </SetContext.Provider>
     )
@@ -16,7 +38,7 @@ const SetState = props => {
 
 export default SetState
 
-
+// 7,625,597,484,987
 // TRANSFORMING SET, REPS, WEIGHTS
 
 // TRANSFORMING TIME / DISTANCE

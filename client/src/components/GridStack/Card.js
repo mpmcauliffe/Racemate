@@ -18,7 +18,6 @@ export const Card = props => {
 
     const cardActivate = e => {
         e.preventDefault()
-        console.log('card activate')
     }
     
     const editClick = e => {

@@ -11,7 +11,8 @@ const SetSchema = new Schema({
     isWeighted: Boolean,
     usesDistance: Boolean,
     distanceUnit: String,
-    exUnitStr: String,
+    setUnit: String, 
+    timeDisUnit: String
 })
 
 

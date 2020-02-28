@@ -1,4 +1,5 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect, useContext, } from 'react'
+import setContext from '../../../context/set/setContext'
 import ReactModal from 'react-modal'
 
 import { SetReps, DateModule, TimeDistance,
@@ -13,14 +14,17 @@ import 'simplebar/dist/simplebar.min.css'
 
 
 export const ActiveModal = props => {
-    const [modalToggle, setModalToggle]                   = useState(false)
+    const [modalToggle, setModalToggle] = useState(false)
+    const { hardSave }                  = useContext(setContext)
 
     useEffect(() => ReactModal.setAppElement('body'), [])
     
     const handleModalToggle = () => setModalToggle(!modalToggle)
     
     const onSaveClick = e => {
-        console.log('AAAAAA!')
+        hardSave()
+
+        handleModalToggle()
     }
 
     
@@ -32,10 +36,10 @@ export const ActiveModal = props => {
         )
     }
 
-    const { activeName } = props.children.props
+
+    const { activeName, activeId } = props.children.props
 
     return (
-
         <ReactModal 
             isOpen={modalToggle}
             style={{ overlay: { zIndex: '5000', },

@@ -10,12 +10,13 @@ const setResolver = {
         // date: String!
         // isWeighted: Boolean!
         // usesDistance: Boolean!
-        // exUnitStr: String
+        // setUnitStr: String
+        // timeDisUnitStr: String
         // distanceUnit: String
         // exerciseId: String!
     console.log(args.data)
         const userId = getUserId(headers.authorization)
-        const { exerciseId, date, isWeighted, usesDistance, distanceUnit, exUnitStr } = args.data
+        const { exerciseId, date, isWeighted, usesDistance, distanceUnit, setUnit, timeDisUnit } = args.data
 
 
         let exercise = await Exercise.findById({ _id: exerciseId, })
@@ -28,7 +29,8 @@ const setResolver = {
             isWeighted,
             usesDistance,
             distanceUnit,
-            exUnitStr
+            setUnit,
+            timeDisUnit,
         }
         let { sets } = exercise
         sets.push(set)
