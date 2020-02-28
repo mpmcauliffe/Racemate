@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, } from 'react'
-import setContext from '../../../context/set/setContext'
+import saveUnitContext from '../../../context/set/saveUnitContext'
 import ReactModal from 'react-modal'
 
 import { SetReps, DateModule, TimeDistance,
@@ -15,7 +15,7 @@ import 'simplebar/dist/simplebar.min.css'
 
 export const ActiveModal = props => {
     const [modalToggle, setModalToggle] = useState(false)
-    const { hardSave }                  = useContext(setContext)
+    const { hardSave }                  = useContext(saveUnitContext)
 
     useEffect(() => ReactModal.setAppElement('body'), [])
     

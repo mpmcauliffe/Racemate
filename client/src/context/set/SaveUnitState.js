@@ -1,5 +1,5 @@
 import React, { useContext, } from 'react'
-import SetContext from './setContext'
+import SaveUnitContext from './saveUnitContext'
 
 import ActionModalContext from '../actionModal/actionModalContext'
 
@@ -7,7 +7,7 @@ import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 import { CREATE_SET, } from '../../graphql'
 
 
-const SetState = props => {
+const SaveUnitState = props => {
     const { date, weightSelection, isDistanceExercise, disUnitSelection, baseSets, timeDistanceArray } = useContext(ActionModalContext)
 
     const [createSet] = useMutation(CREATE_SET)
@@ -33,17 +33,17 @@ const SetState = props => {
     }
 
     return (
-        <SetContext.Provider
+        <SaveUnitContext.Provider
             value={{
                 hardSave,
                 }}
         >   {props.children}
-        </SetContext.Provider>
+        </SaveUnitContext.Provider>
     )
 }
 
 
-export default SetState
+export default SaveUnitState
 
 // 7,625,597,484,987
 // TRANSFORMING SET, REPS, WEIGHTS
