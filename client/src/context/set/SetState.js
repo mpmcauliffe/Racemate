@@ -1,28 +1,35 @@
-import React, { useReducer, } from 'react'
+import React, { useContext, } from 'react'
 import SetContext from './setContext'
+
+import ActionModalContext from '../actionModal/actionModalContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 import { CREATE_SET, } from '../../graphql'
 
 
 const SetState = props => {
+    const { date, weightSelection, isDistanceExercise, disUnitSelection, baseSets, timeDistanceArray } = useContext(ActionModalContext)
+
     const [createSet] = useMutation(CREATE_SET)
     
-    const hardSave = async (dataObj) => {
-        const { activeId, date, isWeighted, usesDistance, distanceUnit, setUnit, timeDisUnit } = dataObj
+    const hardSave = async (id) => {
+        //const { activeId, date, isWeighted, usesDistance, distanceUnit, setUnit, timeDisUnit } = dataObj
 
+        console.log(date, weightSelection, isDistanceExercise, disUnitSelection)
+        console.log(baseSets)
+        console.log(timeDistanceArray)
 
-        const res = await createSet({
-            variables: {
-                activeId, 
-                date, 
-                isWeighted, 
-                usesDistance, 
-                distanceUnit, 
-                setUnit, 
-                timeDisUnit,
-            }
-        })
+        // const res = await createSet({
+        //     variables: {
+        //         activeId, 
+        //         date, 
+        //         isWeighted, 
+        //         usesDistance, 
+        //         distanceUnit, 
+        //         setUnit, 
+        //         timeDisUnit,
+        //     }
+        // })
     }
 
     return (

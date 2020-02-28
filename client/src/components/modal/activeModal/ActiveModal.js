@@ -22,7 +22,7 @@ export const ActiveModal = props => {
     const handleModalToggle = () => setModalToggle(!modalToggle)
     
     const onSaveClick = e => {
-        hardSave()
+        hardSave(props.children.props.activeId)
 
         handleModalToggle()
     }
