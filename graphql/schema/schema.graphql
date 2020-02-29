@@ -118,20 +118,20 @@ input UpdateExerciseInput {
 
 type Set {
     #_id: ID!
-    date: String!
-    isWeighted: Boolean!
-    usesDistance: Boolean!
+    date: String
+    isWeighted: Boolean
+    usesDistance: Boolean
     distanceUnit: String
     setUnit: String
     timeDisUnit: String
-    exerciseId: String!
+    exerciseId: String
 }
 
 input CreateSetInput {
-    exerciseId: String!
-    date: String!
-    isWeighted: Boolean!
-    usesDistance: Boolean!
+    exerciseId: String
+    date: String
+    isWeighted: Boolean
+    usesDistance: Boolean
     distanceUnit: String
     setUnit: String
     timeDisUnit: String

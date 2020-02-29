@@ -71,7 +71,7 @@ export default (state, action) => {
         console.log(action.payload)
             return {
                 ...state,
-                distUnitSelction: action.payload
+                distUnitSelection: action.payload
             }
 
         case _updateDate_:

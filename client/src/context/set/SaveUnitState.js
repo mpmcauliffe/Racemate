@@ -12,22 +12,32 @@ const SaveUnitState = props => {
 
     const [createSet] = useMutation(CREATE_SET)
     
-    const hardSave = async (id) => {
-        //const { activeId, date, isWeighted, usesDistance, distanceUnit, setUnit, timeDisUnit } = dataObj
+    const hardSave = async (exerciseId) => {
+        // y = x.map((item, i) => Object.keys(item).map(key => [key, item[key]]))
+        // RETURNS [["x", 1], ["y", 2] ...]
 
-        console.log(date, weightSelection, isDistanceExercise, disUnitSelection)
-        console.log(baseSets)
-        console.log(timeDistanceArray)
+        // join array by ':'
+        // z = y.join(':')
+        // RETURNS "x,1,y,2:x,3,y,4:x,5,y,6"
+
+        
+
+        const setUnit = baseSets.join(':')
+
+        const timeDisUnit = timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
+
+        console.log(timeDisUnit)
 
         // const res = await createSet({
         //     variables: {
-        //         activeId, 
-        //         date, 
-        //         isWeighted, 
-        //         usesDistance, 
-        //         distanceUnit, 
+        //         exerciseId, 
+        //         date,
         //         setUnit, 
         //         timeDisUnit,
+        //         isWeighted: weightSelection, 
+        //         usesDistance: isDistanceExercise, 
+        //         distanceUnit: disUnitSelection, 
+                
         //     }
         // })
     }

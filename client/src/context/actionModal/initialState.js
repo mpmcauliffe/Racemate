@@ -36,7 +36,7 @@ export const defaultState = {
     timeDistanceArray: [ ],
     isDistanceExercise: false,
     optBtnDistanceUnit: ['miles', 'kilometers', 'laps'],
-    distUnitSelction: 'miles',
+    distUnitSelection: 'miles',
     timeStrArr: ['00','00','00','00'],
 
     // date for date today

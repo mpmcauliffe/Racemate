@@ -127,7 +127,8 @@ export const CREATE_SET = gql`
             date
             isWeighted
             usesDistance
-            exUnitStr
+            setUnit
+            timeDisUnit
         }
     }
 `
