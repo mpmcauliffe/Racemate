@@ -16,7 +16,7 @@ export default (state, action) => {
         case _setTimeOrDis_:
             [unit, location, dim] = action.payload.name.split('_')
             updatedValue = action.payload.newValue
-    
+    console.log(unit)
             return { //buildTimeString = (timeValue, mod, timeArr)
                 ...state,
                 timeDistanceArray: [

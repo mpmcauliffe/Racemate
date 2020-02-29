@@ -92,7 +92,8 @@ const ActionModalState = props => {
                 timeDistanceArray: timeState.timeDistanceArray,
                 isDistanceExercise: timeState.isDistanceExercise,
                 optBtnDistanceUnit: timeState.optBtnDistanceUnit,
-                distUnitSelction: timeState.distUnitSelction,
+                distUnitSelection: timeState.distUnitSelection,
+                timeStrArr: timeState.timeStrArr,
                 date: timeState.date,
                 
     

@@ -8,7 +8,9 @@ import { CREATE_SET, } from '../../graphql'
 
 
 const SaveUnitState = props => {
-    const { date, weightSelection, isDistanceExercise, disUnitSelection, baseSets, timeDistanceArray } = useContext(ActionModalContext)
+    const { date, weightSelection, isDistanceExercise, 
+        disUnitSelection, baseSets, timeDistanceArray,
+        timeStrArr, numberOfSets } = useContext(ActionModalContext)
 
     const [createSet] = useMutation(CREATE_SET)
     
@@ -22,11 +24,13 @@ const SaveUnitState = props => {
 
         
 
-        const setUnit = baseSets.join(':')
-
-        const timeDisUnit = timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
-
-        console.log(timeDisUnit)
+        const setUnit = numberOfSets === '1' && baseSets.length < 2 && !weightSelection 
+            ? 'x'
+            :baseSets.join(':')
+        const timeDisUnit = timeDistanceArray[0].time === timeStrArr.join(':') && timeDistanceArray[0].distance === ''
+            ? ''
+            : timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
+console.log(setUnit)
 
         // const res = await createSet({
         //     variables: {

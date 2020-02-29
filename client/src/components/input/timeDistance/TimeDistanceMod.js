@@ -10,7 +10,7 @@ import { extractTimeUnit, } from '../../../helpers'
 
 export const TimeDistanceMod = props => {
     // .V.
-    const { hoursMinutes, distUnitSelction, } = useContext(actionModalContext)
+    const { hoursMinutes, distUnitSelection, } = useContext(actionModalContext)
     // {F}
     const { setTimeOrDis, } = useContext(actionModalContext)
     // [A] {O}
@@ -27,7 +27,7 @@ export const TimeDistanceMod = props => {
                     <RepInput 
                         value={props.timeDisUnit.distance.split(' ')[0]}
                         onChange={(e) => setTimeOrDis(e.target.name, e.target.value)}
-                        name={`${distUnitSelction}_${props.name}_D`}
+                        name={`${distUnitSelection}_${props.name}_D`}
                         type='number' 
                         style={{ flexBasis: '50%' }}  />
                 </InternalContainer>
@@ -60,7 +60,7 @@ export const TimeDistanceMod = props => {
                         actualValue={extractTimeUnit(timeDistanceArray[props.name].time, 'sec')}
                         options={hoursMinutes}
                         updateSelect={(e) => setTimeOrDis(e.target.name, e.target.value)}
-                        name={`min_${props.name}_T`}
+                        name={`sec_${props.name}_T`}
                         style={{ flexBasis: '30%' }} /> 
                 </ExactContainer>
             </InternalContainer>
