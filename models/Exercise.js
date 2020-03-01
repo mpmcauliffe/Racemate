@@ -13,9 +13,9 @@ const excerciseSchema = new Schema({
         type: String,
         required: true,
     },
-    typeSelection: {
+    quantityCode: {
         type: String,
-    }
+    },
     description: {
         type: String,
     },

@@ -56,6 +56,8 @@ const ModalFormState = props => {
                 //update: async (cache, mutationResult) => { }
             })
 
+            return res
+            
         } catch (e) {
             console.log(e)
             return null

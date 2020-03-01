@@ -83,6 +83,7 @@ type Exercise {
     id: ID!
     title: String!
     exerciseType: String!
+    typeSelection: String
     description: String
     sets: [Set!]
     notes: String
@@ -91,6 +92,7 @@ type Exercise {
 input CreateExerciseInput {
     title: String!
     exerciseType: String!
+    typeSelection: String!
     description: String
     # sets: [Set!]
     notes: String
@@ -98,6 +100,7 @@ input CreateExerciseInput {
 input UpdateExerciseInput {
     title: String
     exerciseType: String
+    typeSelection: String
     description: String
     id: String
     notes: String

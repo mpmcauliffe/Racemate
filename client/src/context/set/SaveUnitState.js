@@ -4,10 +4,12 @@ import SaveUnitContext from './saveUnitContext'
 import ActionModalContext from '../actionModal/actionModalContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { CREATE_SET, } from '../../graphql'
+import { CREATE_SET, GET_EXERCISES, } from '../../graphql'
 
 
 const SaveUnitState = props => {
+    const client = useApolloClient()
+
     const { date, weightSelection, isDistanceExercise, 
         disUnitSelection, baseSets, timeDistanceArray,
         timeStrArr, numberOfSets } = useContext(ActionModalContext)
@@ -29,17 +31,29 @@ const SaveUnitState = props => {
             ? ''
             : timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
 
-        // const res = await createSet({
-        //     variables: {
-        //         exerciseId, 
-        //         date,
-        //         setUnit, 
-        //         timeDisUnit,
-        //         isWeighted: weightSelection, 
-        //         usesDistance: isDistanceExercise, 
-        //         distanceUnit: disUnitSelection, 
-        //     }
-        // })
+        const res = await createSet({
+            variables: {
+                exerciseId, 
+                date,
+                setUnit, 
+                timeDisUnit,
+                isWeighted: weightSelection, 
+                usesDistance: isDistanceExercise, 
+                distanceUnit: disUnitSelection, 
+            },
+            // update: async (cache, mutationResult) => {
+            //     const update = mutationResult.data.createExercise
+            //     const exercises = await cache.readQuery({ query: GET_EXERCISES })
+
+            //     const newExercise = {
+            //         ...update,
+            //         __typename: 'Exercise'
+            //     }
+            //     client.writeData({ data: { myExercises: [...exercises.myExercises, ...[newExercise]], } })
+            // }
+        })
+
+        console.log(res)
     }
 
     return (

@@ -30,8 +30,8 @@ export const BasicModalForm = ({ handleModalToggle }) => {
         id: ''
     })
 
-    const [typeSelect, setTypeSelect]   = useState('')
-    const OptionArray                   = ['', 'sets and reps', 'time, distance, or intervals', 'both']
+    // const [typeSelect, setTypeSelect]   = useState('')
+    // const OptionArray                   = ['', 'sets and reps', 'time, distance, or intervals', 'both']
 
     useEffect(() => {
         if (isModalEdit) {
@@ -42,23 +42,23 @@ export const BasicModalForm = ({ handleModalToggle }) => {
         } 
     }, [isModalEdit, client, editExerciseId])
 
-    
+
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
-    const handleOptionChange = item => setTypeSelect(item)
+    // const handleOptionChange = item => setTypeSelect(item)
 
     const onSubmit = e => {
         e.preventDefault()
 
-        if (!typeSelect) {
-            setAlert('Please enter a quantity / duration type', 'warning')
-            return
-        }
+        // if (!typeSelect) {
+        //     setAlert('Please enter a quantity / duration type', 'warning')
+        //     return
+        // }
 
         let res
         if (isModalEdit) {
-            res = editExercise(formData, typeSelect)
+            res = editExercise(formData)
         } else {
-            res = submitExercise(formData, typeSelect)
+            res = submitExercise(formData)
         }
         
         if (!res) {
@@ -113,7 +113,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
                         type='text'
                         required />
 
-                    <UserLabel 
+                    {/*****<UserLabel 
                         htmlFor='typeSelect'
                         style={{ marginBottom: '1rem' }}
                     >   Exercise Qunatity / Duration Type
@@ -123,7 +123,8 @@ export const BasicModalForm = ({ handleModalToggle }) => {
                         options={OptionArray}
                         updateSelect={onChange}
                         name='typeSelect'
-                        style={{ flexBasis: '30%', }} />
+                        style={{ flexBasis: '30%', }} /> *****/}
+                    
 
                     <UserLabel 
                         htmlFor='description'

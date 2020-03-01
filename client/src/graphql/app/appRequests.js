@@ -10,8 +10,11 @@ export const GET_ALL_EXERCISES = gql`
             description
             sets {
                 date
-                reps
-                weight
+                isWeighted
+                usesDistance
+                distanceUnit
+                setUnit
+                timeDisUnit
             }
             owner {
                 _id
@@ -32,6 +35,14 @@ export const GET_EXERCISES = gql`
                 _id
                 name
             }	  	
+            sets {
+                date
+                isWeighted
+                usesDistance
+                distanceUnit
+                setUnit
+                timeDisUnit
+            }
         }
     }
 `
@@ -123,10 +134,10 @@ export const CREATE_SET = gql`
                 timeDisUnit: $timeDisUnit
             }
         ) {
-            exerciseId
             date
             isWeighted
             usesDistance
+            distanceUnit
             setUnit
             timeDisUnit
         }

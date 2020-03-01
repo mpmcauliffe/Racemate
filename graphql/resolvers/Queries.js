@@ -44,19 +44,18 @@ const Query = {
     myExercises: async (args, { headers }) => {
         try {
             const userId = getUserId(headers.authorization)
-            // if (userId === 'AUTH ERROR!') {
-            //     throw new Error('AUTH TOKEN ERROR')
-            // }
-
-            const exercises = await Exercise.find({ owner: userId })
             
+            const exercises = await Exercise.find({ owner: userId })
+
             return exercises.map(exercise => transformItem(exercise))
 
-            
         } catch(e) {
             console.log(e)
             throw e
         }
+    },
+    sets: async (args, { headers }) => {
+        const userId = getUserId(headers.authorization)
     },
     workouts: async () => {
         try {
