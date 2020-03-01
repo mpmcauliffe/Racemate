@@ -13,6 +13,9 @@ const excerciseSchema = new Schema({
         type: String,
         required: true,
     },
+    typeSelection: {
+        type: String,
+    }
     description: {
         type: String,
     },

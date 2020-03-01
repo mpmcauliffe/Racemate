@@ -24,13 +24,10 @@ const SaveUnitState = props => {
 
         
 
-        const setUnit = numberOfSets === '1' && baseSets.length < 2 && !weightSelection 
-            ? 'x'
-            :baseSets.join(':')
+        const setUnit = baseSets.join(':')
         const timeDisUnit = timeDistanceArray[0].time === timeStrArr.join(':') && timeDistanceArray[0].distance === ''
             ? ''
             : timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
-console.log(setUnit)
 
         // const res = await createSet({
         //     variables: {
@@ -41,7 +38,6 @@ console.log(setUnit)
         //         isWeighted: weightSelection, 
         //         usesDistance: isDistanceExercise, 
         //         distanceUnit: disUnitSelection, 
-                
         //     }
         // })
     }

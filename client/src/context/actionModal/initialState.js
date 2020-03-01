@@ -6,6 +6,7 @@ export const defaultState = {
     **************/
     changeOptionBin: ['no', 'yes'],
 
+    
     /*************
     / ACTION STATE
     **************/

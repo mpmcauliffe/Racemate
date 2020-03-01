@@ -2,10 +2,8 @@ import React, { useState, useEffect, useContext, } from 'react'
 import ModalFormContext from '../../../context/modalForm/modalFormContext'
 import AlertContext from '../../../context/alert/alertContext'
 
-import { Alert,
-    FormContainer, 
-    InfoButton, 
-    UserLabel, } from '../..'
+import { Alert, FormContainer, InfoButton, UserLabel, } from '../..'
+import { SpoolInput, } from '../../input'
 
 import { useApolloClient, } from '@apollo/react-hooks'
 import { GET_EDIT_STATUS, GET_EDIT_ID, GET_EXERCISES, } from '../../../graphql'
@@ -32,6 +30,9 @@ export const BasicModalForm = ({ handleModalToggle }) => {
         id: ''
     })
 
+    const [typeSelect, setTypeSelect]   = useState('')
+    const OptionArray                   = ['', 'sets and reps', 'time, distance, or intervals', 'both']
+
     useEffect(() => {
         if (isModalEdit) {
             const myExercises = client.readQuery({ query: GET_EXERCISES, })
@@ -41,21 +42,27 @@ export const BasicModalForm = ({ handleModalToggle }) => {
         } 
     }, [isModalEdit, client, editExerciseId])
 
+    
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+    const handleOptionChange = item => setTypeSelect(item)
 
     const onSubmit = e => {
         e.preventDefault()
 
+        if (!typeSelect) {
+            setAlert('Please enter a quantity / duration type', 'warning')
+            return
+        }
+
         let res
         if (isModalEdit) {
-            res = editExercise(formData)
+            res = editExercise(formData, typeSelect)
         } else {
-            res = submitExercise(formData)
+            res = submitExercise(formData, typeSelect)
         }
         
         if (!res) {
             setAlert('Something went wrong', 'warning')
-            window.scrollTo(0,0)
             return
         }
 
@@ -84,6 +91,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
 
     const { title, exerciseType, description } = formData
 
+
     return (
         <form onSubmit={onSubmit}>
             <Alert style={{ marginTop: '1rem' }} />
@@ -105,7 +113,23 @@ export const BasicModalForm = ({ handleModalToggle }) => {
                         type='text'
                         required />
 
-                    <UserLabel htmlFor='description'>Description</UserLabel>
+                    <UserLabel 
+                        htmlFor='typeSelect'
+                        style={{ marginBottom: '1rem' }}
+                    >   Exercise Qunatity / Duration Type
+                    </UserLabel>
+                    <SpoolInput
+                        actualValue={typeSelect}
+                        options={OptionArray}
+                        updateSelect={onChange}
+                        name='typeSelect'
+                        style={{ flexBasis: '30%', }} />
+
+                    <UserLabel 
+                        htmlFor='description'
+                        style={{ marginTop: '4rem', }} 
+                    >   Description
+                    </UserLabel>
                     <textarea /* DESCRIPTION */
                         onChange={onChange}
                         value={description}
