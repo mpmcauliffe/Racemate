@@ -47,8 +47,8 @@ export const GET_EXERCISES = gql`
     }
 `
 export const GET_SINGLE_AND_UPDATE = gql`
-    mutation($id: String) {
-        updateSet @client (id: $id)
+    mutation updateSet($id: String) {
+        updateSet(id: $id) @client 
     }
 `
 export const GET_TOGGLE_STATUS = gql`
