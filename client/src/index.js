@@ -13,7 +13,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { onError } from 'apollo-link-error'
 
 import App from './App'
-import { userTypes, appTypes, appResolver, } from './graphql'
+import { userTypes, appTypes, resolvers, } from './graphql'
 
 import 'normalize.css/normalize.css'
 import './global-styles/fonts/fonts.css'
@@ -58,7 +58,7 @@ const client = new ApolloClient({
     cache,
     userTypes,
     appTypes,
-    appResolver,
+    resolvers,
 })
 cache.writeData({ data: { isLoggedIn: !!localStorage.getItem('token'), } })
 

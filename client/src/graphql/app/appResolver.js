@@ -2,13 +2,18 @@
 
 
 
-export const appResolver = {
+export const resolvers = {
     Mutation: {
         setExercise: (_, args, { cache, }) => {
             console.log(args)
             //const myExercises = cache.readFragment({ myExercises })
             //console.log(myExercises)
-        }
+        },
+        updateSet: (_, args, { cache, }) => {
+            console.log(args)
+            //const myExercises = cache.readFragment({ myExercises })
+            //console.log(myExercises)
+        },
     }
 }
 // const resolvers = {

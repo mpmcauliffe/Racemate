@@ -46,7 +46,11 @@ export const GET_EXERCISES = gql`
         }
     }
 `
-
+export const GET_SINGLE_AND_UPDATE = gql`
+    mutation($id: String) {
+        updateSet @client (id: $id)
+    }
+`
 export const GET_TOGGLE_STATUS = gql`
     query GetToggleStatus {
         userSelection @client
