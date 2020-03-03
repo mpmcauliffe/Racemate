@@ -2,7 +2,8 @@ import React from 'react'
 import ModalFormContext from './modalFormContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { ADD_EXERCISE, GET_EXERCISES, EDIT_EXERCISE, DELETE_EXERCISE, } from '../../graphql'
+import { ADD_EXERCISE, GET_EXERCISES, GET_EXERCISES_AFTER_UPDATE, 
+    EDIT_EXERCISE, DELETE_EXERCISE, } from '../../graphql'
 
 
 const ModalFormState = props => {
@@ -25,9 +26,9 @@ const ModalFormState = props => {
                 },
                 update: async (cache, mutationResult) => {
                     const update = mutationResult.data.createExercise
-                    //console.log(update)
+                    console.log(update)
                     const exercises = await cache.readQuery({ query: GET_EXERCISES })
-
+//console.log(exercises)
                     const newExercise = {
                         ...update,
                         __typename: 'Exercise'

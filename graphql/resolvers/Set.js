@@ -24,8 +24,6 @@ const setResolver = {
             throw new Error('Sets cannot be added to exercise!')
         }
 
-        console.log(args.data)
-        console.log(exercise)
         const set = {
             date,
             isWeighted,

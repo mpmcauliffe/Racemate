@@ -31,6 +31,14 @@ export const GET_EXERCISES = gql`
             title
             exerciseType
             description
+            sets {
+                date
+                isWeighted
+                usesDistance
+                distanceUnit
+                setUnit
+                timeDisUnit
+            }
             owner {
                 _id
                 name
@@ -38,6 +46,7 @@ export const GET_EXERCISES = gql`
         }
     }
 `
+
 export const UPDATE_CACHE_SET = gql`
     mutation updateSet($id: ID) {
         updateSet(id: $id) @client 
@@ -90,6 +99,14 @@ export const ADD_EXERCISE = gql`
             title
             exerciseType
             description
+            sets {
+                date
+                isWeighted
+                usesDistance
+                distanceUnit
+                setUnit
+                timeDisUnit
+            }
             owner {
                 _id
             }

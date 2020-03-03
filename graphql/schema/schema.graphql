@@ -85,7 +85,7 @@ type Exercise {
     exerciseType: String!
     typeSelection: String
     description: String
-    sets: [Set!]
+    sets: [Set]!
     notes: String
     owner: User!
 }
@@ -94,7 +94,7 @@ input CreateExerciseInput {
     exerciseType: String!
     #typeSelection: String!
     description: String
-    # sets: [Set!]
+    sets: CreateSetInput
     notes: String
 }
 input UpdateExerciseInput {
@@ -140,6 +140,9 @@ input CreateSetInput {
     timeDisUnit: String
 }
 
+# union Sets = Set | null
+
+# union Owner = Artist | Venue
 # input CreateUserInput {
 #     name: String!
 #     email: String!
