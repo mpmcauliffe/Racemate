@@ -46,10 +46,27 @@ export const GET_EXERCISES = gql`
         }
     }
 `
-export const GET_SINGLE_AND_UPDATE = gql`
+export const UPDATE_CACHE_SET = gql`
     mutation updateSet($id: String) {
         updateSet(id: $id) @client 
     }
+`
+//items(search: $search) { foo bar }
+export const GET_SINGLE_EXERCISE = gql`
+    query getSingleExercise {
+        myExercises {
+            id
+            sets {
+                date
+                isWeighted
+                usesDistance
+                distanceUnit
+                setUnit
+                timeDisUnit
+            }
+        }
+    }
+    
 `
 export const GET_TOGGLE_STATUS = gql`
     query GetToggleStatus {
@@ -169,14 +186,4 @@ export const CREATE_SET = gql`
 //         #userToken @client
 //     }
 
-// export const GET_SINGE_EXERCISE = gql`
-//     query getSingleExercise($id: String!) {
-//         myExercises {
-//             Exercise(id: $id) {
-//                 title
-//                 exerciseType
-//                 description
-//             }
-//         }
-//     }
-// `
+

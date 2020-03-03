@@ -4,7 +4,7 @@ import SaveUnitContext from './saveUnitContext'
 import ActionModalContext from '../actionModal/actionModalContext'
 
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
-import { CREATE_SET, GET_EXERCISES, GET_SINGLE_AND_UPDATE, } from '../../graphql'
+import { CREATE_SET, GET_EXERCISES, UPDATE_CACHE_SET, } from '../../graphql'
 
 
 const SaveUnitState = props => {
@@ -15,7 +15,7 @@ const SaveUnitState = props => {
         timeStrArr, numberOfSets } = useContext(ActionModalContext)
 
     const [createSet] = useMutation(CREATE_SET)
-    const [updateSet] = useMutation(GET_SINGLE_AND_UPDATE)
+    const [updateSet] = useMutation(UPDATE_CACHE_SET)
     
     const hardSave = async (exerciseId) => {
         // y = x.map((item, i) => Object.keys(item).map(key => [key, item[key]]))
@@ -32,35 +32,23 @@ const SaveUnitState = props => {
             ? ''
             : timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
 
-        const res = await createSet({
-            variables: {
-                exerciseId, 
-                date,
-                setUnit, 
-                timeDisUnit,
-                isWeighted: weightSelection, 
-                usesDistance: isDistanceExercise, 
-                distanceUnit: disUnitSelection, 
-            },
-            update: async (cache, mutationResult) => {
-                console.log(mutationResult)
-                const cacheUpdate = await updateSet({
-                    variables: { id: exerciseId }
-                })
-                console.log(cacheUpdate)
-                // cache.writeData(mutationResult)
-                // const update = mutationResult.data.createExercise
-                // const exercises = await cache.readQuery({ query: GET_EXERCISES })
-
-                // const newExercise = {
-                //     ...update,
-                //     __typename: 'Exercise'
-                // }
-                // client.writeData({ data: { myExercises: [...exercises.myExercises, ...[newExercise]], } })
-            }
+        const cacheUpdate = await updateSet({
+            variables: { id: exerciseId }
         })
-
-        console.log(res)
+        // const res = await createSet({
+        //     variables: {
+        //         exerciseId, 
+        //         date,
+        //         setUnit, 
+        //         timeDisUnit,
+        //         isWeighted: weightSelection, 
+        //         usesDistance: isDistanceExercise, 
+        //         distanceUnit: disUnitSelection, 
+        //     },
+        //     update: async (cache, mutationResult) => {
+        //     }
+        // })
+        // console.log(res)
     }
 
     return (
