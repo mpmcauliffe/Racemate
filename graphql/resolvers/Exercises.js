@@ -13,8 +13,7 @@ const exerciseResolver = {
             title,
             exerciseType,
             description,
-            sets,
-            notes,
+            sets: [],
             owner: userId,
         })
         //console.log(exercise)

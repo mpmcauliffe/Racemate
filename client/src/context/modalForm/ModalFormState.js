@@ -25,6 +25,7 @@ const ModalFormState = props => {
                 },
                 update: async (cache, mutationResult) => {
                     const update = mutationResult.data.createExercise
+                    //console.log(update)
                     const exercises = await cache.readQuery({ query: GET_EXERCISES })
 
                     const newExercise = {

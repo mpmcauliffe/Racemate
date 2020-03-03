@@ -92,7 +92,7 @@ type Exercise {
 input CreateExerciseInput {
     title: String!
     exerciseType: String!
-    typeSelection: String!
+    #typeSelection: String!
     description: String
     # sets: [Set!]
     notes: String

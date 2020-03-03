@@ -35,26 +35,20 @@ export const GET_EXERCISES = gql`
                 _id
                 name
             }	  	
-            sets {
-                date
-                isWeighted
-                usesDistance
-                distanceUnit
-                setUnit
-                timeDisUnit
-            }
         }
     }
 `
 export const UPDATE_CACHE_SET = gql`
-    mutation updateSet($id: String) {
+    mutation updateSet($id: ID) {
         updateSet(id: $id) @client 
     }
 `
 //items(search: $search) { foo bar }
 export const GET_SINGLE_EXERCISE = gql`
-    query getSingleExercise {
-        myExercises {
+    query getSingleExercise #($id: String) 
+    {
+        myExercises #(id: $id) @client 
+        {
             id
             sets {
                 date
