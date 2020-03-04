@@ -38,16 +38,14 @@ const SaveUnitState = props => {
             update: async (cache, mutationResult) => {
                 const newSet = mutationResult.data.createSet
                 const allExercises = cache.readQuery({ query: GET_EXERCISES })
+                
                 const singleUpdate = allExercises.myExercises.map((exercise, i) => exerciseId === exercise.id 
-                    ? { ...exercise, 
-                        sets: exercise.sets.length < 1 ? [newSet] : exercise.sets.unshift(newSet) 
-                    } 
+                    ? { ...exercise, sets: [newSet, ...exercise.sets] } 
                     : exercise
                 )
-                console.log(singleUpdate)
-                // const cacheUpdate = await updateSet({
-                //     variables: { id: exerciseId }
-                // })
+
+                // console.log(singleUpdate)
+                cache.writeData({ data: { myExercises: [...singleUpdate], } })
             }
         })
     }
