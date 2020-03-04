@@ -39,7 +39,9 @@ const SaveUnitState = props => {
                 const newSet = mutationResult.data.createSet
                 const allExercises = cache.readQuery({ query: GET_EXERCISES })
                 const singleUpdate = allExercises.myExercises.map((exercise, i) => exerciseId === exercise.id 
-                    ? { ...exercise, sets: exercise.sets.unshift(newSet) } 
+                    ? { ...exercise, 
+                        sets: exercise.sets.length < 1 ? [newSet] : exercise.sets.unshift(newSet) 
+                    } 
                     : exercise
                 )
                 console.log(singleUpdate)
