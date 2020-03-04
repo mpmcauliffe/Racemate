@@ -34,7 +34,7 @@ const transformItem = async item => {
         }
         console.log(item._doc)
     }
-console.log(item._doc)
+
     return {
         ...item._doc,
         id: item._doc._id.toString(),
@@ -44,5 +44,6 @@ console.log(item._doc)
         }, 
     }
 }
+
 
 module.exports = transformItem

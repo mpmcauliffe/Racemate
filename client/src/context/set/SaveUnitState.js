@@ -18,37 +18,36 @@ const SaveUnitState = props => {
     const [updateSet] = useMutation(UPDATE_CACHE_SET)
     
     const hardSave = async (exerciseId) => {
-        // y = x.map((item, i) => Object.keys(item).map(key => [key, item[key]]))
-        // RETURNS [["x", 1], ["y", 2] ...]
-
-        // join array by ':'
-        // z = y.join(':')
-        // RETURNS "x,1,y,2:x,3,y,4:x,5,y,6"
-
-        
-
+    
         const setUnit = baseSets.join(':')
         const timeDisUnit = timeDistanceArray[0].time === timeStrArr.join(':') && timeDistanceArray[0].distance === ''
             ? ''
             : timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
 
-        const cacheUpdate = await updateSet({
-            variables: { id: exerciseId }
+        
+        const res = await createSet({
+            variables: {
+                exerciseId, 
+                date,
+                setUnit, 
+                timeDisUnit,
+                isWeighted: weightSelection, 
+                usesDistance: isDistanceExercise, 
+                distanceUnit: disUnitSelection, 
+            },
+            update: async (cache, mutationResult) => {
+                const newSet = mutationResult.data.createSet
+                const allExercises = cache.readQuery({ query: GET_EXERCISES })
+                const singleUpdate = allExercises.myExercises.map((exercise, i) => exerciseId === exercise.id 
+                    ? { ...exercise, sets: exercise.sets.unshift(newSet) } 
+                    : exercise
+                )
+                console.log(singleUpdate)
+                // const cacheUpdate = await updateSet({
+                //     variables: { id: exerciseId }
+                // })
+            }
         })
-        // const res = await createSet({
-        //     variables: {
-        //         exerciseId, 
-        //         date,
-        //         setUnit, 
-        //         timeDisUnit,
-        //         isWeighted: weightSelection, 
-        //         usesDistance: isDistanceExercise, 
-        //         distanceUnit: disUnitSelection, 
-        //     },
-        //     update: async (cache, mutationResult) => {
-        //     }
-        // })
-        // console.log(res)
     }
 
     return (

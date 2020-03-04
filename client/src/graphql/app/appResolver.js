@@ -3,11 +3,6 @@ import { GET_SINGLE_EXERCISE, } from './appRequests'
 
 
 export const resolvers = {
-    Query: {
-        getSingleExercise: (_, args, { cache, }) => {
-            console.log(args)
-        }
-    },
     Mutation: {
         setExercise: (_, args, { cache, }) => {
             console.log(args)
@@ -16,8 +11,8 @@ export const resolvers = {
         },
         updateSet: (_, args, { cache, }) => {
             console.log(args.id)
-            const x = cache.readQuery({ query: GET_SINGLE_EXERCISE })
-            console.log(x)
+            const allExercises = cache.readQuery({ query: GET_SINGLE_EXERCISE })
+            console.log(allExercises)
             //const myExercises = cache.readFragment({ myExercises })
             //console.log(myExercises)
         },
