@@ -5,7 +5,7 @@ import { ButtonSet, } from './OpSwitchComp'
 
 export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
 
-    const [buttonState, setButtonState]     = useState([])
+    const [buttonState, setButtonState]     = useState([ ])
     const [buttonSize, setButtonSize]       = useState(0)
 
     useEffect(() => {

@@ -10,8 +10,8 @@ export const defaultState = {
     /*************
     / ACTION STATE
     **************/
-    numberOfSets: '4',
-    spoolInputArray: [...Array(50)].map((_, i) => i+1),
+    numberOfSets: '0',
+    spoolInputArray: [...Array(51)].map((_, i) => i),
 
     repValue: '8',
 

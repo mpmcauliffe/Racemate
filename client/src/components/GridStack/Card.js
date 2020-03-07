@@ -14,10 +14,12 @@ import { truncate, } from '../../helpers'
 export const Card = props => {
     const { toggleEditOn, setEditExerciseId, }      = useContext(ModalFormContext)
 
-    const { info } = props
+    const { info }                                  = props
 
     const cardActivate = e => {
         e.preventDefault()
+
+        setEditExerciseId(info.id)
     }
     
     const editClick = e => {

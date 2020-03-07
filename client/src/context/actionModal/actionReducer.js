@@ -1,10 +1,12 @@
 import Moment from 'moment'  
 
+import { reconstitute } from '../../helpers'
+
 import { _setNumberOfSets_, _setWeightSelection_,
     _setRange_, _changeToWeightedArray_, _changeToWeightless_, 
     _updateWeightInput_, _optionUpdateRepsCount_,
     _optionWeightLocal_, _optionWeightGlobal_, _resetState_,
-    _updateDate_, } from './types'
+    _updateDate_, _enhanceState_, } from './types'
 
 
 export default (state, action) => {
@@ -168,11 +170,24 @@ export default (state, action) => {
                     )
                 ]
             }
+
+        case _enhanceState_:
+            
+            const { setUnit, isWeighted } = action.payload
+console.log(setUnit, isWeighted)
+            return {
+                ...state,
+                weightSelection: isWeighted,
+                numberOfSets: setUnit.length < 1 ? '0' : setUnit.split(':').length,
+                baseSets: reconstitute(setUnit),
+//"8:8:8:8"
+//"1,2:3,4:5,6:7,8"
+            }
             
         case _resetState_:
             return {
-                numberOfSets: '4',
-                spoolInputArray: [...Array(49)].map((_, i) => i+1),
+                numberOfSets: '0',
+                spoolInputArray: [...Array(51)].map((_, i) => i),
                 repValue: '8',
                 weightSelection: false,
                 changeOptionBin: ['no', 'yes'],

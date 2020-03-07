@@ -21,3 +21,6 @@ export const _setDistanceUnit_              = '_setDistanceUnit_'
 export const _setDistanceTag_               = '_setDistanceTag_'
 export const _splitLap_                     = '_splitLap_'
 
+/** ENHANCERS **/
+export const _enhanceState_                 = '_enchanceState_'
+

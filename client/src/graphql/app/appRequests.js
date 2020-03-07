@@ -54,19 +54,9 @@ export const UPDATE_CACHE_SET = gql`
 `
 //items(search: $search) { foo bar }
 export const GET_SINGLE_EXERCISE = gql`
-    query getSingleExercise #($id: String) 
-    {
-        myExercises #(id: $id) @client 
-        {
+    query getSingleExercise($id: String, $typename: String) {
+        myExercises(id: $id, typename: $typename) @client {
             id
-            sets {
-                date
-                isWeighted
-                usesDistance
-                distanceUnit
-                setUnit
-                timeDisUnit
-            }
         }
     }
     

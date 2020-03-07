@@ -27,11 +27,11 @@ const setResolver = {
         sets.unshift(set)
         //console.log(exercise)
 
-        // exercise = await Exercise.findByIdAndUpdate(
-        //     exerciseId,
-        //     { $set: { sets } },
-        //     { new: true }
-        // )
+        exercise = await Exercise.findByIdAndUpdate(
+            exerciseId,
+            { $set: { sets } },
+            { new: true }
+        )
 
         return set
     },
