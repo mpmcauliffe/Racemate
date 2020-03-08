@@ -1,9 +1,9 @@
 
 
 export const reconstitute = str => {
-    if (!str) { return '' }
+    if (!str) { return [ ] }
 
-    const setArr = str.split(':')
+    let setArr = str.split(':')
 
     if(setArr[0].includes(',')) {
         setArr = setArr.map(item => [item])
