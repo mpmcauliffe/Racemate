@@ -15,6 +15,8 @@ export default (state, action) => {
             return { //[...a, ...[...Array(2)].map(emptySet => { return [...Array(2).fill(8)] })]
                 ...state,
                 numberOfSets: action.payload,
+                changeOptionReps: [...Array(parseInt(action.payload))].map(() => false),
+                changeOptionWeight: [...Array(parseInt(action.payload))].map(() => false),
                 baseSets: state.weightSelection 
                     ?   (
                             state.baseSets.length > action.payload 

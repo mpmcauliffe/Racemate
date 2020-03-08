@@ -16,6 +16,7 @@ export const SetReps = () => {
 
     // CONTEXT {O}
     const { changeOptionBin, spoolInputArray, } = useContext(actionModalContext)
+    
     useEffect(() => { return () => { triggerReset() }}, [])
 
 
