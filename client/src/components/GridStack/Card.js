@@ -19,14 +19,16 @@ export const Card = props => {
     
     const { toggleEditOn, setEditExerciseId, }      = useContext(ModalFormContext)
 
-    const { info }                                  = props
+    const { info, }                                 = props
 
-    const cardActivate = e => {
+    const cardActivate = async e => {
         e.preventDefault()
 
         //client.writeQuery({ query: UPDATE_CACHE_SET, variables: { id: info.id } })
-        const cacheUpdate = updateSet({ variables: { id: info.id } })
+        //const cacheUpdate = await updateSet({ variables: { id: info.id } })
         setEditExerciseId(info.id)
+
+        //openModal()
     }
     
     const editClick = e => {

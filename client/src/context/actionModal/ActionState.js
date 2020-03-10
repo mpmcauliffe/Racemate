@@ -6,7 +6,8 @@ import timeReducer from './timeReducer'
 import { defaultState } from './initialState'
 
 import { useApolloClient, } from '@apollo/react-hooks'
-import { GET_EXERCISES, GET_EDIT_ID } from '../../graphql'
+import { GET_EXERCISES, GET_EDIT_ID,  GET_IS_SET_LOADED,
+    GET_ACTIVE_SET, } from '../../graphql'
 
 import { // ACTION STATE 
     _setNumberOfSets_,  _setWeightSelection_,  _setRange_, 
@@ -28,27 +29,29 @@ const ActionModalState = props => {
      */
     const client                = useApolloClient()
     const { editExerciseId }    = client.readQuery({ query: GET_EDIT_ID })
+    //const { isSetPreloaded }    = client.readQuery({ query: GET_IS_SET_LOADED }) 
 
     //const initialState = defaultState
     const [actionState, dispatch] = useReducer(actionReducer, defaultState)
     const [timeState, timeDispatch] = useReducer(timeReducer, defaultState)
 
-    // ENHANCE DEFAULT STATE FROM SERVER
-    const enhanceState = setInfo => {
-        dispatch({ type: _enhanceState_, payload: setInfo })
-        timeDispatch({ type: _enhanceState_, payload: setInfo })
-
-        client.writeData({ data: { editExerciseId: '' } })
-    }
-
-    if (editExerciseId) {
-        const allExercises = client.readQuery({ query: GET_EXERCISES })
-        const currentExercise = allExercises.myExercises.filter(exercise => exercise.id === editExerciseId && exercise)
-        
-        if (currentExercise[0].sets.length > 0) {
-            enhanceState(currentExercise[0].sets[0])
+        // ENHANCE DEFAULT STATE FROM SERVER
+        const enhanceState = setInfo => {
+            dispatch({ type: _enhanceState_, payload: setInfo })
+            timeDispatch({ type: _enhanceState_, payload: setInfo })
+    
+            client.writeData({ data: { editExerciseId: '' } })
         }
-    }
+    
+        if (editExerciseId) {
+            const allExercises = client.readQuery({ query: GET_EXERCISES })
+            const currentExercise = allExercises.myExercises.filter(exercise => exercise.id === editExerciseId && exercise)
+            console.log(currentExercise)
+            
+            if (currentExercise[0].sets.length > 0) {
+                enhanceState(currentExercise[0].sets[0])
+            }
+        }
 
     // NUMBER OF SETS
     const updateSetCount = e => dispatch({ type: _setNumberOfSets_, payload: e.target.value }) 

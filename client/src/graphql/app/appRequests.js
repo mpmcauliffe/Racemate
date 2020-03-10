@@ -66,6 +66,16 @@ export const GET_TOGGLE_STATUS = gql`
         userSelection @client
     }
 `
+export const GET_IS_SET_LOADED = gql`
+    query getIsSetLoaded {
+        isSetPreloaded @client
+    }
+`
+export const GET_ACTIVE_SET = gql`
+    query getActiveSet {
+        activeSet @client
+    }
+`
 export const GET_EDIT_STATUS = gql`
     query GetModalStatus {
         isModalEdit @client
