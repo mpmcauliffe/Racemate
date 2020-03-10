@@ -16,6 +16,7 @@ export const defaultState = {
     repValue: '8',
 
     weightSelection: false,
+    defaultWeightOpt: 0,
 
     currentWeight: '10',
     weightSteps: '.5',
@@ -35,9 +36,14 @@ export const defaultState = {
         minutes: ''
     },
     timeDistanceArray: [ ],
+    
     isDistanceExercise: false,
+    defaultDistanceOpt: 1,
+
     optBtnDistanceUnit: ['miles', 'kilometers', 'laps'],
     distUnitSelection: 'miles',
+    defaultDisUnitOpt: 1,
+
     timeStrArr: ['00','00','00','00'],
 
     // date for date today

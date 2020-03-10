@@ -8,10 +8,15 @@ import { CardContainer,
         IconContainer, } from './CardComp'
 import { ActiveModal, BasicModal, } from '../../components'
 
+import { useApolloClient, useMutation } from '@apollo/react-hooks'
+import { UPDATE_CACHE_SET, } from '../../graphql'
+
 import { truncate, } from '../../helpers'
 
 
 export const Card = props => {
+    const [updateSet]                               = useMutation(UPDATE_CACHE_SET)
+    
     const { toggleEditOn, setEditExerciseId, }      = useContext(ModalFormContext)
 
     const { info }                                  = props
@@ -19,6 +24,8 @@ export const Card = props => {
     const cardActivate = e => {
         e.preventDefault()
 
+        //client.writeQuery({ query: UPDATE_CACHE_SET, variables: { id: info.id } })
+        const cacheUpdate = updateSet({ variables: { id: info.id } })
         setEditExerciseId(info.id)
     }
     

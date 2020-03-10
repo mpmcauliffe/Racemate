@@ -3,16 +3,19 @@ import PropTypes from 'prop-types'
 import { ButtonSet, } from './OpSwitchComp'
 
 
-export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
+export const OpSwitch = ({ optButtons, setting, handleToggle, defaultOpt, }) => {
 
+    console.log(defaultOpt, optButtons)
     const [buttonState, setButtonState]     = useState([ ])
     const [buttonSize, setButtonSize]       = useState(0)
 
     useEffect(() => {
+        console.log('render')
+
         setButtonState(optButtons.map((opt, index) => {
             return {
                 name: opt,
-                active: index === 0 ? true : false,
+                active: index === defaultOpt ? true : false,
             }
         }))
 
@@ -55,10 +58,12 @@ export const OpSwitch = ({ optButtons, setting, handleToggle, }) => {
 OpSwitch.propTypes = {
     optButtons: PropTypes.array, 
     setting: PropTypes.bool,
+    defaultOpt: PropTypes.number,
     handleToggle: PropTypes.func,
 }
 
 OpSwitch.defaultProps = {
     optButtons: ['Option One', 'Option Two'],
     setting: true,
+    defaultOpt: 0,
 }

@@ -8,7 +8,7 @@ import { OpSwitch, } from '../..'
 
 export const SetReps = () => {
     // CONTEXT .V.
-    const { numberOfSets, } = useContext(actionModalContext)
+    const { numberOfSets, defaultWeightOpt, } = useContext(actionModalContext)
 
     // CONTEXT (F)
     const { updateSetCount, updateWeightSelection, changeToWeightless, 
@@ -53,6 +53,7 @@ export const SetReps = () => {
                 <SetContainer>
                     <UpdateText>Does this exercise require weights?</UpdateText>
                     <OpSwitch 
+                        defaultOpt={defaultWeightOpt}
                         optButtons={changeOptionBin}
                         handleToggle={handleToggleWeights} />
                 </SetContainer>

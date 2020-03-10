@@ -31,7 +31,6 @@ export const SetGauge = () => {
     const handleOptLocalClick = e => triggerWeightLocal(e.target.getAttribute('name'))
     // updates upcoming weight values globally
     const handleOptGlobalClick = e => triggerWeightGlobal(e.target.getAttribute('name'))
-    console.log(baseSets)
 
 
     return (

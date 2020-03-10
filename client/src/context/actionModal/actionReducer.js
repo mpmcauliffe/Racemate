@@ -176,14 +176,12 @@ export default (state, action) => {
         case _enhanceState_:
             
             const { setUnit, isWeighted } = action.payload
-console.log(setUnit, isWeighted)
             return {
                 ...state,
                 weightSelection: isWeighted,
                 numberOfSets: setUnit.length < 1 ? '0' : setUnit.split(':').length,
                 baseSets: reconstitute(setUnit),
-//"8:8:8:8"
-//"1,2:3,4:5,6:7,8"
+                defaultWeightOpt: isWeighted ? 1 : 0,
             }
             
         case _resetState_:

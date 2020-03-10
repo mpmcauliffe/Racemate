@@ -58,7 +58,6 @@ export const Stopwatch = () => {
         const timer = setInterval(() => timeTracker(), 100)
         
         if (!start) {
-            console.log('cleared')
             clearInterval(timer)
         }
         

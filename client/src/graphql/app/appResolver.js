@@ -1,5 +1,5 @@
 import { useApolloClient, useQuery } from '@apollo/react-hooks'
-import { GET_SINGLE_EXERCISE, } from './appRequests'
+import { GET_EXERCISES, } from './appRequests'
 
 
 export const resolvers = {
@@ -10,11 +10,14 @@ export const resolvers = {
             //console.log(myExercises)
         },
         updateSet: (_, args, { cache, }) => {
-            console.log(args.id)
-            const allExercises = cache.readQuery({ query: GET_SINGLE_EXERCISE })
-            console.log(allExercises)
-            //const myExercises = cache.readFragment({ myExercises })
-            //console.log(myExercises)
+            const allExercises = cache.readQuery({ query: GET_EXERCISES })
+
+            const currentExercise = allExercises.myExercises.filter(exercise => exercise.id === args.id && exercise)
+            
+            if (currentExercise[0].sets.length > 0) {
+                cache.writeData({ data: { activeSet: currentExercise[0].sets[0] }})
+                cache.writeData({ data: { isSetPreloaded: true }})
+            }
         },
     }
 }
