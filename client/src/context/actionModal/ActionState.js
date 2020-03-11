@@ -39,7 +39,7 @@ const ActionModalState = props => {
         const enhanceState = setInfo => {
             dispatch({ type: _enhanceState_, payload: setInfo })
             timeDispatch({ type: _enhanceState_, payload: setInfo })
-    
+    console.log(setInfo)
             client.writeData({ data: { editExerciseId: '' } })
         }
     
@@ -120,7 +120,9 @@ const ActionModalState = props => {
                 timeDistanceArray: timeState.timeDistanceArray,
                 isDistanceExercise: timeState.isDistanceExercise,
                 optBtnDistanceUnit: timeState.optBtnDistanceUnit,
-                distUnitSelection: timeState.distUnitSelection,
+                disUnitSelection: timeState.disUnitSelection,
+                defaultDistanceOpt: timeState.defaultDistanceOpt,
+                defaultDisUnitOpt: timeState.defaultDisUnitOpt,
                 timeStrArr: timeState.timeStrArr,
                 date: timeState.date,
                 

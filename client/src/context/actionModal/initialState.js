@@ -38,11 +38,11 @@ export const defaultState = {
     timeDistanceArray: [ ],
     
     isDistanceExercise: false,
-    defaultDistanceOpt: 1,
+    defaultDistanceOpt: 0,
 
     optBtnDistanceUnit: ['miles', 'kilometers', 'laps'],
-    distUnitSelection: 'miles',
-    defaultDisUnitOpt: 1,
+    disUnitSelection: 'miles',
+    defaultDisUnitOpt: 0,
 
     timeStrArr: ['00','00','00','00'],
 

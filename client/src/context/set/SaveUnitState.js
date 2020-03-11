@@ -15,7 +15,6 @@ const SaveUnitState = props => {
 
     const [createSet] = useMutation(CREATE_SET)
 
-    console.log(disUnitSelection)
     
     const hardSave = async (exerciseId) => {
     
@@ -27,29 +26,29 @@ const SaveUnitState = props => {
             : timeDistanceArray.map(item => Object.keys(item).map(key => [key, item[key]])).join(':')
 
         
-        // const res = await createSet({
-        //     variables: {
-        //         exerciseId, 
-        //         date,
-        //         setUnit, 
-        //         timeDisUnit,
-        //         isWeighted: weightSelection, 
-        //         usesDistance: isDistanceExercise, 
-        //         distanceUnit: disUnitSelection, 
-        //     },
-        //     update: async (cache, mutationResult) => {
-        //         const newSet = mutationResult.data.createSet
-        //         const allExercises = cache.readQuery({ query: GET_EXERCISES })
+        const res = await createSet({
+            variables: {
+                exerciseId, 
+                date,
+                setUnit, 
+                timeDisUnit,
+                isWeighted: weightSelection, 
+                usesDistance: isDistanceExercise, 
+                distanceUnit: disUnitSelection, 
+            },
+            update: async (cache, mutationResult) => {
+                const newSet = mutationResult.data.createSet
+                const allExercises = cache.readQuery({ query: GET_EXERCISES })
 
-        //         const singleUpdate = allExercises.myExercises.map((exercise, i) => exerciseId === exercise.id 
-        //             ? { ...exercise, sets: [newSet, ...exercise.sets] } 
-        //             : exercise
-        //         )
+                const singleUpdate = allExercises.myExercises.map((exercise, i) => exerciseId === exercise.id 
+                    ? { ...exercise, sets: [newSet, ...exercise.sets] } 
+                    : exercise
+                )
 
-        //         // console.log(singleUpdate)
-        //         cache.writeData({ data: { myExercises: [...singleUpdate], } })
-        //     }
-        // })
+                // console.log(singleUpdate)
+                cache.writeData({ data: { myExercises: [...singleUpdate], } })
+            }
+        })
     }
 
     return (

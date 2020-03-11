@@ -9,7 +9,8 @@ import { OpSwitch, InfoIcon, } from '../..'
 
 export const TimeDistance = () => {
     const { changeOptionBin, isDistanceExercise,
-        optBtnDistanceUnit, } = useContext(actionModalContext)
+        optBtnDistanceUnit, defaultDistanceOpt,
+        defaultDisUnitOpt, } = useContext(actionModalContext)
 
     const { updateDistanceTrigger, addTimeDisElement, 
         setDisTag, removeTimeDisElement } = useContext(actionModalContext)
@@ -21,6 +22,7 @@ export const TimeDistance = () => {
     //console.log(timeDistanceArray)
     const handleToggleDisTag = buttonName => setDisTag(buttonName)
 
+    console.log(defaultDistanceOpt, defaultDisUnitOpt)
 
     return (
         <form>
@@ -35,8 +37,9 @@ export const TimeDistance = () => {
             <SetContainer>
                 <UpdateText>Do you want to input distance?</UpdateText>
                 <OpSwitch 
-                        optButtons={changeOptionBin}
-                        handleToggle={updateDistanceTrigger} />
+                    defaultOpt={defaultDistanceOpt}
+                    optButtons={changeOptionBin}
+                    handleToggle={updateDistanceTrigger} />
             </SetContainer>
 
                 {isDistanceExercise &&
@@ -44,6 +47,7 @@ export const TimeDistance = () => {
                         <InternalContainer style={{ flexDirection: 'column' }}>
                             <UpdateText>Select a distance unit</UpdateText>
                             <OpSwitch 
+                                defaultOpt={defaultDisUnitOpt}
                                 optButtons={optBtnDistanceUnit}
                                 handleToggle={handleToggleDisTag} />
                         </InternalContainer>

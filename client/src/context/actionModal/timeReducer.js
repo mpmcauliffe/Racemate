@@ -16,7 +16,7 @@ export default (state, action) => {
         case _setTimeOrDis_:
             [unit, location, dim] = action.payload.name.split('_')
             updatedValue = action.payload.newValue
-    console.log(unit)
+
             return { //buildTimeString = (timeValue, mod, timeArr)
                 ...state,
                 timeDistanceArray: [
@@ -71,7 +71,7 @@ export default (state, action) => {
         console.log(action.payload)
             return {
                 ...state,
-                distUnitSelection: action.payload
+                disUnitSelection: action.payload
             }
 
         case _updateDate_:
@@ -81,9 +81,14 @@ export default (state, action) => {
             }
 
         case _enhanceState_: 
+            const { distanceUnit, usesDistance, timeDisUnit } = action.payload
             return {
                 ...state,
-
+                distanceUnit,
+                usesDistance,
+                timeDisUnit: reconstituteObj(timeDisUnit),
+                defaultDistanceOpt: usesDistance ? 1 : 0,
+                defaultDisUnitOpt: state.optBtnDistanceUnit.indexOf(distanceUnit)
             }    
             // date: "2020-03-10"
             // distanceUnit: null
@@ -91,6 +96,7 @@ export default (state, action) => {
             // setUnit: ""
             // timeDisUnit: "time,00:00:00.00,distance,1 laps:time,00:00:04.00,distance,2 laps:time,00:00:07.00,distance,3 laps:time,00:00:09.09,distance,:time,00:00:00:00,distance,4 laps"
             // usesDistance: true
+            // defaultWeightOpt: isWeighted ? 1 : 0,
 
         default:
             return state
