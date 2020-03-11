@@ -27,11 +27,11 @@ export const TimeDistance = () => {
     return (
         <form>
             <SetContainer>
-                    {timeDistanceArray.length > 0 &&
-                        <TimeDistanceMod
-                            name='0'
-                            comp2={false}  />
-                    }
+                {timeDistanceArray.length > 0 &&
+                    <TimeDistanceMod
+                        name='0'
+                        comp2={false}  />
+                }
             </SetContainer>         
             
             <SetContainer>

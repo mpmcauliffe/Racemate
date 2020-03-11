@@ -2,7 +2,7 @@ import { buildTimeString, reconstituteObj } from '../../helpers'
 
 import {  _updateDate_, _setDistanceTrigger_, _addTimeDisItem_,
     _setTimeOrDis_, _setDistanceTag_, _removeTimeDisItem_,
-    _splitLap_, _enhanceState_,  } from './types'
+    _splitLap_, _enhanceState_, _resetState_, } from './types'
 
 export default (state, action) => {
     let unit
@@ -68,7 +68,6 @@ export default (state, action) => {
             }
 
         case _setDistanceTag_: 
-        console.log(action.payload)
             return {
                 ...state,
                 disUnitSelection: action.payload
@@ -86,17 +85,23 @@ export default (state, action) => {
                 ...state,
                 distanceUnit,
                 usesDistance,
-                timeDisUnit: reconstituteObj(timeDisUnit),
+                timeDistanceArray: reconstituteObj(timeDisUnit),
                 defaultDistanceOpt: usesDistance ? 1 : 0,
-                defaultDisUnitOpt: state.optBtnDistanceUnit.indexOf(distanceUnit)
+                defaultDisUnitOpt: state.optBtnDistanceUnit.indexOf(distanceUnit),
+                isDistanceExercise: usesDistance,
             }    
-            // date: "2020-03-10"
-            // distanceUnit: null
-            // isWeighted: false
-            // setUnit: ""
-            // timeDisUnit: "time,00:00:00.00,distance,1 laps:time,00:00:04.00,distance,2 laps:time,00:00:07.00,distance,3 laps:time,00:00:09.09,distance,:time,00:00:00:00,distance,4 laps"
-            // usesDistance: true
-            // defaultWeightOpt: isWeighted ? 1 : 0,
+
+        case _resetState_:
+            return {
+                timeDistanceArray: [ ],
+                isDistanceExercise: false,
+                defaultDistanceOpt: 0,
+                disUnitSelection: 'miles',
+                defaultDisUnitOpt: 0,
+                timeStrArr: ['00','00','00','00'],
+                hoursMinutes: [...Array(60)].map((_, i) => i < 1 ? '' : i < 10 ? '0' + i : i),
+            }
+
 
         default:
             return state

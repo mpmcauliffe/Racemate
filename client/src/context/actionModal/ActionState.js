@@ -39,7 +39,7 @@ const ActionModalState = props => {
         const enhanceState = setInfo => {
             dispatch({ type: _enhanceState_, payload: setInfo })
             timeDispatch({ type: _enhanceState_, payload: setInfo })
-    console.log(setInfo)
+
             client.writeData({ data: { editExerciseId: '' } })
         }
     
@@ -84,7 +84,10 @@ const ActionModalState = props => {
     // this is a failsafe for componentWillUnmount()
     // when the modal is closed this will reselt current state to default state
     // THIS IS IN PLACE UNTIL I FIND ANOTHER ALTERNATIVE TO THE PROBLEM
-    const triggerReset = () => dispatch({ type: _resetState_ })
+    const triggerReset = () => {
+        dispatch({ type: _resetState_ })
+        timeDispatch({ type: _resetState_ })
+    }
 
     //** TIME STATE **//
     // UPDATE DATE
