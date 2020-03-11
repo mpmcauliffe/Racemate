@@ -22,7 +22,7 @@ export const OpSwitch = ({ optButtons, setting, handleToggle, defaultOpt, }) => 
         setButtonSize(100 / optButtons.length)
 
     // eslint-disable-next-line
-    }, [])
+    }, [defaultOpt])
 
     const handleClick = e => {
         e.preventDefault()
