@@ -5,12 +5,10 @@ import { ButtonSet, } from './OpSwitchComp'
 
 export const OpSwitch = ({ optButtons, setting, handleToggle, defaultOpt, }) => {
 
-    console.log(defaultOpt, optButtons)
     const [buttonState, setButtonState]     = useState([ ])
     const [buttonSize, setButtonSize]       = useState(0)
 
     useEffect(() => {
-        console.log('render')
 
         setButtonState(optButtons.map((opt, index) => {
             return {

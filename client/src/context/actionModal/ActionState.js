@@ -46,7 +46,6 @@ const ActionModalState = props => {
         if (editExerciseId) {
             const allExercises = client.readQuery({ query: GET_EXERCISES })
             const currentExercise = allExercises.myExercises.filter(exercise => exercise.id === editExerciseId && exercise)
-            console.log(currentExercise)
             
             if (currentExercise[0].sets.length > 0) {
                 enhanceState(currentExercise[0].sets[0])

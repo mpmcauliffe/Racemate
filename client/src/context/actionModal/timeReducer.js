@@ -1,8 +1,8 @@
-import { buildTimeString } from '../../helpers'
+import { buildTimeString, reconstituteObj } from '../../helpers'
 
 import {  _updateDate_, _setDistanceTrigger_, _addTimeDisItem_,
     _setTimeOrDis_, _setDistanceTag_, _removeTimeDisItem_,
-    _splitLap_,  } from './types'
+    _splitLap_, _enhanceState_,  } from './types'
 
 export default (state, action) => {
     let unit
@@ -79,6 +79,18 @@ export default (state, action) => {
                 ...state,
                 date: action.payload,
             }
+
+        case _enhanceState_: 
+            return {
+                ...state,
+
+            }    
+            // date: "2020-03-10"
+            // distanceUnit: null
+            // isWeighted: false
+            // setUnit: ""
+            // timeDisUnit: "time,00:00:00.00,distance,1 laps:time,00:00:04.00,distance,2 laps:time,00:00:07.00,distance,3 laps:time,00:00:09.09,distance,:time,00:00:00:00,distance,4 laps"
+            // usesDistance: true
 
         default:
             return state
