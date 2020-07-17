@@ -30,19 +30,19 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "config": "^3.2.3",
+    "config": "^3.3.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
-    "express-validator": "^6.2.0",
-    "graphql": "^14.5.8",
-    "graphql-playground-middleware-express": "^1.7.12",
+    "express-validator": "^6.6.0",
+    "graphql": "^14.7.0",
+    "graphql-playground-middleware-express": "^1.7.18",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.3",
+    "mongoose": "^5.9.24",
     "require-graphql-file": "^1.0.1"
   },
   "devDependencies": {
-    "concurrently": "^5.0.0",
-    "nodemon": "^1.19.3"
+    "concurrently": "^5.2.0",
+    "nodemon": "^1.19.4"
   }
 }

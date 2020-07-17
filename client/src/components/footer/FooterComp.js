@@ -15,8 +15,8 @@ export const FooterContainer = styled.div`
     align-items: center;
     padding: 1rem 2rem; 
 
-    background: ${props => props.theme.midLtGray}
-    opacity: .9;
+    background: ${props => props.theme.midLtGray};
+    /* opacity: .9; */
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     /* border: .1rem solid green; */
@@ -41,7 +41,7 @@ export const FooterContainer = styled.div`
 
 export const FooterIcon = styled.i`
     font-size: 5rem;
-    color: ${props => props.theme.unGray};
+    color: ${props => props.theme.highlight};
 
     &:hover {
         cursor: pointer;

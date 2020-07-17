@@ -14,7 +14,7 @@ export const NavMenuKit = styled.div`
         height: 5rem;
         width: 5rem;
         border-radius: 50%;
-        background-color: ${props => props.theme.lightGray};
+        background-color: ${props => props.theme.midLtGray};
         text-align: center;
         /* box-shadow: 0 1rem 3rem rgba(${props => props.theme.colorPrimary}, .1); */
         cursor: pointer;
@@ -83,7 +83,7 @@ export const NavMenuKit = styled.div`
         display: inline-block;
         width: 3rem;
         height: 0.2rem;
-        background-color: ${props => props.theme.colorLight};
+        background-color: ${props => props.theme.colorPrimary};
     }
     .navigation__icon::before, .navigation__icon::after {
         content: "";

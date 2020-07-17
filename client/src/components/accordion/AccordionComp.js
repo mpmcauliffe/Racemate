@@ -61,7 +61,7 @@ export const Arrow = styled.label`
         width: 5rem;
         margin: 0;
         
-        background: ${props => props.theme.colorLight};
+        background: ${props => props.theme.highlight};
         transition: transform 500ms;
         cursor: pointer;
         clip-path: polygon(50% 100%, 82% 59%, 60% 59%, 60% 0, 40% 0, 40% 59%, 18% 59%);

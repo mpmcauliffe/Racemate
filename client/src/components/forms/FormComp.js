@@ -120,5 +120,5 @@ export const UserLabel = styled.label`
 
 
 // colorPrimary: '#1c395c',
-//     colorLight: '#4B7DBA',
+//     highlight: '#4B7DBA',
 //     colorDark: '#0E1C2E'

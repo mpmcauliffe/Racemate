@@ -39,8 +39,10 @@ export const Card = props => {
 
     return (
         <CardContainer>
-            <CardName>{truncate(info.title, 15)}</CardName>
-            <CardType>{truncate(info.exerciseType, 19)}</CardType>
+            <CardName>{truncate(info.title, 27)}</CardName>
+            {/**/}
+            <CardType>{truncate(info.exerciseType, 19)}</CardType> 
+            
             <IconContainer>
                 <BasicModal>
                     <CardIcon 

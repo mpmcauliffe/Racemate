@@ -3,8 +3,12 @@ const Theme = {
     /* COLORS */
     
     /* primaries */
-    colorPrimary: '#1c395c',
-    colorLight: '#4B7DBA',
+    //colorPrimary: '#1c395c',
+    colorPrimary: '#171e26',
+    colorlight: '#4B7DBA',
+    highlight: '#ffb900',
+    //highlight: '#f73859',
+    //highlight: '#FB792D',
     colorDark: '#0E1C2E',
     
     /* secondaries */
