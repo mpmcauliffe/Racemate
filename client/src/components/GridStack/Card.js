@@ -39,25 +39,31 @@ export const Card = props => {
 
     return (
         <CardContainer>
-            <CardName>{truncate(info.title, 27)}</CardName>
-            {/**/}
-            <CardType>{truncate(info.exerciseType, 19)}</CardType> 
-            <BasicModal>
-                <CardIcon 
-                    className='far fa-edit' 
-                    onClick={editClick}
-                    editId={info.id}
-                    style={{ marginTop: '14%', }} />
-            </BasicModal>
+            <div>
+                <CardName>{truncate(info.title, 20)}</CardName>
+                {/*<CardType>{truncate(info.exerciseType, 19)}</CardType> */}
+                
+                <BasicModal>
+                    <p>
+                        <CardIcon 
+                            className='far fa-edit' 
+                            onClick={editClick}
+                            editId={info.id}
+                            style={{ marginTop: '2%', }} />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <em>Edit</em>
+                    </p>
+                </BasicModal>
+            </div>
+            
 
-            <IconButton>
+            <IconButton onClick={cardActivate}>
                 Exercise
                 &nbsp;&nbsp;
                 
                 <ActiveModal>
                     <CardIcon 
                         className='fas fa-dumbbell exercise' 
-                        onClick={cardActivate}
                         activeName={truncate(info.title, 25)}
                         activeId={info.id} />
                 </ActiveModal>

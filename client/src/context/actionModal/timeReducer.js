@@ -81,6 +81,8 @@ export default (state, action) => {
 
         case _enhanceState_: 
             const { distanceUnit, usesDistance, timeDisUnit } = action.payload
+            console.log(distanceUnit)
+            console.log(state.optBtnDistanceUnit)
             return {
                 ...state,
                 distanceUnit,
