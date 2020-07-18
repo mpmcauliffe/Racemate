@@ -13,14 +13,15 @@ export const CardName = styled.h3`
     /* position: relative; */
     position: absolute;
     margin: .7rem 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
     color: ${props => props.theme.lightGray};
 
     @media (min-width: 480px) {
-        font-size: 1.9rem
+        font-size: 2.3rem
     }
     @media (min-width: 769px) {
-        font-size: 2.3rem
+        font-size: 2.7rem
     }
     /* @media (min-width: 1600px) {
         font-size: 3rem;
@@ -29,11 +30,11 @@ export const CardName = styled.h3`
 export const CardType = styled.p`
     position: absolute;
     margin-top: 6%;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     color: ${props => props.theme.midGrayCool};
 
     @media (min-width: 480px) {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     @media (min-width: 640px) {
         font-size: 1.7rem;
@@ -49,14 +50,21 @@ export const CardType = styled.p`
     }
 `
 
-export const IconContainer = styled.div`
+//export const 
+
+export const IconButton = styled.button`
     display: flex;
     position absolute;
     width: 27%;
-    justify-content: space-between;
-    margin-top: 27%;
-    font-size: 1.5rem;
-    color: ${props => props.theme.midGrayCool};
+    /* justify-content: space-between; */
+    margin-top: 45%
+    color: ${props => props.theme.colorlight};
+    border: .1rem solid ${props => props.theme.colorlight};
+    background: transparent;
+
+    .exercise {
+        color: ${props => props.theme.colorlight};
+    }
 
     @media (min-width: 480px) {
         font-size: 1.8rem;
@@ -85,7 +93,8 @@ export const IconContainer = styled.div`
 `
 
 export const CardIcon = styled.i`
-    &:hover {
-        cursor: pointer;
-    }
+    position: absolute;
+    font-size: 2rem;
+    color: ${props => props.theme.midGrayCool};
+    cursor: pointer;
 `

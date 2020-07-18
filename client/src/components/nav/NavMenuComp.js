@@ -28,7 +28,7 @@ export const NavMenuKit = styled.div`
         top: 3rem;
         right: 3rem;
         background-image: radial-gradient(
-            ${props => props.theme.colorPrimary}, 
+            ${props => props.theme.primaryGray}, 
             ${props => props.theme.colorDark}
         );
         transition: transform .8s cubic-bezier(.86, 0, .07, 1); /* https://cubic-bezier.com */

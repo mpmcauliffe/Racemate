@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
 
-export const SWtext = styled.h1`
+export const SWtext = styled.h6`
     flex-basis: 100%;
     margin: 2rem auto 4rem auto;
-    font-size: ${props => props.small ? '7rem' : '10rem'};
+    font-size: ${props => props.small ? '5rem' : '6rem'};
     font-weight: 400;
     text-align: center;
     font-stretch: condensed;
     color: ${props => props.theme.secondaryLight};
 
     @media(max-width: 420px) {
-        font-size: ${props => props.small ? '5.5rem' : '6.6rem'};
+        font-size: ${props => props.small ? '3.5rem' : '4.5rem'};
     }
 `
 export const BtnRound = styled.button`

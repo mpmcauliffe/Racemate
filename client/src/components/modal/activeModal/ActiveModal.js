@@ -48,6 +48,7 @@ export const ActiveModal = props => {
             <ModalTitle>{activeName}</ModalTitle>
             <ModalCloseButton>
                 <InfoIcon 
+                    modal
                     onClick={handleModalToggle}
                     className='fas fa-times'
                     style={{ fontSize: '5rem' }} />

@@ -16,7 +16,7 @@ export const AccordionFront = styled.div`
     border-bottom: .1rem solid ${props => props.theme.primaryGray};
 
     h3 {
-        color: ${props => props.theme.primaryGray};
+        color: ${props => props.theme.midLtGray};
     }
     & > div {
         flex-basis: 100%;

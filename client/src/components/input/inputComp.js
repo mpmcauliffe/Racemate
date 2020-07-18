@@ -27,12 +27,13 @@ export const InternalContainer = styled.div`
 export const UpdateText = styled.p`
     font-size: 2.1rem;
     margin: 1rem;
-    &&& { color: ${props => props.theme.primaryGray}; } /* ANNOYING */
+    &&& { color: ${props => props.theme.midLtGray}; } /* ANNOYING */
 `
 
 export const OptionText = styled.p`
     position: ${props => props.weights ? 'static' : 'absolute'};
-    font-size: 2.1rem; 
+    font-size: 1.6rem; 
+    font-weight: 500;
     cursor: pointer;
     
     &&& { 
@@ -40,7 +41,7 @@ export const OptionText = styled.p`
             color: ${props => props.theme.secondaryLight};
         }    
     @media(max-width: 480px) {
-        &&& { font-size: 1.6rem; } 
+        &&& { font-size: 1.3rem; } 
     }
 `
 

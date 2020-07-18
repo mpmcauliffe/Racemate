@@ -5,7 +5,7 @@ import { CardContainer,
         CardIcon, 
         CardName, 
         CardType,
-        IconContainer, } from './CardComp'
+        IconButton, } from './CardComp'
 import { ActiveModal, BasicModal, } from '../../components'
 
 import { useApolloClient, useMutation } from '@apollo/react-hooks'
@@ -42,23 +42,26 @@ export const Card = props => {
             <CardName>{truncate(info.title, 27)}</CardName>
             {/**/}
             <CardType>{truncate(info.exerciseType, 19)}</CardType> 
-            
-            <IconContainer>
-                <BasicModal>
-                    <CardIcon 
-                        className='far fa-edit' 
-                        onClick={editClick}
-                        editId={info.id} />
-                </BasicModal>
+            <BasicModal>
+                <CardIcon 
+                    className='far fa-edit' 
+                    onClick={editClick}
+                    editId={info.id}
+                    style={{ marginTop: '14%', }} />
+            </BasicModal>
+
+            <IconButton>
+                Exercise
+                &nbsp;&nbsp;
                 
                 <ActiveModal>
                     <CardIcon 
-                        className='fas fa-dumbbell' 
+                        className='fas fa-dumbbell exercise' 
                         onClick={cardActivate}
                         activeName={truncate(info.title, 25)}
                         activeId={info.id} />
                 </ActiveModal>
-            </IconContainer>
+            </IconButton>
             {/****/}
         </CardContainer>
     )

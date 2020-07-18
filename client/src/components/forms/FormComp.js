@@ -88,11 +88,11 @@ export const InfoSection = styled.div`
 `
 export const InfoText = styled.h3`
     font-size: 1.9rem;
-    color: ${props => props.theme.midLtGray};
+    color: ${props => props.theme.colorPrimary};
 `
 export const InfoIcon = styled.i`
     font-size: 3rem;
-    color: ${props => props.theme.primaryGray};
+    color: ${props => props.modal ? props.theme.midLtGray : props.theme.colorPrimary};
     cursor: pointer;
 `
 
@@ -107,15 +107,21 @@ export const InfoButton = styled.button`
     text-align: center;
     font-family: "proxima-nova-condensed";
     font-size: 1.9rem;
-    color: ${props => props.theme.midLtGray};
-    
-    background: transparent; /*${props => props.theme.colorPrimary};*/
-    border: .2rem solid ${props => props.theme.midLtGray};
+
+    color: ${props => props.theme.colorPrimary};
+    background: linear-gradient(to bottom, #efefef 4%,#efefef 4%,#d7d7d7 23%,#efefef 53%,#d7d7d7 83%,#8f8f8f 100%);
     border-radius: .5rem;
     cursor: pointer;
+    transition: all 2s;
+
+    &:active {
+        background: linear-gradient(to bottom, #d7d7d7 23%,#efefef 49%,#d7d7d7 83%);
+    }
 `
 export const UserLabel = styled.label`
-    color: ${props => props.theme.midLtGray};
+    /* color: ${props => props.theme.midLtGray}; */
+    color: ${props => props.theme.colorPrimary};
+    font-weight: 500;
 `
 
 

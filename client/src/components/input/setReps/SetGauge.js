@@ -65,7 +65,7 @@ export const SetGauge = () => {
                                 <OptionText
                                     name={i}
                                     onClick={handleOptionRepsClick}
-                                >   Change upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
+                                >   Click here to change hange upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
                                 </OptionText>  
                             }
                         </InternalContainer>

@@ -13,7 +13,7 @@ export const TimeDistance = () => {
         defaultDisUnitOpt, } = useContext(actionModalContext)
 
     const { updateDistanceTrigger, addTimeDisElement, 
-        setDisTag, removeTimeDisElement } = useContext(actionModalContext)
+        setDisTag, removeTimeDisElement, triggerReset, } = useContext(actionModalContext)
 
     const { timeDistanceArray, } = useContext(actionModalContext)
 

@@ -52,6 +52,7 @@ export const BasicModal = props => {
             <ModalTitle>{editId ? 'Edit Exercise' : 'Add Exercise'}</ModalTitle>
             <ModalCloseButton>
                 <InfoIcon 
+                    modal   
                     onClick={handleModalToggle}
                     className='fas fa-times'
                     style={{ fontSize: '5rem' }} />

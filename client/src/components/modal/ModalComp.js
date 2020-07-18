@@ -20,7 +20,8 @@ export const modalContent = {
 export const ModalTitle = styled.h3`
     display: inline;
     margin: .5rem 0 1rem 0;
-    color: ${props => props.theme.primaryGray};
+    font-style: italic;
+    color: ${props => props.theme.midLtGray};
 `
 export const ModalCloseButton = styled.div`
     display: inline;
