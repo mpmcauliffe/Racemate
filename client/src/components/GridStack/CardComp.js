@@ -88,7 +88,7 @@ export const IconButton = styled.button`
     justify-content: space-evenly;
     /* justify-content: space-between; */
     width: 44%;
-    margin-top: 35%;
+    margin-top: 37%;
     color: ${props => props.theme.colorlight};
     /* border: .1rem solid ${props => props.theme.colorlight}; */
     background: transparent;
