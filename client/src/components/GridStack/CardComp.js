@@ -85,13 +85,17 @@ export const IconButton = styled.button`
     position absolute;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     /* justify-content: space-between; */
     width: 44%;
     margin-top: 35%;
     color: ${props => props.theme.colorlight};
-    border: .1rem solid ${props => props.theme.colorlight};
+    /* border: .1rem solid ${props => props.theme.colorlight}; */
     background: transparent;
+
+    span {
+        font-size: 2.3rem;
+    }
 
     .exercise {
         color: ${props => props.theme.colorlight};
@@ -124,7 +128,7 @@ export const IconButton = styled.button`
 `
 
 export const CardIcon = styled.i`
-    position: absolute;
+    /* position: absolute; */
     font-size: 2rem;
     color: ${props => props.theme.midGrayCool};
     cursor: pointer;

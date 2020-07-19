@@ -50,7 +50,7 @@ export const Card = props => {
                             onClick={editClick}
                             editId={info.id}
                             style={{ marginTop: '2%', }} />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <em>Edit</em>
                     </p>
                 </BasicModal>
@@ -58,7 +58,7 @@ export const Card = props => {
             
 
             <IconButton onClick={cardActivate}>
-                Exercise
+                <span><em>Exercise</em></span>
                 &nbsp;&nbsp;
                 
                 <ActiveModal>
