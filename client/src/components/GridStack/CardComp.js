@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
         margin-top: 9.5%;
         font-size: 1.6rem;
         color: ${props => props.theme.midLtGray};
+        cursor: pointer;
     }
 
     @media (min-width: 481px) {

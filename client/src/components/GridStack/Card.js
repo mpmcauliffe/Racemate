@@ -6,7 +6,7 @@ import { CardContainer,
         CardName, 
         CardType,
         IconButton, } from './CardComp'
-import { ActiveModal, BasicModal, } from '../../components'
+import { ActiveModal, BasicModal, Calendar, } from '../../components'
 
 import { useApolloClient, useMutation } from '@apollo/react-hooks'
 import { UPDATE_CACHE_SET, } from '../../graphql'
@@ -23,7 +23,7 @@ export const Card = props => {
 
     const cardActivate = async e => {
         e.preventDefault()
-
+console.log('clcike')
         //client.writeQuery({ query: UPDATE_CACHE_SET, variables: { id: info.id } })
         //const cacheUpdate = await updateSet({ variables: { id: info.id } })
         setEditExerciseId(info.id)
@@ -56,18 +56,20 @@ export const Card = props => {
                 </BasicModal>
             </div>
             
+            <Calendar />
 
-            <IconButton onClick={cardActivate}>
-                <span><em>Exercise</em></span>
-                &nbsp;&nbsp;
-                
-                <ActiveModal>
-                    <CardIcon 
-                        className='fas fa-dumbbell exercise' 
-                        activeName={truncate(info.title, 25)}
-                        activeId={info.id} />
-                </ActiveModal>
-            </IconButton>
+            <ActiveModal>
+                <IconButton 
+                    onClick={cardActivate}
+                    activeName={truncate(info.title, 25)}
+                    activeId={info.id}>
+                    <span><em>Exercise</em></span>
+                    &nbsp;&nbsp;
+                    
+                    <CardIcon className='fas fa-dumbbell exercise'  />
+                    
+                </IconButton>
+            </ActiveModal>
             {/****/}
         </CardContainer>
     )

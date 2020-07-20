@@ -1,6 +1,7 @@
 export * from './accordion/Accordion'
 export * from './alert/Alert'
 export * from './banner/Banner'
+export * from './calendar/Calendar'
 export * from './footer/Footer'
 export * from './forms/FormComp'
 export * from './forms/auth/Login'

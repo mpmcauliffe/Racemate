@@ -1,10 +1,15 @@
 import React from 'react'
+import { CalendarContainer, } from './CalendarComp'
 
 
 export const Calendar = () => {
+    const arr = [...Array(60)].map((_, i) => `bear${i}`)
+
     return (
-        <div>
-            
-        </div>
+        <CalendarContainer>
+            {arr.map(bear => (
+                <div key={bear} />
+            ))}
+        </CalendarContainer>
     )
 }
