@@ -3,7 +3,7 @@ import { CalendarContainer, } from './CalendarComp'
 
 
 export const Calendar = () => {
-    const arr = [...Array(60)].map((_, i) => `bear${i}`)
+    const arr = [...Array(30)].map((_, i) => `bear${i}`)
 
     return (
         <CalendarContainer>

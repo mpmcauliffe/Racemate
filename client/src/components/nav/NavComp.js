@@ -25,7 +25,8 @@ export const NavContainer = styled.div`
 export const Header = styled.h1`
     margin-top: 1rem;
     padding: 0 1rem;
-    color: ${props => props.theme.colorlight};
+    /* color: ${props => props.theme.colorlight}; */
+    color: ${props => props.theme.midLtGray};
 
     @media (min-width: 769px) {
         margin-top: 1rem;

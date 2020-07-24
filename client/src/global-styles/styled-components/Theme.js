@@ -15,6 +15,7 @@ const Theme = {
     secondaryWhite: '#ffdd00',
     secondaryLight: '#ffb900',
     secondaryDark: '#ff7730',
+    calendarDark: '#232d39',
 
     /* black/White */
     colorWhite: '#fffdfc',
