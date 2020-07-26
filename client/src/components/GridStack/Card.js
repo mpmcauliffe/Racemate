@@ -6,7 +6,7 @@ import { CardContainer,
         CardName, 
         CardType,
         IconButton, } from './CardComp'
-import { ActiveModal, BasicModal, Calendar, } from '../../components'
+import { ActiveModal, BasicModal, } from '../../components'
 
 import { useApolloClient, useMutation } from '@apollo/react-hooks'
 import { UPDATE_CACHE_SET, } from '../../graphql'
@@ -56,8 +56,8 @@ console.log('clcike')
                 </BasicModal>
             </div>
             
-            {/* */}
-            <Calendar />
+            {/*<Calendar /> */}
+            
             <ActiveModal>
                 <IconButton 
                     onClick={cardActivate}
@@ -74,3 +74,5 @@ console.log('clcike')
         </CardContainer>
     )
 }
+// ./src/components/index.js
+//        Cannot find file './calendar/Calendar' in './src/components'.

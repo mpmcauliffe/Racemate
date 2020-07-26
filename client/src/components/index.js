@@ -1,7 +1,7 @@
 export * from './accordion/Accordion'
 export * from './alert/Alert'
 export * from './banner/Banner'
-export * from './calendar/Calendar'
+// export * from './calendar/Calendar'
 export * from './footer/Footer'
 export * from './forms/FormComp'
 export * from './forms/auth/Login'
@@ -16,3 +16,7 @@ export * from './modal/basicModal/BasicModal'
 export * from './nav/Nav'
 export * from './opSwitch/OpSwitch'
 export * from './updateBanner/UpdateBanner'
+
+
+// ./src/components/index.js
+//        Cannot find file './calendar/Calendar' in './src/components'.
