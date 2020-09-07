@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, NavContainer, } from './NavComp'
+import { Header, NavContainer, NavRacemate } from './NavComp'
 import { useQuery, } from '@apollo/react-hooks'
 import { NavMenu } from './NavMenu'
 
@@ -11,7 +11,10 @@ export const Nav = () => {
 
     return (
         <NavContainer>
-            <Header id='navHeader'>RACEMATE</Header>
+            <NavRacemate 
+                alt='RACEMATE!'
+                src={require(`./RACEMATE_gray.svg`)} />
+            {/**<Header id='navHeader'>RACEMATE</Header> */}
             
             {data.isLoggedIn && <NavMenu />}
         </NavContainer>

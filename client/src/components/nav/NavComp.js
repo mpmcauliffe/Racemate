@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 
 export const NavContainer = styled.div`
+    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,7 +22,18 @@ export const NavContainer = styled.div`
         margin: 0 auto;
     }
 `
+export const NavRacemate = styled.img`
+    width: 50vw;
+    align-self: flex-start;
+    margin-top: .7rem;
 
+    @media (min-width: 481px) { width: 43vw; }
+    @media (min-width: 641px) { 
+        width: 36vw; 
+        margin-top: 0;
+    }
+    @media (min-width: 481px) { width: 27rem; }
+`
 export const Header = styled.h1`
     margin-top: 1rem;
     padding: 0 1rem;

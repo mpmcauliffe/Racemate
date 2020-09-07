@@ -20,7 +20,7 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-    // console.log(baseSets)
+    console.log(changeOptionReps)
     // updates local rep value
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
     // updates single weight input
@@ -32,7 +32,7 @@ export const SetGauge = () => {
     // updates upcoming weight values globally
     const handleOptGlobalClick = e => triggerWeightGlobal(e.target.getAttribute('name'))
 
-
+console.log(baseSets)
     return (
         <Fragment>
             {numberOfSets && baseSets.map((set, i) => (
@@ -70,7 +70,11 @@ export const SetGauge = () => {
                             }
                         </InternalContainer>
 
-                        {/*** ***/}
+                        {/***<SpoolInput
+                                actualValue={numberOfSets}
+                                options={spoolInputArray}
+                                updateSelect={updateSetCount}
+                                style={{ flexBasis: '50%' }}  /> ***/}
                         {weightSelection &&  <UpdateText 
                                     style={{ flexBasis: '100%', textAlign: 'center' }}>
                                         Weight quantity per rep

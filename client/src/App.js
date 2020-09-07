@@ -8,7 +8,8 @@ const App = () => {
 
     return (
         <AlertState>
-            <Nav />
+            {/**<Nav /> */}
+            
 
             {/**<Landing />**/}
 

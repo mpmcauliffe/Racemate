@@ -1,9 +1,9 @@
-import React, { useState, useEffect, } from 'react'
+import React, { Fragment, useState, useEffect, } from 'react'
 import ModalFormState from '../context/modalForm/ModalFormState'
 import ActionModalState from '../context/actionModal/ActionState'
 import SaveUnitState from '../context/set/SaveUnitState'
 import { useApolloClient, } from '@apollo/react-hooks'
-import { OpSwitch, GridStack, Footer, } from '../components'
+import { Nav, OpSwitch, GridStack, Footer, } from '../components'
 import { WidePageContainer, } from './PageComp'
 //import { UpdateBanner } from '../components'
 
@@ -27,20 +27,24 @@ export const Home = props => {
 
 
     return (
-        <ModalFormState>
-            <ActionModalState>
-                <SaveUnitState>
-                    <WidePageContainer>
-                        <OpSwitch 
-                            optButtons={optButtons}
-                            handleToggle={handleToggle} />
-                    
-                        <GridStack />
-                    
-                    </WidePageContainer>
-                    <Footer />
-                </SaveUnitState>
-            </ActionModalState>
-        </ModalFormState>
+        <Fragment>
+            <Nav />
+
+            <ModalFormState>
+                <ActionModalState>
+                    <SaveUnitState>
+                        <WidePageContainer>
+                            <OpSwitch 
+                                optButtons={optButtons}
+                                handleToggle={handleToggle} />
+                        
+                            <GridStack />
+                        </WidePageContainer>
+                        <Footer />
+                    </SaveUnitState>
+                </ActionModalState>
+            </ModalFormState>
+        </Fragment>
+        
     )
 }
