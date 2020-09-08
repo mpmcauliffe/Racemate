@@ -14,3 +14,10 @@ export const StripImg = styled.img`
     max-width: 12rem;
     border: 1px solid ${props => props.theme.colorPrimary};
 `
+
+export const Reflection = styled.img`
+    width: 98%;
+    margin: 0 0 13rem 0;
+    /* display: block;
+    margin: 2rem auto 0 auto; */
+`

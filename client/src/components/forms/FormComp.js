@@ -23,6 +23,36 @@ export const FormContainer = styled.div`
         margin: 0 auto;
     }
 `
+export const AuthContainer = styled.div`
+    width: 80%;
+    margin: 0 auto 10rem auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    
+    overflow-x: hidden;
+
+    input {
+        width: 97%;
+        margin: 0 0 4rem 0;
+    }
+    label {
+        align-self: flex-start;
+        margin-left: .6%;
+    }
+
+    @media (min-width: 768px) {
+        width: 80%;
+    }
+    @media (min-width: 1024px) {
+        width: 50%;
+    }
+    @media (min-width: 1600px) {
+        width: 33%;
+    }
+`
 
 export const SubmitButton = styled.button`
     margin-top: 5rem;

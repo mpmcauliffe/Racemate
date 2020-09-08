@@ -6,7 +6,7 @@ import AlertContext from '../../../context/alert/alertContext'
 import { useApolloClient, useMutation, } from '@apollo/react-hooks'
 
 import { Alert } from '../..'
-import { FormContainer, SubmitButton, SwitchLink, } from '../FormComp'
+import { AuthContainer, SubmitButton, SwitchLink, } from '../FormComp'
 import { REGISTER_USER, } from '../../../graphql'
 
 
@@ -71,7 +71,7 @@ export const Signup = ({ opToggle, }) => {
         <Fragment>
             <Alert />
             <form onSubmit={onSubmit}>
-                <FormContainer>
+                <AuthContainer>
                     <label htmlFor='name'>Name</label>
                     <input /* NAME */
                         onChange={onChange}
@@ -122,7 +122,7 @@ export const Signup = ({ opToggle, }) => {
                         </SwitchLink>
                     </p>
                     
-                </FormContainer>
+                </AuthContainer>
             </form>
             <Alert />
         </Fragment>
