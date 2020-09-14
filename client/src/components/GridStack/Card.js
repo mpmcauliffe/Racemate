@@ -39,24 +39,19 @@ console.log('clcike')
 
     return (
         <CardContainer>
-            <div>
-                <CardName>{truncate(info.title, 20)}</CardName>
-                {/*<CardType>{truncate(info.exerciseType, 19)}</CardType> */}
-                
-                <BasicModal>
-                    <p>
-                        <CardIcon 
-                            className='far fa-edit' 
-                            onClick={editClick}
-                            editId={info.id}
-                            style={{ marginTop: '2%', }} />
+            <CardName>{truncate(info.title, 35)}</CardName>
+            {/* <em>Edit</em> */}
+            <BasicModal>
+                <p>
+                    <CardIcon 
+                        className='far fa-edit' 
+                        onClick={editClick}
+                        editId={info.id}
+                        //style={{ marginTop: '2%', }} 
+                        />
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <em>Edit</em>
-                    </p>
-                </BasicModal>
-            </div>
-            
-            {/*<Calendar /> */}
+                </p>
+            </BasicModal>
             
             <ActiveModal>
                 <IconButton 
@@ -70,6 +65,8 @@ console.log('clcike')
                     
                 </IconButton>
             </ActiveModal>
+            {/*  */}
+            
             {/****/}
         </CardContainer>
     )

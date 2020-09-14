@@ -25,13 +25,13 @@ export const NavContainer = styled.div`
 export const NavRacemate = styled.img`
     width: 50vw;
     align-self: flex-start;
-    margin-top: .7rem;
+    margin: .7rem 0 0 .5rem;
 
-    @media (min-width: 481px) { width: 43vw; }
-    @media (min-width: 641px) { 
-        width: 36vw; 
-        margin-top: 0;
+    @media (min-width: 481px) { 
+        width: 43vw; 
+        margin-top: 0; 
     }
+    @media (min-width: 641px) { width: 36vw; }
     @media (min-width: 481px) { width: 27rem; }
 `
 export const Header = styled.h1`
