@@ -65,7 +65,7 @@ console.log(baseSets)
                                 <OptionText
                                     name={i}
                                     onClick={handleOptionRepsClick}
-                                >   Click here to change hange upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
+                                >   Tap here to change upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
                                 </OptionText>  
                             }
                         </InternalContainer>
@@ -108,7 +108,7 @@ console.log(baseSets)
                                     weights
                                     name={i}
                                     onClick={handleOptGlobalClick} 
-                                >   Change upcoming reps in ALL sets to {currentWeight}?
+                                >   Tap to change upcoming reps in ALL sets to {currentWeight}?
                                 </OptionText>
                             </InternalContainer>                        
                         }
