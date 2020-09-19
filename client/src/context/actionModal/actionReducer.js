@@ -78,7 +78,7 @@ export default (state, action) => {
                 ...state,
                 currentWeight: newWeightValue,
 
-                changeOptionWeight: state.changeOptionWeight.map((item, i) => yCoord === i ? true : item),
+                changeOptionWeight: state.changeOptionWeight.map(i => console.log(i)),// ((item, i) => yCoord === i ? true : item),
                     
                 baseSets: [
                     ...state.baseSets.map((set, i) => yCoord === i 

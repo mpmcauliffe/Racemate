@@ -32,7 +32,7 @@ export const SetGauge = () => {
     // updates upcoming weight values globally
     const handleOptGlobalClick = e => triggerWeightGlobal(e.target.getAttribute('name'))
 
-console.log(baseSets)
+console.log(changeOptionWeight)
     return (
         <Fragment>
             {numberOfSets && baseSets.map((set, i) => (
@@ -101,7 +101,7 @@ console.log(baseSets)
                                     name={i}
                                     onClick={handleOptLocalClick}
                                     style={{ marginBottom: '1.3rem', }}
-                                >   Change upcoming reps in THIS set to {currentWeight}?
+                                >   Tap to change upcoming reps in THIS set to {currentWeight}?
                                 </OptionText>
                                 <br /><br />
                                 <OptionText 
