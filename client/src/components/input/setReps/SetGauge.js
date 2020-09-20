@@ -20,7 +20,7 @@ export const SetGauge = () => {
 
     useEffect(() => { changeToWeightless() }, [])
 
-    console.log(changeOptionReps)
+    // console.log(changeOptionReps)
     // updates local rep value
     const handleRangeChange = e => updateRange(e.target.name, e.target.value)
     // updates single weight input
@@ -32,7 +32,7 @@ export const SetGauge = () => {
     // updates upcoming weight values globally
     const handleOptGlobalClick = e => triggerWeightGlobal(e.target.getAttribute('name'))
 
-console.log(changeOptionWeight)
+    // console.log(changeOptionWeight)
     return (
         <Fragment>
             {numberOfSets && baseSets.map((set, i) => (

@@ -23,7 +23,6 @@ export const Card = props => {
 
     const cardActivate = async e => {
         e.preventDefault()
-console.log('clcike')
         //client.writeQuery({ query: UPDATE_CACHE_SET, variables: { id: info.id } })
         //const cacheUpdate = await updateSet({ variables: { id: info.id } })
         setEditExerciseId(info.id)
@@ -41,18 +40,6 @@ console.log('clcike')
         <CardContainer>
             <CardName>{truncate(info.title, 35)}</CardName>
             {/* <em>Edit</em> */}
-            <BasicModal>
-                <p>
-                    <CardIcon 
-                        className='far fa-edit' 
-                        onClick={editClick}
-                        editId={info.id}
-                        //style={{ marginTop: '2%', }} 
-                        />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                </p>
-            </BasicModal>
-            
             <ActiveModal>
                 <IconButton 
                     onClick={cardActivate}
@@ -65,6 +52,19 @@ console.log('clcike')
                     
                 </IconButton>
             </ActiveModal>
+            <BasicModal>
+                <p>
+                    <CardIcon 
+                        className='far fa-edit' 
+                        onClick={editClick}
+                        editId={info.id}
+                        //style={{ marginTop: '2%', }} 
+                        />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+            </BasicModal>
+            
+            
             {/*  */}
             
             {/****/}

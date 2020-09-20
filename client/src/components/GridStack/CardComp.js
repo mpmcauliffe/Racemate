@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
     padding: 1rem;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
 
     background: ${props =>  props.theme.colorPrimary};
 
@@ -30,8 +30,8 @@ export const CardContainer = styled.div`
 `
 
 export const CardName = styled.h3`
-    grid-column-start: 1;
-    grid-column-end: 3;
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
 
     margin: .7rem 0;
 
@@ -59,6 +59,9 @@ export const CardType = styled.p`
 `
 
 export const IconButton = styled.button`
+    grid-row-start: 1;
+    grid-row-end: 3;
+
     color: ${props => props.theme.midLtGray};
     background: transparent;
 
@@ -78,6 +81,7 @@ export const IconButton = styled.button`
 `
 
 export const CardIcon = styled.i`
+    margin-right: 3.3rem;
     font-size: 2rem;
     color: ${props => props.theme.midGrayCool};
     cursor: pointer;
