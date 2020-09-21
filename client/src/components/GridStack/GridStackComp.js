@@ -20,7 +20,14 @@ export const MainGrid = styled.div.attrs(props => ({
     grid-gap: .1em;
     margin-bottom: 9rem; */
     
+    /* display: flex;
+    justify-content: space-between;
 
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    } */
     /* &::before {
         width: 0;
         padding-bottom: 100%;

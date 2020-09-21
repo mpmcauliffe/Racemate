@@ -5,13 +5,22 @@ export const CardContainer = styled.div`
     height: 10rem;
     padding: 1rem;
 
-    display: grid;
-    grid-template-columns: 2fr 3fr;
+    /* display: grid;
+    grid-template-columns: 2fr 3fr; */
+
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    } 
 
     background: ${props =>  props.theme.colorPrimary};
 
-    div { align-self: end; }
-    div p { margin: 3rem 0 0 0; }
+    /* div { align-self: end; } */
+    div p { margin-top: 4rem; }
     div button { 
         height: 2rem;
         margin: 1rem 0 0 12%; 
@@ -59,8 +68,8 @@ export const CardType = styled.p`
 `
 
 export const IconButton = styled.button`
-    grid-row-start: 1;
-    grid-row-end: 3;
+    /* grid-row-start: 1;
+    grid-row-end: 3; */
 
     color: ${props => props.theme.midLtGray};
     background: transparent;
@@ -81,7 +90,7 @@ export const IconButton = styled.button`
 `
 
 export const CardIcon = styled.i`
-    margin-right: 3.3rem;
+    /* margin-right: 3.3rem; */
     font-size: 2rem;
     color: ${props => props.theme.midGrayCool};
     cursor: pointer;

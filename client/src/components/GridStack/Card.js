@@ -38,8 +38,22 @@ export const Card = props => {
 
     return (
         <CardContainer>
-            <CardName>{truncate(info.title, 35)}</CardName>
-            {/* <em>Edit</em> */}
+            <div>
+                <CardName>{truncate(info.title, 35)}</CardName>
+                {/* <em>Edit</em> */}
+                <BasicModal>
+                    <p>
+                        <CardIcon 
+                            className='far fa-edit' 
+                            onClick={editClick}
+                            editId={info.id}
+                            //style={{ marginTop: '2%', }} 
+                            />
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                </BasicModal>
+            </div>
+            
             <ActiveModal>
                 <IconButton 
                     onClick={cardActivate}
@@ -54,19 +68,6 @@ export const Card = props => {
                     
                 </IconButton>
             </ActiveModal>
-            <BasicModal>
-                <p>
-                    <CardIcon 
-                        className='far fa-edit' 
-                        onClick={editClick}
-                        editId={info.id}
-                        //style={{ marginTop: '2%', }} 
-                        />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                </p>
-            </BasicModal>
-            
-            
             {/*  */}
             
             {/****/}
