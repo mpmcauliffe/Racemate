@@ -23,7 +23,7 @@ export const CardContainer = styled.div`
     div p { margin-top: 4rem; }
     div button { 
         height: 2rem;
-        margin: 1rem 0 0 12%; 
+        margin: 4rem 0 0 0;
         text-align: right;
     }
     
@@ -71,6 +71,7 @@ export const IconButton = styled.button`
     /* grid-row-start: 1;
     grid-row-end: 3; */
 
+    width: 20rem;
     color: ${props => props.theme.midLtGray};
     background: transparent;
 
