@@ -44,7 +44,9 @@ export const Card = props => {
                 <IconButton 
                     onClick={cardActivate}
                     activeName={truncate(info.title, 25)}
-                    activeId={info.id}>
+                    activeId={info.id}
+                    //style={{ height: '5rem' }} 
+                    >
                     <span><em>Exercise</em></span>
                     &nbsp;&nbsp;
                     
