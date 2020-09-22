@@ -15,10 +15,7 @@ export const CardContainer = styled.div`
         margin-top: 2rem;
         align-self: flex-end; 
     }
-    div button { 
-        /* height: 4rem; */
-        text-align: right;
-    }
+    div button { text-align: center; }
     p { 
         width: 4.3rem;
         margin: -3.5rem 0 0 0; 
