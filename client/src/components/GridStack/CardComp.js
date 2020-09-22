@@ -5,18 +5,9 @@ export const CardContainer = styled.div`
     height: 10rem;
     padding: 1rem;
 
-    /* display: grid;
-    grid-template-columns: 2fr 3fr; */
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    /* div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }  */
 
     background: ${props =>  props.theme.colorPrimary};
 
@@ -77,7 +68,7 @@ export const IconButton = styled.button`
     grid-row-end: 3; */
 
     height: 4rem;
-    width: 13rem;
+    width: 15rem;
     color: ${props => props.theme.midLtGray};
     background: transparent;
 
