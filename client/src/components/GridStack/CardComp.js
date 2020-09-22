@@ -15,7 +15,7 @@ export const CardContainer = styled.div`
         margin-top: 2rem;
         align-self: flex-end; 
     }
-    div button { text-align: center; }
+    div button {  }
     p { 
         width: 4.3rem;
         margin: -3.5rem 0 0 0; 
@@ -65,17 +65,14 @@ export const IconButton = styled.button`
     grid-row-end: 3; */
 
     height: 4rem;
-    width: 15rem;
+    width: 21rem;
+
+    text-align: center;
     color: ${props => props.theme.midLtGray};
     background: transparent;
 
-    span {
-        font-size: 2.3rem;
-    }
-
-    .exercise {
-        color: ${props => props.theme.midLtGray};
-    }
+    span { font-size: 2.3rem; }
+    .exercise { color: ${props => props.theme.midLtGray}; }
 
     &:focus { border: .1rem solid #ffb900; }
 
