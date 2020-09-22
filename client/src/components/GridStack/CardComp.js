@@ -67,7 +67,7 @@ export const IconButton = styled.button`
     height: 4rem;
     width: 21rem;
 
-    text-align: center;
+    text-align: right;
     color: ${props => props.theme.midLtGray};
     background: transparent;
 
