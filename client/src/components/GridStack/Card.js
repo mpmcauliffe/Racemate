@@ -38,36 +38,36 @@ export const Card = props => {
 
     return (
         <CardContainer>
-            <div>
-                <CardName>{truncate(info.title, 35)}</CardName>
-                {/* <em>Edit</em> */}
-                <BasicModal>
-                    <p>
-                        <CardIcon 
-                            className='far fa-edit' 
-                            onClick={editClick}
-                            editId={info.id}
-                            //style={{ marginTop: '2%', }} 
-                            />
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                    </p>
-                </BasicModal>
-            </div>
+
+            <CardName>{truncate(info.title, 35)}</CardName>
+            {/* <em>Edit</em> */}
+
+                <ActiveModal>
+                    <IconButton 
+                        onClick={cardActivate}
+                        activeName={truncate(info.title, 25)}
+                        activeId={info.id} >
+                        <span><em>Exercise</em></span>
+                        &nbsp;&nbsp;
+                        
+                        <CardIcon className='fas fa-dumbbell exercise'  />
+                        
+                    </IconButton>
+                </ActiveModal>
+
+             
+            <BasicModal>
+                <p>
+                    <CardIcon 
+                        className='far fa-edit' 
+                        onClick={editClick}
+                        editId={info.id}
+                        //style={{ marginTop: '2%', }} 
+                        />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
+            </BasicModal>     
             
-            <ActiveModal>
-                <IconButton 
-                    onClick={cardActivate}
-                    activeName={truncate(info.title, 25)}
-                    activeId={info.id}
-                    //style={{ height: '5rem' }} 
-                    >
-                    <span><em>Exercise</em></span>
-                    &nbsp;&nbsp;
-                    
-                    <CardIcon className='fas fa-dumbbell exercise'  />
-                    
-                </IconButton>
-            </ActiveModal>
             {/*  */}
             
             {/****/}

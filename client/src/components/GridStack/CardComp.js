@@ -9,33 +9,32 @@ export const CardContainer = styled.div`
     grid-template-columns: 2fr 3fr; */
 
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 
-    div {
+    /* div {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    } 
+    }  */
 
     background: ${props =>  props.theme.colorPrimary};
 
-    /* div { align-self: end; } */
-    div p { margin-top: 4rem; }
+    div:first-of-type {
+        margin-top: 0rem;
+        align-self: flex-end; 
+    }
     div button { 
-        height: 2rem;
-        margin: 4rem 0 0 0;
+        height: 4rem;
         text-align: right;
     }
+    p { margin-top: -3.5rem; }
+
     
-    @media (min-width: 481px) {
-        p {
-            margin-top: 9%;
-            font-size: 1.7rem;
-        }
-    }
-    @media (min-width: 769px) { p { margin-top: 7%; } }
+    @media (min-width: 481px) { p { font-size: 1.7rem; } }
+    /* @media (min-width: 769px) { p { margin-top: 7%; } }
     @media (min-width: 1025px) { p { margin-top: 5%; } }
-    @media (min-width: 1601px) { p { margin-top: 4%; } }
+    @media (min-width: 1601px) { p { margin-top: 4%; } } */
 `
 
 export const CardName = styled.h3`
@@ -71,7 +70,7 @@ export const IconButton = styled.button`
     /* grid-row-start: 1;
     grid-row-end: 3; */
 
-    width: 20rem;
+    width: 13rem;
     color: ${props => props.theme.midLtGray};
     background: transparent;
 
@@ -82,6 +81,8 @@ export const IconButton = styled.button`
     .exercise {
         color: ${props => props.theme.midLtGray};
     }
+
+    &:focus { border: .1rem solid #ffb900; }
 
     @media (min-width: 480px) { font-size: 1.8rem; }
     @media (min-width: 640px) { font-size: 2rem; }
