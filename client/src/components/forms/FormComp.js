@@ -109,7 +109,7 @@ export const InfoSection = styled.div`
         width: 75%;
     }
     @media (min-width: 1025px) {
-        width: 60%;
+        width: 40%;
         margin: 0 auto;
     }
     @media (min-width: 1601px) {

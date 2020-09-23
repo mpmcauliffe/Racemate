@@ -2,15 +2,15 @@ import styled from 'styled-components'
 
 
 export const NavContainer = styled.div`
-    height: 10vh;
+    height: 8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: ${props => props.theme.colorPrimary};
 
     @media (min-width: 769px) {
+        height: 10rem;
         width: 80%;
-        /* width: 100%; */
         margin: 0 auto;
     }
     @media (min-width: 1025px) {
@@ -18,7 +18,7 @@ export const NavContainer = styled.div`
         margin: 0 auto;
     }
     @media (min-width: 1601px) {
-        width: 60%;
+        width: 40%;
         margin: 0 auto;
     }
 `

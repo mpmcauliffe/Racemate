@@ -27,22 +27,16 @@ export const NavMenuKit = styled.div`
         z-index: 2000;
         top: 3rem;
         right: 3rem;
-        background-image: radial-gradient(
+        /* background-image: radial-gradient(
             ${props => props.theme.primaryGray}, 
             ${props => props.theme.colorDark}
-        );
+        ); */
+        background: ${props => props.theme.primaryGray};
         transition: transform .8s cubic-bezier(.86, 0, .07, 1); /* https://cubic-bezier.com */
 
-        @media (min-width: 769px) {
-            right: 11.5%;
-        }
-        @media (min-width: 1025px) {            
-            right: 26.5%;
-            
-        }
-        @media (min-width: 1601px) {            
-            right: 16%;            
-        }
+        @media (min-width: 769px) { right: 11.5%; }
+        @media (min-width: 1025px) { right: 26.5%; }
+        @media (min-width: 1601px) { right: 31%; }
     }
 
     .navigation__nav {
@@ -91,21 +85,11 @@ export const NavMenuKit = styled.div`
         left: 0;
         transition: 0.2s;
     }
-    .navigation__icon::before {
-    top: -0.8rem;
-    }
-    .navigation__icon::after {
-        top: 0.8rem;
-    }
-    .navigation__button:hover .navigation__icon::before {
-        top: -1rem;
-    }
-    .navigation__button:hover .navigation__icon::after {
-        top: 1rem;
-    }
-    .navigation__checkbox:checked + .navigation__button .navigation__icon {
-        background-color: transparent;
-    }
+    .navigation__icon::before { top: -0.8rem; }
+    .navigation__icon::after { top: 0.8rem; }
+    .navigation__button:hover .navigation__icon::before { top: -1rem; }
+    .navigation__button:hover .navigation__icon::after { top: 1rem; }
+    .navigation__checkbox:checked + .navigation__button .navigation__icon { background-color: transparent; }
     .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
         top: 0;
         transform: rotate(135deg);
@@ -117,59 +101,15 @@ export const NavMenuKit = styled.div`
 
 
     @media (min-width: 769px) {
-    .navigation__button,
-    .navigation__nav {
-            right: 10%;
-        }
+        .navigation__button,
+        .navigation__nav { right: 11%; }
     }
     @media (min-width: 1025px) {
         .navigation__button,
-        .navigation__nav {
-            right: 25%;
-        }
+        .navigation__nav { right: 26%; }
     }
     @media (min-width: 1601px) {
         .navigation__button,
-        .navigation__nav {
-            right: 15%;
-        }
+        .navigation__nav { right: 31%; }
     }
-
-    /* & > ul {
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        list-style: none;
-        text-align: center;
-    }
-
-    & > li {
-        margin: 1rem;
-    }
-
-    & > a {
-        &:link,
-        &:visited {
-            display: inline-block;
-            font-size: 3rem;
-            font-weight: 300;
-            padding: 1rem 2rem;
-            color: ${props => props.theme.colorWhite};
-            text-decoration: none;
-            text-transform: uppercase;
-            background-image: linear-gradient(
-                110deg, transparent 0%, transparent 50%, ${props => props.theme.colorWhite} 50%
-            );
-            background-size: 220%;
-            transition: all .5s;
-        }
-        &:hover,
-        &:active {
-            background-position: 100%;
-            color: ${props => props.theme.colorPrimary};
-            transform: translateX(1rem);
-        }
-    } */
 `
