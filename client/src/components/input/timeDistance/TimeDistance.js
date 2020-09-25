@@ -19,10 +19,10 @@ export const TimeDistance = () => {
 
     useEffect(() => { addTimeDisElement() }, [])
 
-    //console.log(timeDistanceArray)
+    // console.log(timeDistanceArray)
     const handleToggleDisTag = buttonName => setDisTag(buttonName)
 
-    console.log(defaultDistanceOpt, defaultDisUnitOpt)
+    // console.log(defaultDistanceOpt, defaultDisUnitOpt)
 
     return (
         <form>

@@ -40,6 +40,7 @@ const ActionModalState = props => {
             if (setInfo.usesDistance) {
                 timeDispatch({ type: _enhanceState_, payload: setInfo })
             }
+            console.log(setInfo)
             dispatch({ type: _enhanceState_, payload: setInfo })
             
             client.writeData({ data: { editExerciseId: '' } })
@@ -50,7 +51,7 @@ const ActionModalState = props => {
             const currentExercise = allExercises.myExercises.filter(exercise => exercise.id === editExerciseId && exercise)
             
             if (currentExercise[0].sets.length > 0) {
-                console.log(currentExercise[0].sets[0])
+                // console.log(currentExercise[0].sets[0])
                 enhanceState(currentExercise[0].sets[0])
             }
         }

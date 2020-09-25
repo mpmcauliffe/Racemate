@@ -78,7 +78,7 @@ export default (state, action) => {
                 ...state,
                 currentWeight: newWeightValue,
 
-                changeOptionWeight: state.changeOptionWeight.map(i => console.log('i')),// ((item, i) => yCoord === i ? true : item),
+                changeOptionWeight: state.changeOptionWeight.map((item, i) => yCoord === i ? true : item),
                     
                 baseSets: [
                     ...state.baseSets.map((set, i) => yCoord === i 
@@ -176,9 +176,13 @@ export default (state, action) => {
         case _enhanceState_:
             
             const { setUnit, isWeighted } = action.payload
+            console.log(action.payload)
+            console.log(state.numberOfSets)
             return {
                 ...state,
                 weightSelection: isWeighted,
+                changeOptionReps: [...Array(parseInt((setUnit.match(/:/g) || []).length)+1)].map(() => false),
+                changeOptionWeight: [...Array(parseInt((setUnit.match(/:/g) || []).length)+1)].map(() => false),
                 numberOfSets: setUnit.length < 1 ? '0' : setUnit.split(':').length,
                 baseSets: reconstitute(setUnit),
                 defaultWeightOpt: isWeighted ? 1 : 0,

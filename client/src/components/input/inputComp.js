@@ -37,7 +37,7 @@ export const OptionText = styled.p`
     cursor: pointer;
     
     &&& { 
-            margin-top: ${props => props.weights ? '-.5rem' : '3.5rem'};
+            margin-top: ${props => props.weights ? '-.5rem' : '9.5rem'};
             color: ${props => props.theme.secondaryLight};
         }    
     @media(max-width: 480px) {

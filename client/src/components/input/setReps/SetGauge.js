@@ -32,7 +32,9 @@ export const SetGauge = () => {
     // updates upcoming weight values globally
     const handleOptGlobalClick = e => triggerWeightGlobal(e.target.getAttribute('name'))
 
-    // console.log(changeOptionWeight)
+    console.log(changeOptionReps)
+    console.log(changeOptionWeight)
+
     return (
         <Fragment>
             {numberOfSets && baseSets.map((set, i) => (
@@ -65,7 +67,7 @@ export const SetGauge = () => {
                                 <OptionText
                                     name={i}
                                     onClick={handleOptionRepsClick}
-                                >   Tap here to change upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
+                                >   Tap to change upcoming sets to {Array.isArray(set) ? set.length : baseSets[i]} reps?
                                 </OptionText>  
                             }
                         </InternalContainer>
