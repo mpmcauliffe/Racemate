@@ -21,7 +21,7 @@ export const InternalContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-basis: 100%; 
-    margin-bottom: 2rem;
+    margin-bottom: 6rem;
 `
 
 export const UpdateText = styled.p`
@@ -32,17 +32,21 @@ export const UpdateText = styled.p`
 
 export const OptionText = styled.p`
     position: ${props => props.weights ? 'static' : 'absolute'};
-    font-size: 1.6rem; 
+    /* padding: 1rem; */
+    font-size: 1.9rem;
+    text-align: center; 
     font-weight: 500;
+
+    /* border: .1rem solid ${props => props.theme.secondaryLight}; */
     cursor: pointer;
     
     &&& { 
-            margin-top: ${props => props.weights ? '-.5rem' : '9.5rem'};
+            margin-top: ${props => props.weights ? '-.5rem' : '10.5rem'};
             color: ${props => props.theme.secondaryLight};
         }    
-    @media(max-width: 480px) {
+    /* @media(max-width: 480px) {
         &&& { font-size: 1.3rem; } 
-    }
+    } */
 `
 
 export const RepInput = styled.input.attrs(props => ({
