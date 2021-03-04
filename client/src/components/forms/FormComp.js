@@ -139,14 +139,15 @@ export const InfoButton = styled.button`
     font-size: 1.9rem;
 
     color: ${props => props.theme.colorPrimary};
-    background: linear-gradient(to bottom, #efefef 4%,#efefef 4%,#d7d7d7 23%,#efefef 53%,#d7d7d7 83%,#8f8f8f 100%);
+    /* background: linear-gradient(to bottom, #efefef 4%,#efefef 4%,#d7d7d7 23%,#efefef 53%,#d7d7d7 83%,#8f8f8f 100%); */
+    background: radial-gradient(circle, rgba(239,239,239,1) 35%, rgba(214,213,213,1) 79%, rgba(187,187,187,1) 100%);
+    border-top: .1rem solid #fbfbfb;
+    border-bottom: .1rem solid #787878;
     border-radius: .5rem;
     cursor: pointer;
     transition: all 2s;
 
-    &:active {
-        background: linear-gradient(to bottom, #d7d7d7 23%,#efefef 49%,#d7d7d7 83%);
-    }
+    &:hover { background: radial-gradient(circle, rgba(239,239,239,1) 47%, rgba(214,213,213,1) 79%, rgba(187,187,187,1) 100%); }
 `
 export const UserLabel = styled.label`
     /* color: ${props => props.theme.midLtGray}; */
