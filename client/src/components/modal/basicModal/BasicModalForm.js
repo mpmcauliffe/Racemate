@@ -97,7 +97,8 @@ export const BasicModalForm = ({ handleModalToggle }) => {
             <Alert style={{ marginTop: '1rem' }} />
             <Simplebar style={{ height: '80vh', marginTop: '29px', overflowX: 'hidden' }}>
                 <FormContainer>
-                    <UserLabel htmlFor='title'>Exercise Name</UserLabel>
+                    <UserLabel htmlFor='title'
+                        style={{ color: '#f7f7f7', }}>Exercise Name</UserLabel>
                     <input /* TITLE */
                         onChange={onChange}
                         value={title}
@@ -105,7 +106,8 @@ export const BasicModalForm = ({ handleModalToggle }) => {
                         type='text'
                         required />
 
-                    <UserLabel htmlFor='exerciseType'>Exercise Type / Muscle Group</UserLabel>
+                    <UserLabel htmlFor='exerciseType' 
+                        style={{ color: '#f7f7f7', }}>Exercise Type / Muscle Group</UserLabel>
                     <input /* EXERCISE_TYPE */
                         onChange={onChange}
                         value={exerciseType}
@@ -128,7 +130,7 @@ export const BasicModalForm = ({ handleModalToggle }) => {
 
                     <UserLabel 
                         htmlFor='description'
-                        style={{ marginTop: '4rem', }} 
+                        style={{ marginTop: '4rem', color: '#f7f7f7', }} 
                     >   Description
                     </UserLabel>
                     <textarea /* DESCRIPTION */

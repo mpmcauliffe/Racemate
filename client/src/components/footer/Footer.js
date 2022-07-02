@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, } from 'react'
 import ModalFormContext from '../../context/modalForm/modalFormContext'
 
-import { Link as ScrollLink } from 'react-scroll'
+import { Link as ScrollLink, animateScroll as scroll,  } from 'react-scroll'
 
 import { FooterContainer, FooterIcon, } from './FooterComp'
 import { BasicModal, } from '../../components'

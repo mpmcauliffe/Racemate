@@ -11,7 +11,8 @@ export const Nav = () => {
 
     return (
         <NavContainer>
-            <NavRacemate 
+            <NavRacemate
+                id='navHeader' 
                 alt='RACEMATE!'
                 src={require(`./RACEMATE_gray.svg`)} />
             {/**<Header id='navHeader'>RACEMATE</Header> */}
