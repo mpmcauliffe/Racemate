@@ -45,8 +45,7 @@ export const SetGauge = () => {
 
                     <SetContainer short>
                         <InternalContainer>
-                            <UpdateText style={{ flexBasis: '50%' }}>Number of reps</UpdateText>
-                            
+                            <UpdateText style={{ marginLeft: '0', flexBasis: '50%' }}>Number of reps</UpdateText>
                             {window.innerWidth > 768 
                                 ?   <RepInput 
                                         value={Array.isArray(set) ? set.length : baseSets[i]}

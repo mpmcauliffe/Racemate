@@ -25,7 +25,8 @@ export const InternalContainer = styled.div`
 `
 
 export const UpdateText = styled.p`
-    font-size: 2.1rem;
+    /* font-size: 2.1rem; */
+    font-size: 1.8rem;
     margin: 1rem;
     &&& { color: ${props => props.theme.midLtGray}; } /* ANNOYING */
 `

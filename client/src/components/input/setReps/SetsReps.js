@@ -45,9 +45,7 @@ export const SetReps = () => {
                                 actualValue={numberOfSets}
                                 options={spoolInputArray}
                                 updateSelect={updateSetCount}
-                                style={{ flexBasis: '50%' }}  />
-                    }
-                    
+                                style={{ flexBasis: '50%' }}  />}
                 </SetContainer>
 
                 <SetContainer>
