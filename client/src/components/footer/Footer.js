@@ -15,7 +15,7 @@ export const Footer = () => {
     const { toggleEditOff, }         = useContext(ModalFormContext)
     const { data }                   = useQuery(GET_TOGGLE_STATUS)
 
-    console.log(document.documentElement.scollHeight)
+    // console.log(document.documentElement.scollHeight)
     const basicClick = e => {
         e.preventDefault()
         toggleEditOff()

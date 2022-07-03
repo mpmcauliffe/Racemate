@@ -36,6 +36,8 @@ export const Card = props => {
         setEditExerciseId(info.id)
     }
 
+    // console.log(info);
+
     return (
         <CardContainer>
 

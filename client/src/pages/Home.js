@@ -16,15 +16,19 @@ export const Home = props => {
     client.writeData({ data: { userSelection: userSelection } })
     client.writeData({ data: { isSetPreloaded: false }})
 
-    useEffect(() => {
-        
-    }, [userSelection])
+    useEffect(() => { }, [userSelection])
 
     const handleToggle = buttonName => {
         setUserSelection(buttonName)
         client.writeData({ data: { userSelection: userSelection } })
     }
 
+
+    // if (userSelection !== 'Exercises') {
+    //     return (
+    //         <p>{userSelection} is currently in production.</p>
+    //     )
+    // }
 
     return (
         <Fragment>
@@ -38,7 +42,9 @@ export const Home = props => {
                                 optButtons={optButtons}
                                 handleToggle={handleToggle} />
                         
-                            <GridStack />
+                            {userSelection === 'Exercises' 
+                                ? <GridStack />
+                                :  <p style={{ textAlign: 'center', }}><strong>"{userSelection}" is currently in production.</strong></p>}
                         </WidePageContainer>
                         <Footer />
                     </SaveUnitState>

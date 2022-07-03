@@ -40,7 +40,9 @@ export const BasicModal = props => {
         )
     }
 
-    const { editId } = props.children.props
+    const editId = props.children.props.children[0].props.editId
+
+    console.log(editId)
 
     return (
         
