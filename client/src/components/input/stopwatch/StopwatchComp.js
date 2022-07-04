@@ -17,13 +17,16 @@ export const SWtext = styled.h6`
 export const BtnRound = styled.button`
     height: 7rem;
     width: 7rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border: .07rem solid ${props => props.theme.primaryGray};
     border-radius: 50%;
     background: transparent;
 
-    &:focus {
-        border-color: ${props => props.theme.primaryGray}
-    }
+    &:focus { border-color: ${props => props.theme.primaryGray} }
 `
 export const LapContainer = styled.div`
     height: 5rem;
