@@ -123,6 +123,7 @@ export const InfoText = styled.h3`
 export const InfoIcon = styled.i`
     font-size: 3rem;
     color: ${props => props.modal ? props.theme.midLtGray : props.theme.colorPrimary};
+    /* color: #f73859; */
     cursor: pointer;
 `
 

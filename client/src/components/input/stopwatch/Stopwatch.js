@@ -75,11 +75,11 @@ export const Stopwatch = () => {
                     style={{ marginLeft: '5%' }} >
                     {!start && <InfoIcon 
                         className="fas fa-reply" 
-                        style={{ fontSize: '5rem' }} />}
+                        style={{ fontSize: '5rem', color: '#ffb900', }} />}
 
                     {start && <InfoIcon 
                         className="fas fa-sync-alt" 
-                        style={{ fontSize: '5rem' }} />}
+                        style={{ fontSize: '5rem', color: '#ffb900', }} />}
                 </BtnRound>
                 {/*** ***/}
                 <BtnRound 
@@ -87,18 +87,18 @@ export const Stopwatch = () => {
                     style={{ marginRight: '5%' }} >
                     {!start && <InfoIcon 
                         className="fas fa-play"
-                        style={{ fontSize: '5rem', marginLeft: '1rem' }}  />}
+                        style={{ fontSize: '5rem', marginLeft: '1rem', color: '#ffb900', }}  />}
                     
                     {start && <InfoIcon 
                         className="fas fa-stop" 
-                        style={{ fontSize: '5rem' }} />}
+                        style={{ fontSize: '5rem', color: '#ffb900', }} />}
                 </BtnRound>                        
             </InternalContainer>
             {timeDistanceArray.length > 1 &&
                 timeDistanceArray.map((lap, i) => (
                     <InternalContainer 
                         key={`${i}_${lap.time}`}
-                        style={{ height: '5rem' }}>
+                        style={{ height: '5rem', margin: '0 auto' }}>
                         {lap.time !== '00:00:00:00' && <LapText>Lap {i+1}:&emsp;{lap.time}</LapText>}
                     </InternalContainer>
                 ))         
