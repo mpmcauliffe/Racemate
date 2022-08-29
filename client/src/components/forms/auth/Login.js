@@ -16,8 +16,8 @@ export const Login = ({ opToggle }) => {
 
     const { setAlert, }     = useContext(AlertContext)
     const [user, setUser]   = useState({
-        email: '',
-        password: '',
+        email: 'casper@bear.com',
+        password: '12345678',
     })
 
     const [login]           = useMutation(LOGIN)
@@ -54,7 +54,10 @@ export const Login = ({ opToggle }) => {
         
         <form onSubmit={onSubmit}>
             <Alert />
-            <AuthContainer>
+           
+            <AuthContainer> 
+                <p>Use this dummy account or sign up and create a new account.</p>
+                
                 <label htmlFor='email'>Email</label>
                 <input /* EMAIL */
                     onChange={onChange}
