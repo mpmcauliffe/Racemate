@@ -38,7 +38,7 @@
     "graphql": "^14.7.0",
     "graphql-playground-middleware-express": "^1.7.18",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.3",
+    "mongoose": "^5.13.16",
     "require-graphql-file": "^1.0.1"
   },
   "devDependencies": {
